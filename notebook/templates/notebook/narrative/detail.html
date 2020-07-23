@@ -6,4 +6,11 @@
 <h1>{{ narrative.title }}</h1>
 <p>{{ narrative.html|safe }}</p>
 
+<h6>Etiketler</h6>
+<ul>
+{% for t in narrative.tagman.tags.all %}
+<li>{{ t.abstract.name }} ({{ t.abstract.slug }})</li>
+{% endfor %}
+</ul>
+
 {% endblock %}
