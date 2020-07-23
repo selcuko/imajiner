@@ -5,10 +5,10 @@ from .models import Narrative
 
 class NarrativeViews:
     class Detail(DetailView):
-        models = Narrative
+        model = Narrative
         context_object_name = 'narrative'
         template_name = 'notebook/narrative/detail.html'
 
-        def get_queryset(self):
+        def get_object(self):
             slug = self.kwargs['slug']
             return Narrative.objects.get(slug=slug)
