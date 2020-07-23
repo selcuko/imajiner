@@ -25,7 +25,10 @@ SECRET_KEY = 'gtiv*0885^r!w+8l8l!_!uf8-w_0t()-rwjok*2*s44=l)8s%p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '192.168.1.5',
+]
 
 
 # Application definition
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'notebook.apps.NotebookConfig',
 ]
 
 MIDDLEWARE = [
