@@ -12,8 +12,8 @@ class AbstractTag(models.Model):
 
 
 class TagManager(models.Model):
-    def get(slug):
-        return self.tags.get(slug=slug)
+    def get(self, slug):
+        return self.tags.get(abstract__slug=slug)
 
 
 class ObjectTag(models.Model):
