@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class TagmanagerConfig(AppConfig):
+class TagManagerConfig(AppConfig):
     name = 'tagmanager'
