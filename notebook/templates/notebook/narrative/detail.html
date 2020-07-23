@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<h1>{{ narrative.title }}</h1>
+<p>{{ narrative.html|safe }}</p>
+
+{% endblock %}
