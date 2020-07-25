@@ -13,11 +13,28 @@ class AbstractTag(models.Model):
 
 class TagManager(models.Model):
     def get(self, slug):
-        return self.tags.get(abstract__slug=slug)
+        try:
+            return self.tags.get(abstract__slug=slug)
+        except ObjectTag.DoesNotExist:
+            return None
+    def delta(self, slug, diff=1):
+        tag = self.get(slug)
+        if not tag:
+            return False
+        tag.delta(diff)
+        return True
+
+
 
 
 class ObjectTag(models.Model):
-    abstract = models.ForeignKey(AbstractTag, on_delete=models.CASCADE, related_name='objects')
+    abstract = models.ForeignKey(AbstractTag, on_delete=models.CASCADE, related_name='objs')
     count = models.IntegerField(default=1)
     manager = models.ForeignKey(TagManager, on_delete=models.CASCADE, related_name='tags')
+
+    def delta(self, diff):
+        if not (diff and isinstance(diff, int)):
+            return False
+        self.count += diff
+        self.save()
 
