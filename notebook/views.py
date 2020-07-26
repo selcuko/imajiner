@@ -11,8 +11,8 @@ class NarrativeViews:
         template_name = 'notebook/narrative/detail.html'
 
         def get_object(self):
-            slug = self.kwargs['slug']
-            self.narrative = Narrative.objects.get(slug=slug)
+            self.slug = self.kwargs['slug']
+            self.narrative = Narrative.objects.get(slug=self.slug)
             return self.narrative
         
         def post(self, request, *args, **kwargs):
@@ -26,4 +26,8 @@ class NarrativeViews:
 
         def tag_delta(self, slug, amount=1):
             user = self.request.user
-            print(f'Clicked on {slug} by {user} for {amount} times')
+            user.tags.delta(
+                slug=slug, 
+                diff=amount, 
+                narrative=self.kwargs['slug']
+            )

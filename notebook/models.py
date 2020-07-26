@@ -24,7 +24,7 @@ def create_tagman(sender, instance, created, **kwargs):
     instance.save()
 
 @receiver(post_save, sender=Narrative)
-def save_user_profile(sender, instance, **kwargs):
+def update_tagman(sender, instance, **kwargs):
     instance.tagman.save()
 
 
