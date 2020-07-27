@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'notebook.apps.NotebookConfig',
     'tagmanager.apps.TagManagerConfig',
     'gatewall.apps.GatewallConfig',
+    'identity.apps.IdentityConfig',
 ]
 
 MIDDLEWARE = [
