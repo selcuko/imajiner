@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from .models import Narrative
 import json
 
@@ -26,8 +26,18 @@ class NarrativeViews:
 
         def tag_delta(self, slug, amount=1):
             user = self.request.user
+            if not user.is_authenticated:
+                return False
             user.tags.delta(
-                slug=slug, 
-                diff=amount, 
+                slug=slug,
+                diff=amount,
                 narrative=self.kwargs['slug']
             )
+
+    class List(ListView):
+        model = Narrative
+        context_object_name = 'narratives'
+        template_name = 'notebook/narrative/list.html'
+
+        def get_queryset(self):
+            return Narrative.objects.all()

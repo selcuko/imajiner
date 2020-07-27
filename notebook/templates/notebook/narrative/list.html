@@ -1,0 +1,13 @@
+{% extends 'notebook/base.html' %}
+{% load static %}
+
+{% block body %}
+
+<h3>Tüm hikayeler</h3>
+<ul>
+    {% for narrative in narratives %}
+    <li><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

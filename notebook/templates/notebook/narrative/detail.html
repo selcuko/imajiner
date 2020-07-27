@@ -23,8 +23,6 @@
 }
 
 
-
-
 function tagPost(slug){
     let data = new FormData();
     let payload = {};
@@ -41,7 +39,8 @@ function tagPost(slug){
 }
 </script>
 
-<h6>Etiketler</h6>
+<h3>Etiketler</h3>
+<h6>Not: {{ request.user }} olarak giriş yapıyorsunuz.</h6>
 <ul>
 {% for t in narrative.tagman.tags.all %}
 <li onclick="tagPost('{{ t.abstract.slug }}')">{{ t.abstract.name }} ({{ t.abstract.slug }})</li>
