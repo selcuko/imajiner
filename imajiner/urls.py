@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('notebook.urls', namespace='narrative')),
+    path('', include('gatewall.urls', namespace='gatewall')),
 ]
 
 if settings.DEBUG:

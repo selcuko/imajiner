@@ -43,7 +43,7 @@ function tagPost(slug){
 <h6>Not: {{ request.user }} olarak giriş yapıyorsunuz.</h6>
 <ul>
 {% for t in narrative.tagman.tags.all %}
-<li onclick="tagPost('{{ t.abstract.slug }}')">{{ t.abstract.name }} ({{ t.abstract.slug }})</li>
+<li onclick="tagPost('{{ t.abstract.slug }}')">{{ t.abstract.name }} ({{ t.count }})</li>
 {% endfor %}
 </ul>
 

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notebook.apps.NotebookConfig',
     'tagmanager.apps.TagManagerConfig',
+    'gatewall.apps.GatewallConfig',
 ]
 
 MIDDLEWARE = [
