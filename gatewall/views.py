@@ -1,6 +1,9 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login
+from uuid import uuid4 as uuid
+from django.contrib.auth.models import User
+from identity.models import Shadow
 
 class LoginViews:
 
@@ -10,12 +13,33 @@ class LoginViews:
             return render(request, 'gatewall/login.html')
         
         def post(self, request):
-            username = request.POST.get('username', '')
-            password = request.POST.get('password', '')
-            user = authenticate(request, username=username, password=password)
-            if user is None:
-                return HttpResponse('Siktir git yalancı')
-            login(request, user)
-            return HttpResponse('Giriş yaptın yavru')
+            action = request.POST['action']
+            if action == 'LOGIN':
+                username = request.POST.get('username', '')
+                password = request.POST.get('password', '')
+                user = authenticate(request, username=username, password=password)
+                if user is None:
+                    return HttpResponse('Siktir git yalancı')
+                login(request, user)
+                return HttpResponse('Giriş yaptın yavru')
+            
+            elif action == 'SHADOW':
+                shadow = Shadow.authenticate(request)
+                if shadow is not None:
+                    login(request, shadow.user)
+                    return HttpResponse('Zati kayıt vardı bende seni içeri soktum')
 
+                r_addr = request.META['REMOTE_ADDR']
+                r_agent = request.META['HTTP_USER_AGENT']
+
+                u = User.objects.create(
+                    username=str(uuid())
+                )
+                s = Shadow.objects.create(
+                    addr=r_addr,
+                    agent=r_agent,
+                    user=u,
+                )
+                login(request, u)
+                return HttpResponse('Oki shadow kayıt tamam')
 

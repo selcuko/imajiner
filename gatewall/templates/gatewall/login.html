@@ -6,13 +6,31 @@
     <title>Document</title>
 </head>
 <body>
+    <ul>
+        {% if request.user.is_authenticated %}
+        <li>Yetkilendirildi: Evet</li>
+        <li>Hayalet: {{ request.user.is_shadow }}</li>
+        <li>Kullanıcı: {{ request.user }}</li>
+        {% else %}
+        <li>Yetkilendirildi: Hayır</li>
+        {% endif %}
+    </ul>
     <form method="POST" action="">
         {% csrf_token %}
+        <input name="action" type="hidden" value="LOGIN">
         <label for='username'>Kullanıcı</label>
         <input type='text' placeholder="..." name='username' required>
+        <br />
         <label for='password'>Şifre</label>
         <input type='password' placeholder="..." name='password' required>
         <input type='submit' value='Girmeyi dene'>
     </form>
+    
+    <form method="POST" action="">
+    {% csrf_token %}
+    <input name="action" type="hidden" value="SHADOW">
+    <input type="submit" value="Hayalet kayıt yap">
+    </form>
+    
 </body>
 </html>

@@ -4,13 +4,13 @@ class IdentityConfig(AppConfig):
     name = 'identity'
 
     def ready(self):
-        from django.contrib.auth.models import User
+        from django.contrib.auth.models import User, AnonymousUser
 
         @property
         def is_shadow(self):
             try:
                 is_shadow = self.shadow
-                return shadow.active
+                return self.shadow.active
             except:
                 return False
 
