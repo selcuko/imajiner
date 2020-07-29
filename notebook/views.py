@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import DetailView, ListView
+from django.views import View
 from .models import Narrative
 import json
 
@@ -41,3 +42,9 @@ class NarrativeViews:
 
         def get_queryset(self):
             return Narrative.objects.all()
+    
+    class Write(View):
+        template_name = 'notebook/narrative/write.html'
+        def get(self, request):
+            form = None
+            return render(self.request, self.template_name, context={'form':form})

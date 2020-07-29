@@ -1,0 +1,23 @@
+{% extends 'notebook/base.html' %}
+{% load static %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'narrative/autosave.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<h1>Patlat bi yazı</h1>
+<br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="title">Başlık</label>
+    <input type="text" name="title" placeholder="..." required>
+    <br>
+    <textarea id="body" rows="4" cols="50" name="body" placeholder="..." required></textarea>
+
+    <input type="submit" value="Tüm dünya bunu bilsin">
+</form>
+
+{% endblock %}
