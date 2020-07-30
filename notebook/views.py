@@ -109,23 +109,6 @@ class NarrativeFactory:
                 return HttpResponse('Unknown')
 
 
-            """form = NarrativeWrite(request.POST)
-            if not form.is_valid():
-                return HttpResponse("I've never met this man in my life")
-            action = request.POST.get('action', '')
-            subsequent = request.POST.get('subsequent', False)
-            narrative = form.save(commit=False)
-            narrative.generate_slug()
-            print("incomin", narrative, "checkn")
-            qs = Narrative.objects.filter(slug=narrative.slug)
-            if qs.exists():
-                print("oh found")
-                narrative = NarrativeWrite(request.POST, instance=qs.first()).save(commit=False)
-            if action == 'AUTOSAVEFORM':
-                narrative.sketch = True
-            narrative.save()
-            return HttpResponse("tamam bebek kaydettim")"""
-
     class Write(View):
         template_name = 'notebook/narrative/folder.html'
         def get(self, request):
@@ -134,3 +117,27 @@ class NarrativeFactory:
                 'sketches': sketches,
                 'no_sketch': not sketches.exists(),
             })
+    
+    class Sketch(DetailView):
+
+        template_name = 'notebook/narrative/write.html'
+        
+        def get(self, request, slug):
+            narrative = Narrative.objects.get(slug=slug)
+            form = NarrativeWrite(instance=narrative)
+            return render(request, self.template_name, {'form': form})
+
+        def post(self, request, slug):
+            narrative = Narrative.objects.get(slug=slug)
+            form = NarrativeWrite(request.POST, instance=narrative)
+            if not form.is_valid():
+                print(form.errors)
+            action = request.POST.get('action', '')
+            narrative = form.save(commit=False)
+            submitted = action == 'SUBMIT'
+            if submitted:
+                narrative.sketch = False
+
+            narrative.save(alter_slug=submitted)
+            return HttpResponse()
+        

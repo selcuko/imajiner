@@ -1,11 +1,13 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Narrative
 
 
-class NarrativeWrite(ModelForm):
+class NarrativeWrite(forms.ModelForm):
     class Meta:
         model = Narrative
         fields = [
             'title',
             'body',
+            #'uuid',
         ]
+        

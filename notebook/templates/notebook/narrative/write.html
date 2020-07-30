@@ -13,12 +13,14 @@
 <h4 id="status">Yükleniyor</h4>
 <form id="form" action="" method="POST">
     {% csrf_token %}
-    <label for="title">Başlık</label>
+    {{ form.as_ul }}
+    <input type="submit" value="Tüm dünya bunu bilsin">
+    <!-- <label for="title">Başlık</label>
     <input type="text" name="title" placeholder="..." required>
     <br>
     <textarea id="body" rows="4" cols="50" name="body" placeholder="..." required></textarea>
 
-    <input type="submit" value="Tüm dünya bunu bilsin">
+    <input type="submit" value="Tüm dünya bunu bilsin"> -->
 </form>
 
 {% endblock %}

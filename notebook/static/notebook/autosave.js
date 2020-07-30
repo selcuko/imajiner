@@ -1,14 +1,16 @@
 
 
-let last = {
-    value: '',
-    fetch: null,
-};
 
 const intervalMs = 3000;
 const $form  = document.getElementById('form');
-const $textarea  = document.getElementById('body');
+let $textarea = document.getElementById('id_body');
 const $status = document.getElementById('status');
+
+
+let last = {
+    value: $textarea.value,
+    fetch: null,
+};
 
 let intervalId = setInterval(f, intervalMs);
 
@@ -21,6 +23,7 @@ $form.onsubmit = function (e){
 
 $status.innerText = "Değişiklikler kaydedildi"
 function f(){
+    $textarea = document.getElementById('id_body');
     if ($textarea.value !== last.value){
         $status.innerText = "Eşleniyor"
         post(action='AUTOSAVE');

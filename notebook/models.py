@@ -23,15 +23,19 @@ class Narrative(models.Model):
         return f'{self.title} ({self.slug})'
     
     def get_absolute_url(self):
-        return reverse('narrative:detail', kwargs={'slug': self.slug})
+        if self.sketch:
+            return reverse('narrative:sketch', kwargs={'slug': self.slug})
+        else:
+            return reverse('narrative:detail', kwargs={'slug': self.slug})
     
-    def save(self, *args, **kwargs):
+    def save(self, *args, alter_slug=True, **kwargs):
         self.html = html.escape(self.body)
         self.html = self.html.replace('\n\n', '<br />')
         self.html = self.html.replace('\n', '</p><p>')
         self.html = f'<p>{self.html}</p>'
         if not self.uuid: self.uuid = uuid()
-        self.generate_slug()
+        if alter_slug:
+            self.generate_slug()
         super().save(*args, **kwargs)
     
     def generate_slug(self):
