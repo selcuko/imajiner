@@ -1,19 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>{{ doc.title|default:'Imajiner. Özgürleştiğin yer.' }}</title>
     <meta name="description" content="{{ doc.description }}">
     <meta name="author" content="{{ doc.author }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
     {% block script %}
     {% endblock script %}
-<head>
+
+    <head>
+
+    <body>
+        {% block body %}
+
+        {% endblock body%}
 
 <body>
-{% block body %}
-
-{% endblock body%}
-<body>
-<html>
+    <html>

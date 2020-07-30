@@ -5,13 +5,16 @@ from django.dispatch import receiver
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from django.utils import text, html
+from uuid import uuid1 as uuid
 
 
 class Narrative(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, null=True)
+    slug = models.SlugField(max_length=100, null=True, unique=True)
     body = models.TextField(null=True)
     html = models.TextField(null=True)
+    sketch = models.BooleanField(default=False)
+    uuid = models.UUIDField()
 
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
     tagman = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
@@ -27,9 +30,13 @@ class Narrative(models.Model):
         self.html = self.html.replace('\n\n', '<br />')
         self.html = self.html.replace('\n', '</p><p>')
         self.html = f'<p>{self.html}</p>'
-
-        self.slug = text.slugify(self.title, allow_unicode=True)
+        if not self.uuid: self.uuid = uuid()
+        self.generate_slug()
         super().save(*args, **kwargs)
+    
+    def generate_slug(self):
+        if not self.uuid: self.uuid = uuid()
+        self.slug = f'{text.slugify(self.title, allow_unicode=False)}-{str(self.uuid)[:8]}'
 
 @receiver(post_save, sender=Narrative)
 def create_tagman(sender, instance, created, **kwargs):
