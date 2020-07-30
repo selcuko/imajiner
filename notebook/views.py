@@ -7,7 +7,7 @@ import json
 import uuid
 
 
-class NarrativeViews:
+class NarrativeView:
     class Detail(DetailView):
         model = Narrative
         context_object_name = 'narrative'
@@ -44,8 +44,9 @@ class NarrativeViews:
 
         def get_queryset(self):
             return Narrative.objects.all()
-    
-    class Write(View):
+
+class NarrativeFactory:
+    class New(View):
         template_name = 'notebook/narrative/write.html'
 
         def get(self, request):
@@ -124,3 +125,12 @@ class NarrativeViews:
                 narrative.sketch = True
             narrative.save()
             return HttpResponse("tamam bebek kaydettim")"""
+
+    class Write(View):
+        template_name = 'notebook/narrative/folder.html'
+        def get(self, request):
+            sketches = Narrative.objects.filter(sketch=True)
+            return render(request, self.template_name, {
+                'sketches': sketches,
+                'no_sketch': not sketches.exists(),
+            })
