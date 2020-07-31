@@ -39,6 +39,10 @@ class Narrative(models.Model):
             self.generate_slug()
         super().save(*args, **kwargs)
     
+    def lead(self):
+        p = self.html.split('</p><p>')
+        return p[0][3:].replace('</p>', '')
+    
     def generate_slug(self):
         if not self.uuid: self.uuid = uuid()
         self.slug = f'{text.slugify(self.title, allow_unicode=False)}-{str(self.uuid)[:8]}'

@@ -35,6 +35,9 @@ class TagManager(models.Model):
     
     def display(self):
         return self.tags.all()[:6]
+    
+    def has_tags(self):
+        return True if self.tags.all().count() > 0 else False
 
 
 class ObjectTag(models.Model):

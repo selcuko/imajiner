@@ -1,13 +1,93 @@
 {% extends 'notebook/base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
+{% endblock css %}
+
 {% block body %}
 
-<h3>Tüm hikayeler</h3>
-<ul>
-    {% for narrative in narratives %}
-    <li><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a></li>
-    {% endfor %}
-</ul>
+<body id="top">
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content">
 
-{% endblock %}
+        <div class="row narrow">
+            <div class="col-full s-content__header" data-aos="fade-up">
+                <h1>Öykülerimiz</h1>
+
+                <p class="lead">Bütün tüm hepsi bütün hikayeler
+                </p>
+            </div>
+        </div>
+
+        <div class="row masonry-wrap">
+            <div class="masonry">
+
+                <div class="grid-sizer"></div>
+
+                {% for narrative in narratives %}
+
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+
+                    <div class="entry__text">
+                        <div class="entry__header">
+
+                            <div class="entry__date">
+                                <a href="single-standard.html">{{ narrative.created_at }}</a>
+                            </div>
+                            <h1 class="entry__title"><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a>
+                            </h1>
+
+                        </div>
+                        {% if narrative.lead %}
+                        <div class="entry__excerpt">
+                            <p>
+                                {{ narrative.lead }}
+                            </p>
+                        </div>
+                        {% endif %}
+                        {% if narrative.tagman.has_tags %}
+                        <div class="entry__meta">
+                            <span class="entry__meta-links">
+                                {% for tag in narrative.tagman.display %}
+                                <a href="#">{{ tag.abstract.name }}</a>
+                                {% endfor %}
+                            </span>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </article> <!-- end article -->
+                {% endfor %}
+
+
+            </div> <!-- end masonry -->
+        </div> <!-- end masonry-wrap -->
+
+    </section> <!-- s-content -->
+<!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'notebook/js/plugins.js' %}"></script>
+    <script src="{% static 'notebook/js/main.js' %}"></script>
+</body>
+
+{% endblock body %}
