@@ -27,7 +27,7 @@ class LoginViews:
                 shadow = Shadow.authenticate(request)
                 if shadow is not None:
                     login(request, shadow.user)
-                    return HttpResponse('Zati kayıt vardı bende seni içeri soktum')
+                    return HttpResponse('Kayıt zaten vardı, nası oluyosa')
 
                 r_addr = request.META['REMOTE_ADDR']
                 r_agent = request.META['HTTP_USER_AGENT']
@@ -42,4 +42,30 @@ class LoginViews:
                 )
                 login(request, u)
                 return HttpResponse('Oki shadow kayıt tamam')
+
+
+    class Register(View):
+        template_name = 'gatewall/register.html'
+        def get(self, request):
+            return render(request, self.template_name, {})
+        
+
+        def post(self, request):
+            action = request.POST.get('action', '')
+            username = request.POST.get('username', '')
+            
+            if action == 'REGULAR':
+                password = request.POST.get('password', '')
+                email = request.POST.get('email', None)
+                user = User.objects.create_user(
+                    username=username,
+                    password=password,
+                    email=email,
+                )
+                login(request, user)
+            elif action == 'SHADOW':
+                shadow = Shadow.create_shadow(request, username=username)
+                login(request, shadow.user)
+
+            return HttpResponse()
 

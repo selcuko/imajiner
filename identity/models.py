@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.ipv6 import ipaddress
 import hashlib
+from uuid import uuid4 as uuid
 
 class Shadow(models.Model):
     fingerprint = models.CharField(max_length=2048, unique=True)
@@ -17,6 +18,17 @@ class Shadow(models.Model):
         self.fingerprint = str(self.calculate_fingerprint(self.addr, self.agent))
         #self.addr = self.addr
         super().save(*args, **kwargs)
+    
+    def create_shadow(request, username=None):
+        if not isinstance(username, str):
+            username = str(uuid())
+        shadow = Shadow.objects.create(
+            user=User.objects.create(username=username),
+            agent=request.META.get('HTTP_USER_AGENT', ''),
+            addr=request.META.get('REMOTE_ADDR', ''),
+        )
+        return shadow
+            
 
     
     @staticmethod
