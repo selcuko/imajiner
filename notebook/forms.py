@@ -10,4 +10,9 @@ class NarrativeWrite(forms.ModelForm):
             'body',
             #'uuid',
         ]
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'full-width'}),
+            'body': forms.Textarea(attrs={'class': 'full-width'}),
+        }
         

@@ -1,26 +1,65 @@
 {% extends 'notebook/base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
+<style type="text/css" media="screen">
+    .s-styles { 
+        background: #f2f2f2;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .s-styles .section-intro h1 {
+        margin-top: 0;
+    }
+ </style> 
+{% endblock css %}
+
 {% block script %}
 <script defer type="text/javascript" src="{% static 'notebook/autosave.js' %}"></script>
 {% endblock %}
 
 {% block body %}
 
-<h1>yaz-ı yaz</h1>
-<br>
+<body id="top">
 
-<h4 id="status">Yükleniyor</h4>
-<form id="form" action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Tüm dünya bunu bilsin">
-    <!-- <label for="title">Başlık</label>
+    
+    <section id="styles" class="s-styles">
+        <div class="row">
+
+            <div class="tab-full">
+                <h1>Bildirge yayınla</h1>
+    <br>
+
+                <form id="form" action="" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <label for="{{ form.title.id_for_label }}">Önden gelen tekst</label>
+                        {{ form.title }}
+                    </div>
+
+                    <label for="{{ form.body.id_for_label }}">İçerik</label>
+                    {{ form.body }}
+                    <blockquote>
+                        <p id="status">Bişiler oluyo</p>
+                        <cite>Sistem</cite>
+                        </blockquote>
+                    <input class="btn--primary full-width" type="submit" value="Beyan et">
+                    <!-- {{ form.as_ul }}
+    <input type="submit" value="Tüm dünya bunu bilsin"> -->
+                    <!-- <label for="title">Başlık</label>
     <input type="text" name="title" placeholder="..." required>
     <br>
     <textarea id="body" rows="4" cols="50" name="body" placeholder="..." required></textarea>
 
     <input type="submit" value="Tüm dünya bunu bilsin"> -->
-</form>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
 
 {% endblock %}
