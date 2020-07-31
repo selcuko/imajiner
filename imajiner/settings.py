@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tagmanager.apps.TagManagerConfig',
     'gatewall.apps.GatewallConfig',
     'identity.apps.IdentityConfig',
+    'explore.apps.ExploreConfig',
 ]
 
 MIDDLEWARE = [

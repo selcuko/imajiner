@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('', include('notebook.urls', namespace='narrative')),
     path('', include('gatewall.urls', namespace='gatewall')),
+    path('', include('explore.urls', namespace='explore')),
 ]
 
 if settings.DEBUG:
