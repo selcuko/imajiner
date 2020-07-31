@@ -8,32 +8,24 @@
     <meta name="description" content="{{ doc.description }}">
     <meta name="author" content="{{ doc.author }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script>
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-    </script>
-    {% block script %}
-    {% endblock script %}
 
-    <head>
+    {% block css %} {% endblock css %}
 
-    <body>
-        {% block body %}
+    <script src="{% static 'notebook/js/modernizr.js' %}"></script>
+    <script src="{% static 'notebook/js/pace.min.js' %}"></script>
+    <script defer src="{% static 'notebook/tagging.js' %}"></script>
+    {% block script %} {% endblock script %}
 
-        {% endblock body%}
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'notebook/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'notebook/favicon.ico' %}" type="image/x-icon">
 
-<body>
-    <html>
+
+</head>
+
+{% block body %}
+
+{% endblock body %}
+
+<html>

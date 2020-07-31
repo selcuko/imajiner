@@ -43,7 +43,7 @@ class NarrativeView:
         template_name = 'notebook/narrative/list.html'
 
         def get_queryset(self):
-            return Narrative.objects.all()
+            return Narrative.objects.filter(sketch=False, author__isnull=False)
 
 class NarrativeFactory:
     class New(View):
@@ -79,6 +79,7 @@ class NarrativeFactory:
                     form = NarrativeWrite(request.POST)
                     narrative = form.save(commit=False)
                     narrative.uuid = uid
+                    narrative.author = request.user
                     narrative.sketch = False
                     narrative.save()
 
@@ -103,6 +104,7 @@ class NarrativeFactory:
                     narrative = form.save(commit=False)
                     narrative.uuid = uid
                     narrative.sketch = True
+                    narrative.author = request.user
                     narrative.save()
                 return HttpResponse('skec')
             else:

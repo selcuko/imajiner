@@ -16,6 +16,7 @@ class Narrative(models.Model):
     sketch = models.BooleanField(default=False)
     uuid = models.UUIDField()
 
+    created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
     tagman = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
 

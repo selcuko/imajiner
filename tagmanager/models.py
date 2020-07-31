@@ -32,6 +32,9 @@ class TagManager(models.Model):
             return False
         tag.delta(diff)
         return True
+    
+    def display(self):
+        return self.tags.all()[:6]
 
 
 class ObjectTag(models.Model):
@@ -82,7 +85,7 @@ class UserTagManager(models.Model):
                 manager=self,
                 count=0,
             )
-        tag.delta(diff)
+        return tag.delta(diff)
 
 @receiver(post_save, sender=User)
 def create_utagman(sender, instance, created, **kwargs):
@@ -110,3 +113,4 @@ class IndividualTag(models.Model):
         self.save()
         self.objtag.delta(amount)
         self.objtag.save()
+        return True

@@ -1,50 +1,107 @@
 {% extends 'notebook/base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
+{% endblock css %}
+
 {% block body %}
 
-<h1>{{ narrative.title }}</h1>
-<p>{{ narrative.html|safe }}</p>
-<script>
-    function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
+<body id="top">
 
 
-function tagPost(slug){
-    let data = new FormData();
-    let payload = {};
-    payload[slug] = 1;
-    data.append('payload', JSON.stringify(payload));
-    data.append('action', 'TAGDELTA')
-    data.append('csrfmiddlewaretoken', getCookie('csrftoken'));
 
-    fetch('', {
-        credentials: 'same-origin', 
-        method:"POST", 
-        body: data,
-    })
-}
-</script>
 
-<h3>Etiketler</h3>
-<h6>Not: {{ request.user }} olarak giriş yapıyorsunuz.</h6>
-<ul>
-{% for t in narrative.tagman.tags.all %}
-<li onclick="tagPost('{{ t.abstract.slug }}')">{{ t.abstract.name }} ({{ t.count }})</li>
-{% endfor %}
-</ul>
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-standard">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    {{ narrative.title }}
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date">{{ narrative.created_at }}</li>
+                    <!-- <li class="cat">
+                        In
+                        <a href="#0">Lifestyle</a>
+                        <a href="#0">Travel</a>
+                    </li> -->
+                </ul>
+            </div> <!-- end s-content__header -->
+
+
+            <div class="col-full s-content__main">
+
+                {{ narrative.html|safe }}
+
+                <p class="s-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="s-content__tag-list">
+                        {% for tag in narrative.tagman.display %}
+                        <a href="#0">{{ tag.abstract.name }}</a>
+                        {% empty %}
+                        <a href="#0">BOŞ</a>
+                        {% endfor %}
+                        <a href="#0">+</a>
+                    </span>
+                </p> <!-- end s-content__tags -->
+
+                <div class="s-content__author">
+
+                    <div class="s-content__author-about">
+                        <h4 class="s-content__author-name">
+                            <a href="#0">{{ narrative.author.username }}</a>
+                        </h4>
+
+                        <p>
+                            {{ narrative.author.profile.about|default:'Hakkında kısmı boş.' }}
+                        </p>
+
+                        <!-- <ul class="s-content__author-social">
+                            <li><a href="#0">Facebook</a></li>
+                            <li><a href="#0">Twitter</a></li>
+                            <li><a href="#0">GooglePlus</a></li>
+                            <li><a href="#0">Instagram</a></li>
+                        </ul> -->
+                    </div>
+                    <br>
+                </div>
+
+
+
+            </div> <!-- end s-content__main -->
+
+        </article>
+
+    </section> <!-- s-content -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'notebook/js/plugins.js' %}"></script>
+    <script src="{% static 'notebook/js/main.js' %}"></script>
+</body>
 
 {% endblock %}
