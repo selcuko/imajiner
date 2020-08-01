@@ -41,6 +41,8 @@ class NarrativeView:
         model = Narrative
         context_object_name = 'narratives'
         template_name = 'notebook/narrative/list.html'
+        paginate_by = 2
+        ordering = ('-created_at',)
 
         def get_queryset(self):
             return Narrative.objects.filter(sketch=False, author__isnull=False)

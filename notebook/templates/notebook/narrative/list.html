@@ -15,7 +15,7 @@
     <section class="s-content">
 
         <div class="row narrow">
-            <div class="col-full s-content__header" data-aos="fade-up">
+            <div class="col-full s-content__header">
                 <h1>Öykülerimiz</h1>
 
                 <p class="lead">Bütün tüm hepsi bütün hikayeler
@@ -24,13 +24,13 @@
         </div>
 
         <div class="row masonry-wrap">
-            <div class="masonry">
+            <div class="masonry infinite-container" id="infinite-container">
 
                 <div class="grid-sizer"></div>
 
                 {% for narrative in narratives %}
 
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+                <article class="infinite-item masonry__brick entry format-standard">
 
                     <div class="entry__text">
                         <div class="entry__header">
@@ -38,7 +38,8 @@
                             <div class="entry__date">
                                 <a href="single-standard.html">{{ narrative.created_at }}</a>
                             </div>
-                            <h1 class="entry__title"><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a>
+                            <h1 class="entry__title"><a
+                                    href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a>
                             </h1>
 
                         </div>
@@ -62,13 +63,21 @@
 
                 </article> <!-- end article -->
                 {% endfor %}
-
-
             </div> <!-- end masonry -->
+
+            {% if page_obj.has_next %}
+            <a style="display:none;" class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+            {% endif %}
+
+            <div class="d-flex justify-content-center" style="display:none;">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </div> <!-- end masonry-wrap -->
 
     </section> <!-- s-content -->
-<!-- preloader
+    <!-- preloader
     ================================================== -->
     <div id="preloader">
         <div id="loader">
@@ -86,8 +95,15 @@
     <!-- Java Script
     ================================================== -->
     <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'notebook/js/plugins.js' %}"></script>
+    <!--<script src="{% static 'notebook/js/plugins.js' %}"></script> -->
     <script src="{% static 'notebook/js/main.js' %}"></script>
+    <script src="{% static 'notebook/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'notebook/js/infinite.min.js' %}"></script>
+    <script>
+        var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0],
+        });
+    </script>
 </body>
 
 {% endblock body %}
