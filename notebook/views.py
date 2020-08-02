@@ -41,7 +41,7 @@ class NarrativeView:
         model = Narrative
         context_object_name = 'narratives'
         template_name = 'notebook/narrative/list.html'
-        paginate_by = 2
+        paginate_by = 3
         ordering = ('-created_at',)
 
         def get_queryset(self):
@@ -116,7 +116,9 @@ class NarrativeFactory:
     class Write(View):
         template_name = 'notebook/narrative/folder.html'
         def get(self, request):
-            sketches = Narrative.objects.filter(sketch=True)
+            if not request.user.is_authenticated:
+                return HttpResponse("Prohibited", status_code=403)
+            sketches = Narrative.objects.filter(sketch=True, author=request.user)
             return render(request, self.template_name, {
                 'sketches': sketches,
                 'no_sketch': not sketches.exists(),

@@ -26,22 +26,27 @@ function f(){
     $textarea = document.getElementById('id_body');
     if ($textarea.value !== last.value){
         $status.innerText = "Eşleniyor"
-        post(action='AUTOSAVE');
+        post(action='AUTOSAVE')
+        .then(response => {
+            $status.innerText = response.ok ? "Değişiklikler kaydedildi" : "Çok pis işler dönüyo"; 
+        })
+        .catch(error => {
+            $status.innerText = "Çok pis işler dönüyo\n"+error;
+        });
         last.value = $textarea.value;
     }
-    $status.innerText = "Değişiklikler kaydedildi"
 }
 
 let c = 0;
 const uuid = Date.now() + Math.random();
 
-function post(action='SUBMIT'){
+async function post(action='SUBMIT'){
     const fd = new FormData($form);
     fd.append('action', action);
     fd.append('count', c++);
     fd.append('uuid', uuid)
     console.log(fd.get('csrfmiddlewaretoken'));
-    fetch('', {
+    return await fetch('', {
         method: 'POST',
         body: fd,
         credentials: 'same-origin',

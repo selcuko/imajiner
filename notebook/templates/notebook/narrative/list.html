@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
 <link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
 <link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
+
 {% endblock css %}
 
 {% block body %}
@@ -24,13 +25,14 @@
         </div>
 
         <div class="row masonry-wrap">
-            <div class="masonry infinite-container" id="infinite-container">
+            <div class="masonry infinite-container">
 
                 <div class="grid-sizer"></div>
 
                 {% for narrative in narratives %}
 
                 <article class="infinite-item masonry__brick entry format-standard">
+
 
                     <div class="entry__text">
                         <div class="entry__header">
@@ -95,13 +97,18 @@
     <!-- Java Script
     ================================================== -->
     <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
-    <!--<script src="{% static 'notebook/js/plugins.js' %}"></script> -->
+    <script src="{% static 'notebook/js/plugins.js' %}"></script>
     <script src="{% static 'notebook/js/main.js' %}"></script>
     <script src="{% static 'notebook/js/jquery.waypoints.min.js' %}"></script>
     <script src="{% static 'notebook/js/infinite.min.js' %}"></script>
     <script>
         var infinite = new Waypoint.Infinite({
             element: $('.infinite-container')[0],
+            onBeforePageLoad: function () {
+            },
+            onAfterPageLoad: function ($items) {
+                $(".masonry").masonry('appended', $items);
+            }
         });
     </script>
 </body>
