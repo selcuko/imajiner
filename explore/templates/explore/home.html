@@ -1,12 +1,12 @@
-{% load static %}
+{% load static url %}
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-        <title>Boxus - Html Responsive One Page Template</title>
+        <title>{{ doc.title|default:'Imajiner. İç güdülerini serbtest bırak' }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="description" content="Template by Colorlib" />
-        <meta name="keywords" content="HTML, CSS, JavaScript, PHP" />
-        <meta name="author" content="Colorlib" />
+        <meta name="description" content="{{ doc.description }}" />
+        <meta name="keywords" content="{{ doc.keywords }}" />
+        <meta name="author" content="{{ doc.author }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <link rel="shortcut icon" href="{% static 'explore/images/favicon.png' %}" />
@@ -34,12 +34,12 @@
         <!-- Menu -->
         <div class="menu-wrapper center-relative">
             <nav id="header-main-menu">
-                <div class="mob-menu">MENU</div>
+                <div class="mob-menu">MÖNÜ</div>
                 <ul class="main-menu sm sm-clean">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#home">Ev</a></li>
+                    <li><a href="#services">Tanım</a></li>
+                    <li><a href="#portfolio">Hikaye</a></li>
+                    <li><a href="#about">Mekanizma</a></li>
                     <li><a href="#news">News</a></li>
                     <li><a href="#video">Video</a></li>
                     <li><a href="#skills">Skills</a></li>
@@ -88,36 +88,36 @@
                                     <div class="service-holder ">
                                         <img src="{% static 'explore/demo-images/icon_01.png' %}" alt="">
                                         <div class="service-content-holder">
-                                            <div class="service-title">BRANDING</div>
+                                            <div class="service-title">Nedir?</div>
                                             <div class="service-content">
-                                                Donecos arem ipsum sit amet consectetur adipisicing elit sed eiusmod tempor incididunt ut donecos dolore ipsum temporest.<br />
+                                                Şudur odur tanımlar falan filan<br />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="service-holder ">
                                         <img src="{% static 'explore/demo-images/icon_02.png' %}" alt="">
                                         <div class="service-content-holder">
-                                            <div class="service-title">MOBILE APPS</div>
+                                            <div class="service-title">Mobil uygulama?</div>
                                             <div class="service-content">
-                                                Disum lorem sit amet consectetur adipisicing elit sed eiusmod tempor incididunt ut donecos dolore ipsum temporest.<br />
+                                                Yok artık daha site hazır değil<br />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="service-holder ">
                                         <img src="{% static 'explore/demo-images/icon_03.png' %}" alt="">
                                         <div class="service-content-holder">
-                                            <div class="service-title">WEB</div>
+                                            <div class="service-title">Site</div>
                                             <div class="service-content">
-                                                Polor sit amet consectetur adipisicing elit sed eiusmod tempor incididunt ut dolore magna labore eiusmod.<br />
+                                                Elinizde tutuyor bulunduğunuz site, Imajiner Alpha Release'dir.<br />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="service-holder ">
                                         <img src="{% static 'explore/demo-images/icon_04.png' %}" alt="">
                                         <div class="service-content-holder">
-                                            <div class="service-title">GRAPHIC</div>
+                                            <div class="service-title">Başka</div>
                                             <div class="service-content">
-                                                Cadipisicing elit sed eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet consectetur lorem ipsum dolor sit amet.<br />
+                                                Henüz değil<br />
                                             </div>
                                         </div>
                                     </div>
@@ -178,13 +178,13 @@
                     <div class="section-num">
                         <span>02</span>
                     </div>
-                    <h2 class="entry-title">Portfolio</h2>
+                    <h2 class="entry-title">Hikaye</h2>
                 </div>
                 <div class="section-content-holder portfolio-holder left">
                     <div class="grid" id="portfolio-grid">
                         <div class="grid-sizer"></div>
                         <div class="grid-item element-item p_one">
-                            <a href="single-portfolio.html">
+                            <a href="{% url 'notebook:list' %}">
                                 <img src="{% static 'explore/demo-images/portfolio_item_01.jpg' %}" alt="">
                                 <div class="portfolio-text-holder">
                                     <div class="portfolio-text-wrapper">
@@ -260,15 +260,15 @@
                     <div class="section-num">
                         <span>03</span>
                     </div>
-                    <h2 class="entry-title">CRAFTERS</h2>
+                    <h2 class="entry-title">Mekanizma</h2>
                 </div>
                 <div class="section-content-holder right">
                     <div class="content-wrapper">
                         <div class="content-title-holder">
-                            <p class="content-title">About</p>
+                            <p class="content-title">Hayalet</p>
                         </div>
-                        <div class="one_half ">
-                            Polor sit amet consectetur adipisicing elit sed eiusmod tempor incididunt ut dolore magna labore eiusmod. Lorem ipsum <strong>dolor sit amet</strong> consectetur est adipisicing elit, sed do eiusmod tempor
+                        <div class="one_half">
+                            
                         </div>
                         <div class="one_half last ">
                             <span style="color: #e54b76;"><strong>2001-2003 ·</strong></span> <span style="color:#727190;"><em>Art Studio Lorem Donec</em></span><br>
