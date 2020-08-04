@@ -1,4 +1,4 @@
-{% load static url %}
+{% load static tags %}
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
@@ -18,7 +18,8 @@
         <link rel="stylesheet" type="text/css"  href="{% static 'explore/css/prettyPhoto.css' %}"/>
         <link rel="stylesheet" type="text/css"  href="{% static 'explore/css/sm-clean.css' %}"/>
         <link rel="stylesheet" type="text/css"  href="{% static 'explore/css/style.css' %}"/>
-
+        
+        {% include 'global.html' %}
     </head>
     <body>
 
