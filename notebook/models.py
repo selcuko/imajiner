@@ -36,7 +36,7 @@ class Narrative(models.Model):
         self.html = html.escape(self.body)
         self.html = self.html.replace('\n\n', '<br />')
         self.html = self.html.replace('\n', '</p><p>')
-        self.html = f'<p>{self.html}</p>'
+        self.html = f'<p class="drop-cap">{self.html}</p>'
         if not self.uuid: self.uuid = uuid()
         if alter_slug:
             self.generate_slug()
