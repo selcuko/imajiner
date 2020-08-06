@@ -5,9 +5,11 @@ from notebook.models import Narrative
 
 
 class Home(View):
-    template_name = 'explore/home.html'
+    template_name = 'explore/index.html'
     def get(self, request, **kwargs):
-        return render(request, self.template_name, {})
+        return render(request, self.template_name, {
+            'narratives':Narrative.objects.all()[:3],
+        })
     
     def post(self, request):
         return HttpResponse(status_code=403)

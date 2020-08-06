@@ -41,7 +41,7 @@ class Narrative(models.Model):
     
     def lead(self):
         p = self.html.split('</p><p>')
-        return p[0][3:].replace('</p>', '')
+        return p[0].replace('<p class="drop-cap">', '').replace('</p>', '')
     
     def generate_slug(self):
         if not self.uuid: self.uuid = uuid()
