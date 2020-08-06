@@ -22,15 +22,23 @@ class Shadow(models.Model):
     def create_shadow(request, username=None):
         if not isinstance(username, str):
             username = str(uuid())
+        addr = Shadow.get_ip(request)
         shadow = Shadow.objects.create(
             user=User.objects.create(username=username),
             agent=request.META.get('HTTP_USER_AGENT', ''),
-            addr=request.META.get('REMOTE_ADDR', ''),
+            addr=addr,
         )
         return shadow
             
 
-    
+    @staticmethod
+    def get_ip(request):
+#        print('META', request.META)
+        addr = request.META.get('HTTP_X_FORWARDED_FOR', None)
+        if addr: return addr
+        addr = request.META.get('REMOTE_ADDR', None)
+        if addr: return addr
+        raise Exception('Could not acquire remote address from request.')
     @staticmethod
     def calculate_fingerprint(addr, agent, **kwargs):
         raw = f'{addr}@{agent}'

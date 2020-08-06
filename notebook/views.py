@@ -42,10 +42,10 @@ class NarrativeView:
         context_object_name = 'narratives'
         template_name = 'notebook/narrative/list.html'
         paginate_by = 3
-        ordering = ('-created_at',)
+        ordering = ('created_at',)
 
         def get_queryset(self):
-            return Narrative.objects.filter(sketch=False, author__isnull=False)
+            return Narrative.objects.filter(sketch=False, author__isnull=False).order_by('-created_at')
 
 class NarrativeFactory:
     class New(View):

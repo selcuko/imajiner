@@ -28,19 +28,8 @@ class LoginViews:
                 if shadow is not None:
                     login(request, shadow.user)
                     return HttpResponse('Kayıt zaten vardı, nası oluyosa')
-
-                r_addr = request.META['REMOTE_ADDR']
-                r_agent = request.META['HTTP_USER_AGENT']
-
-                u = User.objects.create(
-                    username=str(uuid())
-                )
-                s = Shadow.objects.create(
-                    addr=r_addr,
-                    agent=r_agent,
-                    user=u,
-                )
-                login(request, u)
+                shadow = Shadow.create_shadow(request)
+                login(request, shadow.user)
                 return HttpResponse('Oki shadow kayıt tamam')
 
 
