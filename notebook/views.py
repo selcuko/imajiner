@@ -117,7 +117,7 @@ class NarrativeFactory:
         template_name = 'notebook/narrative/folder.html'
         def get(self, request):
             if not request.user.is_authenticated:
-                return HttpResponse("Prohibited", status_code=403)
+                return HttpResponse("Prohibited")
             sketches = Narrative.objects.filter(sketch=True, author=request.user)
             return render(request, self.template_name, {
                 'sketches': sketches,

@@ -12,5 +12,5 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    #urlpatterns += [re_path(r'^static/(?P<path>.*)$', serve, {'show_indexes':True, 'document_root':settings.STATIC_ROOT})]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT, show_indexes=True)
