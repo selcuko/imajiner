@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'gatewall.apps.GatewallConfig',
     'identity.apps.IdentityConfig',
     'explore.apps.ExploreConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'identity.middleware.ShadowMiddleware',
-    'django_extensions',
 ]
 
 ROOT_URLCONF = 'imajiner.urls'

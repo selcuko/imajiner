@@ -46,8 +46,8 @@ class Shadow(models.Model):
     
     @staticmethod
     def authenticate(request):
-        addr = request.META['REMOTE_ADDR']
-        agent = request.META['HTTP_USER_AGENT']
+        addr = Shadow.get_ip(request)
+        agent = request.META.get('HTTP_USER_AGENT', '')
         fp = Shadow.calculate_fingerprint(addr, agent)
         qs = Shadow.objects.filter(fingerprint=fp)
         if not qs.exists():

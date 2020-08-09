@@ -4,5 +4,7 @@ code/
 media/
 static/
 **/*.save
+*.png
+*.jpg
 
 db.sqlite3
