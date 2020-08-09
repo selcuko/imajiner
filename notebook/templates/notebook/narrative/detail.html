@@ -54,7 +54,7 @@
 
                     <span class="s-content__tag-list">
                         {% for tag in narrative.tagman.display %}
-                        <a href="#0">{{ tag.abstract.name }}</a>
+                        <a id="{{ tag.abstract.slug }}" href="javascript:tagPost('{{ tag.abstract.slug }}');">{{ tag.abstract.name }}</a>
                         {% empty %}
                         <a href="#0">BOŞ</a>
                         {% endfor %}
@@ -112,6 +112,7 @@
     <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'notebook/js/plugins.js' %}"></script>
     <script src="{% static 'notebook/js/main.js' %}"></script>
+    <script src="{% static 'notebook/tagging.js' %}"></script>
 </body>
 
 {% endblock %}

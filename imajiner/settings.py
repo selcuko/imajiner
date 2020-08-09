@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'identity.middleware.ShadowMiddleware',
+    'django_extensions',
 ]
 
 ROOT_URLCONF = 'imajiner.urls'

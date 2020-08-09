@@ -16,6 +16,7 @@ function getCookie(name) {
 
 
 function tagPost(slug){
+    slug =slug;
     let data = new FormData();
     let payload = {};
     payload[slug] = 1;
