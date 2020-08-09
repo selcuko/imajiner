@@ -1,0 +1,51 @@
+{% extends 'notebook/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
+<link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
+{% endblock css %}
+
+{% block body %}
+
+<body>
+    <section class="s-content">
+        <div class="row narrow section-intro add-bottom text-center">
+
+            <div class="col-twelve tab-full">
+
+                <h1>{{ author.profile.display|default:author.username }}</h1>
+                
+            </div>
+
+        </div>
+        <div class="row text-center">
+            <div class="col-six">
+                <aside class="pull-quote">
+                    <blockquote>
+                        <p>{{ author.profile.quote.text|default:'Kimi yazarlar vardır, idolleri yoktur.' }}</p>
+                        <cite>
+                            <a href="#">{{ author.profile.quote.owner|default:'Ömer Selçuk' }}</a>
+                        </cite>
+                    </blockquote>
+                </aside>
+            </div>
+            
+
+        </div>
+
+        <div class="row">
+
+            <div class="row half-bottom">
+
+                <div class="col-six tab-full">
+
+                    <h1></h1>
+
+                </div>
+            </div> <!-- end row -->
+    </section>
+
+</body>
+{% endblock body %}
