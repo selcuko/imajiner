@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.ipv6 import ipaddress
 import hashlib
 from uuid import uuid4 as uuid
+from .methods import remote_addr, fingerprint, user_agent
 
 class Shadow(models.Model):
     fingerprint = models.CharField(max_length=2048, unique=True)
@@ -12,51 +13,31 @@ class Shadow(models.Model):
     active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'of {self.user.username}'
+        return f'Shadow r/ {self.user.username}'
     
     def save(self, *args, **kwargs):
-        self.fingerprint = str(self.calculate_fingerprint(self.addr, self.agent))
-        #self.addr = self.addr
+        self.addr = remote_addr(request)
+        self.agent = user_agent(request)
+        self.fingerprint = fingerprint(addr=self.addr, agent=self.agent)
         super().save(*args, **kwargs)
     
-    def create_shadow(request, username=None):
-        if not isinstance(username, str):
-            username = str(uuid())
-        addr = Shadow.get_ip(request)
+    @staticmethod
+    def create_shadow(request, username=''):
+        username = str(username)
+        if len(username) < 6: raise Exception('Username too short.')
         shadow = Shadow.objects.create(
             user=User.objects.create(username=username),
-            agent=request.META.get('HTTP_USER_AGENT', ''),
-            addr=addr,
+            agent=user_agent(request),
+            addr=remote_addr(request),
         )
         return shadow
             
-
-    @staticmethod
-    def get_ip(request):
-#        print('META', request.META)
-        addr = request.META.get('HTTP_X_FORWARDED_FOR', None)
-        if addr: return addr
-        addr = request.META.get('REMOTE_ADDR', None)
-        if addr: return addr
-        raise Exception('Could not acquire remote address from request.')
-    @staticmethod
-    def calculate_fingerprint(addr, agent, **kwargs):
-        raw = f'{addr}@{agent}'
-        return hashlib.md5(raw.encode()).hexdigest()
-    
     @staticmethod
     def authenticate(request):
-        addr = Shadow.get_ip(request)
-        agent = request.META.get('HTTP_USER_AGENT', '')
-        fp = Shadow.calculate_fingerprint(addr, agent)
-        qs = Shadow.objects.filter(fingerprint=fp)
-        if not qs.exists():
+        fp = fingerprint(request)
+        try:
+            return Shadow.objects.get(fingerprint=fp)
+        except Shadow.DoesNotExist:
             return None
-        else:
-            return qs.first()
 
-
-    @property
-    def username(self):
-        return self.user.username
     
