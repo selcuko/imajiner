@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.views.generic import DetailView, ListView
 from django.views import View
 from .models import Narrative
@@ -86,8 +86,8 @@ class NarrativeFactory:
                     narrative.save()
 
 
-                form.save()
-                return HttpResponse('Kaydettim')
+                narrative = form.save()
+                return redirect(narrative)
             
             elif action == 'AUTOSAVE':
                 
