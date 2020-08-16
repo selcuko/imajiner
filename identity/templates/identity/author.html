@@ -10,41 +10,23 @@
 {% block body %}
 
 <body>
-    <section class="s-content">
+    <section style="background:white; padding: 2rem;">
+        {% if user.is_shadow %}
         <div class="row narrow section-intro add-bottom text-center">
-
-            <div class="col-twelve tab-full">
-
-                <h1>{{ author.profile.display|default:author.username }}</h1>
-                
-            </div>
-
+            <h2>O bir hayalet.</h2>
+            <h3>{{ user.username }} hakkında bir bilgi veremiyoruz.</h3>
+            <h4>Hayalet kayıtlar, fazla dikkat çekmeden yalnızça içerik yazmak isteyen şahıslardır.</h4>
         </div>
-        <div class="row text-center">
-            <div class="col-six">
-                <aside class="pull-quote">
-                    <blockquote>
-                        <p>{{ author.profile.quote.text|default:'Kimi yazarlar vardır, idolleri yoktur.' }}</p>
-                        <cite>
-                            <a href="#">{{ author.profile.quote.owner|default:'Ömer Selçuk' }}</a>
-                        </cite>
-                    </blockquote>
-                </aside>
-            </div>
-            
-
+        {% else %}
+        <div class="half-bottom">
+            <h2>{{ user.username }}</h2>
+            <ul>
+                {% for narrative in user.narratives.all %}
+                <li>{{ narrative.title }}</li>
+                {% endfor %}
+            </ul>
         </div>
-
-        <div class="row">
-
-            <div class="row half-bottom">
-
-                <div class="col-six tab-full">
-
-                    <h1></h1>
-
-                </div>
-            </div> <!-- end row -->
+        {% endif %}
     </section>
 
 </body>
