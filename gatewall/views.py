@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.exceptions import SuspiciousOperation
+from django.db import IntegrityError
 from django.views import View
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
@@ -31,6 +32,33 @@ class Auth(View):
                 fingerprint = p['fingerprint']
                 username = p.get('username', None)
                 Shadow.create_shadow(request, fingerprint, username)
+                return HttpResponse()
+
+            elif action == 'shadow-login':
+                fingerprint = p['fingerprint']
+                username = p.get('username', None)
+                shadow = Shadow.authenticate(fingerprint)
+                if not shadow:
+                    return HttpResponse(status=403)
+                login(request, shadow.user)
+                return HttpResponse()
+            
+            elif action == 'author-register':
+                username = p['username']
+                password = p['password']
+                try:
+                    User.objects.create_user(username=username, password=password)
+                except IntegrityError:
+                    return JsonResponse({'error': True})
+                return JsonResponse({'error': False})
+            
+            elif action == 'author-login':
+                username = p['username']
+                password = p['password']
+                user = authenticate(username=username, password=password)
+                if not user:
+                    return HttpResponse(status=403)
+                login(request, user)
                 return HttpResponse()
 
             else:
