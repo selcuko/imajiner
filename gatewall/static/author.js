@@ -6,7 +6,10 @@ let lastUsername = null;
 let buttonAction = null;
 
 function usernameTypeCallback(){
-    if ($username.value !== lastUsername){
+    if ($username.value.length < 6){
+        lastUsername = $username.value;
+        $authorButton.innerText = 'Bekliyor';
+    } else if ($username.value !== lastUsername){
         lastUsername = $username.value;
         checkUsernameAvailability($username.value)
         .then(available => {

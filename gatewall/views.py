@@ -10,7 +10,7 @@ from identity.models import Shadow
 
 class Auth(View):
     def get(self, request):
-        return render(request, 'gatewall/auth.html', {})
+        return render(request, 'gatewall/auth.html', {'user':request.user})
     
     def post(self, request):
         p = request.POST
@@ -67,6 +67,12 @@ class Auth(View):
                     return HttpResponse(status=422)
                 else:
                     return HttpResponse(status=200)
+            
+            elif action == 'logout':
+                if not request.user.is_authenticated:
+                    raise SuspiciousOperation('Girmediğin kapıdan çıkamazsın.')
+                logout(request)
+                return HttpResponse()
 
             else:
                 raise SuspiciousOperation(f'Unknown action ID: {action}')
