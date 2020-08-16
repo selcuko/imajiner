@@ -10,7 +10,7 @@
         <form id="author-register" method="POST" action="">
             {% csrf_token %}
             <label for='username'>Mahlas</label>
-            <input type='text' placeholder="{{ doc.placeholder.username|default:'tükenmez kelam' }}" name='username' required>
+            <input class="username" type='text' placeholder="{{ doc.placeholder.username|default:'tükenmez kelam' }}" name='username' required>
             <label for='password'>Şifre</label>
             <input type='password' placeholder="{{ doc.placeholder.username|default:'böyle karmaşık bir şeyler' }}" name='password' required>
             <a class="btn btn--primary" type='submit'>Tamamla</a>
@@ -22,7 +22,7 @@
         <form id="shadow-register" method="POST" action="">
             {% csrf_token %}
             <p>
-                hayalet kayıt, imajinere özgü kısa süreli yetkilendirme mekanizmasıdır. kaydınızı sonradan kalıcı kayda (yazar kaydına) dönüştürebilirsiniz.
+                Hayalet kayıt, imajinere özgü kısa süreli yetkilendirme mekanizmasıdır. kaydınızı sonradan kalıcı kayda (yazar kaydına) dönüştürebilirsiniz.
             </p>
             <label for='username'>Mahlas</label>
             <input class="username" type='text' placeholder="{{ doc.placeholder.username|default:'casper' }}" name='username'>
@@ -34,5 +34,5 @@
 </section>
 <script src="{% static 'fingerprint.js' %}"></script>
 <script src="{% static 'shadow.js' %}"></script>
-<script src="{% static 'auth.js' %}"></script>
+<script src="{% static 'author.js' %}"></script>
 {% endblock body %}

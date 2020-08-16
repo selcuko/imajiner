@@ -60,6 +60,13 @@ class Auth(View):
                     return HttpResponse(status=403)
                 login(request, user)
                 return HttpResponse()
+            
+            elif action == 'author-check':
+                username = p['username']
+                if User.objects.filter(username=username).exists():
+                    return HttpResponse(status=422)
+                else:
+                    return HttpResponse(status=200)
 
             else:
                 raise SuspiciousOperation(f'Unknown action ID: {action}')
