@@ -16,12 +16,8 @@ class Auth(View):
         print(p)
         try:
             action = p['action']
-        except KeyError as ke:
-            raise SuspiciousOperation(ke.args.join('\n'))
-        
-        if action == "shadow-check":
-            data = {}
-            try:
+
+            if action == "shadow-check":
                 fingerprint = p['fingerprint']
                 shadow = Shadow.authenticate(fingerprint)
                 if not shadow:
@@ -30,10 +26,18 @@ class Auth(View):
                     "found": True,
                     "username": shadow.user.username,
                 })
-            except KeyError as ke:
-                raise SuspiciousOperation(ke.args.join('\n'))
-        else:
-            raise SuspiciousOperation(f'Unknown action ID: {action}')
+                
+            elif action == 'shadow-register':
+                fingerprint = p['fingerprint']
+                username = p.get('username', None)
+                Shadow.create_shadow(request, fingerprint, username)
+                return HttpResponse()
+
+            else:
+                raise SuspiciousOperation(f'Unknown action ID: {action}')
+
+        except KeyError as ke:
+                raise SuspiciousOperation(ke.args)
 
 
 class LoginViews:

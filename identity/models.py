@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.ipv6 import ipaddress
 import hashlib
-from uuid import uuid4 as uuid
+from uuid import uuid1
 from .methods import remote_addr, fingerprint, user_agent
 
 class Shadow(models.Model):
@@ -16,19 +16,20 @@ class Shadow(models.Model):
         return f'Shadow r/ {self.user.username}'
     
     def save(self, *args, **kwargs):
-        self.addr = remote_addr(request)
-        self.agent = user_agent(request)
-        self.fingerprint = fingerprint(addr=self.addr, agent=self.agent)
         super().save(*args, **kwargs)
     
     @staticmethod
-    def create_shadow(request, username=''):
-        username = str(username)
+    def create_shadow(request, fingerprint, username=''):
+        if username:
+            username = str(username)
+        else:
+            username = str(uuid1())
         if len(username) < 6: raise Exception('Username too short.')
         shadow = Shadow.objects.create(
             user=User.objects.create(username=username),
             agent=user_agent(request),
             addr=remote_addr(request),
+            fingerprint=fingerprint,
         )
         return shadow
             
