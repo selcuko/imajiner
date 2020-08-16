@@ -50,6 +50,9 @@ $authorButton.onclick = (e) => {
         method: 'POST',
         body: fd,
     })
+    .then(response => {
+        if (response.ok) window.location.href = next;
+    })
 }
 
 const intervalId = setInterval(usernameTypeCallback, 1000);
