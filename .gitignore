@@ -2,7 +2,7 @@ venv/
 **/__pycache__/
 code/
 media/
-static/
+/static/
 **/*.save
 *.png
 *.jpg
