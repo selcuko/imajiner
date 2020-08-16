@@ -33,10 +33,9 @@ class Shadow(models.Model):
         return shadow
             
     @staticmethod
-    def authenticate(request):
-        fp = fingerprint(request)
+    def authenticate(fingerprint):
         try:
-            return Shadow.objects.get(fingerprint=fp)
+            return Shadow.objects.get(fingerprint=fingerprint)
         except Shadow.DoesNotExist:
             return None
 

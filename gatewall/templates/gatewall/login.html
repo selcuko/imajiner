@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 
     {% include 'global.html' %}
 </head>
+
 <body>
     <ul>
         {% if request.user.is_authenticated %}
@@ -17,7 +19,7 @@
         <li>Yetkilendirildi: Hayır</li>
         {% endif %}
     </ul>
-    <form method="POST" action="">
+    <form id="login" method="POST" action="">
         {% csrf_token %}
         <input name="action" type="hidden" value="LOGIN">
         <label for='username'>Kullanıcı</label>
@@ -27,12 +29,37 @@
         <input type='password' placeholder="..." name='password' required>
         <input type='submit' value='Girmeyi dene'>
     </form>
-    
+
     <form method="POST" action="">
-    {% csrf_token %}
-    <input name="action" type="hidden" value="SHADOW">
-    <input type="submit" value="Hayalet kayıt yap">
+        {% csrf_token %}
+        <input name="action" type="hidden" value="SHADOW">
+        <input type="submit" value="Hayalet kayıt yap">
     </form>
-    
+    <p id='status'>Statüskop</p>
+
+    <script>
+        const $login = document.getElementById('login');
+        const $status = document.getElementById('status');
+
+        $login.onsubmit = function (e) {
+            e.preventDefault();
+            const fd = new FormData($login);
+            fetch('', {
+                method: 'POST',
+                body: fd,
+            })
+            .then(response => {
+                console.log(response)
+                if (response.status === 200) $status.innerText = 'Y E T K I L E N D I R I L D I N';
+                else if (response.status === 401) $status.innerText = 'Verdiğin bilgiler hatalı. Bir daha olmasın.';
+                else status.innerText = 'Garip bir şeyler oldu.'
+            })
+            .catch(error => {
+                $status.innerText = 'Bir şeyler ters gitti.';
+                console.log(error);
+            })
+        }
+    </script>
 </body>
+
 </html>

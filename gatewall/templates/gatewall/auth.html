@@ -1,0 +1,37 @@
+{% extends 'gatewall/base.html' %}
+{% load static %}
+
+{% block body %}
+<section style="background:white; padding:1rem 0;">
+<div class="row half-bottom">
+
+    <div class="col-six tab-full">
+        <h3>Yazarlık Kaydı</h3>
+        <form id="author-register" method="POST" action="">
+            {% csrf_token %}
+            <label for='username'>Mahlas</label>
+            <input type='text' placeholder="{{ doc.placeholder.username|default:'tükenmez kelam' }}" name='username' required>
+            <label for='password'>Şifre</label>
+            <input type='password' placeholder="{{ doc.placeholder.username|default:'böyle karmaşık bir şeyler' }}" name='password' required>
+            <a class="btn btn--primary" type='submit'>Tamamla</a>
+        </form>
+    </div>
+
+    <div class="col-six tab-full">
+        <h3>Hayaletlik Kaydı</h3>
+        <form id="shadow-register" method="POST" action="">
+            {% csrf_token %}
+            <p>
+                hayalet kayıt, imajinere özgü kısa süreli yetkilendirme mekanizmasıdır. kaydınızı sonradan kalıcı kayda (yazar kaydına) dönüştürebilirsiniz.
+            </p>
+            <label for='username'>Mahlas</label>
+            <input class="username" type='text' placeholder="{{ doc.placeholder.username|default:'casper' }}" name='username'>
+            <a id="shadow-button" class="btn btn--stroke" type='submit'>Tamamla</a>
+        </form>
+    </div>
+
+</div> <!-- end row -->
+</section>
+<script src="{% static 'fingerprint.js' %}"></script>
+<script src="{% static 'auth.js' %}"></script>
+{% endblock body %}

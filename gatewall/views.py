@@ -1,9 +1,40 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from django.core.exceptions import SuspiciousOperation
 from django.views import View
-from django.contrib.auth import authenticate, login
+from django.http import HttpResponse, JsonResponse
+from django.contrib.auth import authenticate, login, logout
 from uuid import uuid4 as uuid
 from django.contrib.auth.models import User
 from identity.models import Shadow
+
+class Auth(View):
+    def get(self, request):
+        return render(request, 'gatewall/auth.html', {})
+    
+    def post(self, request):
+        p = request.POST
+        print(p)
+        try:
+            action = p['action']
+        except KeyError as ke:
+            raise SuspiciousOperation(ke.args.join('\n'))
+        
+        if action == "shadow-check":
+            data = {}
+            try:
+                fingerprint = p['fingerprint']
+                shadow = Shadow.authenticate(fingerprint)
+                if not shadow:
+                    return JsonResponse({"found": False})
+                return JsonResponse({
+                    "found": True,
+                    "username": shadow.user.username,
+                })
+            except KeyError as ke:
+                raise SuspiciousOperation(ke.args.join('\n'))
+        else:
+            raise SuspiciousOperation(f'Unknown action ID: {action}')
+
 
 class LoginViews:
 
@@ -13,13 +44,14 @@ class LoginViews:
             return render(request, 'gatewall/login.html')
         
         def post(self, request):
-            action = request.POST['action']
+            action = request.POST.get('action', None)
             if action == 'LOGIN':
                 username = request.POST.get('username', '')
                 password = request.POST.get('password', '')
                 user = authenticate(request, username=username, password=password)
                 if user is None:
-                    return HttpResponse('Siktir git yalancı')
+                    logout(request)
+                    return HttpResponse('Siktir git yalancı', status=401)
                 login(request, user)
                 return HttpResponse('Giriş yaptın yavru')
             
@@ -31,6 +63,9 @@ class LoginViews:
                 shadow = Shadow.create_shadow(request)
                 login(request, shadow.user)
                 return HttpResponse('Oki shadow kayıt tamam')
+            
+            else:
+                return HttpResponse(status=400)
 
 
     class Register(View):

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Transcend - Styles</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'transcend/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'transcend/css/vendor.css' %}'">
+    <link rel="stylesheet" href="{% static 'transcend/css/main.css' %}">
+
+    <style type="text/css" media="screen">
+        .s-styles { 
+            background: white;
+            padding-top: 15rem;
+            padding-bottom: 12rem;
+        }
+    </style>
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+<body id="top">
+{% block body %}
+
+{% endblock body %}
+
+</body>
+</html>
