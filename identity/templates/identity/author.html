@@ -22,7 +22,7 @@
             <h2>{{ user.username }}</h2>
             <ul>
                 {% for narrative in user.narratives.all %}
-                <li>{{ narrative.title }}</li>
+                <li><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
