@@ -1,8 +1,11 @@
+from django import template
 from django.db import models
 from django.utils import text
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
+register = template.Library()
 
 class AbstractTag(models.Model):
     name = models.CharField(max_length=100)
@@ -89,6 +92,16 @@ class UserTagManager(models.Model):
                 count=0,
             )
         return tag.delta(diff)
+    
+
+    def has_tag(self, tag_slug):
+        pass
+    
+
+    @register.simple_tag
+    def tag_toggled(self, narrative, tag_slug):
+        pass
+
 
 @receiver(post_save, sender=User)
 def create_utagman(sender, instance, created, **kwargs):

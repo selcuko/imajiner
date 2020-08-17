@@ -11,9 +11,6 @@
 
 <body id="top">
 
-
-
-
     <!-- s-content
     ================================================== -->
     <section class="s-content s-content--narrow s-content--no-padding-bottom">
@@ -54,11 +51,8 @@
 
                     <span class="s-content__tag-list">
                         {% for tag in narrative.tagman.display %}
-                        <a id="{{ tag.abstract.slug }}" href="javascript:tagPost('{{ tag.abstract.slug }}');">{{ tag.abstract.name }}</a>
-                        {% empty %}
-                        <a href="#0">BOŞ</a>
+                        <a class="tag" id="tag-{{ tag.abstract.slug }}" >{{ tag.abstract.name }}</a>
                         {% endfor %}
-                        <a href="#0">+</a>
                     </span>
                 </p> <!-- end s-content__tags -->
 
