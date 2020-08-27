@@ -52,7 +52,7 @@ async function post(action='SUBMIT'){
             if (action === 'SUBMIT') {
                 clearInterval(intervalId);
                 $status.innerText = 'Bildirge yayınlandı. Birazdan yönlendirileceksiniz.'
-                window.location.replace(response.url);
+                setTimeout(()=>{window.location.replace(response.url);}, 500);
             } else {
                 $status.innerText = 'Değişiklikler kaydedildi.'
             }
