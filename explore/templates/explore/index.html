@@ -53,7 +53,7 @@
                 <ul class="header-nav__list">
                     <li class="current"><a class="smoothscroll"  href="#home" title="home">İlk bakış</a></li>
                     <li><a class="smoothscroll"  href="#about" title="about">Hakkında</a></li>
-                    <li><a class="smoothscroll"  href="#works" title="works">Hikayeler</a></li>
+                    <li><a class=""  href="{% url 'notebook:list' %}" title="">Hikayeler</a></li>
                     <li><a class="smoothscroll"  href="#services" title="services">Etiketler</a></li>
                     <li><a class="smoothscroll"  href="#contact" title="contact">Güvenlik</a></li>
                 </ul>
@@ -212,48 +212,6 @@
 
     </section> <!-- end s-about -->
 
-
-
-
-    <!-- works
-    ================================================== -->
-    <section id='works' class="s-works">
-                
-        <div class="row section-header">
-            <div class="col-full">
-                <h3 class="subhead">Hikayeler</h3>
-                <h1 class="display-1">Nadide yazarlardan öne çıkan okunası eserler</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-        <div class="testimonials-wrap">
-
-            <div class="row">
-                <div class="col-full testimonials-header">
-                    <h2 class="h1">Kullanıcılarımız bunları okuyup geçemiyor</h2>
-                </div>
-            </div>
-
-            <div class="row testimonials">
-
-                <div class="col-full testimonials__slider">
-                    {% for narrative in narratives %}
-                    <div class="testimonials__slide">
-                        <h2>{{ narrative.title }}</h2>
-                        <div class="testimonials__author">
-                            {{ narrative.author.username }}
-                            <span>{{ narrative.created_at }}</span>
-                        </div>
-                    </div> <!-- end testimonials__slide -->
-                    {% endfor %}                    
-                </div> <!-- end testimonials__slider -->
-
-            </div> <!-- end testimonials -->
-
-        </div> <!-- end testimonials-wrap -->
-
-    </section> <!-- end s-works -->
-
     <!-- services
     ================================================== -->
     <section id='services' class="s-services light-gray">
@@ -357,98 +315,17 @@
 
     </section> <!-- end s-services -->
 
-    <!-- stats
-    ================================================== -->
-    <section id="stats" class="s-stats">
-
-        <div class="row stats block-1-4 block-m-1-2 block-mob-full">
-                
-            <div class="col-block stats__col ">
-                <div class="stats__count">129</div>
-                <h5>Awards Received</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">1507</div>
-                <h5>Cups of Coffee</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">108</div>
-                <h5>Projects Completed</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">103</div>
-                <h5>Happy Clients</h5> 
-            </div>
-
-        </div> <!-- end stats -->
-
-    </section> <!-- end s-stats -->
-
-
     <!-- contact
     ================================================== -->
     <section id="contact" class="s-contact">
-
-        <div class="row section-header">
-            <div class="col-full">
-                <h3 class="subhead subhead--light">Bizimle iletişim kurun</h3>
-                <h1 class="display-1 display-1--light">Niye neden ne zaman? Kim bilir. Öylesine iletişim formu da koyduk, eksik kalmasın dedik.</h1>
-            </div>
-        </div> <!-- end section-header -->
 
         <div class="row">
 
             <div class="col-full contact-main">
                 <p>
-                <a href="mailto:#0" class="contact-email">selam@imajiner.space</a>
-                <span class="contact-number">+90 (555) 184-9274</span>
+                <a href="mailto:selam@imajiner.space" class="contact-email">selam@imajiner.space</a>
                 </p>
             </div> <!-- end contact-main -->
-
-        </div> <!-- end row -->
-
-        <div class="row">
-
-            <div class="col-five tab-full contact-secondary">
-                <h3 class="subhead subhead--light">Ofis adresimiz</h3>
-
-                <p class="contact-address">
-                    266.Sk Öztoprak Cd<br>
-                    Çankaya, Ankara<br>
-                    Türkiye
-                </p>
-            </div> <!-- end contact-secondary -->
-
-            <!--
-            <div class="col-five tab-full contact-secondary">
-                <h3 class="subhead subhead--light">Takip Edin</h3>
-
-                <ul class="contact-social">
-                    <li>
-                        <a href="#0"><i class="fab fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fab fa-behance"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fab fa-dribbble"></i></a>
-                    </li>
-                </ul> -->
-
-                <div class="contact-subscribe">
-                    <form id="mc-form" class="group mc-form" novalidate="true">
-                        <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Adresiniz" required="">
-                        <input type="submit" name="subscribe" value="Abone Ol">
-                        <label for="mc-email" class="subscribe-message"></label>
-                    </form>
-                </div> <!-- end contact-subscribe -->
-            </div> <!-- end contact-secondary -->
 
         </div> <!-- end row -->
 

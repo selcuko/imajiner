@@ -1,14 +1,12 @@
-{% extends 'notebook/base.html' %}
+{% extends 'philosophy.base.html' %}
 {% load static %}
 
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
-<link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
-<link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
+{% block head %}
 <link rel="stylesheet" href="{% static 'suitcase/css/style.css' %}">
 <link rel="stylesheet" href="{% static 'suitcase/css/icomoon.css' %}">
-{% endblock css %}
+<script defer src="{% static 'suitcase/js/main.js' %}"></script>
+{% endblock head %}
 
 {% block body %}
 
@@ -43,10 +41,5 @@
             </div>
         </div>
     </section>
-    
-    <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'notebook/js/plugins.js' %}"></script>
-    <script src="{% static 'suitcase/js/main.js' %}"></script>
-    <script src="{% static 'notebook/js/main.js' %}"></script>
 </body>
 {% endblock body %}

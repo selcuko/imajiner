@@ -1,11 +1,9 @@
-{% extends 'notebook/base.html' %}
+{% extends 'philosophy.base.html' %}
 {% load static %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
-<link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
-<link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
-{% endblock css %}
+{% block head %}
+<script defer src="{% static 'notebook/tagging.js' %}"></script>
+{% endblock %}
 
 {% block body %}
 
@@ -23,7 +21,7 @@
                     {{ narrative.title }}
                 </h1>
                 <ul class="s-content__header-meta">
-                    <li class="date">{{ narrative.created_at }}</li>
+                    <li class="date">{{ narrative.created_at|date }}</li>
                     <!-- <li class="cat">
                         In
                         <a href="#0">Lifestyle</a>
@@ -99,14 +97,6 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'notebook/js/plugins.js' %}"></script>
-    <script src="{% static 'notebook/js/main.js' %}"></script>
-    <script src="{% static 'notebook/tagging.js' %}"></script>
 </body>
 
 {% endblock %}

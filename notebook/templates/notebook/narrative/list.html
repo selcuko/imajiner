@@ -1,18 +1,25 @@
-{% extends 'notebook/base.html' %}
+{% extends 'philosophy.base.html' %}
 {% load static %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'notebook/css/base.css' %}">
-<link rel="stylesheet" href="{% static 'notebook/css/vendor.css' %}">
-<link rel="stylesheet" href="{% static 'notebook/css/main.css' %}">
-
-{% endblock css %}
+{% endblock head %}
+<script defer src="{% static 'philosophy/js/jquery.waypoints.min.js' %}"></script>
+<script defer src="{% static 'philosophy/js/infinite.min.js' %}"></script>
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        onBeforePageLoad: function () {
+            $iml = $("#infinite-more-link")
+            if ($iml) window.href = $iml.href
+        },
+        onAfterPageLoad: function ($items) {
+            $(".masonry").masonry('appended', $items);
+        }
+    });
+</script>
+{% endblock %}
 
 {% block body %}
-
 <body id="top">
-    <!-- s-content
-    ================================================== -->
     <section class="s-content">
 
         <div class="row narrow">
@@ -92,28 +99,5 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="{% static 'notebook/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'notebook/js/plugins.js' %}"></script>
-    <script src="{% static 'notebook/js/main.js' %}"></script>
-    <script src="{% static 'notebook/js/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'notebook/js/infinite.min.js' %}"></script>
-    <script>
-        var infinite = new Waypoint.Infinite({
-            element: $('.infinite-container')[0],
-            onBeforePageLoad: function () {
-                $iml = $("#infinite-more-link")
-                if ($iml) window.href = $iml.href
-            },
-            onAfterPageLoad: function ($items) {
-                $(".masonry").masonry('appended', $items);
-//                window.history.pushState
-            }
-        });
-    </script>
 </body>
-
 {% endblock body %}

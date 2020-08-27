@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ doc.title|default:'Başlıksız Sayfa - Imajiner.' }}</title>
+    <meta name="description" content="{{ doc.description }}">
+    <meta name="author" content="{{ doc.author|default:'Ömer Feyyaz Selçuk' }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    {% block base.head %} {% endblock %}
+    {% block head %} {% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    {# All the content of the body goes here #}
+    {% endblock body %}
+
+    {% block base.foot %} {% endblock %}
+    {% block foot %} {% endblock %}
+</body>
+<html>

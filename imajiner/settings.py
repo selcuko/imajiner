@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'gatewall.apps.GatewallConfig',
     'identity.apps.IdentityConfig',
     'explore.apps.ExploreConfig',
-    'info.apps.InfoConfig',
     'django_extensions',
 ]
 
@@ -118,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr-tr'
 
 TIME_ZONE = 'Europe/Istanbul'
 
@@ -134,6 +133,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'assets'),
+]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
