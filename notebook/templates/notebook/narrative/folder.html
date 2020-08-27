@@ -8,9 +8,9 @@
 <script defer src="{% static 'suitcase/js/main.js' %}"></script>
 {% endblock head %}
 
-{% block body %}
 
-<body id="top">
+{% block body.id %}top{% endblock %}
+{% block body %}
     <section class="s-content">
         <div class="row narrow">
             <div class="col-full s-content__header">
@@ -41,5 +41,4 @@
             </div>
         </div>
     </section>
-</body>
 {% endblock body %}

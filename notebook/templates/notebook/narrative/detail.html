@@ -5,10 +5,9 @@
 <script defer src="{% static 'notebook/tagging.js' %}"></script>
 {% endblock %}
 
+
+{% block body.id %}top{% endblock %}
 {% block body %}
-
-<body id="top">
-
     <!-- s-content
     ================================================== -->
     <section class="s-content s-content--narrow s-content--no-padding-bottom">
@@ -97,6 +96,4 @@
             </div>
         </div>
     </div>
-</body>
-
 {% endblock %}

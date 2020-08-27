@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block philosophy %}
+<!-- This block overrides base templates imports 
+     related to philosophy for navbar, but since 
+     *this* is philosophy's base template we do not 
+     need them or code duplication. -->
+{% endblock philosophy %}
+
 {% block base.head %}
 <link rel="stylesheet" href="{% static 'philosophy/css/base.css' %}">
 <link rel="stylesheet" href="{% static 'philosophy/css/vendor.css' %}">

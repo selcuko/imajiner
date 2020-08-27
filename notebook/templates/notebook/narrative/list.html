@@ -1,25 +1,8 @@
 {% extends 'philosophy.base.html' %}
 {% load static %}
 
-{% endblock head %}
-<script defer src="{% static 'philosophy/js/jquery.waypoints.min.js' %}"></script>
-<script defer src="{% static 'philosophy/js/infinite.min.js' %}"></script>
-<script>
-    var infinite = new Waypoint.Infinite({
-        element: $('.infinite-container')[0],
-        onBeforePageLoad: function () {
-            $iml = $("#infinite-more-link")
-            if ($iml) window.href = $iml.href
-        },
-        onAfterPageLoad: function ($items) {
-            $(".masonry").masonry('appended', $items);
-        }
-    });
-</script>
-{% endblock %}
-
+{% block body.id %}top{% endblock %}
 {% block body %}
-<body id="top">
     <section class="s-content">
 
         <div class="row narrow">
@@ -99,5 +82,21 @@
             </div>
         </div>
     </div>
-</body>
 {% endblock body %}
+
+{% block foot %}
+<script src="{% static 'philosophy/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'philosophy/js/infinite.min.js' %}"></script>
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        onBeforePageLoad: function () {
+            $iml = $("#infinite-more-link")
+            if ($iml) window.href = $iml.href
+        },
+        onAfterPageLoad: function ($items) {
+            $(".masonry").masonry('appended', $items);
+        }
+    });
+</script>
+{% endblock %}

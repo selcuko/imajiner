@@ -12,15 +12,97 @@
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
+    {% block philosophy %}
+    <link rel="stylesheet" href="{% static 'philosophy/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'philosophy/css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'philosophy/css/main.css' %}">
+    {% endblock %}
+
     {% block base.head %} {% endblock %}
     {% block head %} {% endblock %}
 </head>
 
-<body>
+<body id="{% block body.id %}{% endblock %}">
+    {% block navbar %}
+    <div class="s-pageheader">
+
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a class="logo" href="{% url 'landing' %}">
+                        <img src="{% static 'logo.png' %}" alt="aa logo kayboldu">
+                    </a>
+                </div> <!-- end header__logo -->
+
+                <ul class="header__social">
+                    <li>
+                        <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    </li>
+                </ul> <!-- end header__social -->
+
+                <a class="header__search-trigger" href="#0"></a>
+
+                <div class="header__search">
+
+                    <form role="search" method="get" class="header__search-form" action="#">
+                        <label>
+                            <span class="hide-content">Search for:</span>
+                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s"
+                                title="Search for:" autocomplete="off">
+                        </label>
+                        <input type="submit" class="search-submit" value="Search">
+                    </form>
+
+                    <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+
+                </div> <!-- end header__search -->
+
+
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Mönü</span></a>
+
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">IMAJINER</h2>
+
+                    <ul class="header__nav">
+                        <li><a href="{% url 'landing' %}" title="">Ana sahife</a></li>
+                        <li><a href="{% url 'notebook:list' %}" title="">Hikayeler</a></li>
+                        <li><a href="notebook:tags" title="">Etiketler</a></li>
+                        <li><a href="facia:panel" title="">Kontrol paneli</a></li>
+                        <li><a href="evangelism:index" title="">Bilgi</a></li>
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Mönüyü iade et" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+
+    </div> <!-- end s-pageheader -->
+    {% endblock %}
+
+
     {% block body %}
-    {# All the content of the body goes here #}
+    <!-- All the content of the body goes here -->
     {% endblock body %}
 
+
+    <script src="{% static 'philosophy/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'philosophy/js/modernizr.js' %}"></script>
+    <script src="{% static 'philosophy/js/pace.min.js' %}"></script>
+    <script src="{% static 'philosophy/js/plugins.js' %}"></script>
+    <script src="{% static 'philosophy/js/main.js' %}"></script>
     {% block base.foot %} {% endblock %}
     {% block foot %} {% endblock %}
 </body>

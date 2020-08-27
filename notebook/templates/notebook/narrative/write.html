@@ -16,8 +16,8 @@
 <script defer type="text/javascript" src="{% static 'notebook/autosave.js' %}"></script>
 {% endblock head %}
 
+{% block body.id %}top{% endblock %}
 {% block body %}
-<body id="top">
     <section id="styles" class="s-styles">
         <div class="row">
 
@@ -42,6 +42,4 @@
             </div>
         </div>
     </section>
-</body>
-
 {% endblock body %}
