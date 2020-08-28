@@ -12,7 +12,7 @@ urlpatterns = [
     path('', include('gatewall.urls', namespace='gatewall')),
     path('', include('explore.urls', namespace='explore')),
     path('', include('identity.urls', namespace='identity')),
-    path('', include('info.urls', namespace='info')),
+    path('', include('evangelism.urls', namespace='evangelism')),
 ]
 
 if settings.DEBUG:

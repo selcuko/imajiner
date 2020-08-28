@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'gatewall.apps.GatewallConfig',
     'identity.apps.IdentityConfig',
     'explore.apps.ExploreConfig',
+    'evangelism.apps.EvangelismConfig',
     'django_extensions',
 ]
 
