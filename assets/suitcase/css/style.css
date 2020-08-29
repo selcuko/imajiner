@@ -11,28 +11,7 @@
 *	Edit this section
 *
 * ======================================================= */
-body {
-  font-family: "Inconsolata", monospace;
-  line-height: 1.8;
-  font-size: 20px;
-  background: #f0f0f0;
-  font-weight: 300;
-  letter-spacing: 1px;
-  color: #333333; }
-  body.menu-show {
-    overflow: hidden;
-    position: fixed;
-    height: 100%;
-    width: 100%; }
 
-#colorlib-wrapper {
-  height: 100%;
-  width: 100%;
-  overflow: hidden; }
-  #colorlib-wrapper > div {
-    width: 100%;
-    height: 100%;
-    overflow-y: hidden; }
 
 a {
   color: #0e27fb;
@@ -183,30 +162,7 @@ h1, h2, h3, h4, h5, h6 {
           outline: none;
           text-decoration: none; }
 
-header {
-  padding: 2em 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9;
-  margin: 0 auto; }
-  @media screen and (max-width: 768px) {
-    header {
-      padding: 2em 0; } }
-  header .colorlib-navbar-brand {
-    float: left; }
-    header .colorlib-navbar-brand .colorlib-logo {
-      font-size: 35px;
-      text-transform: uppercase;
-      color: #fff;
-      font-weight: 200;
-      letter-spacing: 5px; }
-      header .colorlib-navbar-brand .colorlib-logo:hover {
-        text-decoration: none !important; }
-      header .colorlib-navbar-brand .colorlib-logo:active, header .colorlib-navbar-brand .colorlib-logo:focus {
-        outline: none;
-        text-decoration: none; }
+
 
 #particles {
   width: 100%;
