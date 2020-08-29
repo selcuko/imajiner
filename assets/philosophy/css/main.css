@@ -85,6 +85,7 @@ html, body {
 }
 
 body {
+   background: #19191b;
    font-family: "metropolis-regular", sans-serif;
    font-size: 1.6rem;
    font-style: normal;
@@ -3265,10 +3266,9 @@ html.no-csstransitions .featured {
  *
  * ------------------------------------------------------------------- */
 footer {
-   padding-top: 10.2rem;
-   padding-bottom: 6rem;
-   font-size: 1.5rem;
-   line-height: 2;
+   padding: 1.2rem;
+   font-size: 1.4rem;
+   line-height: 1.5;
    color: rgba(255, 255, 255, 0.4);
 }
 
@@ -3490,7 +3490,7 @@ footer h4::after {
 
 @media only screen and (max-width:600px) {
    footer {
-      padding-top: 7.8rem;
+      padding-top: 2rem;
    }
 
    .s-footer__main .row {
@@ -3499,7 +3499,7 @@ footer h4::after {
 
    .s-footer__main h4 {
       padding-bottom: 0;
-      margin-bottom: 2.4rem;
+      margin-bottom: 2rem;
    }
 
    .s-footer__main h4::after {
@@ -3526,7 +3526,7 @@ footer h4::after {
    }
 
    .s-footer__sitelinks, .s-footer__archives, .s-footer__social {
-      margin-bottom: 4.2rem;
+      margin-bottom: 2rem;
    }
 
    .s-footer__main .row [class*="col-"]:nth-child(2) {
