@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'identity.apps.IdentityConfig',
     'explore.apps.ExploreConfig',
     'evangelism.apps.EvangelismConfig',
+    'cnc.apps.CnCConfig',
     'django_extensions',
 ]
 

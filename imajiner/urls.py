@@ -13,6 +13,7 @@ urlpatterns = [
     path('', include('explore.urls', namespace='explore')),
     path('', include('identity.urls', namespace='identity')),
     path('', include('evangelism.urls', namespace='evangelism')),
+    path('', include('cnc.urls', namespace='cnc')),
 ]
 
 if settings.DEBUG:
