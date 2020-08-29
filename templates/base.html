@@ -22,6 +22,7 @@
     {% block head %} {% endblock %}
 </head>
 
+{% block body.absolute %}
 <body id="{% block body.id %}top{% endblock %}">
     {% block base.navbar %}
     <div class="s-pageheader">
@@ -121,4 +122,5 @@
     {% block base.foot %} {% endblock %}
     {% block foot %} {% endblock %}
 </body>
+{% endblock body.absolute %}
 </html>
