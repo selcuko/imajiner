@@ -18,6 +18,13 @@ class Shadow(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
     
+    def convert_to_author(self, password):
+        self.user.set_password(password)
+        self.user.save()
+        self.active = False
+        self.save()
+        return self.user
+    
     @staticmethod
     def create_shadow(request, fingerprint, username=''):
         if username:
