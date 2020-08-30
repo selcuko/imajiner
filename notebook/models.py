@@ -47,6 +47,17 @@ class Narrative(models.Model):
 
     class Meta:
         ordering = ('created_at',)
+    
+    @classmethod
+    def viewable(cls, user):
+        if isinstance(user, str):
+            user = User.objects.get(username=user)
+        elif isinstance(user, User):
+            pass
+        else:
+            raise Exception('Invalid argument supplied')
+        
+        return cls.objects.filter(author=user, sketch=False)
 
     def __str__(self):
         return f'{self.title} ({self.slug})'

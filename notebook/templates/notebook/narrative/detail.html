@@ -57,7 +57,11 @@
 
                     <div class="s-content__author-about">
                         <h4 class="s-content__author-name">
-                            <a href="#0">{{ narrative.author.username }}</a>
+                            {% if narrative.author.is_shadow %}
+                            <p>{{ narrative.author.username }}</p>
+                            {% else %}
+                            <a href="{% url 'identity:author' username=narrative.author.username %}">{{ narrative.author.username }}</a>
+                            {% endif %}
                         </h4>
 
                         <p>
