@@ -43,7 +43,7 @@ class Narrative(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
-    tagman = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
+    tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
 
     class Meta:
         ordering = ('created_at',)
