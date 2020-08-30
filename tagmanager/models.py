@@ -1,11 +1,9 @@
-from django import template
 from django.db import models
 from django.utils import text
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-register = template.Library()
 
 class AbstractTag(models.Model):
     name = models.CharField(max_length=100)
@@ -41,6 +39,9 @@ class TagManager(models.Model):
     
     def has_tags(self):
         return True if self.tags.all().count() > 0 else False
+    
+    def for_user(self, user):
+        return self.display()
 
 
 class ObjectTag(models.Model):
@@ -98,7 +99,6 @@ class UserTagManager(models.Model):
         pass
     
 
-    @register.simple_tag
     def tag_toggled(self, narrative, tag_slug):
         pass
 

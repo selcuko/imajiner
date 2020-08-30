@@ -31,7 +31,8 @@ class Auth(View):
             elif action == 'shadow-register':
                 fingerprint = p['fingerprint']
                 username = p.get('username', None)
-                Shadow.create_shadow(request, fingerprint, username)
+                shadow = Shadow.create_shadow(request, fingerprint, username)
+                login(request, shadow.user)
                 return HttpResponse()
 
             elif action == 'shadow-login':
@@ -47,7 +48,8 @@ class Auth(View):
                 username = p['username']
                 password = p['password']
                 try:
-                    User.objects.create_user(username=username, password=password)
+                    user = User.objects.create_user(username=username, password=password)
+                    login(request, user)
                 except IntegrityError:
                     return JsonResponse({'error': True})
                 return JsonResponse({'error': False})

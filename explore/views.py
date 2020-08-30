@@ -5,7 +5,7 @@ from notebook.models import Narrative
 
 
 class Home(View):
-    template_name = 'explore/index.html'
+    template_name = 'landing.html'
     def get(self, request, **kwargs):
         return render(request, self.template_name, {
             'narratives':Narrative.objects.all()[:3],

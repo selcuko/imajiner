@@ -43,10 +43,21 @@ class Narrative(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
-    tagman = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
+    tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
 
     class Meta:
         ordering = ('created_at',)
+    
+    @classmethod
+    def viewable(cls, user):
+        if isinstance(user, str):
+            user = User.objects.get(username=user)
+        elif isinstance(user, User):
+            pass
+        else:
+            raise Exception('Invalid argument supplied')
+        
+        return cls.objects.filter(author=user, sketch=False)
 
     def __str__(self):
         return f'{self.title} ({self.slug})'

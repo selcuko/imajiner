@@ -4,7 +4,7 @@ from .views import NarrativeView, NarrativeFactory
 
 app_name = 'notebook'
 urlpatterns = [
-    path('hikayeler/', NarrativeView.List.as_view(), name='list'),
+    path('hikaye/', NarrativeView.List.as_view(), name='list'),
 
     path('hikaye/yaz/', NarrativeFactory.Write.as_view(), name='write'),
     path('hikaye/yaz/yeni/', NarrativeFactory.New.as_view(), name='new'),

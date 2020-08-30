@@ -22,8 +22,9 @@
     {% block head %} {% endblock %}
 </head>
 
-<body id="{% block body.id %}{% endblock %}">
-    {% block navbar %}
+{% block body.absolute %}
+<body id="{% block body.id %}top{% endblock %}">
+    {% block base.navbar %}
     <div class="s-pageheader">
 
         <header class="header">
@@ -90,7 +91,7 @@
         </header> <!-- header -->
 
     </div> <!-- end s-pageheader -->
-    {% endblock %}
+    {% endblock base.navbar %}
 
 
     {% block body %}
@@ -98,12 +99,28 @@
     {% endblock body %}
 
 
-    <script src="{% static 'philosophy/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'philosophy/js/modernizr.js' %}"></script>
-    <script src="{% static 'philosophy/js/pace.min.js' %}"></script>
-    <script src="{% static 'philosophy/js/plugins.js' %}"></script>
-    <script src="{% static 'philosophy/js/main.js' %}"></script>
+    {% block base.footer %}
+    <footer class="s-footer">
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="col-full">
+                    <div class="s-footer__copyright">
+                        <span>{{ copyright|safe }}</span> 
+                        <span>{{ credits|safe }}</span>
+                    </div>
+
+                    <div class="go-top">
+                        <a class="smoothscroll" title="Back to Top" href="#top"></a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+    </footer> 
+    {% endblock base.footer %}
+
     {% block base.foot %} {% endblock %}
     {% block foot %} {% endblock %}
 </body>
-<html>
+{% endblock body.absolute %}
+</html>

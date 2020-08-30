@@ -21,7 +21,7 @@
         <div class="half-bottom">
             <h2>{{ user.username }}</h2>
             <ul>
-                {% for narrative in user.narratives.all %}
+                {% for narrative in narratives %}
                 <li><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a></li>
                 {% endfor %}
             </ul>

@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'gatewall.apps.GatewallConfig',
     'identity.apps.IdentityConfig',
     'explore.apps.ExploreConfig',
+    'evangelism.apps.EvangelismConfig',
+    'cnc.apps.CnCConfig',
     'django_extensions',
 ]
 
@@ -76,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'evangelism.context.SiteWideContextSupplier',
             ],
         },
     },

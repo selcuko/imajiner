@@ -1,5 +1,5 @@
 {% extends 'philosophy.base.html' %}
-{% load static %}
+{% load static tagging %}
 
 {% block head %}
 <script defer src="{% static 'notebook/tagging.js' %}"></script>
@@ -44,12 +44,14 @@
                 {{ narrative.html|safe }}
 
                 <p class="s-content__tags">
-                    <span>Post Tags</span>
+                    <span>Bir tutam</span>
 
                     <span class="s-content__tag-list">
-                        {% for tag in narrative.tagman.display %}
+                        {% tags_for_user as tags %}
+                        {% for tag in tags %}
                         <a class="tag" id="tag-{{ tag.abstract.slug }}" >{{ tag.abstract.name }}</a>
                         {% endfor %}
+                        <button>Etiket ekle</button>
                     </span>
                 </p> <!-- end s-content__tags -->
 
@@ -57,19 +59,16 @@
 
                     <div class="s-content__author-about">
                         <h4 class="s-content__author-name">
-                            <a href="#0">{{ narrative.author.username }}</a>
+                            {% if narrative.author.is_shadow %}
+                            <p>{{ narrative.author.username }}</p>
+                            {% else %}
+                            <a href="{% url 'identity:author' username=narrative.author.username %}">{{ narrative.author.username }}</a>
+                            {% endif %}
                         </h4>
 
                         <p>
                             {{ narrative.author.profile.about|default:'Hakkında kısmı boş.' }}
                         </p>
-
-                        <!-- <ul class="s-content__author-social">
-                            <li><a href="#0">Facebook</a></li>
-                            <li><a href="#0">Twitter</a></li>
-                            <li><a href="#0">GooglePlus</a></li>
-                            <li><a href="#0">Instagram</a></li>
-                        </ul> -->
                     </div>
                     <br>
                 </div>
