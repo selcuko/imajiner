@@ -90,15 +90,15 @@ class Narrative(models.Model):
 def create_tagman(sender, instance, created, **kwargs):
     """Create TagManager for Narrative programmatically."""
 
-    if not created or instance.tagman:
+    if not created or instance.tags:
         return
     tagman = TagManager.objects.create()
-    instance.tagman = tagman
+    instance.tags = tagman
     instance.save()
 
 @receiver(post_save, sender=Narrative)
 def update_tagman(sender, instance, **kwargs):
-    instance.tagman.save()
+    instance.tags.save()
 
 
 

@@ -8,7 +8,7 @@ class NarrativeWrite(forms.ModelForm):
         fields = [
             'title',
             'body',
-            #'uuid',
+            'sound',
         ]
 
         widgets = {

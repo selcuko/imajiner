@@ -52,11 +52,14 @@ class NarrativeFactory:
         template_name = 'notebook/narrative/write.html'
 
         def get(self, request):
+            if not request.user.is_authenticated:
+                return HttpResponse("Prohibited")
             form = NarrativeWrite()
             return render(self.request, self.template_name, context={'form':form})
 
         def post(self, request):
-
+            if not request.user.is_authenticated:
+                return HttpResponse("Prohibited")
             form = NarrativeWrite(request.POST)
             action = request.POST.get('action', 'SUBMIT')
             count = int(request.POST.get('count', 1))

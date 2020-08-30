@@ -42,10 +42,10 @@
                             </p>
                         </div>
                         {% endif %}
-                        {% if narrative.tagman.has_tags %}
+                        {% if narrative.tags.has_tags %}
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                {% for tag in narrative.tagman.display %}
+                                {% for tag in narrative.tags.display %}
                                 <a href="#">{{ tag.abstract.name }}</a>
                                 {% endfor %}
                             </span>
