@@ -10,123 +10,89 @@ class AbstractTag(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
 
     def __str__(self):
-        return f'{self.name} ({self.slug})'
+        return f'Abstract Tag: {self.name} ({self.slug})'
 
     def save(self, *args, **kwargs):
         self.slug = text.slugify(self.name, allow_unicode=True)
-        super().save(*args, **kwargs)
+        return super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return '#0'
 
 
 
 class TagManager(models.Model):
     def __str__(self):
-        return f'of {self.narrative}'
-
-    def get(self, slug):
+        return f'Tag Manager: {self.narrative.slug}'
+     
+    def for_user(self, user):
+        """customized tags for user"""
+        # if user.is_anonymous:
+        return self.tags.all()[:5]
+    
+    def all(self):
+        return self.tags.all()
+    
+    def add(self, abstract):
+        return ObjectTag.objects.create(
+            abstract=AbstractTag.objects.get(slug=abstract),
+            count=0,
+            manager=self,
+        )
+    
+    def get(self, abstract):
         try:
-            return self.tags.get(abstract__slug=slug)
+            return self.tags.filter(abstract__slug=abstract) 
         except ObjectTag.DoesNotExist:
             return None
-    def delta(self, slug, diff=1):
-        tag = self.get(slug)
-        if not tag:
-            return False
-        tag.delta(diff)
-        return True
-    
-    def display(self):
-        return self.tags.all()[:6]
-    
-    def has_tags(self):
-        return True if self.tags.all().count() > 0 else False
-    
-    def for_user(self, user):
-        return self.display()
+
+
 
 
 class ObjectTag(models.Model):
-    abstract = models.ForeignKey(AbstractTag, on_delete=models.CASCADE, related_name='objs')
+    abstract = models.ForeignKey(AbstractTag, on_delete=models.CASCADE, related_name='individuals')
     count = models.IntegerField(default=1)
     manager = models.ForeignKey(TagManager, on_delete=models.CASCADE, related_name='tags')
 
-    def __str__(self):
-        return f'of {self.manager.narrative} for {self.abstract}'
-
-    def delta(self, diff):
-        if not (diff and isinstance(diff, int)):
-            return False
-        self.count += diff
-        self.save()
-        return True
-
 
 class UserTagManager(models.Model):
-    issuer = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name='tags')
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name='tags')
 
-    def __str__(self):
-        return f'of {self.issuer}'
-
-    def delta(self, slug, diff, narrative):
+    def for_narrative(self, slug):
+        return self.individuals.filter(object__manager__narrative__slug=slug)
+    
+    def delta_for(self, abstract, slug, delta=0):
         try:
-            tag = self.individuals.get(
-                objtag__abstract__slug=slug,
-                objtag__manager__narrative__slug=narrative,
-                )
-
+            individual = self.individuals.get(
+            object__abstract__slug=abstract,
+            object__manager__narrative__slug=slug
+        )
         except IndividualTag.DoesNotExist:
-            if not AbstractTag.objects.filter(slug=slug).exists():
-                raise AbstractTag.DoesNotExist('No AbstractTag exists with given slug.')
-                        
-            objtag = ObjectTag.objects.filter(abstract__slug=slug)
-            if not objtag.exists():
-                objtag = ObjectTag.objects.create(
-                    abstract=AbstractTag.objects.get(slug=slug),
-                    manager=TagManager.objects.get(narrative__slug=narrative),
-                    count=0,
-                )
-            else:
-                objtag = objtag[0]
-
-            tag = IndividualTag.objects.create(
-                objtag=objtag,
+            individual = IndividualTag.objects.create(
                 manager=self,
                 count=0,
+                object=ObjectTag.objects.get(manager__narrative__slug=slug, abstract__slug=abstract),
             )
-        return tag.delta(diff)
+        individual.count += delta
+        individual.save()
+        individual.object.count = individual.count
+        individual.object.save()
+        return individual.count
     
-
-    def has_tag(self, tag_slug):
-        pass
-    
-
-    def tag_toggled(self, narrative, tag_slug):
-        pass
+    def is_interacted_with(self, abstract, slug=''):
+        qs = self.individuals.filter(object__abstract__slug=abstract)
+        if slug: qs = qs.filter(object__manager__narrative__slug=slug)
+        return qs.exists()
 
 
 @receiver(post_save, sender=User)
 def create_utagman(sender, instance, created, **kwargs):
-    """Create UserTagManager for User programmatically."""
-
     if not created:
         return
-    utagman = UserTagManager.objects.create(issuer=instance)
-
-#@receiver(post_save, sender=User)
-#def save_user_profile(sender, instance, **kwargs):
-#    instance.tags.save()
+    manager = UserTagManager.objects.create(user=instance)
 
 
 class IndividualTag(models.Model):
     count = models.IntegerField(default=1)
-    objtag = models.ForeignKey(ObjectTag, on_delete=models.SET_NULL, null=True, related_name='individuals')
+    object = models.ForeignKey(ObjectTag, on_delete=models.SET_NULL, null=True, related_name='individuals')
     manager = models.ForeignKey(UserTagManager, on_delete=models.SET_NULL, null=True, related_name='individuals')
-
-    def __str__(self):
-        return f'issued by {self.manager.issuer} for {self.count} times'
-
-    def delta(self, amount):
-        self.count += amount
-        self.save()
-        self.objtag.delta(amount)
-        self.objtag.save()
-        return True
