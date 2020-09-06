@@ -3,8 +3,10 @@ from django.views.generic import DetailView, ListView
 from django.views import View
 from .models import Narrative
 from .forms import NarrativeWrite
+from tagmanager.models import *
 import json
 import uuid
+from django.core.exceptions import SuspiciousOperation
 
 
 class NarrativeView:
@@ -20,11 +22,26 @@ class NarrativeView:
         
         def post(self, request, *args, **kwargs):
             action = request.POST['action']
-            payload = json.loads(request.POST['payload'])
-            if action == 'TAGDELTA':
-                for slug, delta in payload.items():
-                    self.tag_delta(slug, delta)
-            return HttpResponse()
+            try:
+                if not request.user.is_authenticated: raise SuspiciousOperation('Giriş yapılmamış')
+
+                narrative = request.POST['narrative']
+                narrative = Narrative.objects.get(slug=narrative)
+
+                if action == 'tag-create':
+                    abstract = request.POST['name']
+                    abstract = AbstractTag.objects.create(name=abstract)
+                    narrative.tags.add(abstract)
+                    request.user.tags.delta_for(abstract=abstract, narrative=narrative, delta=1)
+                    return HttpResponse()
+                
+                elif action == 'tag-step':
+                    abstract = request.POST['name']
+                    request.user.tags.delta_for(narrative=narrative, abstract=abstract, delta=1)
+                    return HttpResponse()
+
+            except Exception as e:
+                raise e
         
 
         def tag_delta(self, slug, amount=1):

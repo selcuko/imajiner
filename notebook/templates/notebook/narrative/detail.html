@@ -1,5 +1,5 @@
 {% extends 'philosophy.base.html' %}
-{% load static %}
+{% load static tagging %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'notebook/popup.css' %}">
@@ -16,7 +16,13 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <p>Etiket ekle</p>
+        <form id="tag-add-form">
+            {% csrf_token %}
+            <input type="hidden" name="narrative" value="{{ narrative.slug }}">
+            <input type="text" name="name" placeholder="derealizasyon" required>
+            <input type="submit" value="Ekle">
+        </form>
     </div>
 
 </div>
@@ -25,12 +31,6 @@
 <section id="content" class="s-content s-content--narrow s-content--no-padding-bottom">
 
     <article class="row format-standard">
-
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
-
-        
-
 
         <div class="s-content__header col-full">
             <h1 class="s-content__header-title">
@@ -65,8 +65,9 @@
                 <span>Bir tutam</span>
 
                 <span class="s-content__tag-list">
+                    {% tags_for_user as tags %}
                     {% for tag in tags %}
-                    <a class="tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} ({{ tag.count }})</a>
+                    <a class="tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} (<small class="count">{{ tag.count }}</small>)</a>
                     {% endfor %}
                     <i id="tag-add" style="padding-top:5px;" class="fa fa-plus fa-lg"></i>
                 </span>

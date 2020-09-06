@@ -28,14 +28,15 @@ class TagManager(models.Model):
     def for_user(self, user):
         """customized tags for user"""
         # if user.is_anonymous:
-        return self.tags.all()[:5]
+        return self.tags.filter(count__gt=0)[:5]
     
     def all(self):
         return self.tags.all()
     
     def add(self, abstract):
+        if isinstance(abstract, str): abstract = AbstractTag.objects.get(slug=abstract)
         return ObjectTag.objects.create(
-            abstract=AbstractTag.objects.get(slug=abstract),
+            abstract=abstract,
             count=0,
             manager=self,
         )
@@ -61,17 +62,20 @@ class UserTagManager(models.Model):
     def for_narrative(self, slug):
         return self.individuals.filter(object__manager__narrative__slug=slug)
     
-    def delta_for(self, abstract, slug, delta=0):
+    def delta_for(self, abstract, narrative, delta=0):
         try:
+            if isinstance(abstract, str): abstract = AbstractTag.objects.get(slug=abstract)
+            if isinstance(narrative, str): narrative = Narrative.objects.get(slug=narrative)
+
             individual = self.individuals.get(
-            object__abstract__slug=abstract,
-            object__manager__narrative__slug=slug
+            object__abstract=abstract,
+            object__manager__narrative=narrative
         )
         except IndividualTag.DoesNotExist:
             individual = IndividualTag.objects.create(
                 manager=self,
                 count=0,
-                object=ObjectTag.objects.get(manager__narrative__slug=slug, abstract__slug=abstract),
+                object=ObjectTag.objects.get(manager__narrative=narrative, abstract=abstract),
             )
         individual.count += delta
         individual.save()
