@@ -2,95 +2,121 @@
 {% load static %}
 
 {% block head %}
+<link rel="stylesheet" href="{% static 'notebook/popup.css' %}">
 <script defer src="{% static 'notebook/tagging.js' %}"></script>
+<script defer src="{% static 'notebook/popup.js' %}"></script>
 {% endblock %}
 
 
 {% block body.id %}top{% endblock %}
 {% block body %}
-    <!-- s-content
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+
+</div>
+<!-- s-content
     ================================================== -->
-    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+<section id="content" class="s-content s-content--narrow s-content--no-padding-bottom">
 
-        <article class="row format-standard">
-            
+    <article class="row format-standard">
 
-            <div class="s-content__header col-full">
-                <h1 class="s-content__header-title">
-                    {{ narrative.title }}
-                </h1>
-                <ul class="s-content__header-meta">
-                    <li class="date">{{ narrative.created_at|date }}</li>
-                    <!-- <li class="cat">
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
+
+        
+
+
+        <div class="s-content__header col-full">
+            <h1 class="s-content__header-title">
+                {{ narrative.title }}
+            </h1>
+            <ul class="s-content__header-meta">
+                <li class="date">{{ narrative.created_at|date }}</li>
+                <!-- <li class="cat">
                         In
                         <a href="#0">Lifestyle</a>
                         <a href="#0">Travel</a>
                     </li> -->
-                </ul>
-            </div> <!-- end s-content__header -->
-            {% if narrative.sound %}
-            <div class="s-content__media col-full">
-                <div class="s-content__post-thumb">
-                    
-                    <div class="audio-wrap">
-                        <audio id="player2" src="{{ narrative.sound.file.url }}" width="100%" height="42" controls="controls"></audio>
-                    </div>
+            </ul>
+        </div> <!-- end s-content__header -->
+        {% if narrative.sound %}
+        <div class="s-content__media col-full">
+            <div class="s-content__post-thumb">
+
+                <div class="audio-wrap">
+                    <audio id="player2" src="{{ narrative.sound.file.url }}" width="100%" height="42"
+                        controls="controls"></audio>
                 </div>
-            </div> <!-- end s-content__media -->
-            {% endif %}
-
-            <div class="col-full s-content__main">
-
-                {{ narrative.html|safe }}
-
-                <p class="s-content__tags">
-                    <span>Bir tutam</span>
-
-                    <span class="s-content__tag-list">
-                        {% for tag in tags %}
-                        <a onclick="tagClick" class="tag{% if tag." id="{{ tag.abstract.slug }}" >{{ tag.abstract.name }} ({{ tag.count }})</a>
-                        {% endfor %}
-                    </span>
-                </p> <!-- end s-content__tags -->
-
-                <div class="s-content__author">
-
-                    <div class="s-content__author-about">
-                        <h4 class="s-content__author-name">
-                            {% if narrative.author.is_shadow %}
-                            <p>{{ narrative.author.username }}</p>
-                            {% else %}
-                            <a href="{% url 'identity:author' username=narrative.author.username %}">{{ narrative.author.username }}</a>
-                            {% endif %}
-                        </h4>
-
-                        <p>
-                            {{ narrative.author.profile.about|default:'Hakkında kısmı boş.' }}
-                        </p>
-                    </div>
-                    <br>
-                </div>
-
-
-
-            </div> <!-- end s-content__main -->
-
-        </article>
-
-    </section> <!-- s-content -->
-
-
-    <!-- preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader">
-            <div class="line-scale">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
             </div>
+        </div> <!-- end s-content__media -->
+        {% endif %}
+
+        <div class="col-full s-content__main">
+
+            {{ narrative.html|safe }}
+
+            <p class="s-content__tags">
+                <span>Bir tutam</span>
+
+                <span class="s-content__tag-list">
+                    {% for tag in tags %}
+                    <a class="tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} ({{ tag.count }})</a>
+                    {% endfor %}
+                    <i id="tag-add" style="padding-top:5px;" class="fa fa-plus fa-lg"></i>
+                </span>
+            </p> <!-- end s-content__tags -->
+
+            <div class="s-content__author">
+
+                <div class="s-content__author-about">
+                    <h4 class="s-content__author-name">
+                        {% if narrative.author.is_shadow %}
+                        <p>{{ narrative.author.username }}</p>
+                        {% else %}
+                        <a
+                            href="{% url 'identity:author' username=narrative.author.username %}">{{ narrative.author.username }}</a>
+                        {% endif %}
+                    </h4>
+
+                    <p>
+                        {{ narrative.author.profile.about|default:'Hakkında kısmı boş.' }}
+                    </p>
+                </div>
+                <br>
+            </div>
+
+
+
+        </div> <!-- end s-content__main -->
+
+    </article>
+
+    <form id="template-vars" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" name="narrative-slug" value="{{ narrative.slug }}">
+        <input type="hidden" name="user-username" value="{{ request.user.username }}">
+    </form>
+
+</section> <!-- s-content -->
+
+
+<!-- preloader
+    ================================================== -->
+<div id="preloader">
+    <div id="loader">
+        <div class="line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
+</div>
 {% endblock %}
