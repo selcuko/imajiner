@@ -14,6 +14,10 @@ function getCookie(name) {
     return cookieValue;
 }
 
+function tagClick(e){
+    console.log(e);
+}
+
 
 function tagPost(slug){
     slug =slug;

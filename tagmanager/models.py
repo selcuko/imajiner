@@ -75,7 +75,7 @@ class UserTagManager(models.Model):
             )
         individual.count += delta
         individual.save()
-        individual.object.count = individual.count
+        individual.object.count += delta
         individual.object.save()
         return individual.count
     
@@ -96,3 +96,7 @@ class IndividualTag(models.Model):
     count = models.IntegerField(default=1)
     object = models.ForeignKey(ObjectTag, on_delete=models.SET_NULL, null=True, related_name='individuals')
     manager = models.ForeignKey(UserTagManager, on_delete=models.SET_NULL, null=True, related_name='individuals')
+    
+    @property
+    def effective(self):
+        return self.count > 0

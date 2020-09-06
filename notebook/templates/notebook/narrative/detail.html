@@ -1,5 +1,5 @@
 {% extends 'philosophy.base.html' %}
-{% load static tagging %}
+{% load static %}
 
 {% block head %}
 <script defer src="{% static 'notebook/tagging.js' %}"></script>
@@ -47,11 +47,9 @@
                     <span>Bir tutam</span>
 
                     <span class="s-content__tag-list">
-                        {% tags_for_user as tags %}
                         {% for tag in tags %}
-                        <a class="tag" id="tag-{{ tag.abstract.slug }}" >{{ tag.abstract.name }}</a>
+                        <a onclick="tagClick" class="tag{% if tag." id="{{ tag.abstract.slug }}" >{{ tag.abstract.name }} ({{ tag.count }})</a>
                         {% endfor %}
-                        <button>Etiket ekle</button>
                     </span>
                 </p> <!-- end s-content__tags -->
 
