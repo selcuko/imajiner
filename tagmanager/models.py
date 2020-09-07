@@ -33,6 +33,9 @@ class TagManager(models.Model):
     def all(self):
         return self.tags.all()
     
+    def has_tags(self):
+        return self.all().exists()
+    
     def add(self, abstract):
         if isinstance(abstract, str): abstract = AbstractTag.objects.get(slug=abstract)
         return ObjectTag.objects.create(

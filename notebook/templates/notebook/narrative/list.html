@@ -1,5 +1,5 @@
 {% extends 'philosophy.base.html' %}
-{% load static %}
+{% load static tagging %}
 
 {% block body.id %}top{% endblock %}
 {% block body %}
@@ -9,8 +9,13 @@
             <div class="col-full s-content__header">
                 <h1>Öykülerimiz</h1>
 
-                <p class="lead">Bütün tüm hepsi bütün hikayeler
-                </p>
+                <div style="border:1px black solid; padding:10px">
+                    <p style="text-align:left" class="lead">Hızlı menü</p>
+                    <ul style="text-align:left">
+                        <li><a href="{% url 'notebook:new' %}">Hikaye yaz</a></li>
+                        <li><a href="{% url 'notebook:write' %}">Taslaklarım</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -28,7 +33,7 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="single-standard.html">{{ narrative.created_at }}</a>
+                                <a href="#0">{{ narrative.created_at|date }}</a>
                             </div>
                             <h1 class="entry__title"><a
                                     href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a>
@@ -38,15 +43,16 @@
                         {% if narrative.lead %}
                         <div class="entry__excerpt">
                             <p>
-                                {{ narrative.lead }}
+                                {{ narrative.lead|truncatechars:100 }}
                             </p>
                         </div>
                         {% endif %}
                         {% if narrative.tags.has_tags %}
+                        {% tags_for_user 3 as tags %}
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                {% for tag in narrative.tags.display %}
-                                <a href="#">{{ tag.abstract.name }}</a>
+                                {% for tag in tags %}
+                                <a href="#0">{{ tag.abstract.name }}</a>
                                 {% endfor %}
                             </span>
                         </div>
