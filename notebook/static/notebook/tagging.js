@@ -60,9 +60,12 @@ $e.form.onsubmit = (e) => {
         body: fd,
     }).then( response => {
       const newtag = document.createElement('a');
-      const count = document.createElement('span');
+      newtag.innerText = fd.get('name') + ' (';
+      const count = document.createElement('small');
       count.innerText = 1;
       newtag.appendChild(count);
-      $e.tags.appendChild(newtag);
+      newtag.innerText += ')';
+      $e.tags.insertBefore(newtag, $e.tags.children[$e.tags.children.length-1]);
+      modal.close();
     })
 }

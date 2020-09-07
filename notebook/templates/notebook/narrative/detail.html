@@ -64,7 +64,7 @@
             <p class="s-content__tags">
                 <span>Bir tutam</span>
 
-                <span class="s-content__tag-list">
+                <span id="tag-list" class="s-content__tag-list">
                     {% tags_for_user 20 as tags %}
                     {% for tag in tags %}
                     <a class="tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} (<small class="count">{{ tag.count }}</small>)</a>
