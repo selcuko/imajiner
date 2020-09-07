@@ -6,4 +6,4 @@ register = template.Library()
 def narrative_tags_for_user(context, count=10):
     narrative = context['narrative']
     user = context['request'].user
-    return narrative.tags.for_user(user)
+    return narrative.tags.for_user(user, count=count)

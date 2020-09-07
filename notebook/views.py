@@ -30,7 +30,10 @@ class NarrativeView:
 
                 if action == 'tag-create':
                     abstract = request.POST['name']
-                    abstract = AbstractTag.objects.create(name=abstract)
+                    try:
+                        abstract = AbstractTag.objects.get(name=abstract)
+                    except:
+                        abstract = AbstractTag.objects.create(name=abstract)
                     narrative.tags.add(abstract)
                     request.user.tags.delta_for(abstract=abstract, narrative=narrative, delta=1)
                     return HttpResponse()

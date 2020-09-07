@@ -24,6 +24,7 @@ window.onclick = function(event) {
 
 const $e = {};
 $e.add = document.getElementById('tag-add');
+$e.tags = document.getElementById('tag-list');
 $e.display = Array.from(document.querySelectorAll('.tag-display'));
 $e.vars = new FormData(document.getElementById('template-vars'));
 $e.form = document.getElementById('tag-add-form');
@@ -57,5 +58,11 @@ $e.form.onsubmit = (e) => {
     fetch('', {
         method: 'POST',
         body: fd,
+    }).then( response => {
+      const newtag = document.createElement('a');
+      const count = document.createElement('span');
+      count.innerText = 1;
+      newtag.appendChild(count);
+      $e.tags.appendChild(newtag);
     })
 }

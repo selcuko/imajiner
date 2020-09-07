@@ -25,10 +25,10 @@ class TagManager(models.Model):
     def __str__(self):
         return f'Tag Manager: {self.narrative.slug}'
      
-    def for_user(self, user):
+    def for_user(self, user, count=6):
         """customized tags for user"""
         # if user.is_anonymous:
-        return self.tags.filter(count__gt=0)[:5]
+        return self.tags.filter(count__gt=0)[:count]
     
     def all(self):
         return self.tags.all()
@@ -55,9 +55,14 @@ class ObjectTag(models.Model):
     count = models.IntegerField(default=1)
     manager = models.ForeignKey(TagManager, on_delete=models.CASCADE, related_name='tags')
 
+    def __str__(self):
+        return f'Object Tag: {self.manager.narrative.slug}'
 
 class UserTagManager(models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name='tags')
+
+    def __str__(self):
+        return f'User Tag Manager: {self.user.username}'
 
     def for_narrative(self, slug):
         return self.individuals.filter(object__manager__narrative__slug=slug)
@@ -101,6 +106,9 @@ class IndividualTag(models.Model):
     object = models.ForeignKey(ObjectTag, on_delete=models.SET_NULL, null=True, related_name='individuals')
     manager = models.ForeignKey(UserTagManager, on_delete=models.SET_NULL, null=True, related_name='individuals')
     
+    def __str__(self):
+        return f'Individual Tag: [{self.object.abstract.slug}] {self.manager.user.username}@{self.object.manager.narrative.slug}'
+
     @property
     def effective(self):
         return self.count > 0
