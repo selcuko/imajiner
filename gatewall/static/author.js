@@ -45,13 +45,14 @@ function handleAuthorButton(available){
 $authorButton.onclick = (e) => {
     e.preventDefault();
     const fd = new FormData($authorForm);
-    fd.append('action', 'author-register');
+    fd.append('action', `author-${buttonAction}`);
     fetch('', {
         method: 'POST',
         body: fd,
     })
     .then(response => {
         if (response.ok) window.location.href = next;
+        else $authorButton.innerText = 'Pardon kimsiniz?'
     })
 }
 
