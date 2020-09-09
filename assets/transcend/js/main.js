@@ -1,21 +1,12 @@
-/* ===================================================================
- * Transcend - Main JS
- *
- * ------------------------------------------------------------------- */
-
 (function($) {
 
     "use strict";
     
     var cfg = {
-        scrollDuration : 800, // smoothscroll duration
-        mailChimpURL   : 'https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc'   // mailchimp url
+        scrollDuration : 500, // smoothscroll duration
     },
 
     $WIN = $(window);
-
-    // Add the User Agent to the <html>
-    // will be used for IE10 detection (Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0))
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
@@ -148,45 +139,6 @@
         });
     };
 
-
-   /* Stat Counter
-    * ------------------------------------------------------ */
-    var clStatCount = function() {
-        
-        var statSection = $(".s-stats"),
-            stats = $(".stats__count");
-
-        statSection.waypoint({
-
-            handler: function(direction) {
-
-                if (direction === "down") {
-
-                    stats.each(function () {
-                        var $this = $(this);
-
-                        $({ Counter: 0 }).animate({ Counter: $this.text() }, {
-                            duration: 4000,
-                            easing: 'swing',
-                            step: function (curValue) {
-                                $this.text(Math.ceil(curValue));
-                            }
-                        });
-                    });
-
-                } 
-
-                // trigger once only
-                this.destroy();
-
-            },
-
-            offset: "90%"
-
-        });
-    };
-
-
    /* Masonry
     * ---------------------------------------------------- */ 
     var clMasonryFolio = function () {
@@ -276,66 +228,14 @@
 
     };
 
-
-   /* Animate On Scroll
-    * ------------------------------------------------------ */
-    var clAOS = function() {
-        
-        AOS.init( {
-            offset: 200,
-            duration: 600,
-            easing: 'ease-in-sine',
-            delay: 300,
-            once: true,
-            disable: 'mobile'
-        });
-
-    };
-
-
-   /* AjaxChimp
-    * ------------------------------------------------------ */
-    var clAjaxChimp = function() {
-        
-        $('#mc-form').ajaxChimp({
-            language: 'es',
-            url: cfg.mailChimpURL
-        });
-
-        // Mailchimp translation
-        //
-        //  Defaults:
-        //	 'submit': 'Submitting...',
-        //  0: 'We have sent you a confirmation email',
-        //  1: 'Please enter a value',
-        //  2: 'An email address must contain a single @',
-        //  3: 'The domain portion of the email address is invalid (the portion after the @: )',
-        //  4: 'The username portion of the email address is invalid (the portion before the @: )',
-        //  5: 'This email address looks fake or invalid. Please enter a real email address'
-
-        $.ajaxChimp.translations.es = {
-            'submit': 'Submitting...',
-            0: '<i class="fas fa-check"></i> We have sent you a confirmation email',
-            1: '<i class="fas fa-exclamation-circle"></i> You must enter a valid e-mail address.',
-            2: '<i class="fas fa-exclamation-circle"></i> E-mail address is not valid.',
-            3: '<i class="fas fa-exclamation-circle"></i> E-mail address is not valid.',
-            4: '<i class="fas fa-exclamation-circle"></i> E-mail address is not valid.',
-            5: '<i class="fas fa-exclamation-circle"></i> E-mail address is not valid.'
-        } 
-
-    };
-
-
    /* Back to Top
     * ------------------------------------------------------ */
     var clBackToTop = function() {
-        
         var pxShow  = 500,         // height on which the button will show
         fadeInTime  = 400,         // how slow/fast you want the button to show
         fadeOutTime = 400,         // how slow/fast you want the button to hide
         scrollSpeed = 300,         // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
         goTopButton = $(".cl-go-top")
-        
         // Show or hide the sticky footer button
         $(window).on('scroll', function() {
             if ($(window).scrollTop() >= pxShow) {
@@ -350,21 +250,16 @@
    /* Initialize
     * ------------------------------------------------------ */
     (function clInit() {
-        
         clPreloader();
         clMenuOnScrolldown();
         clOffCanvas();
         clPhotoswipe();
-        clStatCount();
         clMasonryFolio();
         clSlickSlider();
         clSmoothScroll();
         clPlaceholder();
         clAlertBoxes();
-        clAOS();
-        clAjaxChimp();
         clBackToTop();
 
     })();
-        
 })(jQuery);
