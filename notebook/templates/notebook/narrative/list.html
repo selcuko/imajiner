@@ -43,19 +43,20 @@
                         {% if narrative.lead %}
                         <div class="entry__excerpt">
                             <p>
-                                {{ narrative.lead|truncatechars:100 }}
+                                {{ narrative.lead|truncatechars:140 }}
                             </p>
                         </div>
                         {% endif %}
                         {% if narrative.tags.has_tags %}
-                        {% tags_for_user 3 as tags %}
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                {% for tag in tags %}
-                                <a href="#0">{{ tag.abstract.name }}</a>
-                                {% endfor %}
-                            </span>
-                        </div>
+                            {% tags_for_user 3 as tags %}
+                            <div class="entry__meta">
+                                <span class="entry__meta-links">
+                                    {% for tag in tags %}
+                                    <a href="#0">{{ tag.abstract.name }}</a>
+                                    {% endfor %}
+                                </span>
+                            </div>
+                        {% else %}
                         {% endif %}
                     </div>
 
@@ -69,7 +70,7 @@
 
             <div class="d-flex justify-content-center" style="display:none;">
                 <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
+                    <span class="sr-only"></span>
                 </div>
             </div>
         </div> <!-- end masonry-wrap -->

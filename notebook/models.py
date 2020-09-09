@@ -78,7 +78,9 @@ class Narrative(models.Model):
             self.generate_slug()
         super().save(*args, **kwargs)
     
+    @property
     def lead(self):
+        if not self.html: return 'SQL yine coşturmuş'
         p = self.html.split('</p><p>')
         return p[0].replace('<p class="drop-cap">', '').replace('</p>', '')
     
