@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, reverse
 from django.views.generic import DetailView, ListView
 from django.views import View
 from .models import Narrative
@@ -86,13 +86,17 @@ class NarrativeView:
 
         def get_queryset(self):
             return Narrative.objects.filter(sketch=False, author__isnull=False).order_by('-created_at')
+
+
+
 class NarrativeFactory:
     class New(View):
         template_name = 'notebook/narrative/write.html'
 
         def get(self, request):
             if not request.user.is_authenticated:
-                return HttpResponse("Prohibited")
+                return redirect(f'{reverse("gatewall:auth")}?next={reverse("notebook:new")}&espresso')
+
             form = NarrativeWrite()
             return render(self.request, self.template_name, context={'form':form})
 
@@ -159,7 +163,8 @@ class NarrativeFactory:
         template_name = 'notebook/narrative/folder.html'
         def get(self, request):
             if not request.user.is_authenticated:
-                return HttpResponse("Prohibited")
+                return redirect(f'{reverse("gatewall:auth")}?next={reverse("notebook:folder")}&espresso')
+
             sketches = Narrative.objects.filter(sketch=True, author=request.user)
             return render(request, self.template_name, {
                 'sketches': sketches,
@@ -171,11 +176,15 @@ class NarrativeFactory:
         template_name = 'notebook/narrative/write.html'
         
         def get(self, request, slug):
-            narrative = Narrative.objects.get(slug=slug)
+            if not request.user.is_authenticated:
+                return redirect(f'{reverse("gatewall:auth")}?next={reverse("notebook:folder")}&espresso')
+            narrative = Narrative.objects.get(slug=slug, author=request.user)
             form = NarrativeWrite(instance=narrative)
             return render(request, self.template_name, {'form': form})
 
         def post(self, request, slug):
+            if not request.user.is_authenticated:
+                return HttpResponse(status=403)
             narrative = Narrative.objects.get(slug=slug)
             form = NarrativeWrite(request.POST, instance=narrative)
             if not form.is_valid():
@@ -187,5 +196,5 @@ class NarrativeFactory:
                 narrative.sketch = False
 
             narrative.save(alter_slug=submitted)
-            return HttpResponse()
+            return redirect(narrative)
         
