@@ -10,7 +10,14 @@ from identity.models import Shadow
 
 class Auth(View):
     def get(self, request):
-        return render(request, 'gatewall/auth.html', {'user':request.user})
+        return render(request, 'gatewall/auth.html', {
+            'user': request.user,
+            'doc': {
+                'title': 'Kendini tanımla',
+                'author': 'Kapı Güvenliği',
+                'description': 'Tanımlama sayfası.',
+            }
+            })
     
     def post(self, request):
         p = request.POST

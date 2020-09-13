@@ -20,6 +20,16 @@ class NarrativeView:
             self.narrative = Narrative.objects.get(slug=self.slug)
             return self.narrative
         
+        def get_context_data(self, *args, **kwargs):
+            ctx = super().get_context_data(*args, **kwargs)
+            ctx.update({
+                'doc': {
+                    'title': self.narrative.title,
+                    'author': self.narrative.author.username,
+                }
+            })
+            return ctx
+        
         def post(self, request, *args, **kwargs):
             action = request.POST['action']
             try:
@@ -64,9 +74,18 @@ class NarrativeView:
         paginate_by = 12
         ordering = ('created_at',)
 
+        def get_context_data(self, *args, **kwargs):
+            ctx = super().get_context_data(*args, **kwargs)
+            ctx.update({
+                'doc': {
+                    'title': 'Hikayeler',
+                    'author': 'Imajiner Müşterileri'
+                }
+            })
+            return ctx
+
         def get_queryset(self):
             return Narrative.objects.filter(sketch=False, author__isnull=False).order_by('-created_at')
-
 class NarrativeFactory:
     class New(View):
         template_name = 'notebook/narrative/write.html'

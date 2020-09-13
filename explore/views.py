@@ -9,6 +9,11 @@ class Home(View):
     def get(self, request, **kwargs):
         return render(request, self.template_name, {
             'narratives':Narrative.objects.all()[:3],
+            'doc': {
+                'title': 'Uç, uçabildiğin kadar uç',
+                'author': 'Ömer Selçuk',
+                'description': 'Burası sanal adalar. Burası ütopya. Burası, yuvan.'
+            }
         })
     
     def post(self, request):

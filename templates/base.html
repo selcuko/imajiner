@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ doc.title|default:'Başlıksız Sayfa - Imajiner.' }}</title>
+    <title>{{ doc.title|truncatechars:30 }} | Imajiner.</title>
     <meta name="description" content="{{ doc.description }}">
     <meta name="author" content="{{ doc.author|default:'Ömer Feyyaz Selçuk' }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
