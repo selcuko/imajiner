@@ -5,9 +5,6 @@ let clientFingerprint = null;
 let shadowAction = null;
 $shadowButton.disabled = true;
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const next = urlParams.has('next') ? urlParams.get('next') : '/';
 
 async function fingerprintDevice() {
     return await Fingerprint2.getPromise()
@@ -34,6 +31,7 @@ function checkShadowRecords() {
         .then(json => {
             const found = json.found;
             action = found ? 'login' : 'register';
+            if (auto&&found) $shadowButton.click();
             if (found) handleShadowButton(found, username=json.username);
             else handleShadowButton(found);
         });
@@ -61,7 +59,7 @@ $shadowButton.onclick = (e) => {
         method: 'POST',
         body: fd,
     }).then(response => {
-        if (response.ok) window.location.href = next;
+        if (response.ok) redirect();
         else {
             // bir şeyler ters gitti
         };

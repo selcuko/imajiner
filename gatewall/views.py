@@ -21,6 +21,7 @@ class Auth(View):
             if action == "shadow-check":
                 fingerprint = p['fingerprint']
                 shadow = Shadow.authenticate(fingerprint)
+                print('FOUND:', shadow)
                 if not shadow:
                     return JsonResponse({"found": False})
                 return JsonResponse({

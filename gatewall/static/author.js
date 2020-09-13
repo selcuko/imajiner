@@ -51,7 +51,7 @@ $authorButton.onclick = (e) => {
         body: fd,
     })
     .then(response => {
-        if (response.ok) window.location.href = next;
+        if (response.ok) redirect();
         else $authorButton.innerText = 'Pardon kimsiniz?'
     })
 }
