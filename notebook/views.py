@@ -96,6 +96,7 @@ class NarrativeWrite(LoginRequiredMixin, View):
         new = not bool(uuid)
         if new:
             sketch = Narrative(sketch=True, author=request.user)
+            sketch.save()
             form = NarrativeForm(instance=sketch)
         else:
             try:
@@ -111,7 +112,8 @@ class NarrativeWrite(LoginRequiredMixin, View):
         new = not bool(uuid)
 
         if new:
-            sketch = Narrative(uuid=uuid, author=request.user, sketch=True)
+            uuid = request.POST['uuid']
+            sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
             form = NarrativeForm(request.POST, request.FILES, instance=sketch)
         else:
             try:
@@ -142,7 +144,7 @@ class NarrativeWrite(LoginRequiredMixin, View):
 
 
 
-class NarrativeFolder(View):
+class NarrativeFolder(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/folder.html'
     def get(self, request):
     
