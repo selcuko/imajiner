@@ -39,7 +39,7 @@ class Narrative(models.Model):
     html = models.TextField(null=True)
     sketch = models.BooleanField(default=False)
     uuid = models.UUIDField()
-    sound = models.OneToOneField(SoundRecord, null=True, blank=True, on_delete=models.SET_NULL)
+    sound = models.ForeignKey(SoundRecord, null=True, blank=True, on_delete=models.SET_NULL, related_name='narratives')
 
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)

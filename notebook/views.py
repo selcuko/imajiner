@@ -98,6 +98,7 @@ class NarrativeFactory:
                 return redirect(f'{reverse("gatewall:auth")}?next={reverse("notebook:new")}&espresso')
 
             form = NarrativeWrite()
+            form.fields['sound'].queryset = SoundRecord.objects.filter(uploader=request.user)
             return render(self.request, self.template_name, context={'form':form})
 
         def post(self, request):
