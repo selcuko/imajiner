@@ -8,6 +8,7 @@ const intervalId = setInterval(f, intervalMs);
 
 let last = {
     value: $textarea.value,
+    title: null,
     fetch: null,
 };
 
@@ -16,9 +17,18 @@ $form.onsubmit = function (e){
     post('SUBMIT');
 }
 
+$textarea.disabled = new Boolean($title.value);
+
 $status.innerText = "Seni bekliyorum."
 function f(){
-    if ($textarea.value !== last.value){
+    titleChanged = $title.value !== last.title;
+    if ($textarea.value !== last.value || titleChanged){
+        if (titleChanged) {
+            if ($title.value === '') $textarea.disabled = true;
+            else if($textarea.disabled) $textarea.disabled = false;
+            document.title = $title.value + ' | Imajiner.';
+            last.title = $title.value;
+        }
         post('AUTOSAVE');
     }
 }
