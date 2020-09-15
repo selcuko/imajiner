@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from django.utils import text, html
-from uuid import uuid1 as uuid
+from uuid import uuid1
 
 
 def ext_validator(file):
@@ -47,6 +47,10 @@ class Narrative(models.Model):
 
     class Meta:
         ordering = ('created_at',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.uuid: self.uuid = uuid1()
     
     @classmethod
     def viewable(cls, user):
@@ -64,7 +68,7 @@ class Narrative(models.Model):
     
     def get_absolute_url(self):
         if self.sketch:
-            return reverse('narrative:sketch', kwargs={'slug': self.slug})
+            return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
         else:
             return reverse('narrative:detail', kwargs={'slug': self.slug})
     
@@ -73,7 +77,6 @@ class Narrative(models.Model):
         self.html = self.html.replace('\n\n', '<br />')
         self.html = self.html.replace('\n', '</p><p>')
         self.html = f'<p class="drop-cap">{self.html}</p>'
-        if not self.uuid: self.uuid = uuid()
         if alter_slug:
             self.generate_slug()
         super().save(*args, **kwargs)
@@ -85,7 +88,6 @@ class Narrative(models.Model):
         return p[0].replace('<p class="drop-cap">', '').replace('</p>', '')
     
     def generate_slug(self):
-        if not self.uuid: self.uuid = uuid()
         self.slug = f'{text.slugify(self.title, allow_unicode=False)}-{str(self.uuid)[:8]}'
 
 @receiver(post_save, sender=Narrative)

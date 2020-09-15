@@ -1,11 +1,12 @@
-from django.shortcuts import render, HttpResponse, redirect, reverse
+from django.shortcuts import render, HttpResponse, redirect, reverse, Http404
 from django.views.generic import DetailView, ListView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from .models import Narrative, SoundRecord
-from .forms import NarrativeWrite, SoundUploadForm
+from .forms import NarrativeForm, SoundUploadForm
 from tagmanager.models import *
 import json
-import uuid
+from uuid import UUID
 from django.core.exceptions import SuspiciousOperation
 
 
@@ -88,110 +89,63 @@ class NarrativeList(ListView):
 
 
 
-class NarrativeWrite(View):
+class NarrativeWrite(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/write.html'
 
-    def get(self, request):
-        if not request.user.is_authenticated:
-            return redirect(f'{reverse("gatewall:auth")}?next={reverse("notebook:new")}&espresso')
-
-        form = NarrativeWrite()
+    def get(self, request, uuid=None):
+        new = not bool(uuid)
+        if new:
+            sketch = Narrative(sketch=True, author=request.user)
+            form = NarrativeForm(instance=sketch)
+        else:
+            try:
+                sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
+                form = NarrativeForm(instance=sketch)
+            except Narrative.DoesNotExist:
+                return HttpResponse(status=404)
+                
         form.fields['sound'].queryset = SoundRecord.objects.filter(uploader=request.user)
         return render(self.request, self.template_name, context={'form':form})
 
-    def post(self, request):
-        if not request.user.is_authenticated:
-            return HttpResponse("Prohibited")
-        form = NarrativeWrite(request.POST)
-        action = request.POST.get('action', 'SUBMIT')
-        count = int(request.POST.get('count', 1))
-        
+    def post(self, request, uuid=None):
+        new = not bool(uuid)
 
+        if new:
+            sketch = Narrative(uuid=uuid, author=request.user, sketch=True)
+            form = NarrativeForm(request.POST, request.FILES, instance=sketch)
+        else:
+            try:
+                sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
+                form = NarrativeForm(request.POST, request.FILES, instance=sketch)
+            except:
+                return HttpResponse(status=404)
+        
+        action = request.POST.get('action', 'submit').lower()
+        
         if not form.is_valid():
             return render(self.request, self.template_name, context={'form':form})
         
-        if action == 'SUBMIT':
-            if count > 0:
-                uid = request.POST.get('uuid')
-                uid = uuid.UUID(bytes=bytes(uid[-16:].encode()))
-                narrative = Narrative.objects.get(uuid=uid)
-                form = NarrativeWrite(request.POST, instance=narrative)
-                narrative = form.save(commit=False)
-                narrative.sketch = False
-                narrative.save()
-            
-            else:
-                uid = request.POST.get('uuid')
-                uid = uuid.UUID(bytes=bytes(uid[-16:].encode()))
-                form = NarrativeWrite(request.POST)
-                narrative = form.save(commit=False)
-                narrative.uuid = uid
-                narrative.author = request.user
-                narrative.sketch = False
-                narrative.save()
-
-
-            narrative = form.save()
+        if action == 'submit':
+            narrative = form.save(commit=False)
+            narrative.sketch = False
+            narrative.save()
             return redirect(narrative)
         
-        elif action == 'AUTOSAVE':
-            
-            if count > 0:
-                uid = request.POST.get('uuid')
-                uid = uuid.UUID(bytes=bytes(uid[-16:].encode()))
-                narrative = Narrative.objects.get(uuid=uid)
-                form = NarrativeWrite(request.POST, instance=narrative)
-                if not narrative.sketch:
-                    raise Exception('Wait a second!')
-                form.save()
-            else:
-                uid = request.POST.get('uuid')
-                uid = uuid.UUID(bytes=bytes(uid[-16:].encode()))
-                form = NarrativeWrite(request.POST)
-                narrative = form.save(commit=False)
-                narrative.uuid = uid
-                narrative.sketch = True
-                narrative.author = request.user
-                narrative.save()
-            return HttpResponse('skec')
+        elif action == 'autosave':
+            form.save()
+            return HttpResponse()
+        
         else:
-            return HttpResponse('Unknown')
+            raise Exception('Action ID unknown')
+        
+        
 
-
-class NarrativeSketch(DetailView):
-
-    template_name = 'notebook/narrative/write.html'
-    
-    def get(self, request, slug):
-        if not request.user.is_authenticated:
-            return redirect(f'{reverse("gatewall:auth")}?next={reverse("notebook:folder")}&espresso')
-        narrative = Narrative.objects.get(slug=slug, author=request.user)
-        form = NarrativeWrite(instance=narrative)
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request, slug):
-        if not request.user.is_authenticated:
-            return HttpResponse(status=403)
-        narrative = Narrative.objects.get(slug=slug)
-        form = NarrativeWrite(request.POST, instance=narrative)
-        if not form.is_valid():
-            print(form.errors)
-        action = request.POST.get('action', '')
-        narrative = form.save(commit=False)
-        submitted = action == 'SUBMIT'
-        if submitted:
-            narrative.sketch = False
-
-        narrative.save(alter_slug=submitted)
-        return redirect(narrative)
 
 
 class NarrativeFolder(View):
     template_name = 'notebook/narrative/folder.html'
     def get(self, request):
-        if not request.user.is_authenticated:
-            return redirect(f'{reverse("gatewall:auth")}?next={reverse("notebook:folder")}&espresso')
-
+    
         sketches = Narrative.objects.filter(sketch=True, author=request.user)
         return render(request, self.template_name, {
             'sketches': sketches,

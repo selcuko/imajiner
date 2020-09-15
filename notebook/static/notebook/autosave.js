@@ -24,7 +24,6 @@ function f(){
 }
 
 let c = 0;
-const uuid = Date.now() + Math.random();
 
 async function post(action='SUBMIT'){
     if (action === 'SUBMIT' && last.fetch === null){
@@ -35,7 +34,6 @@ async function post(action='SUBMIT'){
     const fd = new FormData($form);
     fd.append('action', action);
     fd.append('count', c++);
-    fd.append('uuid', uuid);
 
     return await fetch('', {
         method: 'POST',

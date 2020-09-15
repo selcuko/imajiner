@@ -3,6 +3,10 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static, serve
 from explore.views import Home
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+LoginRequiredMixin.redirect_field_name = 'sonraki'
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
