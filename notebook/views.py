@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, CreateView
 from django.views import View
-from .models import Narrative
-from .forms import NarrativeWrite
+from .models import Narrative, SoundRecord
+from .forms import NarrativeWrite, SoundUploadForm
 from tagmanager.models import *
 import json
 import uuid
@@ -197,4 +197,20 @@ class NarrativeFactory:
 
             narrative.save(alter_slug=submitted)
             return redirect(narrative)
-        
+
+
+
+class SoundUpload(CreateView):
+    template_name = 'notebook/upload.html'
+    model = SoundRecord
+    fields = [
+        'name',
+        'file',
+    ]
+    def get_success_url(self, *args, **kwargs):
+        return ''
+
+    def form_valid(self, form):
+        form.instance.uploader = self.request.user
+        return super().form_valid(form)
+    

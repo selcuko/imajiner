@@ -10,7 +10,7 @@ from uuid import uuid1 as uuid
 
 
 def ext_validator(file):
-        valid = ['mp3', 'aac', 'wav']
+        valid = ['mp3', 'aac', 'wav', 'opus']
         if file.name.split('.')[-1] not in valid:
             raise ValidationError('File extension invalid. Options:', str(valid))
 

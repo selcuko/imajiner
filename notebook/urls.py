@@ -1,6 +1,6 @@
 from django.urls import path
 from django.views.generic import RedirectView
-from .views import NarrativeView, NarrativeFactory
+from .views import NarrativeView, NarrativeFactory, SoundUpload
 
 app_name = 'notebook'
 urlpatterns = [
@@ -12,4 +12,6 @@ urlpatterns = [
     path('hikaye/yaz/<slug:slug>/', NarrativeFactory.Sketch.as_view(), name='sketch'),
 
     path('hikaye/<slug:slug>/', NarrativeView.Detail.as_view(), name='detail'),
+
+    path('ses/', SoundUpload.as_view(), name='upload'),
 ]
