@@ -105,8 +105,11 @@ class NarrativeWrite(LoginRequiredMixin, View):
             except Narrative.DoesNotExist:
                 return HttpResponse(status=404)
                 
-        form.fields['sound'].queryset = SoundRecord.objects.filter(uploader=request.user)
-        return render(self.request, self.template_name, context={'form':form})
+        sounds = SoundRecord.objects.filter(uploader=request.user)
+        return render(self.request, self.template_name, context={
+            'form': form,
+            'sounds': sounds,
+            })
 
     def post(self, request, uuid=None):
         new = not bool(uuid)

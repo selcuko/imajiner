@@ -16,6 +16,8 @@
 <script defer type="text/javascript" src="{% static 'notebook/autosave.js' %}"></script>
 {% endblock head %}
 
+{% block philosophy %}{% endblock %}
+
 {% block body.id %}top{% endblock %}
 {% block body %}
     <section id="styles" class="s-styles">
@@ -27,7 +29,12 @@
                 <form id="form" action="" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-
+                    <div class="ui icon buttons">
+                        <button class="ui button">Ses ekle</button>
+                        <button class="ui icon button"><i class="microphone icon"></i></button>
+                        <button class="ui icon button"><i class="recycle icon"></i></button>
+                        <button class="ui icon button"><i class="delete icon"></i></button>
+                    </div>
                     <blockquote>
                         <p id="status">Bişiler oluyo</p>
                         <cite>Sistem</cite>

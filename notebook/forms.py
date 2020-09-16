@@ -4,7 +4,7 @@ from .models import Narrative, SoundRecord
 
 class ButtonWidget(forms.Widget):
     def render(self, id="button", name="", renderer=None, value="Entitled Button", attrs=None):
-        return f'<button name="{html.escape(id)}">{html.escape(value)}"</button>'
+        return f'<button class="ui button" id="{html.escape(id)}">{value}"</button>'
 
 class NarrativeForm(forms.ModelForm):
     class Meta:
@@ -13,20 +13,17 @@ class NarrativeForm(forms.ModelForm):
             'uuid',
             'title',
             'body',
-            'sound',
         ]
 
         widgets = {
             'uuid': forms.HiddenInput(),
             'title': forms.TextInput(attrs={'class': 'full-width'}),
             'body': forms.Textarea(attrs={'class': 'full-width'}),
-            'sound': ButtonWidget(),#forms.ButtonWidget(attrs={'class': 'full-width'}),
         }
 
         labels = {
             'title': 'Önden gelen tekst',
             'body': 'Asıl yazı',
-            'sound': 'Eklemek istersen ses',
         }
 
 class SoundUploadForm(forms.ModelForm):
