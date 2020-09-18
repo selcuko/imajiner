@@ -1,4 +1,10 @@
-namespace = 'xeecoz'
+namespace = 'philosophy'
+filename = 'main.css'
+new_filename = filename.split('.')
+new_filename = ''.join(new_filename[:-1]) + '.encapsulated.' + new_filename[-1]
+
+file = open(filename, 'r+t')
+mod = open(new_filename, 'wt')
 
 html_tags = [
     'div',
@@ -42,9 +48,6 @@ html_tags = [
     'progress',
     'canvas',
 ]
-
-file = open('semantic.css', 'r+t')
-mod = open('modified.css', 'wt')
 
 
 def variations(tag):

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html class="no-js" lang="tr">
+<html class="philosophy no-js" lang="tr">
 
 <head>
     <meta charset="utf-8">
@@ -13,9 +13,9 @@
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
     {% block philosophy %}
-    <link rel="stylesheet" href="{% static 'philosophy/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'philosophy/css/base.encapsulated.css' %}">
     <link rel="stylesheet" href="{% static 'philosophy/css/vendor.css' %}">
-    <link rel="stylesheet" href="{% static 'philosophy/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'philosophy/css/main.encapsulated.css' %}">
     {% endblock %}
 
     {% block base.head %} {% endblock %}
@@ -27,70 +27,71 @@
     <link rel="stylesheet" href="{% static 'semantic/semantic.encapsulated.css' %}">
     <script src="{% static 'semantic/semantic.min.js' %}"></script>
     {% endblock semantic %}
+    <link rel="stylesheet" href="{% static 'philosophy/css/font-awesome/css/font-awesome.encapsulated.css' %}">
 </head>
 
 {% block body.absolute %}
-<body id="{% block body.id %}top{% endblock %}">
+<body class="philosophy" id="{% block body.id %}top{% endblock %}">
     {% block base.navbar %}
-    <div class="s-pageheader">
+    <div class="philosophy s-pageheader">
 
-        <header class="header">
-            <div class="header__content row">
+        <header class="philosophy header">
+            <div class="philosophy header__content row">
 
-                <div class="header__logo">
-                    <a class="logo">
-                        <img src="{% static 'logo.png' %}" alt="">
+                <div class="philosophy header__logo">
+                    <a class="philosophy logo">
+                        <img class="philosophy" src="{% static 'logo.png' %}" alt="">
                     </a>
                 </div> <!-- end header__logo -->
 
-                <ul class="header__social">
-                    <li>
-                        <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <ul class="philosophy header__social">
+                    <li class="philosophy">
+                        <a class="philosophy" href="#0"><i class="philosophy fa fa-facebook" aria-hidden="true"></i></a>
                     </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <li class="philosophy">
+                        <a class="philosophy" href="#0"><i class="philosophy fa fa-twitter" aria-hidden="true"></i></a>
                     </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <li class="philosophy">
+                        <a class="philosophy" href="#0"><i class="philosophy fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    <li class="philosophy">
+                        <a class="philosophy" href="#0"><i class="philosophy fa fa-pinterest" aria-hidden="true"></i></a>
                     </li>
                 </ul> <!-- end header__social -->
 
-                <a class="header__search-trigger" href="#0"></a>
+                <a class="philosophy header__search-trigger" href="#0"></a>
 
-                <div class="header__search">
+                <div class="philosophy header__search">
 
-                    <form role="search" method="get" class="header__search-form" action="#">
-                        <label>
-                            <span class="hide-content">Search for:</span>
-                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s"
+                    <form role="search" method="get" class="philosophy header__search-form" action="#">
+                        <label class="philosophy">
+                            <span class="philosophy hide-content">Search for:</span>
+                            <input type="search" class="philosophy search-field" placeholder="Type Keywords" value="" name="s"
                                 title="Search for:" autocomplete="off">
                         </label>
-                        <input type="submit" class="search-submit" value="Search">
+                        <input type="submit" class="philosophy search-submit" value="Search">
                     </form>
 
-                    <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+                    <a href="#0" title="Close Search" class="philosophy header__overlay-close">Close</a>
 
                 </div> <!-- end header__search -->
 
 
-                <a class="header__toggle-menu" href="#0" title="Menu"><span>Mönü</span></a>
+                <a class="philosophy header__toggle-menu" href="#0" title="Menu"><span class="philosophy">Mönü</span></a>
 
-                <nav class="header__nav-wrap">
+                <nav class="philosophy header__nav-wrap">
 
-                    <h2 class="header__nav-heading h6">IMAJINER</h2>
+                    <h2 class="philosophy header__nav-heading h6">IMAJINER</h2>
 
-                    <ul class="header__nav">
-                        <li><a href="{% url 'landing' %}" title="">Ana sahife</a></li>
-                        <li><a href="{% url 'notebook:list' %}" title="">Hikayeler</a></li>
-                        <li><a href="notebook:tags" title="">Etiketler</a></li>
-                        <li><a href="#0" title="">Kontrol paneli</a></li>
-                        <li><a href="evangelism:index" title="">Bilgi</a></li>
+                    <ul class="philosophy header__nav">
+                        <li class="philosophy"><a class="philosophy" href="{% url 'landing' %}" title="">Ana sahife</a></li>
+                        <li class="philosophy"><a class="philosophy" href="{% url 'notebook:list' %}" title="">Hikayeler</a></li>
+                        <li class="philosophy"><a class="philosophy" href="notebook:tags" title="">Etiketler</a></li>
+                        <li class="philosophy"><a class="philosophy" href="#0" title="">Kontrol paneli</a></li>
+                        <li class="philosophy"><a class="philosophy" href="evangelism:index" title="">Bilgi</a></li>
                     </ul> <!-- end header__nav -->
 
-                    <a href="#0" title="Mönüyü iade et" class="header__overlay-close close-mobile-menu">Close</a>
+                    <a href="#0" title="Mönüyü iade et" class="philosophy header__overlay-close close-mobile-menu">Close</a>
 
                 </nav> <!-- end header__nav-wrap -->
 
@@ -107,17 +108,17 @@
 
 
     {% block base.footer %}
-    <footer class="s-footer">
-        <div class="s-footer__bottom">
-            <div class="row">
-                <div class="col-full">
-                    <div class="s-footer__copyright">
-                        <span>{{ copyright|safe }}</span> 
-                        <span>{{ credits|safe }}</span>
+    <footer class="philosophy s-footer">
+        <div class="philosophy s-footer__bottom">
+            <div class="philosophy row">
+                <div class="philosophy col-full">
+                    <div class="philosophy s-footer__copyright">
+                        <span class="philosophy">{{ copyright|safe }}</span> 
+                        <span class="philosophy">{{ credits|safe }}</span>
                     </div>
 
-                    <div class="go-top">
-                        <a class="smoothscroll" title="Back to Top" href="#top"></a>
+                    <div class="philosophy go-top">
+                        <a class="philosophy smoothscroll" title="Back to Top" href="#top"></a>
                     </div>
                 </div>
             </div>

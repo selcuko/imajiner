@@ -8,5 +8,5 @@ def SiteWideContextSupplier(request):
             'title': 'Bağlam Uygulandı',
         },
         'copyright': f'Copyright &copy; {year} Tüm hakları saklıdır.',
-        'credits': f"Site stili büyük oranda <a href=\"https://colorlib.com\">Colorlib</a>'den alınmıştır. <a href=\"#0\">Detaylı bilgi</a>"
+        'credits': f"Site stili büyük oranda <a class=\"philosophy\" href=\"https://colorlib.com\">Colorlib</a>'den alınmıştır. <a class=\"philosophy\" href=\"#0\">Detaylı bilgi</a>"
     }

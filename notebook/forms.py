@@ -17,8 +17,8 @@ class NarrativeForm(forms.ModelForm):
 
         widgets = {
             'uuid': forms.HiddenInput(),
-            'title': forms.TextInput(attrs={'class': 'full-width'}),
-            'body': forms.Textarea(attrs={'class': 'full-width'}),
+            'title': forms.TextInput(attrs={'class': 'philosophy full-width'}),
+            'body': forms.Textarea(attrs={'class': 'philosophy full-width'}),
         }
 
         labels = {

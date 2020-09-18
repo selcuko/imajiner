@@ -1,4 +1,4 @@
-{% extends 'philosophy.base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block head %}
@@ -16,30 +16,28 @@
 <script defer type="text/javascript" src="{% static 'notebook/autosave.js' %}"></script>
 {% endblock head %}
 
-{% block philosophy %}{% endblock %}
-
 {% block body.id %}top{% endblock %}
 {% block body %}
-    <section id="styles" class="s-styles">
-        <div class="row">
+    <section id="styles" class="philosophy s-styles">
+        <div class="philosophy row">
 
-            <div class="tab-full">
-                <h1>Bildirge yayınla</h1>
+            <div class="philosophy tab-full">
+                <h1 class="philosophy">Bildirge yayınla</h1>
                 <br>
-                <form id="form" action="" method="POST">
+                <form class="philosophy" id="form" action="" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <div class="ui icon buttons">
-                        <button class="ui button">Ses ekle</button>
-                        <button class="ui icon button"><i class="microphone icon"></i></button>
-                        <button class="ui icon button"><i class="recycle icon"></i></button>
-                        <button class="ui icon button"><i class="delete icon"></i></button>
+                    <div class="xeecoz ui huge icon buttons">
+                        <button class="xeecoz ui button">Ses ekle</button>
+                        <button class="xeecoz ui icon button"><i class="microphone icon"></i></button>
+                        <button class="xeecoz ui icon button"><i class="recycle icon"></i></button>
+                        <button class="xeecoz ui icon button"><i class="delete icon"></i></button>
                     </div>
-                    <blockquote>
-                        <p id="status">Bişiler oluyo</p>
-                        <cite>Sistem</cite>
+                    <blockquote class="philosophy philosophy">
+                        <p class="philosophy" id="status">Bişiler oluyo</p>
+                        <cite class="philosophy">Sistem</cite>
                     </blockquote>
-                    <input class="btn--primary full-width" type="submit" value="Beyan et">
+                    <input class="philosophy btn--primary full-width" type="submit" value="Beyan et">
                 </form>
             </div>
         </div>
