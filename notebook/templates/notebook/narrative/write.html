@@ -14,6 +14,7 @@
     }
 </style>
 <script defer type="text/javascript" src="{% static 'notebook/autosave.js' %}"></script>
+<script defer type="text/javascript" src="{% static 'notebook/audio.js' %}"></script>
 {% endblock head %}
 
 {% block body.id %}top{% endblock %}
@@ -27,12 +28,14 @@
                 <form class="philosophy" id="form" action="" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
+                    
+                    <label class="philosophy">Yazıya iliştirilecek ses:</label>
                     <div class="xeecoz ui huge icon buttons">
-                        <button class="xeecoz ui button">Ses ekle</button>
-                        <button class="xeecoz ui icon button"><i class="microphone icon"></i></button>
-                        <button class="xeecoz ui icon button"><i class="recycle icon"></i></button>
-                        <button class="xeecoz ui icon button"><i class="delete icon"></i></button>
+                        <label id="audio-primary" style="border-right:1px lightgray solid;" class="xeecoz ui icon button" for="audio-input"><i class="icon paperclip"></i><span style="margin-left:0.8rem;">Ses ekle</span></label>
+                        <input style="display:none;" accept="audio/*" type="file" id="audio-input" capture>
+                        <div id="audio-secondary" class="xeecoz ui icon button"><i class="icon microphone"></i></div>
                     </div>
+
                     <blockquote class="philosophy philosophy">
                         <p class="philosophy" id="status">Bişiler oluyo</p>
                         <cite class="philosophy">Sistem</cite>
