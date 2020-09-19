@@ -25,7 +25,7 @@
             <div class="philosophy tab-full">
                 <h1 class="philosophy">Bildirge yayınla</h1>
                 <br>
-                <form class="philosophy" id="form" action="" method="POST">
+                <form enctype="multipart/form-data" class="philosophy" id="form" action="" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
                     

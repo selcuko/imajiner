@@ -133,7 +133,18 @@ class NarrativeWrite(LoginRequiredMixin, View):
         if action == 'submit':
             narrative = form.save(commit=False)
             narrative.sketch = False
-            narrative.save()
+            audio = request.POST.get('audio', None)
+            print("AUDIO", audio)
+            print('POST', request.POST)
+            if audio:
+                audio_file = SoundRecord.objects.create(
+                    file = audio,
+                    uploader = request.user,
+                )
+                narrative.sound = audio_file
+                narrative.sound.save()
+            else:
+                narrative.save()
             return redirect(narrative)
         
         elif action == 'autosave':

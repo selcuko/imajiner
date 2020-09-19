@@ -7,11 +7,12 @@ const audioPrimaryText = audioPrimary.children[1];
 const audioSecondaryIcon = audioSecondary.children[0];
 
 let selected = false;
+let file;
 
 
 audioInput.onchange = (e) => {
     selected = true;
-    const file = e.target.files[0];
+    file = e.target.files[0];
     if (!file) return;
     audioPrimaryText.innerText = truncate(file.name);
 
@@ -25,6 +26,7 @@ audioSecondary.onclick = (e) => {
         audioPrimaryText.innerText = 'Ses ekle...yeniden';
         changeIcon(audioPrimaryIcon, 'paperclip');
         changeIcon(audioSecondaryIcon, 'microphone');
+        file = null;
         return;
     } else {
         /* voice record */

@@ -44,11 +44,14 @@ async function post(action='SUBMIT'){
     const fd = new FormData($form);
     fd.append('action', action);
     fd.append('count', c++);
+    if (file) {
+        console.log('appended file')
+        fd.append('audio', file)
+    } else console.log('no file selected')
 
     return await fetch('', {
         method: 'POST',
         body: fd,
-        //redirect: 'manual',
         credentials: 'same-origin',
     })
     .then(response => {
@@ -60,7 +63,7 @@ async function post(action='SUBMIT'){
             if (action === 'SUBMIT') {
                 clearInterval(intervalId);
                 $status.innerText = 'Bildirge yayınlandı. Birazdan yönlendirileceksiniz.'
-                setTimeout(()=>{window.location.replace(response.url);}, 500);
+                //setTimeout(()=>{window.location.replace(response.url);}, 500);
             } else {
                 $status.innerText = 'Değişiklikler kaydedildi.'
             }
