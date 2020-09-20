@@ -33,7 +33,7 @@ class SoundRecord(models.Model):
 
 
 class Narrative(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, default='Başlıklı hikaye')
     slug = models.SlugField(max_length=100, null=True, unique=True)
     body = models.TextField(null=True)
     html = models.TextField(null=True)

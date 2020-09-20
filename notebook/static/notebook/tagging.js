@@ -52,6 +52,7 @@ $e.add.onclick = modal.show;
 
 $e.display.map((display) => { taglib.register(display); })
 
+let l;
 $e.form.onsubmit = (e) => {
   e.preventDefault();
   const fd = new FormData($e.form);
@@ -62,14 +63,18 @@ $e.form.onsubmit = (e) => {
     body: fd,
   }).then(response => {
     const newtag = document.createElement('a');
+    newtag.classList.add('philosophy');
+    newtag.classList.add('tag-display');
+    l = newtag;
     newtag.appendChild(document.createTextNode(fd.get('name') + ' ('));
-
     const cn = document.createElement('small');
+    cn.classList.add('philosophy');
+    cn.classList.add('count');
     cn.appendChild(document.createTextNode('1'));
     newtag.appendChild(cn);
-    newtag.appendChild(document.createTextNode(')'))
+    newtag.appendChild(document.createTextNode(')'));
+    console.log(newtag);
     $e.tags.insertBefore(newtag, $e.tags.children[$e.tags.children.length - 1]);
-    console.log(newtag.children);
     taglib.register(newtag);
     modal.close();
   })
