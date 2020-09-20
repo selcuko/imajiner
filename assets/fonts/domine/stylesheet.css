@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'domine-bold';
+    src: url('./domine-bold-webfont.woff') format('woff'),
+         url('./domine-bold-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'domine-regular';
+    src: url('./domine-bold-webfont.woff') format('woff'),
+	url('./domine-bold-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+}

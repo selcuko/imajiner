@@ -6,13 +6,18 @@
     <meta charset="utf-8">
     <title>{{ doc.title|truncatechars:30 }} | Imajiner.</title>
     <meta name="description" content="{{ doc.description }}">
-    <meta name="author" content="{{ doc.author|default:'Ömer Feyyaz Selçuk' }}">
+    <meta name="author" content="{{ doc.author|default:'Ömer Selçuk' }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
-    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/librebaskerville/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/quest/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/questgrande/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/domine/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/lato/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/metropolis/stylesheet.css' %}">    
 
     {% block philosophy %}
     <link rel="stylesheet" href="{% static 'philosophy/css/base.encapsulated.css' %}">
