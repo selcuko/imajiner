@@ -3,6 +3,7 @@ from django.utils import text
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
 
 
 class AbstractTag(models.Model):
@@ -13,11 +14,11 @@ class AbstractTag(models.Model):
         return f'Abstract Tag: {self.name} ({self.slug})'
 
     def save(self, *args, **kwargs):
-        self.slug = text.slugify(self.name, allow_unicode=True)
+        self.slug = text.slugify(self.name, allow_unicode=False)
         return super().save(*args, **kwargs)
     
     def get_absolute_url(self):
-        return '#0'
+        return reverse('tag:detail', kwargs={'slug':self.slug})
 
 
 

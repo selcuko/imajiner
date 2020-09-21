@@ -13,12 +13,12 @@ class Shadow(models.Model):
     active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'Shadow r/ {self.user.username}'
+        return f'Shadow u/{self.user.username}'
     
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        return super().save(*args, **kwargs)
     
-    def convert_to_author(self, password):
+    def become_author(self, password):
         self.user.set_password(password)
         self.user.save()
         self.active = False

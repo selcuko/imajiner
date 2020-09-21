@@ -18,6 +18,7 @@ urlpatterns = [
     path('', include('identity.urls', namespace='identity')),
     path('', include('evangelism.urls', namespace='evangelism')),
     path('', include('cnc.urls', namespace='cnc')),
+    path('', include('tagmanager.urls', namespace='tag'))
 ]
 
 if settings.DEBUG:

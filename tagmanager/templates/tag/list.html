@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section class="s-content">
+    <ul>
+        {% for tag in tags %}
+        <li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
