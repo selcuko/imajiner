@@ -9,3 +9,7 @@ def author_view(request, username):
         'narratives': Narrative.viewable(user),
         })
 
+
+def self_view(request):
+    return render(request, 'identity/self.html')
+

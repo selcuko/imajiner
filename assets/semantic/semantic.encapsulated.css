@@ -24,14 +24,14 @@
 
 /* Border-Box */
 
-*.xeecoz,
-*.xeecoz:before,
-*.xeecoz:after {
+*.semantic,
+*.semantic:before,
+*.semantic:after {
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
-html.xeecoz {
+html.semantic {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -58,7 +58,7 @@ input[type="password"] {
  *    IE on Windows Phone and in iOS.
  */
 
-html.xeecoz {
+html.semantic {
   line-height: 1.15;
   /* 1 */
   -ms-text-size-adjust: 100%;
@@ -74,7 +74,7 @@ html.xeecoz {
  * Remove the margin in all browsers (opinionated).
  */
 
-body.xeecoz {
+body.semantic {
   margin: 0;
 }
 
@@ -96,7 +96,7 @@ section {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1.xeecoz {
+h1.semantic {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -111,7 +111,7 @@ h1.xeecoz {
 
 figcaption,
 figure,
-main.xeecoz {
+main.semantic {
   /* 1 */
   display: block;
 }
@@ -144,7 +144,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-pre.xeecoz {
+pre.semantic {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
@@ -159,7 +159,7 @@ pre.xeecoz {
  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
 
-a.xeecoz {
+a.semantic {
   background-color: transparent;
   /* 1 */
   -webkit-text-decoration-skip: objects;
@@ -185,8 +185,8 @@ abbr[title] {
  * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
  */
 
-b.xeecoz,
-strong.xeecoz {
+b.semantic,
+strong.semantic {
   font-weight: inherit;
 }
 
@@ -194,8 +194,8 @@ strong.xeecoz {
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-b.xeecoz,
-strong.xeecoz {
+b.semantic,
+strong.semantic {
   font-weight: bolder;
 }
 
@@ -204,9 +204,9 @@ strong.xeecoz {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-code.xeecoz,
-kbd.xeecoz,
-samp.xeecoz {
+code.semantic,
+kbd.semantic,
+samp.semantic {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
@@ -217,7 +217,7 @@ samp.xeecoz {
  * Add the correct font style in Android 4.3-.
  */
 
-dfn.xeecoz {
+dfn.semantic {
   font-style: italic;
 }
 
@@ -234,7 +234,7 @@ mark {
  * Add the correct font size in all browsers.
  */
 
-small.xeecoz {
+small.semantic {
   font-size: 80%;
 }
 
@@ -243,19 +243,19 @@ small.xeecoz {
  * all browsers.
  */
 
-sub.xeecoz,
-sup.xeecoz {
+sub.semantic,
+sup.semantic {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub.xeecoz {
+sub.semantic {
   bottom: -0.25em;
 }
 
-sup.xeecoz {
+sup.semantic {
   top: -0.5em;
 }
 
@@ -266,8 +266,8 @@ sup.xeecoz {
  * Add the correct display in IE 9-.
  */
 
-audio.xeecoz,
-video.xeecoz {
+audio.semantic,
+video.semantic {
   display: inline-block;
 }
 
@@ -275,7 +275,7 @@ video.xeecoz {
  * Add the correct display in iOS 4-7.
  */
 
-audio.xeecoz:not([controls]) {
+audio.semantic:not([controls]) {
   display: none;
   height: 0;
 }
@@ -284,7 +284,7 @@ audio.xeecoz:not([controls]) {
  * Remove the border on images inside links in IE 10-.
  */
 
-img.xeecoz {
+img.semantic {
   border-style: none;
 }
 
@@ -292,7 +292,7 @@ img.xeecoz {
  * Hide the overflow in IE.
  */
 
-svg.xeecoz:not(:root) {
+svg.semantic:not(:root) {
   overflow: hidden;
 }
 
@@ -304,11 +304,11 @@ svg.xeecoz:not(:root) {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button.xeecoz,
-input.xeecoz,
-optgroup.xeecoz,
-select.xeecoz,
-textarea.xeecoz {
+button.semantic,
+input.semantic,
+optgroup.semantic,
+select.semantic,
+textarea.semantic {
   font-family: sans-serif;
   /* 1 */
   font-size: 100%;
@@ -324,8 +324,8 @@ textarea.xeecoz {
  * 1. Show the overflow in Edge.
  */
 
-button.xeecoz,
-input.xeecoz {
+button.semantic,
+input.semantic {
   /* 1 */
   overflow: visible;
 }
@@ -335,8 +335,8 @@ input.xeecoz {
  * 1. Remove the inheritance of text transform in Firefox.
  */
 
-button.xeecoz,
-select.xeecoz {
+button.semantic,
+select.semantic {
   /* 1 */
   text-transform: none;
 }
@@ -347,7 +347,7 @@ select.xeecoz {
  * 2. Correct the inability to style clickable types in iOS and Safari.
  */
 
-button.xeecoz,
+button.semantic,
 html [type="button"],
 [type="reset"],
 [type="submit"] {
@@ -359,7 +359,7 @@ html [type="button"],
  * Remove the inner border and padding in Firefox.
  */
 
-button.xeecoz::-moz-focus-inner,
+button.semantic::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
@@ -371,7 +371,7 @@ button.xeecoz::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 
-button.xeecoz:-moz-focusring,
+button.semantic:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
@@ -382,7 +382,7 @@ button.xeecoz:-moz-focusring,
  * Correct the padding in Firefox.
  */
 
-fieldset.xeecoz {
+fieldset.semantic {
   padding: 0.35em 0.75em 0.625em;
 }
 
@@ -393,7 +393,7 @@ fieldset.xeecoz {
  *    `fieldset` elements in all browsers.
  */
 
-legend.xeecoz {
+legend.semantic {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
@@ -414,7 +414,7 @@ legend.xeecoz {
  * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
 
-progress.xeecoz {
+progress.semantic {
   display: inline-block;
   /* 1 */
   vertical-align: baseline;
@@ -425,7 +425,7 @@ progress.xeecoz {
  * Remove the default vertical scrollbar in IE.
  */
 
-textarea.xeecoz {
+textarea.semantic {
   overflow: auto;
 }
 
@@ -448,7 +448,7 @@ textarea.xeecoz {
  */
 
 [type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button.xeecoz {
+[type="number"]::-webkit-outer-spin-button.semantic {
   height: auto;
 }
 
@@ -478,7 +478,7 @@ textarea.xeecoz {
  * 2. Change font properties to `inherit` in Safari.
  */
 
-::-webkit-file-upload-button.xeecoz {
+::-webkit-file-upload-button.semantic {
   -webkit-appearance: button;
   /* 1 */
   font: inherit;
@@ -513,7 +513,7 @@ summary {
  * Add the correct display in IE 9-.
  */
 
-canvas.xeecoz {
+canvas.semantic {
   display: inline-block;
 }
 
@@ -553,16 +553,16 @@ template {
              Page
 *******************************/
 
-html.xeecoz,
-body.xeecoz {
+html.semantic,
+body.semantic {
   height: 100%;
 }
 
-html.xeecoz {
+html.semantic {
   font-size: 14px;
 }
 
-body.xeecoz {
+body.semantic {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
@@ -579,11 +579,11 @@ body.xeecoz {
              Headers
 *******************************/
 
-h1.xeecoz,
-h2.xeecoz,
-h3.xeecoz,
-h4.xeecoz,
-h5.xeecoz {
+h1.semantic,
+h2.semantic,
+h3.semantic,
+h4.semantic,
+h5.semantic {
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   line-height: 1.28571429em;
   margin: calc(2rem -  0.14285714em ) 0em 1rem;
@@ -591,40 +591,40 @@ h5.xeecoz {
   padding: 0em;
 }
 
-h1.xeecoz {
+h1.semantic {
   min-height: 1rem;
   font-size: 2rem;
 }
 
-h2.xeecoz {
+h2.semantic {
   font-size: 1.71428571rem;
 }
 
-h3.xeecoz {
+h3.semantic {
   font-size: 1.28571429rem;
 }
 
-h4.xeecoz {
+h4.semantic {
   font-size: 1.07142857rem;
 }
 
-h5.xeecoz {
+h5.semantic {
   font-size: 1rem;
 }
 
-h1.xeecoz:first-child,
-h2.xeecoz:first-child,
-h3.xeecoz:first-child,
-h4.xeecoz:first-child,
-h5.xeecoz:first-child {
+h1.semantic:first-child,
+h2.semantic:first-child,
+h3.semantic:first-child,
+h4.semantic:first-child,
+h5.semantic:first-child {
   margin-top: 0em;
 }
 
-h1.xeecoz:last-child,
-h2.xeecoz:last-child,
-h3.xeecoz:last-child,
-h4.xeecoz:last-child,
-h5.xeecoz:last-child {
+h1.semantic:last-child,
+h2.semantic:last-child,
+h3.semantic:last-child,
+h4.semantic:last-child,
+h5.semantic:last-child {
   margin-bottom: 0em;
 }
 
@@ -632,16 +632,16 @@ h5.xeecoz:last-child {
              Text
 *******************************/
 
-p.xeecoz {
+p.semantic {
   margin: 0em 0em 1em;
   line-height: 1.4285em;
 }
 
-p.xeecoz:first-child {
+p.semantic:first-child {
   margin-top: 0em;
 }
 
-p.xeecoz:last-child {
+p.semantic:last-child {
   margin-bottom: 0em;
 }
 
@@ -649,12 +649,12 @@ p.xeecoz:last-child {
         Links
 --------------------*/
 
-a.xeecoz {
+a.semantic {
   color: #4183C4;
   text-decoration: none;
 }
 
-a.xeecoz:hover {
+a.semantic:hover {
   color: #1e70bf;
   text-decoration: none;
 }
@@ -686,20 +686,20 @@ a.xeecoz:hover {
 
 /* Form */
 
-textarea.xeecoz::-webkit-selection,
-input.xeecoz::-webkit-selection {
+textarea.semantic::-webkit-selection,
+input.semantic::-webkit-selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: rgba(0, 0, 0, 0.87);
 }
 
-textarea.xeecoz::-moz-selection,
-input.xeecoz::-moz-selection {
+textarea.semantic::-moz-selection,
+input.semantic::-moz-selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: rgba(0, 0, 0, 0.87);
 }
 
-textarea.xeecoz::selection,
-input.xeecoz::selection {
+textarea.semantic::selection,
+input.semantic::selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: rgba(0, 0, 0, 0.87);
 }
@@ -717,7 +717,7 @@ body ::-webkit-scrollbar-track {
   border-radius: 0px;
 }
 
-body ::-webkit-scrollbar-thumb.xeecoz {
+body ::-webkit-scrollbar-thumb.semantic {
   cursor: pointer;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.25);
@@ -739,7 +739,7 @@ body .ui.inverted::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }
 
-body .ui.inverted::-webkit-scrollbar-thumb.xeecoz {
+body .ui.inverted::-webkit-scrollbar-thumb.semantic {
   background: rgba(255, 255, 255, 0.25);
 }
 
@@ -772,7 +772,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
             Button
 *******************************/
 
-.ui.button.xeecoz {
+.ui.button.semantic {
   cursor: pointer;
   display: inline-block;
   min-height: 1em;
@@ -859,7 +859,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
      Active
 ---------------*/
 
-.ui.active.button.xeecoz {
+.ui.active.button.semantic {
   background-color: #C0C1C2;
   background-image: none;
   -webkit-box-shadow: 0px 0px 0px 1px transparent inset;
@@ -884,7 +884,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Specificity hack */
 
-.ui.loading.loading.loading.loading.loading.loading.button.xeecoz {
+.ui.loading.loading.loading.loading.loading.loading.button.semantic {
   position: relative;
   cursor: default;
   text-shadow: none !important;
@@ -973,7 +973,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 .ui.disabled.button,
 .ui.button:disabled,
 .ui.disabled.button:hover,
-.ui.disabled.active.button.xeecoz {
+.ui.disabled.active.button.semantic {
   cursor: default;
   opacity: 0.45 !important;
   background-image: none !important;
@@ -984,7 +984,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Basic Group With Disabled */
 
-.ui.basic.buttons .ui.disabled.button.xeecoz {
+.ui.basic.buttons .ui.disabled.button.semantic {
   border-color: rgba(34, 36, 38, 0.5);
 }
 
@@ -996,7 +996,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
        Animated
 --------------------*/
 
-.ui.animated.button.xeecoz {
+.ui.animated.button.semantic {
   position: relative;
   overflow: hidden;
   padding-right: 0em !important;
@@ -1133,7 +1133,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
        Inverted
 --------------------*/
 
-.ui.inverted.button.xeecoz {
+.ui.inverted.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
   box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
   background: transparent none;
@@ -1143,7 +1143,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Group */
 
-.ui.inverted.buttons .button.xeecoz {
+.ui.inverted.buttons .button.semantic {
   margin: 0px 0px 0px -2px;
 }
 
@@ -1151,7 +1151,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   margin-left: 0em;
 }
 
-.ui.inverted.vertical.buttons .button.xeecoz {
+.ui.inverted.vertical.buttons .button.semantic {
   margin: 0px 0px -2px 0px;
 }
 
@@ -1208,7 +1208,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   box-shadow: none !important;
 }
 
-.ui.labeled.button > .button.xeecoz {
+.ui.labeled.button > .button.semantic {
   margin: 0px;
 }
 
@@ -1234,7 +1234,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Right */
 
-.ui.labeled.button:not([class*="left labeled"]) > .button.xeecoz {
+.ui.labeled.button:not([class*="left labeled"]) > .button.semantic {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -1246,7 +1246,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Left Side */
 
-.ui[class*="left labeled"].button > .button.xeecoz {
+.ui[class*="left labeled"].button > .button.semantic {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
@@ -1262,7 +1262,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Facebook */
 
-.ui.facebook.button.xeecoz {
+.ui.facebook.button.semantic {
   background-color: #3B5998;
   color: #FFFFFF;
   text-shadow: none;
@@ -1285,7 +1285,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Twitter */
 
-.ui.twitter.button.xeecoz {
+.ui.twitter.button.semantic {
   background-color: #55ACEE;
   color: #FFFFFF;
   text-shadow: none;
@@ -1308,7 +1308,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Google Plus */
 
-.ui.google.plus.button.xeecoz {
+.ui.google.plus.button.semantic {
   background-color: #DD4B39;
   color: #FFFFFF;
   text-shadow: none;
@@ -1331,7 +1331,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Linked In */
 
-.ui.linkedin.button.xeecoz {
+.ui.linkedin.button.semantic {
   background-color: #1F88BE;
   color: #FFFFFF;
   text-shadow: none;
@@ -1351,7 +1351,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* YouTube */
 
-.ui.youtube.button.xeecoz {
+.ui.youtube.button.semantic {
   background-color: #FF0000;
   color: #FFFFFF;
   text-shadow: none;
@@ -1374,7 +1374,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Instagram */
 
-.ui.instagram.button.xeecoz {
+.ui.instagram.button.semantic {
   background-color: #49769C;
   color: #FFFFFF;
   text-shadow: none;
@@ -1397,7 +1397,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Pinterest */
 
-.ui.pinterest.button.xeecoz {
+.ui.pinterest.button.semantic {
   background-color: #BD081C;
   color: #FFFFFF;
   text-shadow: none;
@@ -1420,7 +1420,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* VK */
 
-.ui.vk.button.xeecoz {
+.ui.vk.button.semantic {
   background-color: #4D7198;
   color: #FFFFFF;
   background-image: none;
@@ -1469,14 +1469,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 --------------------*/
 
 .ui[class*="left floated"].buttons,
-.ui[class*="left floated"].button.xeecoz {
+.ui[class*="left floated"].button.semantic {
   float: left;
   margin-left: 0em;
   margin-right: 0.25em;
 }
 
 .ui[class*="right floated"].buttons,
-.ui[class*="right floated"].button.xeecoz {
+.ui[class*="right floated"].button.semantic {
   float: right;
   margin-right: 0em;
   margin-left: 0.25em;
@@ -1487,17 +1487,17 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 --------------------*/
 
 .ui.compact.buttons .button,
-.ui.compact.button.xeecoz {
+.ui.compact.button.semantic {
   padding: 0.58928571em 1.125em 0.58928571em;
 }
 
 .ui.compact.icon.buttons .button,
-.ui.compact.icon.button.xeecoz {
+.ui.compact.icon.button.semantic {
   padding: 0.58928571em 0.58928571em 0.58928571em;
 }
 
 .ui.compact.labeled.icon.buttons .button,
-.ui.compact.labeled.icon.button.xeecoz {
+.ui.compact.labeled.icon.button.semantic {
   padding: 0.58928571em 3.69642857em 0.58928571em;
 }
 
@@ -1507,49 +1507,49 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.mini.buttons .button,
 .ui.mini.buttons .or,
-.ui.mini.button.xeecoz {
+.ui.mini.button.semantic {
   font-size: 0.78571429rem;
 }
 
 .ui.tiny.buttons .button,
 .ui.tiny.buttons .or,
-.ui.tiny.button.xeecoz {
+.ui.tiny.button.semantic {
   font-size: 0.85714286rem;
 }
 
 .ui.small.buttons .button,
 .ui.small.buttons .or,
-.ui.small.button.xeecoz {
+.ui.small.button.semantic {
   font-size: 0.92857143rem;
 }
 
 .ui.buttons .button,
 .ui.buttons .or,
-.ui.button.xeecoz {
+.ui.button.semantic {
   font-size: 1rem;
 }
 
 .ui.large.buttons .button,
 .ui.large.buttons .or,
-.ui.large.button.xeecoz {
+.ui.large.button.semantic {
   font-size: 1.14285714rem;
 }
 
 .ui.big.buttons .button,
 .ui.big.buttons .or,
-.ui.big.button.xeecoz {
+.ui.big.button.semantic {
   font-size: 1.28571429rem;
 }
 
 .ui.huge.buttons .button,
 .ui.huge.buttons .or,
-.ui.huge.button.xeecoz {
+.ui.huge.button.semantic {
   font-size: 1.42857143rem;
 }
 
 .ui.massive.buttons .button,
 .ui.massive.buttons .or,
-.ui.massive.button.xeecoz {
+.ui.massive.button.semantic {
   font-size: 1.71428571rem;
 }
 
@@ -1558,7 +1558,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 ---------------*/
 
 .ui.icon.buttons .button,
-.ui.icon.button.xeecoz {
+.ui.icon.button.semantic {
   padding: 0.78571429em 0.78571429em 0.78571429em;
 }
 
@@ -1574,7 +1574,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 --------------------*/
 
 .ui.basic.buttons .button,
-.ui.basic.button.xeecoz {
+.ui.basic.button.semantic {
   background: transparent none !important;
   color: rgba(0, 0, 0, 0.6) !important;
   font-weight: normal;
@@ -1592,7 +1592,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   border-radius: 0.28571429rem;
 }
 
-.ui.basic.buttons .button.xeecoz {
+.ui.basic.buttons .button.semantic {
   border-radius: 0em;
 }
 
@@ -1621,7 +1621,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.buttons .active.button,
-.ui.basic.active.button.xeecoz {
+.ui.basic.active.button.semantic {
   background: rgba(0, 0, 0, 0.05) !important;
   -webkit-box-shadow: '' !important;
   box-shadow: '' !important;
@@ -1645,7 +1645,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15) inset, 0px 1px 4px 0px rgba(34, 36, 38, 0.15) inset inset;
 }
 
-.ui.basic.buttons .active.button.xeecoz {
+.ui.basic.buttons .active.button.semantic {
   -webkit-box-shadow: '' !important;
   box-shadow: '' !important;
 }
@@ -1653,7 +1653,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Standard Basic Inverted */
 
 .ui.basic.inverted.buttons .button,
-.ui.basic.inverted.button.xeecoz {
+.ui.basic.inverted.button.semantic {
   background-color: transparent !important;
   color: #F9FAFB !important;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -1683,7 +1683,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.inverted.buttons .active.button,
-.ui.basic.inverted.active.button.xeecoz {
+.ui.basic.inverted.active.button.semantic {
   background-color: rgba(255, 255, 255, 0.08);
   color: #FFFFFF;
   text-shadow: none;
@@ -1700,17 +1700,17 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Basic Group */
 
-.ui.basic.buttons .button.xeecoz {
+.ui.basic.buttons .button.semantic {
   border-left: 1px solid rgba(34, 36, 38, 0.15);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-.ui.basic.vertical.buttons .button.xeecoz {
+.ui.basic.vertical.buttons .button.semantic {
   border-left: none;
 }
 
-.ui.basic.vertical.buttons .button.xeecoz {
+.ui.basic.vertical.buttons .button.semantic {
   border-left-width: 0px;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
 }
@@ -1724,7 +1724,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 ---------------*/
 
 .ui.labeled.icon.buttons .button,
-.ui.labeled.icon.button.xeecoz {
+.ui.labeled.icon.button.semantic {
   position: relative;
   padding-left: 4.07142857em !important;
   padding-right: 1.5em !important;
@@ -1759,7 +1759,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Right Labeled */
 
-.ui[class*="right labeled"].icon.button.xeecoz {
+.ui[class*="right labeled"].icon.button.semantic {
   padding-right: 4.07142857em !important;
   padding-left: 1.5em !important;
 }
@@ -1814,7 +1814,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Fluid Labeled */
 
 .ui.fluid[class*="left labeled"].icon.button,
-.ui.fluid[class*="right labeled"].icon.button.xeecoz {
+.ui.fluid[class*="right labeled"].icon.button.semantic {
   padding-left: 1.5em !important;
   padding-right: 1.5em !important;
 }
@@ -1845,7 +1845,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
     Circular
 ---------------*/
 
-.ui.circular.button.xeecoz {
+.ui.circular.button.semantic {
   border-radius: 10em;
 }
 
@@ -1906,7 +1906,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Singular */
 
-.ui.attached.button.xeecoz {
+.ui.attached.button.semantic {
   position: relative;
   display: block;
   margin: 0em;
@@ -1917,17 +1917,17 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Top / Bottom */
 
-.ui.attached.top.button.xeecoz {
+.ui.attached.top.button.semantic {
   border-radius: 0.28571429rem 0.28571429rem 0em 0em;
 }
 
-.ui.attached.bottom.button.xeecoz {
+.ui.attached.bottom.button.semantic {
   border-radius: 0em 0em 0.28571429rem 0.28571429rem;
 }
 
 /* Left / Right */
 
-.ui.left.attached.button.xeecoz {
+.ui.left.attached.button.semantic {
   display: inline-block;
   border-left: none;
   text-align: right;
@@ -1935,7 +1935,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   border-radius: 0.28571429rem 0em 0em 0.28571429rem;
 }
 
-.ui.right.attached.button.xeecoz {
+.ui.right.attached.button.semantic {
   display: inline-block;
   text-align: left;
   padding-left: 0.75em;
@@ -1956,7 +1956,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   margin-right: -1px;
 }
 
-.ui.attached.buttons .button.xeecoz {
+.ui.attached.buttons .button.semantic {
   margin: 0em;
 }
 
@@ -2041,11 +2041,11 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 --------------------*/
 
 .ui.fluid.buttons,
-.ui.fluid.button.xeecoz {
+.ui.fluid.button.semantic {
   width: 100%;
 }
 
-.ui.fluid.button.xeecoz {
+.ui.fluid.button.semantic {
   display: block;
 }
 
@@ -2053,7 +2053,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.two.buttons > .button.xeecoz {
+.ui.two.buttons > .button.semantic {
   width: 50%;
 }
 
@@ -2061,7 +2061,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.three.buttons > .button.xeecoz {
+.ui.three.buttons > .button.semantic {
   width: 33.333%;
 }
 
@@ -2069,7 +2069,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.four.buttons > .button.xeecoz {
+.ui.four.buttons > .button.semantic {
   width: 25%;
 }
 
@@ -2077,7 +2077,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.five.buttons > .button.xeecoz {
+.ui.five.buttons > .button.semantic {
   width: 20%;
 }
 
@@ -2085,7 +2085,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.six.buttons > .button.xeecoz {
+.ui.six.buttons > .button.semantic {
   width: 16.666%;
 }
 
@@ -2093,7 +2093,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.seven.buttons > .button.xeecoz {
+.ui.seven.buttons > .button.semantic {
   width: 14.285%;
 }
 
@@ -2101,7 +2101,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.eight.buttons > .button.xeecoz {
+.ui.eight.buttons > .button.semantic {
   width: 12.5%;
 }
 
@@ -2109,7 +2109,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.nine.buttons > .button.xeecoz {
+.ui.nine.buttons > .button.semantic {
   width: 11.11%;
 }
 
@@ -2117,7 +2117,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.ten.buttons > .button.xeecoz {
+.ui.ten.buttons > .button.semantic {
   width: 10%;
 }
 
@@ -2125,7 +2125,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.eleven.buttons > .button.xeecoz {
+.ui.eleven.buttons > .button.semantic {
   width: 9.09%;
 }
 
@@ -2133,61 +2133,61 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
-.ui.twelve.buttons > .button.xeecoz {
+.ui.twelve.buttons > .button.semantic {
   width: 8.3333%;
 }
 
 /* Fluid Vertical Buttons */
 
 .ui.fluid.vertical.buttons,
-.ui.fluid.vertical.buttons > .button.xeecoz {
+.ui.fluid.vertical.buttons > .button.semantic {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: auto;
 }
 
-.ui.two.vertical.buttons > .button.xeecoz {
+.ui.two.vertical.buttons > .button.semantic {
   height: 50%;
 }
 
-.ui.three.vertical.buttons > .button.xeecoz {
+.ui.three.vertical.buttons > .button.semantic {
   height: 33.333%;
 }
 
-.ui.four.vertical.buttons > .button.xeecoz {
+.ui.four.vertical.buttons > .button.semantic {
   height: 25%;
 }
 
-.ui.five.vertical.buttons > .button.xeecoz {
+.ui.five.vertical.buttons > .button.semantic {
   height: 20%;
 }
 
-.ui.six.vertical.buttons > .button.xeecoz {
+.ui.six.vertical.buttons > .button.semantic {
   height: 16.666%;
 }
 
-.ui.seven.vertical.buttons > .button.xeecoz {
+.ui.seven.vertical.buttons > .button.semantic {
   height: 14.285%;
 }
 
-.ui.eight.vertical.buttons > .button.xeecoz {
+.ui.eight.vertical.buttons > .button.semantic {
   height: 12.5%;
 }
 
-.ui.nine.vertical.buttons > .button.xeecoz {
+.ui.nine.vertical.buttons > .button.semantic {
   height: 11.11%;
 }
 
-.ui.ten.vertical.buttons > .button.xeecoz {
+.ui.ten.vertical.buttons > .button.semantic {
   height: 10%;
 }
 
-.ui.eleven.vertical.buttons > .button.xeecoz {
+.ui.eleven.vertical.buttons > .button.semantic {
   height: 9.09%;
 }
 
-.ui.twelve.vertical.buttons > .button.xeecoz {
+.ui.twelve.vertical.buttons > .button.semantic {
   height: 8.3333%;
 }
 
@@ -2198,14 +2198,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Black ---*/
 
 .ui.black.buttons .button,
-.ui.black.button.xeecoz {
+.ui.black.button.semantic {
   background-color: #1B1C1D;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.black.button.xeecoz {
+.ui.black.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -2243,7 +2243,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.black.buttons .button,
-.ui.basic.black.button.xeecoz {
+.ui.basic.black.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
   box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
   color: #1B1C1D !important;
@@ -2266,7 +2266,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.black.buttons .active.button,
-.ui.basic.black.active.button.xeecoz {
+.ui.basic.black.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #0f0f10 inset !important;
   box-shadow: 0px 0px 0px 1px #0f0f10 inset !important;
@@ -2287,7 +2287,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.black.buttons .button,
-.ui.inverted.black.button.xeecoz {
+.ui.inverted.black.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
   box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
@@ -2318,7 +2318,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.black.buttons .active.button,
-.ui.inverted.black.active.button.xeecoz {
+.ui.inverted.black.active.button.semantic {
   background-color: #000000;
 }
 
@@ -2331,7 +2331,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.black.basic.buttons .button,
 .ui.inverted.black.buttons .basic.button,
-.ui.inverted.black.basic.button.xeecoz {
+.ui.inverted.black.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -2356,7 +2356,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.black.basic.buttons .active.button,
 .ui.inverted.black.buttons .basic.active.button,
-.ui.inverted.black.basic.active.button.xeecoz {
+.ui.inverted.black.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #000000 inset !important;
   box-shadow: 0px 0px 0px 2px #000000 inset !important;
   color: #FFFFFF !important;
@@ -2373,14 +2373,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Grey ---*/
 
 .ui.grey.buttons .button,
-.ui.grey.button.xeecoz {
+.ui.grey.button.semantic {
   background-color: #767676;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.grey.button.xeecoz {
+.ui.grey.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -2418,7 +2418,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.grey.buttons .button,
-.ui.basic.grey.button.xeecoz {
+.ui.basic.grey.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #767676 inset !important;
   box-shadow: 0px 0px 0px 1px #767676 inset !important;
   color: #767676 !important;
@@ -2441,7 +2441,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.grey.buttons .active.button,
-.ui.basic.grey.active.button.xeecoz {
+.ui.basic.grey.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #696969 inset !important;
   box-shadow: 0px 0px 0px 1px #696969 inset !important;
@@ -2462,7 +2462,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.grey.buttons .button,
-.ui.inverted.grey.button.xeecoz {
+.ui.inverted.grey.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
   box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
@@ -2493,7 +2493,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.grey.buttons .active.button,
-.ui.inverted.grey.active.button.xeecoz {
+.ui.inverted.grey.active.button.semantic {
   background-color: #cfd0d2;
 }
 
@@ -2506,7 +2506,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.grey.basic.buttons .button,
 .ui.inverted.grey.buttons .basic.button,
-.ui.inverted.grey.basic.button.xeecoz {
+.ui.inverted.grey.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -2531,7 +2531,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.grey.basic.buttons .active.button,
 .ui.inverted.grey.buttons .basic.active.button,
-.ui.inverted.grey.basic.active.button.xeecoz {
+.ui.inverted.grey.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #cfd0d2 inset !important;
   box-shadow: 0px 0px 0px 2px #cfd0d2 inset !important;
   color: #FFFFFF !important;
@@ -2548,14 +2548,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Brown ---*/
 
 .ui.brown.buttons .button,
-.ui.brown.button.xeecoz {
+.ui.brown.button.semantic {
   background-color: #A5673F;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.brown.button.xeecoz {
+.ui.brown.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -2593,7 +2593,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.brown.buttons .button,
-.ui.basic.brown.button.xeecoz {
+.ui.basic.brown.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #A5673F inset !important;
   box-shadow: 0px 0px 0px 1px #A5673F inset !important;
   color: #A5673F !important;
@@ -2616,7 +2616,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.brown.buttons .active.button,
-.ui.basic.brown.active.button.xeecoz {
+.ui.basic.brown.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #995a31 inset !important;
   box-shadow: 0px 0px 0px 1px #995a31 inset !important;
@@ -2637,7 +2637,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.brown.buttons .button,
-.ui.inverted.brown.button.xeecoz {
+.ui.inverted.brown.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #D67C1C inset !important;
   box-shadow: 0px 0px 0px 2px #D67C1C inset !important;
@@ -2668,7 +2668,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.brown.buttons .active.button,
-.ui.inverted.brown.active.button.xeecoz {
+.ui.inverted.brown.active.button.semantic {
   background-color: #cc6f0d;
 }
 
@@ -2681,7 +2681,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.brown.basic.buttons .button,
 .ui.inverted.brown.buttons .basic.button,
-.ui.inverted.brown.basic.button.xeecoz {
+.ui.inverted.brown.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -2706,7 +2706,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.brown.basic.buttons .active.button,
 .ui.inverted.brown.buttons .basic.active.button,
-.ui.inverted.brown.basic.active.button.xeecoz {
+.ui.inverted.brown.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #cc6f0d inset !important;
   box-shadow: 0px 0px 0px 2px #cc6f0d inset !important;
   color: #D67C1C !important;
@@ -2723,14 +2723,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Blue ---*/
 
 .ui.blue.buttons .button,
-.ui.blue.button.xeecoz {
+.ui.blue.button.semantic {
   background-color: #2185D0;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.blue.button.xeecoz {
+.ui.blue.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -2768,7 +2768,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.blue.buttons .button,
-.ui.basic.blue.button.xeecoz {
+.ui.basic.blue.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
   box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
   color: #2185D0 !important;
@@ -2791,7 +2791,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.blue.buttons .active.button,
-.ui.basic.blue.active.button.xeecoz {
+.ui.basic.blue.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
   box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
@@ -2812,7 +2812,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.blue.buttons .button,
-.ui.inverted.blue.button.xeecoz {
+.ui.inverted.blue.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
   box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
@@ -2843,7 +2843,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.blue.buttons .active.button,
-.ui.inverted.blue.active.button.xeecoz {
+.ui.inverted.blue.active.button.semantic {
   background-color: #3ac0ff;
 }
 
@@ -2856,7 +2856,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.blue.basic.buttons .button,
 .ui.inverted.blue.buttons .basic.button,
-.ui.inverted.blue.basic.button.xeecoz {
+.ui.inverted.blue.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -2881,7 +2881,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.blue.basic.buttons .active.button,
 .ui.inverted.blue.buttons .basic.active.button,
-.ui.inverted.blue.basic.active.button.xeecoz {
+.ui.inverted.blue.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
   box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
   color: #54C8FF !important;
@@ -2898,14 +2898,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Green ---*/
 
 .ui.green.buttons .button,
-.ui.green.button.xeecoz {
+.ui.green.button.semantic {
   background-color: #21BA45;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.green.button.xeecoz {
+.ui.green.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -2943,7 +2943,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.green.buttons .button,
-.ui.basic.green.button.xeecoz {
+.ui.basic.green.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
   box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
   color: #21BA45 !important;
@@ -2966,7 +2966,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.green.buttons .active.button,
-.ui.basic.green.active.button.xeecoz {
+.ui.basic.green.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
   box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
@@ -2987,7 +2987,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.green.buttons .button,
-.ui.inverted.green.button.xeecoz {
+.ui.inverted.green.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #2ECC40 inset !important;
   box-shadow: 0px 0px 0px 2px #2ECC40 inset !important;
@@ -3018,7 +3018,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.green.buttons .active.button,
-.ui.inverted.green.active.button.xeecoz {
+.ui.inverted.green.active.button.semantic {
   background-color: #1fc231;
 }
 
@@ -3031,7 +3031,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.green.basic.buttons .button,
 .ui.inverted.green.buttons .basic.button,
-.ui.inverted.green.basic.button.xeecoz {
+.ui.inverted.green.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -3056,7 +3056,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.green.basic.buttons .active.button,
 .ui.inverted.green.buttons .basic.active.button,
-.ui.inverted.green.basic.active.button.xeecoz {
+.ui.inverted.green.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #1fc231 inset !important;
   box-shadow: 0px 0px 0px 2px #1fc231 inset !important;
   color: #2ECC40 !important;
@@ -3073,14 +3073,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Orange ---*/
 
 .ui.orange.buttons .button,
-.ui.orange.button.xeecoz {
+.ui.orange.button.semantic {
   background-color: #F2711C;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.orange.button.xeecoz {
+.ui.orange.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -3118,7 +3118,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.orange.buttons .button,
-.ui.basic.orange.button.xeecoz {
+.ui.basic.orange.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #F2711C inset !important;
   box-shadow: 0px 0px 0px 1px #F2711C inset !important;
   color: #F2711C !important;
@@ -3141,7 +3141,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.orange.buttons .active.button,
-.ui.basic.orange.active.button.xeecoz {
+.ui.basic.orange.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #f56100 inset !important;
   box-shadow: 0px 0px 0px 1px #f56100 inset !important;
@@ -3162,7 +3162,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.orange.buttons .button,
-.ui.inverted.orange.button.xeecoz {
+.ui.inverted.orange.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #FF851B inset !important;
   box-shadow: 0px 0px 0px 2px #FF851B inset !important;
@@ -3193,7 +3193,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.orange.buttons .active.button,
-.ui.inverted.orange.active.button.xeecoz {
+.ui.inverted.orange.active.button.semantic {
   background-color: #ff7701;
 }
 
@@ -3206,7 +3206,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.orange.basic.buttons .button,
 .ui.inverted.orange.buttons .basic.button,
-.ui.inverted.orange.basic.button.xeecoz {
+.ui.inverted.orange.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -3231,7 +3231,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.orange.basic.buttons .active.button,
 .ui.inverted.orange.buttons .basic.active.button,
-.ui.inverted.orange.basic.active.button.xeecoz {
+.ui.inverted.orange.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
   box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
   color: #FF851B !important;
@@ -3248,14 +3248,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Pink ---*/
 
 .ui.pink.buttons .button,
-.ui.pink.button.xeecoz {
+.ui.pink.button.semantic {
   background-color: #E03997;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.pink.button.xeecoz {
+.ui.pink.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -3293,7 +3293,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.pink.buttons .button,
-.ui.basic.pink.button.xeecoz {
+.ui.basic.pink.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #E03997 inset !important;
   box-shadow: 0px 0px 0px 1px #E03997 inset !important;
   color: #E03997 !important;
@@ -3316,7 +3316,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.pink.buttons .active.button,
-.ui.basic.pink.active.button.xeecoz {
+.ui.basic.pink.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #ea158d inset !important;
   box-shadow: 0px 0px 0px 1px #ea158d inset !important;
@@ -3337,7 +3337,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.pink.buttons .button,
-.ui.inverted.pink.button.xeecoz {
+.ui.inverted.pink.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #FF8EDF inset !important;
   box-shadow: 0px 0px 0px 2px #FF8EDF inset !important;
@@ -3368,7 +3368,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.pink.buttons .active.button,
-.ui.inverted.pink.active.button.xeecoz {
+.ui.inverted.pink.active.button.semantic {
   background-color: #ff74d8;
 }
 
@@ -3381,7 +3381,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.pink.basic.buttons .button,
 .ui.inverted.pink.buttons .basic.button,
-.ui.inverted.pink.basic.button.xeecoz {
+.ui.inverted.pink.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -3406,7 +3406,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.pink.basic.buttons .active.button,
 .ui.inverted.pink.buttons .basic.active.button,
-.ui.inverted.pink.basic.active.button.xeecoz {
+.ui.inverted.pink.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #ff74d8 inset !important;
   box-shadow: 0px 0px 0px 2px #ff74d8 inset !important;
   color: #FF8EDF !important;
@@ -3423,14 +3423,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Violet ---*/
 
 .ui.violet.buttons .button,
-.ui.violet.button.xeecoz {
+.ui.violet.button.semantic {
   background-color: #6435C9;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.violet.button.xeecoz {
+.ui.violet.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -3468,7 +3468,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.violet.buttons .button,
-.ui.basic.violet.button.xeecoz {
+.ui.basic.violet.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #6435C9 inset !important;
   box-shadow: 0px 0px 0px 1px #6435C9 inset !important;
   color: #6435C9 !important;
@@ -3491,7 +3491,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.violet.buttons .active.button,
-.ui.basic.violet.active.button.xeecoz {
+.ui.basic.violet.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #5626bf inset !important;
   box-shadow: 0px 0px 0px 1px #5626bf inset !important;
@@ -3512,7 +3512,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.violet.buttons .button,
-.ui.inverted.violet.button.xeecoz {
+.ui.inverted.violet.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #A291FB inset !important;
   box-shadow: 0px 0px 0px 2px #A291FB inset !important;
@@ -3543,7 +3543,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.violet.buttons .active.button,
-.ui.inverted.violet.active.button.xeecoz {
+.ui.inverted.violet.active.button.semantic {
   background-color: #8a73ff;
 }
 
@@ -3556,7 +3556,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.violet.basic.buttons .button,
 .ui.inverted.violet.buttons .basic.button,
-.ui.inverted.violet.basic.button.xeecoz {
+.ui.inverted.violet.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -3581,7 +3581,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.violet.basic.buttons .active.button,
 .ui.inverted.violet.buttons .basic.active.button,
-.ui.inverted.violet.basic.active.button.xeecoz {
+.ui.inverted.violet.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #8a73ff inset !important;
   box-shadow: 0px 0px 0px 2px #8a73ff inset !important;
   color: #A291FB !important;
@@ -3598,14 +3598,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Purple ---*/
 
 .ui.purple.buttons .button,
-.ui.purple.button.xeecoz {
+.ui.purple.button.semantic {
   background-color: #A333C8;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.purple.button.xeecoz {
+.ui.purple.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -3643,7 +3643,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.purple.buttons .button,
-.ui.basic.purple.button.xeecoz {
+.ui.basic.purple.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #A333C8 inset !important;
   box-shadow: 0px 0px 0px 1px #A333C8 inset !important;
   color: #A333C8 !important;
@@ -3666,7 +3666,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.purple.buttons .active.button,
-.ui.basic.purple.active.button.xeecoz {
+.ui.basic.purple.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #9724be inset !important;
   box-shadow: 0px 0px 0px 1px #9724be inset !important;
@@ -3687,7 +3687,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.purple.buttons .button,
-.ui.inverted.purple.button.xeecoz {
+.ui.inverted.purple.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #DC73FF inset !important;
   box-shadow: 0px 0px 0px 2px #DC73FF inset !important;
@@ -3718,7 +3718,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.purple.buttons .active.button,
-.ui.inverted.purple.active.button.xeecoz {
+.ui.inverted.purple.active.button.semantic {
   background-color: #d65aff;
 }
 
@@ -3731,7 +3731,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.purple.basic.buttons .button,
 .ui.inverted.purple.buttons .basic.button,
-.ui.inverted.purple.basic.button.xeecoz {
+.ui.inverted.purple.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -3756,7 +3756,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.purple.basic.buttons .active.button,
 .ui.inverted.purple.buttons .basic.active.button,
-.ui.inverted.purple.basic.active.button.xeecoz {
+.ui.inverted.purple.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #d65aff inset !important;
   box-shadow: 0px 0px 0px 2px #d65aff inset !important;
   color: #DC73FF !important;
@@ -3773,14 +3773,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Red ---*/
 
 .ui.red.buttons .button,
-.ui.red.button.xeecoz {
+.ui.red.button.semantic {
   background-color: #DB2828;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.red.button.xeecoz {
+.ui.red.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -3818,7 +3818,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.red.buttons .button,
-.ui.basic.red.button.xeecoz {
+.ui.basic.red.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
   box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
   color: #DB2828 !important;
@@ -3841,7 +3841,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.red.buttons .active.button,
-.ui.basic.red.active.button.xeecoz {
+.ui.basic.red.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #d41515 inset !important;
   box-shadow: 0px 0px 0px 1px #d41515 inset !important;
@@ -3862,7 +3862,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.red.buttons .button,
-.ui.inverted.red.button.xeecoz {
+.ui.inverted.red.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #FF695E inset !important;
   box-shadow: 0px 0px 0px 2px #FF695E inset !important;
@@ -3893,7 +3893,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.red.buttons .active.button,
-.ui.inverted.red.active.button.xeecoz {
+.ui.inverted.red.active.button.semantic {
   background-color: #ff5144;
 }
 
@@ -3906,7 +3906,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.red.basic.buttons .button,
 .ui.inverted.red.buttons .basic.button,
-.ui.inverted.red.basic.button.xeecoz {
+.ui.inverted.red.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -3931,7 +3931,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.red.basic.buttons .active.button,
 .ui.inverted.red.buttons .basic.active.button,
-.ui.inverted.red.basic.active.button.xeecoz {
+.ui.inverted.red.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #ff5144 inset !important;
   box-shadow: 0px 0px 0px 2px #ff5144 inset !important;
   color: #FF695E !important;
@@ -3948,14 +3948,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Teal ---*/
 
 .ui.teal.buttons .button,
-.ui.teal.button.xeecoz {
+.ui.teal.button.semantic {
   background-color: #00B5AD;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.teal.button.xeecoz {
+.ui.teal.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -3993,7 +3993,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.teal.buttons .button,
-.ui.basic.teal.button.xeecoz {
+.ui.basic.teal.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #00B5AD inset !important;
   box-shadow: 0px 0px 0px 1px #00B5AD inset !important;
   color: #00B5AD !important;
@@ -4016,7 +4016,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.teal.buttons .active.button,
-.ui.basic.teal.active.button.xeecoz {
+.ui.basic.teal.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #009c95 inset !important;
   box-shadow: 0px 0px 0px 1px #009c95 inset !important;
@@ -4037,7 +4037,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.teal.buttons .button,
-.ui.inverted.teal.button.xeecoz {
+.ui.inverted.teal.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #6DFFFF inset !important;
   box-shadow: 0px 0px 0px 2px #6DFFFF inset !important;
@@ -4068,7 +4068,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.teal.buttons .active.button,
-.ui.inverted.teal.active.button.xeecoz {
+.ui.inverted.teal.active.button.semantic {
   background-color: #54ffff;
 }
 
@@ -4081,7 +4081,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.teal.basic.buttons .button,
 .ui.inverted.teal.buttons .basic.button,
-.ui.inverted.teal.basic.button.xeecoz {
+.ui.inverted.teal.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -4106,7 +4106,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.teal.basic.buttons .active.button,
 .ui.inverted.teal.buttons .basic.active.button,
-.ui.inverted.teal.basic.active.button.xeecoz {
+.ui.inverted.teal.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #54ffff inset !important;
   box-shadow: 0px 0px 0px 2px #54ffff inset !important;
   color: #6DFFFF !important;
@@ -4123,14 +4123,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Olive ---*/
 
 .ui.olive.buttons .button,
-.ui.olive.button.xeecoz {
+.ui.olive.button.semantic {
   background-color: #B5CC18;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.olive.button.xeecoz {
+.ui.olive.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -4168,7 +4168,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.olive.buttons .button,
-.ui.basic.olive.button.xeecoz {
+.ui.basic.olive.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #B5CC18 inset !important;
   box-shadow: 0px 0px 0px 1px #B5CC18 inset !important;
   color: #B5CC18 !important;
@@ -4191,7 +4191,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.olive.buttons .active.button,
-.ui.basic.olive.active.button.xeecoz {
+.ui.basic.olive.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #aac109 inset !important;
   box-shadow: 0px 0px 0px 1px #aac109 inset !important;
@@ -4212,7 +4212,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.olive.buttons .button,
-.ui.inverted.olive.button.xeecoz {
+.ui.inverted.olive.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #D9E778 inset !important;
   box-shadow: 0px 0px 0px 2px #D9E778 inset !important;
@@ -4243,7 +4243,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.olive.buttons .active.button,
-.ui.inverted.olive.active.button.xeecoz {
+.ui.inverted.olive.active.button.semantic {
   background-color: #daed59;
 }
 
@@ -4256,7 +4256,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.olive.basic.buttons .button,
 .ui.inverted.olive.buttons .basic.button,
-.ui.inverted.olive.basic.button.xeecoz {
+.ui.inverted.olive.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -4281,7 +4281,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.olive.basic.buttons .active.button,
 .ui.inverted.olive.buttons .basic.active.button,
-.ui.inverted.olive.basic.active.button.xeecoz {
+.ui.inverted.olive.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #daed59 inset !important;
   box-shadow: 0px 0px 0px 2px #daed59 inset !important;
   color: #D9E778 !important;
@@ -4298,14 +4298,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Yellow ---*/
 
 .ui.yellow.buttons .button,
-.ui.yellow.button.xeecoz {
+.ui.yellow.button.semantic {
   background-color: #FBBD08;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.yellow.button.xeecoz {
+.ui.yellow.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -4343,7 +4343,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.yellow.buttons .button,
-.ui.basic.yellow.button.xeecoz {
+.ui.basic.yellow.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #FBBD08 inset !important;
   box-shadow: 0px 0px 0px 1px #FBBD08 inset !important;
   color: #FBBD08 !important;
@@ -4366,7 +4366,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.yellow.buttons .active.button,
-.ui.basic.yellow.active.button.xeecoz {
+.ui.basic.yellow.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #eaae00 inset !important;
   box-shadow: 0px 0px 0px 1px #eaae00 inset !important;
@@ -4387,7 +4387,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.yellow.buttons .button,
-.ui.inverted.yellow.button.xeecoz {
+.ui.inverted.yellow.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #FFE21F inset !important;
   box-shadow: 0px 0px 0px 2px #FFE21F inset !important;
@@ -4418,7 +4418,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.yellow.buttons .active.button,
-.ui.inverted.yellow.active.button.xeecoz {
+.ui.inverted.yellow.active.button.semantic {
   background-color: #ffdf05;
 }
 
@@ -4431,7 +4431,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.yellow.basic.buttons .button,
 .ui.inverted.yellow.buttons .basic.button,
-.ui.inverted.yellow.basic.button.xeecoz {
+.ui.inverted.yellow.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -4456,7 +4456,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.yellow.basic.buttons .active.button,
 .ui.inverted.yellow.buttons .basic.active.button,
-.ui.inverted.yellow.basic.active.button.xeecoz {
+.ui.inverted.yellow.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
   box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
   color: #FFE21F !important;
@@ -4477,14 +4477,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*--- Standard ---*/
 
 .ui.primary.buttons .button,
-.ui.primary.button.xeecoz {
+.ui.primary.button.semantic {
   background-color: #2185D0;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.primary.button.xeecoz {
+.ui.primary.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -4522,7 +4522,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.primary.buttons .button,
-.ui.basic.primary.button.xeecoz {
+.ui.basic.primary.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
   box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
   color: #2185D0 !important;
@@ -4545,7 +4545,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.primary.buttons .active.button,
-.ui.basic.primary.active.button.xeecoz {
+.ui.basic.primary.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
   box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
@@ -4566,7 +4566,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.primary.buttons .button,
-.ui.inverted.primary.button.xeecoz {
+.ui.inverted.primary.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
   box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
@@ -4597,7 +4597,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.primary.buttons .active.button,
-.ui.inverted.primary.active.button.xeecoz {
+.ui.inverted.primary.active.button.semantic {
   background-color: #3ac0ff;
 }
 
@@ -4610,7 +4610,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.primary.basic.buttons .button,
 .ui.inverted.primary.buttons .basic.button,
-.ui.inverted.primary.basic.button.xeecoz {
+.ui.inverted.primary.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -4635,7 +4635,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.primary.basic.buttons .active.button,
 .ui.inverted.primary.buttons .basic.active.button,
-.ui.inverted.primary.basic.active.button.xeecoz {
+.ui.inverted.primary.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
   box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
   color: #54C8FF !important;
@@ -4656,14 +4656,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Standard */
 
 .ui.secondary.buttons .button,
-.ui.secondary.button.xeecoz {
+.ui.secondary.button.semantic {
   background-color: #1B1C1D;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.secondary.button.xeecoz {
+.ui.secondary.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -4701,7 +4701,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.secondary.buttons .button,
-.ui.basic.secondary.button.xeecoz {
+.ui.basic.secondary.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
   box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
   color: #1B1C1D !important;
@@ -4724,7 +4724,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.secondary.buttons .active.button,
-.ui.basic.secondary.active.button.xeecoz {
+.ui.basic.secondary.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #27292a inset !important;
   box-shadow: 0px 0px 0px 1px #27292a inset !important;
@@ -4745,7 +4745,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Inverted */
 
 .ui.inverted.secondary.buttons .button,
-.ui.inverted.secondary.button.xeecoz {
+.ui.inverted.secondary.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px #545454 inset !important;
   box-shadow: 0px 0px 0px 2px #545454 inset !important;
@@ -4776,7 +4776,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.inverted.secondary.buttons .active.button,
-.ui.inverted.secondary.active.button.xeecoz {
+.ui.inverted.secondary.active.button.semantic {
   background-color: #616161;
 }
 
@@ -4789,7 +4789,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.secondary.basic.buttons .button,
 .ui.inverted.secondary.buttons .basic.button,
-.ui.inverted.secondary.basic.button.xeecoz {
+.ui.inverted.secondary.basic.button.semantic {
   background-color: transparent;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
@@ -4814,7 +4814,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.inverted.secondary.basic.buttons .active.button,
 .ui.inverted.secondary.buttons .basic.active.button,
-.ui.inverted.secondary.basic.active.button.xeecoz {
+.ui.inverted.secondary.basic.active.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 2px #616161 inset !important;
   box-shadow: 0px 0px 0px 2px #616161 inset !important;
   color: #545454 !important;
@@ -4835,14 +4835,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Standard */
 
 .ui.positive.buttons .button,
-.ui.positive.button.xeecoz {
+.ui.positive.button.semantic {
   background-color: #21BA45;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.positive.button.xeecoz {
+.ui.positive.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -4880,7 +4880,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.positive.buttons .button,
-.ui.basic.positive.button.xeecoz {
+.ui.basic.positive.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
   box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
   color: #21BA45 !important;
@@ -4903,7 +4903,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.positive.buttons .active.button,
-.ui.basic.positive.active.button.xeecoz {
+.ui.basic.positive.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
   box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
@@ -4928,14 +4928,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Standard */
 
 .ui.negative.buttons .button,
-.ui.negative.button.xeecoz {
+.ui.negative.button.semantic {
   background-color: #DB2828;
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
 }
 
-.ui.negative.button.xeecoz {
+.ui.negative.button.semantic {
   -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -4973,7 +4973,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Basic */
 
 .ui.basic.negative.buttons .button,
-.ui.basic.negative.button.xeecoz {
+.ui.basic.negative.button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
   box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
   color: #DB2828 !important;
@@ -4996,7 +4996,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.basic.negative.buttons .active.button,
-.ui.basic.negative.active.button.xeecoz {
+.ui.basic.negative.active.button.semantic {
   background: transparent !important;
   -webkit-box-shadow: 0px 0px 0px 1px #d41515 inset !important;
   box-shadow: 0px 0px 0px 1px #d41515 inset !important;
@@ -5048,7 +5048,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 /* Standard Group */
 
-.ui.buttons .button.xeecoz {
+.ui.buttons .button.semantic {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
@@ -5058,7 +5058,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.buttons > .ui.button:not(.basic):not(.inverted),
-.ui.buttons:not(.basic):not(.inverted) > .button.xeecoz {
+.ui.buttons:not(.basic):not(.inverted) > .button.semantic {
   -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
 }
@@ -5087,7 +5087,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   flex-direction: column;
 }
 
-.ui.vertical.buttons .button.xeecoz {
+.ui.vertical.buttons .button.semantic {
   display: block;
   float: none;
   width: 100%;
@@ -6898,7 +6898,7 @@ i.flag.zimbabwe:before {
 --------------------*/
 
 .ui.header > .image:not(.icon),
-.ui.header > img.xeecoz {
+.ui.header > img.semantic {
   display: inline-block;
   margin-top: 0.14285714em;
   width: 2.5em;
@@ -6948,7 +6948,7 @@ i.flag.zimbabwe:before {
 
 /* Positioning */
 
-.ui.header + p.xeecoz {
+.ui.header + p.semantic {
   margin-top: 0em;
 }
 
@@ -13830,7 +13830,7 @@ img.ui.image {
 }
 
 .ui.image svg,
-.ui.image img.xeecoz {
+.ui.image img.semantic {
   display: block;
   max-width: 100%;
   height: auto;
@@ -13872,7 +13872,7 @@ img.ui.image {
 
 .ui.inline.image,
 .ui.inline.image svg,
-.ui.inline.image img.xeecoz {
+.ui.inline.image img.semantic {
   display: inline-block;
 }
 
@@ -13883,7 +13883,7 @@ img.ui.image {
 .ui.top.aligned.images .image,
 .ui.top.aligned.image,
 .ui.top.aligned.image svg,
-.ui.top.aligned.image img.xeecoz {
+.ui.top.aligned.image img.semantic {
   display: inline-block;
   vertical-align: top;
 }
@@ -13891,7 +13891,7 @@ img.ui.image {
 .ui.middle.aligned.images .image,
 .ui.middle.aligned.image,
 .ui.middle.aligned.image svg,
-.ui.middle.aligned.image img.xeecoz {
+.ui.middle.aligned.image img.semantic {
   display: inline-block;
   vertical-align: middle;
 }
@@ -13899,7 +13899,7 @@ img.ui.image {
 .ui.bottom.aligned.images .image,
 .ui.bottom.aligned.image,
 .ui.bottom.aligned.image svg,
-.ui.bottom.aligned.image img.xeecoz {
+.ui.bottom.aligned.image img.semantic {
   display: inline-block;
   vertical-align: bottom;
 }
@@ -13911,7 +13911,7 @@ img.ui.image {
 .ui.rounded.images .image,
 .ui.rounded.image,
 .ui.rounded.images .image > *,
-.ui.rounded.image > *.xeecoz {
+.ui.rounded.image > *.semantic {
   border-radius: 0.3125em;
 }
 
@@ -13940,7 +13940,7 @@ img.ui.bordered.image {
 .ui.circular.images .image,
 .ui.circular.image,
 .ui.circular.images .image > *,
-.ui.circular.image > *.xeecoz {
+.ui.circular.image > *.semantic {
   border-radius: 500rem;
 }
 
@@ -13953,7 +13953,7 @@ img.ui.bordered.image {
 .ui.fluid.images img,
 .ui.fluid.images svg,
 .ui.fluid.image svg,
-.ui.fluid.image img.xeecoz {
+.ui.fluid.image img.semantic {
   display: block;
   width: 100%;
   height: auto;
@@ -14113,7 +14113,7 @@ img.ui.bordered.image {
 
 .ui.images .image,
 .ui.images > img,
-.ui.images > svg.xeecoz {
+.ui.images > svg.semantic {
   display: inline-block;
   margin: 0em 0.25rem 0.5rem;
 }
@@ -14143,7 +14143,7 @@ img.ui.bordered.image {
         Inputs
 ---------------------*/
 
-.ui.input.xeecoz {
+.ui.input.semantic {
   position: relative;
   font-weight: normal;
   font-style: normal;
@@ -14153,7 +14153,7 @@ img.ui.bordered.image {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.ui.input > input.xeecoz {
+.ui.input > input.semantic {
   margin: 0em;
   max-width: 100%;
   -webkit-box-flex: 1;
@@ -14218,7 +14218,7 @@ img.ui.bordered.image {
 ---------------------*/
 
 .ui.input > input:active,
-.ui.input.down input.xeecoz {
+.ui.input.down input.semantic {
   border-color: rgba(0, 0, 0, 0.3);
   background: #FAFAFA;
   color: rgba(0, 0, 0, 0.87);
@@ -14294,7 +14294,7 @@ img.ui.bordered.image {
         Error
 ---------------------*/
 
-.ui.input.error > input.xeecoz {
+.ui.input.error > input.semantic {
   background-color: #FFF6F6;
   border-color: #E0B4B4;
   color: #9F3A38;
@@ -14338,7 +14338,7 @@ img.ui.bordered.image {
       Transparent
 ---------------------*/
 
-.ui.transparent.input > input.xeecoz {
+.ui.transparent.input > input.semantic {
   border-color: transparent !important;
   background-color: transparent !important;
   padding: 0em !important;
@@ -14353,23 +14353,23 @@ img.ui.bordered.image {
   width: 1.1em;
 }
 
-.ui.transparent.icon.input > input.xeecoz {
+.ui.transparent.icon.input > input.semantic {
   padding-left: 0em !important;
   padding-right: 2em !important;
 }
 
-.ui.transparent[class*="left icon"].input > input.xeecoz {
+.ui.transparent[class*="left icon"].input > input.semantic {
   padding-left: 2em !important;
   padding-right: 0em !important;
 }
 
 /* Transparent Inverted */
 
-.ui.transparent.inverted.input.xeecoz {
+.ui.transparent.inverted.input.semantic {
   color: #FFFFFF;
 }
 
-.ui.transparent.inverted.input > input.xeecoz {
+.ui.transparent.inverted.input > input.semantic {
   color: inherit;
 }
 
@@ -14409,7 +14409,7 @@ img.ui.bordered.image {
   pointer-events: none;
 }
 
-.ui.icon.input > input.xeecoz {
+.ui.icon.input > input.semantic {
   padding-right: 2.67142857em !important;
 }
 
@@ -14445,7 +14445,7 @@ img.ui.bordered.image {
   left: 0.5em;
 }
 
-.ui[class*="left icon"].input > input.xeecoz {
+.ui[class*="left icon"].input > input.semantic {
   padding-left: 2.67142857em !important;
   padding-right: 1em !important;
 }
@@ -14482,7 +14482,7 @@ img.ui.bordered.image {
   border-bottom-right-radius: 0px;
 }
 
-.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input.xeecoz {
+.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input.semantic {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   border-left-color: transparent;
@@ -14494,7 +14494,7 @@ img.ui.bordered.image {
 
 /* Regular Label on Right */
 
-.ui[class*="right labeled"].input > input.xeecoz {
+.ui[class*="right labeled"].input > input.semantic {
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
   border-right-color: transparent !important;
@@ -14520,11 +14520,11 @@ img.ui.bordered.image {
 
 /* Spacing with corner label */
 
-.ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > input.xeecoz {
+.ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > input.semantic {
   padding-right: 2.5em !important;
 }
 
-.ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input.xeecoz {
+.ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input.semantic {
   padding-right: 3.25em !important;
 }
 
@@ -14534,11 +14534,11 @@ img.ui.bordered.image {
 
 /* Left Labeled */
 
-.ui[class*="left corner labeled"].labeled.input > input.xeecoz {
+.ui[class*="left corner labeled"].labeled.input > input.semantic {
   padding-left: 2.5em !important;
 }
 
-.ui[class*="left corner labeled"].icon.input > input.xeecoz {
+.ui[class*="left corner labeled"].icon.input > input.semantic {
   padding-left: 3.25em !important;
 }
 
@@ -14576,7 +14576,7 @@ img.ui.bordered.image {
 }
 
 .ui.action.input > .button,
-.ui.action.input > .buttons > .button.xeecoz {
+.ui.action.input > .buttons > .button.semantic {
   padding-top: 0.78571429em;
   padding-bottom: 0.78571429em;
   margin: 0;
@@ -14584,7 +14584,7 @@ img.ui.bordered.image {
 
 /* Button on Right */
 
-.ui.action.input:not([class*="left action"]) > input.xeecoz {
+.ui.action.input:not([class*="left action"]) > input.semantic {
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
   border-right-color: transparent !important;
@@ -14592,13 +14592,13 @@ img.ui.bordered.image {
 
 .ui.action.input:not([class*="left action"]) > .dropdown:not(:first-child),
 .ui.action.input:not([class*="left action"]) > .button:not(:first-child),
-.ui.action.input:not([class*="left action"]) > .buttons:not(:first-child) > .button.xeecoz {
+.ui.action.input:not([class*="left action"]) > .buttons:not(:first-child) > .button.semantic {
   border-radius: 0px;
 }
 
 .ui.action.input:not([class*="left action"]) > .dropdown:last-child,
 .ui.action.input:not([class*="left action"]) > .button:last-child,
-.ui.action.input:not([class*="left action"]) > .buttons:last-child > .button.xeecoz {
+.ui.action.input:not([class*="left action"]) > .buttons:last-child > .button.semantic {
   border-radius: 0px 0.28571429rem 0.28571429rem 0px;
 }
 
@@ -14610,7 +14610,7 @@ img.ui.bordered.image {
 
 /* Button on Left */
 
-.ui[class*="left action"].input > input.xeecoz {
+.ui[class*="left action"].input > input.semantic {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   border-left-color: transparent !important;
@@ -14618,13 +14618,13 @@ img.ui.bordered.image {
 
 .ui[class*="left action"].input > .dropdown,
 .ui[class*="left action"].input > .button,
-.ui[class*="left action"].input > .buttons > .button.xeecoz {
+.ui[class*="left action"].input > .buttons > .button.semantic {
   border-radius: 0px;
 }
 
 .ui[class*="left action"].input > .dropdown:first-child,
 .ui[class*="left action"].input > .button:first-child,
-.ui[class*="left action"].input > .buttons:first-child > .button.xeecoz {
+.ui[class*="left action"].input > .buttons:first-child > .button.semantic {
   border-radius: 0.28571429rem 0px 0px 0.28571429rem;
 }
 
@@ -14640,7 +14640,7 @@ img.ui.bordered.image {
 
 /* Standard */
 
-.ui.inverted.input > input.xeecoz {
+.ui.inverted.input > input.semantic {
   border: none;
 }
 
@@ -14648,13 +14648,13 @@ img.ui.bordered.image {
         Fluid
 ---------------------*/
 
-.ui.fluid.input.xeecoz {
+.ui.fluid.input.semantic {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.ui.fluid.input > input.xeecoz {
+.ui.fluid.input > input.semantic {
   width: 0px !important;
 }
 
@@ -14662,31 +14662,31 @@ img.ui.bordered.image {
         Size
 ---------------------*/
 
-.ui.mini.input.xeecoz {
+.ui.mini.input.semantic {
   font-size: 0.78571429em;
 }
 
-.ui.small.input.xeecoz {
+.ui.small.input.semantic {
   font-size: 0.92857143em;
 }
 
-.ui.input.xeecoz {
+.ui.input.semantic {
   font-size: 1em;
 }
 
-.ui.large.input.xeecoz {
+.ui.large.input.semantic {
   font-size: 1.14285714em;
 }
 
-.ui.big.input.xeecoz {
+.ui.big.input.semantic {
   font-size: 1.28571429em;
 }
 
-.ui.huge.input.xeecoz {
+.ui.huge.input.semantic {
   font-size: 1.42857143em;
 }
 
-.ui.massive.input.xeecoz {
+.ui.massive.input.semantic {
   font-size: 1.71428571em;
 }
 
@@ -14744,7 +14744,7 @@ a.ui.label {
 
 /* Inside Link */
 
-.ui.label > a.xeecoz {
+.ui.label > a.semantic {
   cursor: pointer;
   color: inherit;
   opacity: 0.5;
@@ -14758,7 +14758,7 @@ a.ui.label {
 
 /* Image */
 
-.ui.label > img.xeecoz {
+.ui.label > img.semantic {
   width: auto !important;
   vertical-align: middle;
   height: 2.1666em !important;
@@ -14841,7 +14841,7 @@ a.ui.label {
 /* Padding on next content after a label */
 
 .ui.top.attached.label:first-child + :not(.attached),
-.ui.top.attached.label + [class*="right floated"] + *.xeecoz {
+.ui.top.attached.label + [class*="right floated"] + *.semantic {
   margin-top: 2rem !important;
 }
 
@@ -14868,7 +14868,7 @@ a.ui.label {
   box-shadow: none;
 }
 
-.ui.image.label img.xeecoz {
+.ui.image.label img.semantic {
   display: inline-block;
   vertical-align: top;
   height: 2.1666em;
@@ -16261,7 +16261,7 @@ ol.ui.list ol li,
 }
 
 .ui.list .list > .item > .image img,
-.ui.list > .item > .image img.xeecoz {
+.ui.list > .item > .image img.semantic {
   vertical-align: top;
 }
 
@@ -16323,7 +16323,7 @@ ol.ui.list ol li,
 /* Child Link */
 
 .ui.list > .item a,
-.ui.list .list > .item a.xeecoz {
+.ui.list .list > .item a.semantic {
   cursor: pointer;
 }
 
@@ -18486,14 +18486,14 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.placeholder.segment .button,
-.ui.placeholder.segment textarea.xeecoz {
+.ui.placeholder.segment textarea.semantic {
   display: block;
 }
 
 .ui.placeholder.segment .field,
 .ui.placeholder.segment textarea,
 .ui.placeholder.segment > .ui.input,
-.ui.placeholder.segment .button.xeecoz {
+.ui.placeholder.segment .button.semantic {
   max-width: 15rem;
   margin-left: auto;
   margin-right: auto;
@@ -18502,7 +18502,7 @@ ol.ui.horizontal.list li:before,
 .ui.placeholder.segment .column .button,
 .ui.placeholder.segment .column .field,
 .ui.placeholder.segment .column textarea,
-.ui.placeholder.segment .column > .ui.input.xeecoz {
+.ui.placeholder.segment .column > .ui.input.semantic {
   max-width: 15rem;
   margin-left: auto;
   margin-right: auto;
@@ -18513,7 +18513,7 @@ ol.ui.horizontal.list li:before,
   align-self: center;
 }
 
-.ui.placeholder.segment > .inline > .button.xeecoz {
+.ui.placeholder.segment > .inline > .button.semantic {
   display: inline-block;
   width: auto;
   margin: 0px 0.35714286rem 0px 0px;
@@ -19359,7 +19359,7 @@ ol.ui.horizontal.list li:before,
            Singular
 *******************************/
 
-.ui.steps .step.xeecoz {
+.ui.steps .step.semantic {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -19508,7 +19508,7 @@ ol.ui.horizontal.list li:before,
 /* Link */
 
 .ui.steps .link.step,
-.ui.steps a.step.xeecoz {
+.ui.steps a.step.semantic {
   cursor: pointer;
 }
 
@@ -19538,7 +19538,7 @@ ol.ui.horizontal.list li:before,
   font-weight: bold;
 }
 
-.ui.ordered.steps .step > *.xeecoz {
+.ui.ordered.steps .step > *.semantic {
   display: block;
   -ms-flex-item-align: middle;
   align-self: middle;
@@ -19559,7 +19559,7 @@ ol.ui.horizontal.list li:before,
   overflow: visible;
 }
 
-.ui.vertical.steps .step.xeecoz {
+.ui.vertical.steps .step.semantic {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
@@ -19629,7 +19629,7 @@ ol.ui.horizontal.list li:before,
     flex-direction: column;
   }
 
-  .ui.steps:not(.unstackable) .step.xeecoz {
+  .ui.steps:not(.unstackable) .step.semantic {
     width: 100% !important;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -19750,7 +19750,7 @@ ol.ui.horizontal.list li:before,
 
 /* Disabled */
 
-.ui.steps .disabled.step.xeecoz {
+.ui.steps .disabled.step.semantic {
   cursor: auto;
   background: #FFFFFF;
   pointer-events: none;
@@ -19790,7 +19790,7 @@ ol.ui.horizontal.list li:before,
 
   /* Steps */
 
-  .ui[class*="tablet stackable"].steps .step.xeecoz {
+  .ui[class*="tablet stackable"].steps .step.semantic {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -19899,40 +19899,40 @@ ol.ui.horizontal.list li:before,
 .ui.five.steps > .step,
 .ui.six.steps > .step,
 .ui.seven.steps > .step,
-.ui.eight.steps > .step.xeecoz {
+.ui.eight.steps > .step.semantic {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
 }
 
-.ui.one.steps > .step.xeecoz {
+.ui.one.steps > .step.semantic {
   width: 100%;
 }
 
-.ui.two.steps > .step.xeecoz {
+.ui.two.steps > .step.semantic {
   width: 50%;
 }
 
-.ui.three.steps > .step.xeecoz {
+.ui.three.steps > .step.semantic {
   width: 33.333%;
 }
 
-.ui.four.steps > .step.xeecoz {
+.ui.four.steps > .step.semantic {
   width: 25%;
 }
 
-.ui.five.steps > .step.xeecoz {
+.ui.five.steps > .step.semantic {
   width: 20%;
 }
 
-.ui.six.steps > .step.xeecoz {
+.ui.six.steps > .step.semantic {
   width: 16.666%;
 }
 
-.ui.seven.steps > .step.xeecoz {
+.ui.seven.steps > .step.semantic {
   width: 14.285%;
 }
 
-.ui.eight.steps > .step.xeecoz {
+.ui.eight.steps > .step.semantic {
   width: 12.5%;
 }
 
@@ -19941,42 +19941,42 @@ ol.ui.horizontal.list li:before,
 --------------------*/
 
 .ui.mini.steps .step,
-.ui.mini.step.xeecoz {
+.ui.mini.step.semantic {
   font-size: 0.78571429rem;
 }
 
 .ui.tiny.steps .step,
-.ui.tiny.step.xeecoz {
+.ui.tiny.step.semantic {
   font-size: 0.85714286rem;
 }
 
 .ui.small.steps .step,
-.ui.small.step.xeecoz {
+.ui.small.step.semantic {
   font-size: 0.92857143rem;
 }
 
 .ui.steps .step,
-.ui.step.xeecoz {
+.ui.step.semantic {
   font-size: 1rem;
 }
 
 .ui.large.steps .step,
-.ui.large.step.xeecoz {
+.ui.large.step.semantic {
   font-size: 1.14285714rem;
 }
 
 .ui.big.steps .step,
-.ui.big.step.xeecoz {
+.ui.big.step.semantic {
   font-size: 1.28571429rem;
 }
 
 .ui.huge.steps .step,
-.ui.huge.step.xeecoz {
+.ui.huge.step.semantic {
   font-size: 1.42857143rem;
 }
 
 .ui.massive.steps .step,
-.ui.massive.step.xeecoz {
+.ui.massive.step.semantic {
   font-size: 1.71428571rem;
 }
 
@@ -20013,7 +20013,7 @@ ol.ui.horizontal.list li:before,
            Breadcrumb
 *******************************/
 
-.ui.breadcrumb.xeecoz {
+.ui.breadcrumb.semantic {
   line-height: 1;
   display: inline-block;
   margin: 0em 0em;
@@ -20045,7 +20045,7 @@ ol.ui.horizontal.list li:before,
 
 /* Link */
 
-.ui.breadcrumb a.xeecoz {
+.ui.breadcrumb a.semantic {
   color: #4183C4;
 }
 
@@ -20091,35 +20091,35 @@ ol.ui.horizontal.list li:before,
            Variations
 *******************************/
 
-.ui.mini.breadcrumb.xeecoz {
+.ui.mini.breadcrumb.semantic {
   font-size: 0.78571429rem;
 }
 
-.ui.tiny.breadcrumb.xeecoz {
+.ui.tiny.breadcrumb.semantic {
   font-size: 0.85714286rem;
 }
 
-.ui.small.breadcrumb.xeecoz {
+.ui.small.breadcrumb.semantic {
   font-size: 0.92857143rem;
 }
 
-.ui.breadcrumb.xeecoz {
+.ui.breadcrumb.semantic {
   font-size: 1rem;
 }
 
-.ui.large.breadcrumb.xeecoz {
+.ui.large.breadcrumb.semantic {
   font-size: 1.14285714rem;
 }
 
-.ui.big.breadcrumb.xeecoz {
+.ui.big.breadcrumb.semantic {
   font-size: 1.28571429rem;
 }
 
-.ui.huge.breadcrumb.xeecoz {
+.ui.huge.breadcrumb.semantic {
   font-size: 1.42857143rem;
 }
 
-.ui.massive.breadcrumb.xeecoz {
+.ui.massive.breadcrumb.semantic {
   font-size: 1.71428571rem;
 }
 
@@ -20157,7 +20157,7 @@ ol.ui.horizontal.list li:before,
         Content
 ---------------------*/
 
-.ui.form > p.xeecoz {
+.ui.form > p.semantic {
   margin: 1em 0em;
 }
 
@@ -20217,7 +20217,7 @@ ol.ui.horizontal.list li:before,
 /* Set max height on unusual input */
 
 .ui.form ::-webkit-datetime-edit,
-.ui.form ::-webkit-inner-spin-button.xeecoz {
+.ui.form ::-webkit-inner-spin-button.semantic {
   height: 1.21428571em;
 }
 
@@ -20253,7 +20253,7 @@ ol.ui.horizontal.list li:before,
 
 /* Text Area */
 
-.ui.form textarea.xeecoz {
+.ui.form textarea.semantic {
   margin: 0em;
   -webkit-appearance: none;
   tap-highlight-color: rgba(255, 255, 255, 0);
@@ -20295,7 +20295,7 @@ ol.ui.horizontal.list li:before,
      Basic Select
 ---------------------*/
 
-.ui.form select.xeecoz {
+.ui.form select.semantic {
   display: block;
   height: auto;
   width: 100%;
@@ -20344,14 +20344,14 @@ ol.ui.horizontal.list li:before,
 
 .ui.form .field .ui.input,
 .ui.form .fields .field .ui.input,
-.ui.form .wide.field .ui.input.xeecoz {
+.ui.form .wide.field .ui.input.semantic {
   width: 100%;
 }
 
 /* Inline  */
 
 .ui.form .inline.fields .field:not(.wide) .ui.input,
-.ui.form .inline.field:not(.wide) .ui.input.xeecoz {
+.ui.form .inline.field:not(.wide) .ui.input.semantic {
   width: auto;
   vertical-align: middle;
 }
@@ -20359,7 +20359,7 @@ ol.ui.horizontal.list li:before,
 /* Auto Input */
 
 .ui.form .fields .field .ui.input input,
-.ui.form .field .ui.input input.xeecoz {
+.ui.form .field .ui.input input.semantic {
   width: auto;
 }
 
@@ -20374,7 +20374,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .four.fields .ui.input input,
 .ui.form .three.fields .ui.input input,
 .ui.form .two.fields .ui.input input,
-.ui.form .wide.field .ui.input input.xeecoz {
+.ui.form .wide.field .ui.input input.semantic {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
@@ -20608,7 +20608,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .fields.error .field label,
 .ui.form .field.error label,
 .ui.form .fields.error .field .input,
-.ui.form .field.error .input.xeecoz {
+.ui.form .field.error .input.semantic {
   color: #9F3A38;
 }
 
@@ -20678,7 +20678,7 @@ ol.ui.horizontal.list li:before,
 
 /* Preserve Native Select Stylings */
 
-.ui.form .field.error select.xeecoz {
+.ui.form .field.error select.semantic {
   -webkit-appearance: menulist-button;
 }
 
@@ -20900,7 +20900,7 @@ ol.ui.horizontal.list li:before,
 .ui.inverted.form .inline.fields .field > label,
 .ui.inverted.form .inline.fields .field > p,
 .ui.inverted.form .inline.field > label,
-.ui.inverted.form .inline.field > p.xeecoz {
+.ui.inverted.form .inline.field > p.semantic {
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -21206,7 +21206,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .inline.fields .field > label,
 .ui.form .inline.fields .field > p,
 .ui.form .inline.field > label,
-.ui.form .inline.field > p.xeecoz {
+.ui.form .inline.field > p.semantic {
   display: inline-block;
   width: auto;
   margin-top: 0em;
@@ -21229,7 +21229,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .inline.fields .field > input,
 .ui.form .inline.fields .field > select,
 .ui.form .inline.field > input,
-.ui.form .inline.field > select.xeecoz {
+.ui.form .inline.field > select.semantic {
   display: inline-block;
   width: auto;
   margin-top: 0em;
@@ -21262,7 +21262,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.form .inline.fields .wide.field > input,
-.ui.form .inline.fields .wide.field > select.xeecoz {
+.ui.form .inline.fields .wide.field > select.semantic {
   width: 100%;
 }
 
@@ -21382,7 +21382,7 @@ ol.ui.horizontal.list li:before,
   vertical-align: top;
 }
 
-.ui.grid > *.xeecoz {
+.ui.grid > *.semantic {
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -21435,7 +21435,7 @@ ol.ui.horizontal.list li:before,
 --------------------*/
 
 .ui.grid > .row > img,
-.ui.grid > .row > .column > img.xeecoz {
+.ui.grid > .row > .column > img.semantic {
   max-width: 100%;
 }
 
@@ -22749,7 +22749,7 @@ ol.ui.horizontal.list li:before,
 .ui.stretched.grid > .column > *,
 .ui.grid > .stretched.row > .column > *,
 .ui.grid > .stretched.column:not(.row) > *,
-.ui.grid > .row > .stretched.column > *.xeecoz {
+.ui.grid > .row > .stretched.column > *.semantic {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -23771,7 +23771,7 @@ ol.ui.horizontal.list li:before,
      Button
 ---------------*/
 
-.ui.menu:not(.vertical) .item > .button.xeecoz {
+.ui.menu:not(.vertical) .item > .button.semantic {
   position: relative;
   top: 0em;
   margin: -0.5em 0em;
@@ -23802,17 +23802,17 @@ ol.ui.horizontal.list li:before,
      Inputs
 ---------------*/
 
-.ui.menu .item > .input.xeecoz {
+.ui.menu .item > .input.semantic {
   width: 100%;
 }
 
-.ui.menu:not(.vertical) .item > .input.xeecoz {
+.ui.menu:not(.vertical) .item > .input.semantic {
   position: relative;
   top: 0em;
   margin: -0.5em 0em;
 }
 
-.ui.menu .item > .input input.xeecoz {
+.ui.menu .item > .input input.semantic {
   font-size: 1em;
   padding-top: 0.57142857em;
   padding-bottom: 0.57142857em;
@@ -25973,7 +25973,7 @@ Floated Menu / Item
 
 /* Paragraph */
 
-.ui.message p.xeecoz {
+.ui.message p.semantic {
   opacity: 0.85;
   margin: 0.75em 0em;
 }
@@ -25986,7 +25986,7 @@ Floated Menu / Item
   margin-bottom: 0em;
 }
 
-.ui.message .header + p.xeecoz {
+.ui.message .header + p.semantic {
   margin-top: 0.25em;
 }
 
@@ -26008,7 +26008,7 @@ Floated Menu / Item
   margin-bottom: 0em;
 }
 
-.ui.message .list:not(.ui) li.xeecoz {
+.ui.message .list:not(.ui) li.semantic {
   position: relative;
   list-style-type: none;
   margin: 0em 0em 0.3em 1em;
@@ -26718,7 +26718,7 @@ Floated Menu / Item
 .ui.table th .image,
 .ui.table th .image img,
 .ui.table td .image,
-.ui.table td .image img.xeecoz {
+.ui.table td .image img.semantic {
   max-width: none;
 }
 
@@ -28116,7 +28116,7 @@ Floated Menu / Item
 }
 
 .ui.cards > .card a,
-.ui.card a.xeecoz {
+.ui.card a.semantic {
   cursor: pointer;
 }
 
@@ -28203,7 +28203,7 @@ Floated Menu / Item
 }
 
 .ui.cards > .card > .image > img,
-.ui.card > .image > img.xeecoz {
+.ui.card > .image > img.semantic {
   display: block;
   width: 100%;
   height: auto;
@@ -28211,7 +28211,7 @@ Floated Menu / Item
 }
 
 .ui.cards > .card > .image:not(.ui) > img,
-.ui.card > .image:not(.ui) > img.xeecoz {
+.ui.card > .image:not(.ui) > img.semantic {
   border: none;
 }
 
@@ -28308,7 +28308,7 @@ Floated Menu / Item
 ---------------*/
 
 .ui.cards > .card .content img,
-.ui.card .content img.xeecoz {
+.ui.card .content img.semantic {
   display: inline-block;
   vertical-align: middle;
   width: '';
@@ -28317,7 +28317,7 @@ Floated Menu / Item
 .ui.cards > .card img.avatar,
 .ui.cards > .card .avatar img,
 .ui.card img.avatar,
-.ui.card .avatar img.xeecoz {
+.ui.card .avatar img.semantic {
   width: 2em;
   height: 2em;
   border-radius: 500rem;
@@ -28338,7 +28338,7 @@ Floated Menu / Item
 ---------------*/
 
 .ui.cards > .card > .content p,
-.ui.card > .content p.xeecoz {
+.ui.card > .content p.semantic {
   margin: 0em 0em 0.5em;
 }
 
@@ -28352,13 +28352,13 @@ Floated Menu / Item
 ---------------*/
 
 .ui.cards > .card .meta,
-.ui.card .meta.xeecoz {
+.ui.card .meta.semantic {
   font-size: 1em;
   color: rgba(0, 0, 0, 0.4);
 }
 
 .ui.cards > .card .meta *,
-.ui.card .meta *.xeecoz {
+.ui.card .meta *.semantic {
   margin-right: 0.3em;
 }
 
@@ -28422,7 +28422,7 @@ Floated Menu / Item
 .ui.cards > .card > .buttons,
 .ui.card > .buttons,
 .ui.cards > .card > .button,
-.ui.card > .button.xeecoz {
+.ui.card > .button.semantic {
   margin: 0px -1px;
   width: calc(100% +  2px );
 }
@@ -28492,7 +28492,7 @@ Floated Menu / Item
 -----------------*/
 
 .ui.cards > .card > .extra,
-.ui.card > .extra.xeecoz {
+.ui.card > .extra.semantic {
   max-width: 100%;
   min-height: 0em !important;
   -webkit-box-flex: 0;
@@ -29258,7 +29258,7 @@ a.ui.card:hover,
 }
 
 .ui.comments .comment img.avatar,
-.ui.comments .comment .avatar img.xeecoz {
+.ui.comments .comment .avatar img.semantic {
   display: block;
   margin: 0em auto;
   width: 100%;
@@ -29302,14 +29302,14 @@ a.ui.card:hover,
      Metadata
 ---------------*/
 
-.ui.comments .comment .metadata.xeecoz {
+.ui.comments .comment .metadata.semantic {
   display: inline-block;
   margin-left: 0.5em;
   color: rgba(0, 0, 0, 0.4);
   font-size: 0.875em;
 }
 
-.ui.comments .comment .metadata > *.xeecoz {
+.ui.comments .comment .metadata > *.semantic {
   display: inline-block;
   margin: 0em 0.5em 0em 0em;
 }
@@ -29338,7 +29338,7 @@ a.ui.card:hover,
   font-size: 0.875em;
 }
 
-.ui.comments .comment .actions a.xeecoz {
+.ui.comments .comment .actions a.semantic {
   cursor: pointer;
   display: inline-block;
   margin: 0em 0.75em 0em 0em;
@@ -29367,7 +29367,7 @@ a.ui.card:hover,
   margin-top: 1em;
 }
 
-.ui.comments .reply.form textarea.xeecoz {
+.ui.comments .reply.form textarea.semantic {
   font-size: 1em;
   height: 12em;
 }
@@ -29541,7 +29541,7 @@ a.ui.card:hover,
   color: rgba(0, 0, 0, 0.6);
 }
 
-.ui.feed > .event > .label img.xeecoz {
+.ui.feed > .event > .label img.semantic {
   width: 100%;
   height: auto;
   border-radius: 500rem;
@@ -29574,7 +29574,7 @@ a.ui.card:hover,
 
 /* Link */
 
-.ui.feed > .event > .content a.xeecoz {
+.ui.feed > .event > .content a.semantic {
   cursor: pointer;
 }
 
@@ -29604,7 +29604,7 @@ a.ui.card:hover,
 
 /* Summary Image */
 
-.ui.feed > .event > .content .summary img.xeecoz {
+.ui.feed > .event > .content .summary img.semantic {
   display: inline-block;
   width: auto;
   height: 10em;
@@ -29624,7 +29624,7 @@ a.ui.card:hover,
   vertical-align: baseline;
 }
 
-.ui.feed > .event > .content .user img.xeecoz {
+.ui.feed > .event > .content .user img.semantic {
   margin: -0.25em 0.25em 0em 0em;
   width: auto;
   height: 10em;
@@ -29652,7 +29652,7 @@ a.ui.card:hover,
   Extra Summary
 ---------------*/
 
-.ui.feed > .event > .content .extra.xeecoz {
+.ui.feed > .event > .content .extra.semantic {
   margin: 0.5em 0em 0em;
   background: none;
   padding: 0em;
@@ -29661,7 +29661,7 @@ a.ui.card:hover,
 
 /* Images */
 
-.ui.feed > .event > .content .extra.images img.xeecoz {
+.ui.feed > .event > .content .extra.images img.semantic {
   display: inline-block;
   margin: 0em 0.25em 0em 0em;
   width: 6em;
@@ -29681,7 +29681,7 @@ a.ui.card:hover,
       Meta
 ---------------*/
 
-.ui.feed > .event > .content .meta.xeecoz {
+.ui.feed > .event > .content .meta.semantic {
   display: inline-block;
   font-size: 0.85714286em;
   margin: 0.5em 0em 0em;
@@ -29694,7 +29694,7 @@ a.ui.card:hover,
   color: rgba(0, 0, 0, 0.6);
 }
 
-.ui.feed > .event > .content .meta > *.xeecoz {
+.ui.feed > .event > .content .meta > *.semantic {
   position: relative;
   margin-left: 0.75em;
 }
@@ -29811,7 +29811,7 @@ a.ui.card:hover,
   z-index: '';
 }
 
-.ui.items > .item a.xeecoz {
+.ui.items > .item a.semantic {
   cursor: pointer;
 }
 
@@ -29870,7 +29870,7 @@ a.ui.card:hover,
   align-self: top;
 }
 
-.ui.items > .item > .image > img.xeecoz {
+.ui.items > .item > .image > img.semantic {
   display: block;
   width: 100%;
   height: auto;
@@ -29878,7 +29878,7 @@ a.ui.card:hover,
   border: none;
 }
 
-.ui.items > .item > .image:only-child > img.xeecoz {
+.ui.items > .item > .image:only-child > img.semantic {
   border-radius: 0rem;
 }
 
@@ -29950,14 +29950,14 @@ a.ui.card:hover,
   Content Image
 ---------------*/
 
-.ui.items > .item .content img.xeecoz {
+.ui.items > .item .content img.semantic {
   -ms-flex-item-align: middle;
   align-self: middle;
   width: '';
 }
 
 .ui.items > .item img.avatar,
-.ui.items > .item .avatar img.xeecoz {
+.ui.items > .item .avatar img.semantic {
   width: '';
   height: '';
   border-radius: 500rem;
@@ -29979,7 +29979,7 @@ a.ui.card:hover,
     Paragraph
 ---------------*/
 
-.ui.items > .item > .content p.xeecoz {
+.ui.items > .item > .content p.semantic {
   margin: 0em 0em 0.5em;
 }
 
@@ -29991,14 +29991,14 @@ a.ui.card:hover,
       Meta
 ---------------*/
 
-.ui.items > .item .meta.xeecoz {
+.ui.items > .item .meta.semantic {
   margin: 0.5em 0em 0.5em;
   font-size: 1em;
   line-height: 1em;
   color: rgba(0, 0, 0, 0.6);
 }
 
-.ui.items > .item .meta *.xeecoz {
+.ui.items > .item .meta *.semantic {
   margin-right: 0.3em;
 }
 
@@ -30095,7 +30095,7 @@ a.ui.card:hover,
   Extra Content
 -----------------*/
 
-.ui.items > .item .extra.xeecoz {
+.ui.items > .item .extra.semantic {
   display: block;
   position: relative;
   background: none;
@@ -30112,7 +30112,7 @@ a.ui.card:hover,
   border-top: none;
 }
 
-.ui.items > .item .extra > *.xeecoz {
+.ui.items > .item .extra > *.semantic {
   margin: 0.25rem 0.5rem 0.25rem 0em;
 }
 
@@ -30174,7 +30174,7 @@ a.ui.card:hover,
   }
 
   .ui.items:not(.unstackable) > .item > .image,
-  .ui.items:not(.unstackable) > .item > .image > img.xeecoz {
+  .ui.items:not(.unstackable) > .item > .image > img.semantic {
     max-width: 100% !important;
     width: auto !important;
     max-height: 250px !important;
@@ -30282,7 +30282,7 @@ a.ui.card:hover,
 
 @media only screen and (max-width: 767px) {
   .ui.unstackable.items > .item > .image,
-  .ui.unstackable.items > .item > .image > img.xeecoz {
+  .ui.unstackable.items > .item > .image > img.semantic {
     width: 125px !important;
   }
 }
@@ -30472,7 +30472,7 @@ a.ui.card:hover,
 ---------------*/
 
 .ui.statistics .statistic > .value img,
-.ui.statistic > .value img.xeecoz {
+.ui.statistic > .value img.semantic {
   max-height: 3rem;
   vertical-align: baseline;
 }
@@ -31567,7 +31567,7 @@ a.ui.card:hover,
 
 /* Input */
 
-.ui.slider.checkbox input.xeecoz {
+.ui.slider.checkbox input.semantic {
   width: 3.5rem;
   height: 1.25rem;
 }
@@ -31686,7 +31686,7 @@ a.ui.card:hover,
 
 /* Input */
 
-.ui.toggle.checkbox input.xeecoz {
+.ui.toggle.checkbox input.semantic {
   width: 3.5rem;
   height: 1.5rem;
 }
@@ -31941,7 +31941,7 @@ a.ui.card:hover,
   background: rgba(255, 255, 255, 0.1);
 }
 
-.ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb.xeecoz {
+.ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb.semantic {
   background: rgba(255, 255, 255, 0.25);
 }
 
@@ -32069,11 +32069,11 @@ body.dimmable > .dimmer {
     Aligned
 ---------------*/
 
-.ui.dimmer > .top.aligned.content > *.xeecoz {
+.ui.dimmer > .top.aligned.content > *.semantic {
   vertical-align: top;
 }
 
-.ui.dimmer > .bottom.aligned.content > *.xeecoz {
+.ui.dimmer > .bottom.aligned.content > *.semantic {
   vertical-align: bottom;
 }
 
@@ -32085,7 +32085,7 @@ body.dimmable > .dimmer {
   background-color: rgba(255, 255, 255, 0.85);
 }
 
-.ui.inverted.dimmer > .content > *.xeecoz {
+.ui.inverted.dimmer > .content > *.semantic {
   color: #FFFFFF;
 }
 
@@ -32189,7 +32189,7 @@ body.dimmable > .dimmer {
   will-change: transform, opacity;
 }
 
-.ui.dropdown .menu > *.xeecoz {
+.ui.dropdown .menu > *.semantic {
   white-space: nowrap;
 }
 
@@ -32198,7 +32198,7 @@ body.dimmable > .dimmer {
 ---------------*/
 
 .ui.dropdown > input:not(.search):first-child,
-.ui.dropdown > select.xeecoz {
+.ui.dropdown > select.semantic {
   display: none !important;
 }
 
@@ -32304,7 +32304,7 @@ body.dimmable > .dimmer {
   margin: 0.5em 0em;
 }
 
-.ui.dropdown.dropdown .menu > .input.xeecoz {
+.ui.dropdown.dropdown .menu > .input.semantic {
   width: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32313,11 +32313,11 @@ body.dimmable > .dimmer {
   min-width: 10rem;
 }
 
-.ui.dropdown .menu > .header + .input.xeecoz {
+.ui.dropdown .menu > .header + .input.semantic {
   margin-top: 0em;
 }
 
-.ui.dropdown .menu > .input:not(.transparent) input.xeecoz {
+.ui.dropdown .menu > .input:not(.transparent) input.semantic {
   padding: 0.5em 1em;
 }
 
@@ -32389,7 +32389,7 @@ body.dimmable > .dimmer {
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
-.ui.dropdown .menu > .item > img.xeecoz {
+.ui.dropdown .menu > .item > img.semantic {
   margin-top: 0em;
 }
 
@@ -32402,7 +32402,7 @@ body.dimmable > .dimmer {
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
-.ui.dropdown .menu > .item > img.xeecoz {
+.ui.dropdown .menu > .item > img.semantic {
   margin-left: 0em;
   float: none;
   margin-right: 0.78571429rem;
@@ -32415,7 +32415,7 @@ body.dimmable > .dimmer {
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image,
 .ui.dropdown .menu > .item > .image,
-.ui.dropdown .menu > .item > img.xeecoz {
+.ui.dropdown .menu > .item > img.semantic {
   display: inline-block;
   vertical-align: top;
   width: auto;
@@ -33989,7 +33989,7 @@ select.ui.dropdown {
 }
 
 .ui.modal > :first-child:not(.icon),
-.ui.modal > .icon:first-child + *.xeecoz {
+.ui.modal > .icon:first-child + *.semantic {
   border-top-left-radius: 0.28571429rem;
   border-top-right-radius: 0.28571429rem;
 }
@@ -34140,7 +34140,7 @@ select.ui.dropdown {
   text-align: right;
 }
 
-.ui.modal .actions > .button.xeecoz {
+.ui.modal .actions > .button.semantic {
   margin-left: 0.75em;
 }
 
@@ -34257,7 +34257,7 @@ select.ui.dropdown {
   }
 
   .ui.modal .actions > .buttons,
-  .ui.modal .actions > .button.xeecoz {
+  .ui.modal .actions > .button.semantic {
     margin-bottom: 1rem;
   }
 }
@@ -34793,7 +34793,7 @@ a.ui.nag {
             Popup
 *******************************/
 
-.ui.popup.xeecoz {
+.ui.popup.semantic {
   display: none;
   position: absolute;
   top: 0px;
@@ -35264,40 +35264,40 @@ a.ui.nag {
      Spacing
 ---------------*/
 
-.ui.popup.xeecoz {
+.ui.popup.semantic {
   margin: 0em;
 }
 
 /* Extending from Top */
 
-.ui.top.popup.xeecoz {
+.ui.top.popup.semantic {
   margin: 0em 0em 0.71428571em;
 }
 
-.ui.top.left.popup.xeecoz {
+.ui.top.left.popup.semantic {
   -webkit-transform-origin: left bottom;
   transform-origin: left bottom;
 }
 
-.ui.top.center.popup.xeecoz {
+.ui.top.center.popup.semantic {
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
 }
 
-.ui.top.right.popup.xeecoz {
+.ui.top.right.popup.semantic {
   -webkit-transform-origin: right bottom;
   transform-origin: right bottom;
 }
 
 /* Extending from Vertical Center */
 
-.ui.left.center.popup.xeecoz {
+.ui.left.center.popup.semantic {
   margin: 0em 0.71428571em 0em 0em;
   -webkit-transform-origin: right 50%;
   transform-origin: right 50%;
 }
 
-.ui.right.center.popup.xeecoz {
+.ui.right.center.popup.semantic {
   margin: 0em 0em 0em 0.71428571em;
   -webkit-transform-origin: left 50%;
   transform-origin: left 50%;
@@ -35305,21 +35305,21 @@ a.ui.nag {
 
 /* Extending from Bottom */
 
-.ui.bottom.popup.xeecoz {
+.ui.bottom.popup.semantic {
   margin: 0.71428571em 0em 0em;
 }
 
-.ui.bottom.left.popup.xeecoz {
+.ui.bottom.left.popup.semantic {
   -webkit-transform-origin: left top;
   transform-origin: left top;
 }
 
-.ui.bottom.center.popup.xeecoz {
+.ui.bottom.center.popup.semantic {
   -webkit-transform-origin: center top;
   transform-origin: center top;
 }
 
-.ui.bottom.right.popup.xeecoz {
+.ui.bottom.right.popup.semantic {
   -webkit-transform-origin: right top;
   transform-origin: right top;
 }
@@ -35340,7 +35340,7 @@ a.ui.nag {
   box-shadow: -1px -1px 0px 0px #bababc;
 }
 
-.ui.bottom.left.popup.xeecoz {
+.ui.bottom.left.popup.semantic {
   margin-left: 0em;
 }
 
@@ -35356,7 +35356,7 @@ a.ui.nag {
   box-shadow: -1px -1px 0px 0px #bababc;
 }
 
-.ui.bottom.right.popup.xeecoz {
+.ui.bottom.right.popup.semantic {
   margin-right: 0em;
 }
 
@@ -35382,7 +35382,7 @@ a.ui.nag {
   margin-left: -0.30714286em;
 }
 
-.ui.top.left.popup.xeecoz {
+.ui.top.left.popup.semantic {
   margin-left: 0em;
 }
 
@@ -35396,7 +35396,7 @@ a.ui.nag {
   margin-left: 0em;
 }
 
-.ui.top.right.popup.xeecoz {
+.ui.top.right.popup.semantic {
   margin-right: 0em;
 }
 
@@ -35483,18 +35483,18 @@ a.ui.nag {
             States
 *******************************/
 
-.ui.loading.popup.xeecoz {
+.ui.loading.popup.semantic {
   display: block;
   visibility: hidden;
   z-index: -1;
 }
 
 .ui.animating.popup,
-.ui.visible.popup.xeecoz {
+.ui.visible.popup.semantic {
   display: block;
 }
 
-.ui.visible.popup.xeecoz {
+.ui.visible.popup.semantic {
   -webkit-transform: translateZ(0px);
   transform: translateZ(0px);
   -webkit-backface-visibility: hidden;
@@ -35517,17 +35517,17 @@ a.ui.nag {
      Wide
 ---------------*/
 
-.ui.wide.popup.xeecoz {
+.ui.wide.popup.semantic {
   max-width: 350px;
 }
 
-.ui[class*="very wide"].popup.xeecoz {
+.ui[class*="very wide"].popup.semantic {
   max-width: 550px;
 }
 
 @media only screen and (max-width: 767px) {
   .ui.wide.popup,
-  .ui[class*="very wide"].popup.xeecoz {
+  .ui[class*="very wide"].popup.semantic {
     max-width: 250px;
   }
 }
@@ -35536,7 +35536,7 @@ a.ui.nag {
      Fluid
 ---------------*/
 
-.ui.fluid.popup.xeecoz {
+.ui.fluid.popup.semantic {
   width: 100%;
   max-width: none;
 }
@@ -35547,7 +35547,7 @@ a.ui.nag {
 
 /* Inverted colors  */
 
-.ui.inverted.popup.xeecoz {
+.ui.inverted.popup.semantic {
   background: #1B1C1D;
   color: #FFFFFF;
   border: none;
@@ -35570,7 +35570,7 @@ a.ui.nag {
      Flowing
 ---------------*/
 
-.ui.flowing.popup.xeecoz {
+.ui.flowing.popup.semantic {
   max-width: none;
 }
 
@@ -35578,27 +35578,27 @@ a.ui.nag {
      Sizes
 ---------------*/
 
-.ui.mini.popup.xeecoz {
+.ui.mini.popup.semantic {
   font-size: 0.78571429rem;
 }
 
-.ui.tiny.popup.xeecoz {
+.ui.tiny.popup.semantic {
   font-size: 0.85714286rem;
 }
 
-.ui.small.popup.xeecoz {
+.ui.small.popup.semantic {
   font-size: 0.92857143rem;
 }
 
-.ui.popup.xeecoz {
+.ui.popup.semantic {
   font-size: 1rem;
 }
 
-.ui.large.popup.xeecoz {
+.ui.large.popup.semantic {
   font-size: 1.14285714rem;
 }
 
-.ui.huge.popup.xeecoz {
+.ui.huge.popup.semantic {
   font-size: 1.42857143rem;
 }
 
@@ -35623,7 +35623,7 @@ a.ui.nag {
             Progress
 *******************************/
 
-.ui.progress.xeecoz {
+.ui.progress.semantic {
   position: relative;
   display: block;
   max-width: 100%;
@@ -35664,7 +35664,7 @@ a.ui.nag {
 
 /* Percent Complete */
 
-.ui.progress .bar > .progress.xeecoz {
+.ui.progress .bar > .progress.semantic {
   white-space: nowrap;
   position: absolute;
   width: auto;
@@ -35904,7 +35904,7 @@ a.ui.nag {
     Disabled
 ---------------*/
 
-.ui.disabled.progress.xeecoz {
+.ui.disabled.progress.semantic {
   opacity: 0.35;
 }
 
@@ -35922,7 +35922,7 @@ a.ui.nag {
     Inverted
 ---------------*/
 
-.ui.inverted.progress.xeecoz {
+.ui.inverted.progress.semantic {
   background: rgba(255, 255, 255, 0.08);
   border: none;
 }
@@ -35931,7 +35931,7 @@ a.ui.nag {
   background: #888888;
 }
 
-.ui.inverted.progress .bar > .progress.xeecoz {
+.ui.inverted.progress .bar > .progress.semantic {
   color: #F9FAFB;
 }
 
@@ -35992,7 +35992,7 @@ a.ui.nag {
 /* Coupling */
 
 .ui.segment > .ui.attached.progress,
-.ui.card > .ui.attached.progress.xeecoz {
+.ui.card > .ui.attached.progress.semantic {
   position: absolute;
   top: auto;
   left: 0;
@@ -36001,7 +36001,7 @@ a.ui.nag {
 }
 
 .ui.segment > .ui.bottom.attached.progress,
-.ui.card > .ui.bottom.attached.progress.xeecoz {
+.ui.card > .ui.bottom.attached.progress.semantic {
   top: 100%;
   bottom: auto;
 }
@@ -36144,7 +36144,7 @@ a.ui.nag {
      Sizes
 ---------------*/
 
-.ui.tiny.progress.xeecoz {
+.ui.tiny.progress.semantic {
   font-size: 0.85714286rem;
 }
 
@@ -36152,7 +36152,7 @@ a.ui.nag {
   height: 0.5em;
 }
 
-.ui.small.progress.xeecoz {
+.ui.small.progress.semantic {
   font-size: 0.92857143rem;
 }
 
@@ -36160,7 +36160,7 @@ a.ui.nag {
   height: 1em;
 }
 
-.ui.progress.xeecoz {
+.ui.progress.semantic {
   font-size: 1rem;
 }
 
@@ -36168,7 +36168,7 @@ a.ui.nag {
   height: 1.75em;
 }
 
-.ui.large.progress.xeecoz {
+.ui.large.progress.semantic {
   font-size: 1.14285714rem;
 }
 
@@ -36176,7 +36176,7 @@ a.ui.nag {
   height: 2.5em;
 }
 
-.ui.big.progress.xeecoz {
+.ui.big.progress.semantic {
   font-size: 1.28571429rem;
 }
 
@@ -36582,7 +36582,7 @@ a.ui.nag {
   border-radius: 0.25em;
 }
 
-.ui.search > .results .result .image img.xeecoz {
+.ui.search > .results .result .image img.semantic {
   display: block;
   width: auto;
   height: 100%;
@@ -36983,7 +36983,7 @@ a.ui.nag {
   display: none;
 }
 
-.ui.shape .side *.xeecoz {
+.ui.shape .side *.semantic {
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
 }
@@ -37013,7 +37013,7 @@ a.ui.nag {
   user-select: text;
 }
 
-.ui.cube.shape .side > .content > div.xeecoz {
+.ui.cube.shape .side > .content > div.semantic {
   display: table-cell;
   vertical-align: middle;
   font-size: 2em;
@@ -37031,7 +37031,7 @@ a.ui.nag {
   white-space: nowrap;
 }
 
-.ui.text.shape .side > *.xeecoz {
+.ui.text.shape .side > *.semantic {
   white-space: normal;
 }
 
@@ -37139,7 +37139,7 @@ a.ui.nag {
 
 /* GPU Layers for Child Elements */
 
-.ui.sidebar > *.xeecoz {
+.ui.sidebar > *.semantic {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -37829,7 +37829,7 @@ body.pushable > .pusher {
 /* Bound/Fixed Position */
 
 .ui.sticky.bound.top,
-.ui.sticky.fixed.top.xeecoz {
+.ui.sticky.fixed.top.semantic {
   top: 0px;
   bottom: auto;
 }
@@ -37873,7 +37873,7 @@ body.pushable > .pusher {
            UI Tabs
 *******************************/
 
-.ui.tab.xeecoz {
+.ui.tab.semantic {
   display: none;
 }
 
@@ -37901,7 +37901,7 @@ body.pushable > .pusher {
   min-height: 250px;
 }
 
-.ui.tab.loading *.xeecoz {
+.ui.tab.loading *.semantic {
   position: relative !important;
   left: -10000px !important;
 }
@@ -38378,7 +38378,7 @@ body.pushable > .pusher {
   }
 }
 
-@-webkit-keyframes fadeInUp.xeecoz {
+@-webkit-keyframes fadeInUp.semantic {
   0% {
     opacity: 0;
     -webkit-transform: translateY(10%);
@@ -38392,7 +38392,7 @@ body.pushable > .pusher {
   }
 }
 
-@keyframes fadeInUp.xeecoz {
+@keyframes fadeInUp.semantic {
   0% {
     opacity: 0;
     -webkit-transform: translateY(10%);
@@ -38512,7 +38512,7 @@ body.pushable > .pusher {
   }
 }
 
-@-webkit-keyframes fadeOutUp.xeecoz {
+@-webkit-keyframes fadeOutUp.semantic {
   0% {
     opacity: 1;
     -webkit-transform: translateY(0%);
@@ -38526,7 +38526,7 @@ body.pushable > .pusher {
   }
 }
 
-@keyframes fadeOutUp.xeecoz {
+@keyframes fadeOutUp.semantic {
   0% {
     opacity: 1;
     -webkit-transform: translateY(0%);
@@ -38979,7 +38979,7 @@ body.pushable > .pusher {
   }
 }
 
-@-webkit-keyframes flyInUp.xeecoz {
+@-webkit-keyframes flyInUp.semantic {
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 1500px, 0);
@@ -39008,7 +39008,7 @@ body.pushable > .pusher {
   }
 }
 
-@keyframes flyInUp.xeecoz {
+@keyframes flyInUp.semantic {
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 1500px, 0);
@@ -39251,7 +39251,7 @@ body.pushable > .pusher {
   }
 }
 
-@-webkit-keyframes flyOutUp.xeecoz {
+@-webkit-keyframes flyOutUp.semantic {
   20% {
     -webkit-transform: translate3d(0, 10px, 0);
     transform: translate3d(0, 10px, 0);
@@ -39270,7 +39270,7 @@ body.pushable > .pusher {
   }
 }
 
-@keyframes flyOutUp.xeecoz {
+@keyframes flyOutUp.semantic {
   20% {
     -webkit-transform: translate3d(0, 10px, 0);
     transform: translate3d(0, 10px, 0);
@@ -40091,7 +40091,7 @@ body.pushable > .pusher {
 
 /* Tada */
 
-@-webkit-keyframes tada.xeecoz {
+@-webkit-keyframes tada.semantic {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -40118,7 +40118,7 @@ body.pushable > .pusher {
   }
 }
 
-@keyframes tada.xeecoz {
+@keyframes tada.semantic {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1);

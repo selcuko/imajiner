@@ -4,4 +4,5 @@ from .views import *
 app_name = 'identity'
 urlpatterns = [
     path('yazar/<str:username>/', author_view, name='author'),
+    path('ben/', self_view, name='self'),
 ]

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section class="philosophy s-content">
+    {% if request.user.is_authenticated %}
+    <h1 class="philosophy" >{{ request.user.username }}</h1>
+
+    {% if request.user.is_shadow %}
+    <button class="semantic ui huge button">Yazara dönüş</button>
+    {% else %}
+    <h3 class="philosophy">Yazarsın</h3>
+    {% endif %}
+
+    {% else %}
+    <h1 class="philosophy" >I've never met this man in my life.</h1>
+    {% endif %}
+</section>
+{% endblock %}

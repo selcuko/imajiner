@@ -1,33 +1,16 @@
-{% extends 'philosophy.base.html' %}
+{% extends 'base.html' %}
 {% load static tagging %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'notebook/popup.css' %}">
-<script defer src="{% static 'notebook/tagging.js' %}"></script>
 <script defer src="{% static 'notebook/popup.js' %}"></script>
 {% endblock %}
 
 
 {% block body.id %}top{% endblock %}
 {% block body %}
-<!-- The Modal -->
-<div id="myModal" class="philosophy modal">
 
-    <!-- Modal content -->
-    <div class="philosophy modal-content">
-        <span class="philosophy close">&times;</span>
-        <p>Etiket ekle</p>
-        <form id="tag-add-form">
-            {% csrf_token %}
-            <input type="hidden" name="narrative" value="{{ narrative.slug }}">
-            <input type="text" name="name" placeholder="derealizasyon" required>
-            <input type="submit" value="Ekle">
-        </form>
-    </div>
+{% include 'tag/selector.html' %}
 
-</div>
-<!-- s-content
-    ================================================== -->
 <section id="content" class="philosophy s-content s-content--narrow s-content--no-padding-bottom">
 
     <article class="philosophy row format-standard">
@@ -38,13 +21,13 @@
             </h1>
             <ul class="philosophy s-content__header-meta">
                 <li class="philosophy date">{{ narrative.created_at|date }}</li>
-                <!-- <li class="philosophy cat">
+                    <!-- <li class="philosophy cat">
                         In
                         <a href="#0">Lifestyle</a>
                         <a href="#0">Travel</a>
                     </li> -->
             </ul>
-        </div> <!-- end s-content__header -->
+        </div>
         {% if narrative.sound %}
         <div class="philosophy s-content__media col-full">
             <div class="philosophy s-content__post-thumb">
@@ -70,7 +53,7 @@
                     <a class="philosophy tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} (<small class="philosophy count">{{ tag.count }}</small>)</a>
                     {% endfor %}
                     <a class="philosophy tag-display" id="tag-sample" style="display:none;"></a>
-                    <i id="tag-add" style="padding-top:5px;" class="philosophy fa fa-plus fa-lg"></i>
+                    <i id="tag-add-button" style="padding-top:5px;" class="philosophy fa fa-plus fa-lg"></i>
                 </span>
             </p> <!-- end s-content__tags -->
 
