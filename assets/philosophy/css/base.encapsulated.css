@@ -1,46 +1,45 @@
 /* =================================================================== 
  *
- *  Philosophy v1.0 Base Stylesheet
- *  12-30-2017
- *  ------------------------------------------------------------------
+ *.philosophy  Philosophy v1.0 Base Stylesheet
+ *.philosophy  12-30-2017
+ *.philosophy  ------------------------------------------------------------------
  *
- *  TOC:
- *  # imports
- *  # normalize
- *  # basic/base setup styles
- *    ## Media
- *    ## Typography resets
- *    ## links
- *    ## inputs
- *  # grid
- *    ## medium size devices
- *    ## tablets
- *    ## mobile devices
- *    ## small.philosophy mobile devices
- *  # block grids
- *    ## medium size devices
- *    ## tablets
- *    ## mobile devices
- *    ## small.philosophy mobile devices
- *  # MISC
+ *.philosophy  TOC:
+ *.philosophy  # imports
+ *.philosophy  # normalize
+ *.philosophy  # basic/base setup styles
+ *.philosophy    ## Media
+ *.philosophy    ## Typography resets
+ *.philosophy    ## links
+ *.philosophy    ## inputs
+ *.philosophy  # grid
+ *.philosophy    ## medium size devices
+ *.philosophy    ## tablets
+ *.philosophy    ## mobile devices
+ *.philosophy    ## small.philosophy mobile devices
+ *.philosophy  # block grids
+ *.philosophy    ## medium size devices
+ *.philosophy    ## tablets
+ *.philosophy    ## mobile devices
+ *.philosophy    ## small.philosophy mobile devices
+ *.philosophy  # MISC
  *
- * =================================================================== */
+ *.philosophy =================================================================== */
 
 
 /* ===================================================================
- *  # imports 
+ *.philosophy  # imports 
  *
- * ------------------------------------------------------------------- */
+ *.philosophy ------------------------------------------------------------------- */
 @import url("font-awesome/css/font-awesome.min.css");
-@import url("fonts.css");
 
 
 /* ===================================================================
- *  # normalize
- *  normalize.css v5.0.0 | MIT License | 
- *  github.com/necolas/normalize.css
+ *.philosophy  # normalize
+ *.philosophy  normalize.css v5.0.0 | MIT License | 
+ *.philosophy  github.com/necolas/normalize.css
  *
- * ------------------------------------------------------------------- */
+ *.philosophy ------------------------------------------------------------------- */
 html.philosophy {
    font-family: sans-serif;
    line-height: 1.15;
@@ -283,17 +282,17 @@ template {
 
 
 /* ===================================================================
-*  # basic/base setup styles
+*.philosophy  # basic/base setup styles
 *
-* ------------------------------------------------------------------- */
+*.philosophy ------------------------------------------------------------------- */
 html.philosophy {
    font-size: 62.5%;
    box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
+*.philosophy,
+*.philosophy::before,
+*.philosophy::after {
    box-sizing: inherit;
 }
 
@@ -314,8 +313,8 @@ button.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## Media
- * ------------------------------------------------------------------- */
+ *.philosophy ## Media
+ *.philosophy ------------------------------------------------------------------- */
 img.philosophy,
 video.philosophy {
    max-width: 100%;
@@ -323,8 +322,8 @@ video.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## Typography resets 
- * ------------------------------------------------------------------- */
+ *.philosophy ## Typography resets 
+ *.philosophy ------------------------------------------------------------------- */
 div.philosophy, dl, dt, dd, ul.philosophy, ol.philosophy, li.philosophy, h1.philosophy, h2.philosophy, h3.philosophy, h4.philosophy, h5.philosophy, h6.philosophy, pre.philosophy, form.philosophy, p.philosophy, blockquote, th, td {
    margin: 0;
    padding: 0;
@@ -366,8 +365,8 @@ li.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## links
- * ------------------------------------------------------------------- */
+ *.philosophy ## links
+ *.philosophy ------------------------------------------------------------------- */
 a.philosophy {
    text-decoration: none;
    line-height: inherit;
@@ -378,8 +377,8 @@ a.philosophy img.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- *  ## inputs
- * ------------------------------------------------------------------- */
+ *.philosophy  ## inputs
+ *.philosophy ------------------------------------------------------------------- */
 fieldset.philosophy {
    margin: 0;
    padding: 0;
@@ -402,22 +401,22 @@ textarea.philosophy {
 
 
 /* ===================================================================
- * # grid
+ *.philosophy # grid
  *
- * ------------------------------------------------------------------- */
-.row.philosophy {
+ *.philosophy ------------------------------------------------------------------- */
+.row {
    width: 94%;
    max-width: 1200px;
    margin: 0 auto;
 }
 
-.row.philosophy:after {
+.row:after {
    content: "";
    display: table;
    clear: both;
 }
 
-.row.philosophy .row.philosophy {
+.row .row {
    width: auto;
    max-width: none;
    margin-left: -20px;
@@ -425,7 +424,7 @@ textarea.philosophy {
 }
 
 /* column blocks
- * -------------------------------------- */
+ *.philosophy -------------------------------------- */
 [class*="col-"] {
    float: left;
    padding: 0 20px;
@@ -436,7 +435,7 @@ textarea.philosophy {
 }
 
 /* column width classes 
- * -------------------------------------- */
+ *.philosophy -------------------------------------- */
 .col-one {
    width: 8.33333%;
 }
@@ -495,10 +494,10 @@ textarea.philosophy {
 
 
 /* ------------------------------------------------------------------- 
- * ## medium size devices
- * ------------------------------------------------------------------- */
+ *.philosophy ## medium size devices
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
-   .row.philosophy .row {
+   .row .row {
       margin-left: -15px;
       margin-right: -15px;
    }
@@ -565,10 +564,10 @@ textarea.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## tablets
- * ------------------------------------------------------------------- */
+ *.philosophy ## tablets
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 800px) {
-   .row.philosophy {
+   .row {
       width: 90%;
    }
 
@@ -602,16 +601,16 @@ textarea.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## mobile devices
- * ------------------------------------------------------------------- */
+ *.philosophy ## mobile devices
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 600px) {
-   .row.philosophy {
+   .row {
       width: auto;
       padding-left: 25px;
       padding-right: 25px;
    }
 
-   .row.philosophy .row {
+   .row .row {
       margin-left: -10px;
       margin-right: -10px;
       padding-left: 0;
@@ -652,13 +651,13 @@ textarea.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## small.philosophy mobile devices
- * ------------------------------------------------------------------- */
+ *.philosophy ## small.philosophy mobile devices
+ *.philosophy ------------------------------------------------------------------- */
 
 /* stack columns on small.philosophy mobile devices
- * ------------------------------------------------------------------- */
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 400px) {
-   .row.philosophy .row {
+   .row .row {
       margin-left: 0;
       margin-right: 0;
    }
@@ -679,12 +678,12 @@ textarea.philosophy {
 
 
 /* ===================================================================
- * # block grids
+ *.philosophy # block grids
  *
- * ------------------------------------------------------------------- */
+ *.philosophy ------------------------------------------------------------------- */
 
 /* Equally-sized columns define at row level
- * ------------------------------------------------------------------- */
+ *.philosophy ------------------------------------------------------------------- */
 [class*="block-"]:after {
    content: "";
    display: table;
@@ -712,8 +711,8 @@ textarea.philosophy {
 }
 
 /**
- * Clearing for block grid columns. Allow columns with 
- * different heights to align properly.
+ *.philosophy Clearing for block grid columns. Allow columns with 
+ *.philosophy different heights to align properly.
  */
 .block-1-6 .col-block:nth-child(6n + 1),
 .block-1-5 .col-block:nth-child(5n + 1),
@@ -724,8 +723,8 @@ textarea.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## medium size devices
- * ------------------------------------------------------------------- */
+ *.philosophy ## medium size devices
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
    .block-m-1-6 .col-block {
       width: 16.66667%;
@@ -766,8 +765,8 @@ textarea.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## tablets
- * ------------------------------------------------------------------- */
+ *.philosophy ## tablets
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 800px) {
    .block-tab-1-6 .col-block {
       width: 16.66667%;
@@ -808,8 +807,8 @@ textarea.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## mobile devices
- * ------------------------------------------------------------------- */
+ *.philosophy ## mobile devices
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 600px) {
    .block-mob-1-6 .col-block {
       width: 16.66667%;
@@ -850,11 +849,11 @@ textarea.philosophy {
 }
 
 /* ------------------------------------------------------------------- 
- * ## small.philosophy mobile devices
- * ------------------------------------------------------------------- */
+ *.philosophy ## small.philosophy mobile devices
+ *.philosophy ------------------------------------------------------------------- */
 
 /* stack columns on small.philosophy mobile devices
- * ------------------------------------------------------------------- */
+ *.philosophy ------------------------------------------------------------------- */
 @media only screen and (max-width: 400px) {
    .stack .col-block {
       width: 100% !important;
@@ -867,9 +866,9 @@ textarea.philosophy {
 
 
 /* ===================================================================
- * # MISC
+ *.philosophy # MISC
  *
- * ------------------------------------------------------------------- */
+ *.philosophy ------------------------------------------------------------------- */
 .group:after {
    content: "";
    display: table;
@@ -877,7 +876,7 @@ textarea.philosophy {
 }
 
 /* Misc Helper Styles
- * -------------------------------------- */
+ *.philosophy -------------------------------------- */
 .is-hidden {
    display: none;
 }
@@ -940,6 +939,5 @@ textarea.philosophy {
    margin-right: auto;
    text-align: center;
 }
-
 
 
