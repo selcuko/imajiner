@@ -54,7 +54,7 @@
                 <div class="philosophy s-content__author-about">
                     <h4 class="philosophy s-content__author-name">
                         {% if narrative.author.is_shadow %}
-                        <p class="philosophy">{{ narrative.author.username }}</p>
+                        <p class="philosophy">{{ narrative.author.username }}  <i class="fas fa-ghost"></i></p>
                         {% else %}
                         <a class="philosophy"
                             href="{% url 'identity:author' username=narrative.author.username %}">{{ narrative.author.username }}</a>
@@ -67,11 +67,7 @@
                 </div>
                 <br>
             </div>
-
-
-
-        </div> <!-- end s-content__main -->
-
+        </div>
     </article>
 
     <form id="template-vars" style="display:none;">

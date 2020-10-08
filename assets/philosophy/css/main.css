@@ -976,7 +976,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 /* drop cap 
  * ----------------------------------------------- */
-article.narrative-detail p::first-letter {
+article.narrative-detail div.s-content__main::first-letter {
    float: left;
    margin: 0;
    padding: 1.5rem .6rem 0 0;
