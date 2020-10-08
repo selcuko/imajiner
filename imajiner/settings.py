@@ -18,7 +18,7 @@ GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
 
 ALLOWED_HOSTS = [
     'localhost',
-    '192.168.1.6',
+    '192.168.1.10',
     '192.168.43.182',
     'alpha.imajiner.space',
 ]
