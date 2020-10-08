@@ -24,12 +24,16 @@
     {% block base.head %}
     {# remove if unnecessary #}
     <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}">
 
     {% block philosophy %}
     <link rel="stylesheet" href="{% static 'philosophy/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'philosophy/css/vendor.css' %}">
     <link rel="stylesheet" href="{% static 'philosophy/css/main.css' %}">
+
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/pace.min.js' %}"></script>
+    <script defer src="{% static 'philosophy/js/plugins.js' %}"></script>
+    <script defer src="{% static 'philosophy/js/main.js' %}"></script>
     {% endblock philosophy %}
     {% endblock base.head %}
 
