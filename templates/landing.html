@@ -1,7 +1,8 @@
-{% extends 'transcend.base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-{% block base.navbar %}<!-- navbar override -->{% endblock %}
-{% block base.footer %}<!-- footer override -->{% endblock %}
+{% block base.navbar %}{# <!-- navbar override --> #}{% endblock %}
+{% block base.footer %}{# <!-- footer override --> #}{% endblock %}
+{% block philosophy %}{# <!-- philosophy override --> #}{% endblock %}
 
 
 {% block body %}
@@ -18,7 +19,7 @@
 
     <nav class="header-nav">
 
-        <a href="#0" class="header-nav__close" title="close"><span>Kapat</span></a>
+        <a href="#0" class="header-nav__close" title="Kapat"><span>Kapat</span></a>
 
         <div class="header-nav__content">
             <h3>IMAJINER</h3>
@@ -70,13 +71,13 @@
     </div> <!-- end home-content -->
 
     <ul class="home-sidelinks">
-        <li><a class="smoothscroll" href="#about">About<span>who we are</span></a></li>
-        <li><a class="smoothscroll" href="#services">Services<span>what we do</span></a></li>
-        <li><a class="smoothscroll" href="#contact">Contact<span>get in touch</span></a></li>
+        <li><a class="smoothscroll" href="#about">İncele<span>mesela burada neler var</span></a></li>
+        <li><a class="smoothscroll" href="#services">Neden<span>niye böyle bir şey var</span></a></li>
+        <li><a class="smoothscroll" href="#contact">Nasıl<span>burası nasıl çalışıyor</span></a></li>
     </ul> <!-- end home-sidelinks -->
 
     <ul class="home-social">
-        <li class="home-social-title">Buradan bahset</li>
+        <li class="home-social-title">Sosyal medya</li>
         <li><a href="#0">
                 <i class="fab fa-facebook"></i>
                 <span class="home-social-text">Facebook</span>
@@ -92,7 +93,7 @@
     </ul> <!-- end home-social -->
 
     <a href="#about" class="home-scroll smoothscroll">
-        <span class="home-scroll__text">Scroll Down</span>
+        <span class="home-scroll__text">Aşağı!</span>
         <span class="home-scroll__icon"></span>
     </a> <!-- end home-scroll -->
 
