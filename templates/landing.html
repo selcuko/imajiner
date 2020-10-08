@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'transcend/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'transcend/css/vendor.css' %}">
+<link rel="stylesheet" href="{% static 'transcend/css/main.css' %}">
+
+<script src="{% static 'transcend/js/modernizr.js' %}"></script>
+<script src="{% static 'transcend/js/pace.min.js' %}"></script>
+{% endblock head %}
+
+{% block base.foot %}
+<script type="text/javascript" src="{% static 'transcend/js/plugins.js' %}"></script>
+<script type="text/javascript" src="{% static 'transcend/js/main.js' %}"></script>
+{% endblock %}
+
 {% block base.navbar %}{# <!-- navbar override --> #}{% endblock %}
 {% block base.footer %}{# <!-- footer override --> #}{% endblock %}
 {% block philosophy %}{# <!-- philosophy override --> #}{% endblock %}

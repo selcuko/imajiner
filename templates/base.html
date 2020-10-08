@@ -113,8 +113,8 @@
             <div class="row">
                 <div class="col-full">
                     <div class="s-footer__copyright">
-                        <span>{{ copyright|safe }}</span> 
-                        <span>{{ credits|safe }}</span>
+                        <span>{{ copyright|safe|default:'&copy;Imajiner. Tüm hakları saklıdır.' }}</span> 
+                        <span>{{ credits|safe|default:'Bazı elementler üçüncü partilerden alınmıştır.' }}</span>
                     </div>
                     <div class="go-top">
                         <a class="smoothscroll" title="Evine dön" href="#top"></a>

@@ -1,39 +1,3 @@
-/* =================================================================== 
- *
- *  Philosophy v1.0 Base Stylesheet
- *  12-30-2017
- *  ------------------------------------------------------------------
- *
- *  TOC:
- *  # imports
- *  # normalize
- *  # basic/base setup styles
- *    ## Media
- *    ## Typography resets
- *    ## links
- *    ## inputs
- *  # grid
- *    ## medium size devices
- *    ## tablets
- *    ## mobile devices
- *    ## small mobile devices
- *  # block grids
- *    ## medium size devices
- *    ## tablets
- *    ## mobile devices
- *    ## small mobile devices
- *  # MISC
- *
- * =================================================================== */
-
-
-/* ===================================================================
- *  # imports 
- *
- * ------------------------------------------------------------------- */
-@import url("font-awesome/css/font-awesome.min.css");
-
-
 /* ===================================================================
  *  # normalize
  *  normalize.css v5.0.0 | MIT License | 

@@ -1,19 +1,11 @@
 {% extends 'base.html' %}
 {% load static tagging %}
 
-{% block head %}
-<script defer src="{% static 'notebook/popup.js' %}"></script>
-{% endblock %}
-
-
-{% block body.id %}top{% endblock %}
 {% block body %}
-
-{% include 'tag/selector.html' %}
 
 <section id="content" class="philosophy s-content s-content--narrow s-content--no-padding-bottom">
 
-    <article class="philosophy row format-standard">
+    <article class="narrative-detail row format-standard">
 
         <div class="philosophy s-content__header col-full">
             <h1 class="philosophy s-content__header-title">
@@ -21,11 +13,11 @@
             </h1>
             <ul class="philosophy s-content__header-meta">
                 <li class="philosophy date">{{ narrative.created_at|date }}</li>
-                    <!-- <li class="philosophy cat">
-                        In
-                        <a href="#0">Lifestyle</a>
-                        <a href="#0">Travel</a>
-                    </li> -->
+                <!-- <li class="philosophy cat">
+                    In
+                    <a href="#0">Lifestyle</a>
+                    <a href="#0">Travel</a>
+                </li> -->
             </ul>
         </div>
         {% if narrative.sound %}
