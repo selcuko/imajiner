@@ -109,6 +109,9 @@ class NarrativeWrite(LoginRequiredMixin, View):
         return render(self.request, self.template_name, context={
             'form': form,
             'sounds': sounds,
+            'doc': {
+                'title': 'Mürekkep dolduruluyor | Imajiner.'
+            }
             })
 
     def post(self, request, uuid=None):
