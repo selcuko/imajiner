@@ -13,20 +13,3 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-
-
-data = {
-    slug: 'am-parmaklama',
-}
-headers = {
-    "X-CSRFToken": getCookie('csrftoken') 
-}
-
-function tagPost(slug){
-    fetch('/hikaye/seks/', {
-        credentials: 'same-origin', 
-        method:"POST", 
-        body: JSON.stringify(data),
-        headers: headers,
-    })
-}

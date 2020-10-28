@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static tagging %}
 
+{% block head %}
+{% endblock head %}
 {% block body %}
 
 <section id="content" class="philosophy s-content s-content--narrow s-content--no-padding-bottom">
-
-    <article class="narrative-detail row format-standard">
+    <article id="article" class="narrative-detail row format-standard">
 
         <div class="philosophy s-content__header col-full">
             <h1 class="philosophy s-content__header-title">
@@ -13,11 +14,7 @@
             </h1>
             <ul class="philosophy s-content__header-meta">
                 <li class="philosophy date">{{ narrative.created_at|date }}</li>
-                <!-- <li class="philosophy cat">
-                    In
-                    <a href="#0">Lifestyle</a>
-                    <a href="#0">Travel</a>
-                </li> -->
+                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'notebook:sketch' uuid=narrative.uuid %}">Düzenle</a></li>{% endif %}
             </ul>
         </div>
         {% if narrative.sound %}
@@ -34,7 +31,9 @@
 
         <div class="philosophy col-full s-content__main">
 
-            {{ narrative.html|safe }}
+            <div id="article-body">
+                {{ narrative.html|safe }}
+            </div>
 
             <p class="philosophy s-content__tags">
                 <span class="philosophy">Bir tutam</span>
