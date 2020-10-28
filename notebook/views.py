@@ -100,7 +100,7 @@ class NarrativeWrite(LoginRequiredMixin, View):
             form = NarrativeForm(instance=sketch)
         else:
             try:
-                sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
+                sketch = Narrative.objects.get(uuid=uuid, author=request.user)
                 form = NarrativeForm(instance=sketch)
             except Narrative.DoesNotExist:
                 return HttpResponse(status=404)
