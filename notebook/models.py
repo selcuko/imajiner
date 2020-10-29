@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
 from tagmanager.models import TagManager
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -9,15 +10,10 @@ from django.utils import text, html
 from uuid import uuid1
 
 
-def ext_validator(file):
-        valid = ['mp3', 'aac', 'wav', 'opus']
-        if file.name.split('.')[-1] not in valid:
-            raise ValidationError('File extension invalid. Options:', str(valid))
-
 class SoundRecord(models.Model):
     file = models.FileField(
         upload_to='voice-records',
-        validators=[ext_validator]
+        validators=[FileExtensionValidator(allowed_extensions=['mp3', 'aac', 'wav', 'opus'])],
     )
     uploaded_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=128, null=True, blank=True)
@@ -33,13 +29,13 @@ class SoundRecord(models.Model):
 
 
 class Narrative(models.Model):
+    versioning = models.BooleanField(default=True)
     title = models.CharField(max_length=100, default='Başlıklı hikaye')
     slug = models.SlugField(max_length=100, null=True, unique=True)
     body = models.TextField(null=True)
     html = models.TextField(null=True)
     sketch = models.BooleanField(default=False)
     uuid = models.UUIDField()
-    sound = models.ForeignKey(SoundRecord, null=True, blank=True, on_delete=models.SET_NULL, related_name='narratives')
 
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
@@ -52,6 +48,10 @@ class Narrative(models.Model):
         super().__init__(*args, **kwargs)
         if not self.uuid: self.uuid = uuid1()
     
+    @property
+    def latest_version(self):
+        self.versions.last().version
+
     @classmethod
     def viewable(cls, user):
         if isinstance(user, str):
@@ -72,13 +72,29 @@ class Narrative(models.Model):
         else:
             return reverse('narrative:detail', kwargs={'slug': self.slug})
     
-    def save(self, *args, alter_slug=True, **kwargs):
+
+
+    def generate_html(self):
         self.html = html.escape(self.body)
         self.html = self.html.replace('\n\n', '<br />')
         self.html = self.html.replace('\n', '</p><p>')
-        self.html = f'<p class="drop-cap">{self.html}</p>'
-        if alter_slug:
-            self.generate_slug()
+        self.html = f'<p>{self.html}</p>'
+
+    def save(self, *args, alter_slug=True, update_only=False, **kwargs):
+        self.generate_html()
+        if alter_slug: self.generate_slug()
+        self.versioning = self.versions.count() > 0
+        if not update_only:
+            # generate new version, mark old one as readonly
+            latest = NarrativeVersion()
+            latest.reference(self)
+            if self.versions.count() > 0: self.versions.last().archive()
+            self.version = latest.version
+            latest.save()
+        else:
+            latest = NarrativeVersion()
+            latest.reference(self)
+            latest.save()
         super().save(*args, **kwargs)
     
     @property
@@ -105,5 +121,41 @@ def update_tagman(sender, instance, **kwargs):
     instance.tags.save()
 
 
+class NarrativeVersion(models.Model):
+    readonly = models.BooleanField(default=False)
+    title = models.CharField(max_length=100, default='Başlıklı hikaye')
+    slug = models.SlugField(max_length=100, null=True, unique=True)
+    body = models.TextField(null=True)
+    html = models.TextField(null=True)
+    sketch = models.BooleanField(default=False)
+    uuid = models.UUIDField()
+    sound = models.ForeignKey(SoundRecord, null=True, blank=True, on_delete=models.SET_NULL, related_name='narratives')
+    version = models.PositiveIntegerField(default=1)
+    master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='versions')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.uuid: self.uuid = uuid1()
 
+    def reference(self, ref):
+        self.title = ref.title
+        self.body = ref.body
+        self.html = ref.html
+        self.sketch = ref.sketch
+        self.master = ref
+
+        self.assign_version(ref)
+    
+    def assign_version(self, ref=None):
+        self.version = 1
+    
+    def archive(self):
+        self.save(archive=True)
+
+    def save(self, archive=False, *args, **kwargs):
+        self.readonly = True if self.readonly else archive
+        self.assign_version()
+        super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ('-version',)
