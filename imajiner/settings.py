@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'gatewall.apps.GatewallConfig',
     'identity.apps.IdentityConfig',
     'explore.apps.ExploreConfig',
+    'console.apps.ConsoleConfig',
     'django_extensions',
 ]
 
