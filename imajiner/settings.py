@@ -1,13 +1,24 @@
 import os
-from django.urls import reverse_lazy
+import dj_database_url
+from uuid import uuid1
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'gtiv*0885^r!w+8l8l!_!uf8-w_0t()-rwjok*2*s44=l)8s%p'
+SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 
 DEBUG = True
 
-GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
+if DEBUG:
+    DB = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+else:
+    DB_URL = os.getenv('DATABASE_URL', None)
+    if not DB_URL: raise Exception('Environment variable DATABASE_URL is not supplied.')
+    DB = dj_database_url.parse(DB_URL)
+
+GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -66,10 +77,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'imajiner.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': DB
 }
 
 AUTH_PASSWORD_VALIDATORS = [
