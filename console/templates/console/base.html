@@ -71,10 +71,10 @@
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'console/images/avatar-1.jpg' %}" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name">Mazikeen</h5>
-                                    <span class="ml-2">Hayalet</span>
+                                    <h5 class="mb-0 text-white nav-user-name">{{ request.user.username }}</h5>
+                                    <span class="ml-2">{% if request.user.is_shadow %}Hayalet{% else %}Yazar{% endif %}</span>
                                 </div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Oturumu kapat</a>
+                                <a class="dropdown-item" href="#0"><i class="fas fa-power-off mr-2"></i>Oturumu kapat</a>
                             </div>
                         </li>
                     </ul>

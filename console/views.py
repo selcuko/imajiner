@@ -6,4 +6,8 @@ class Console(LoginRequiredMixin, View):
     template = 'console/overview.html'
 
     def get(self, request):
-        return render(request, self.template)
+        user = request.user
+        highlights = user.narratives.all()[:5]
+        return render(request, self.template, {
+            'highlights': highlights
+        })

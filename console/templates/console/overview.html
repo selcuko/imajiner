@@ -66,23 +66,22 @@
                                                 <th class="border-0">#</th>
                                                 <th class="border-0">Başlık</th>
                                                 <th class="border-0">Özet</th>
-                                                <th class="border-0">Alkış</th>
                                                 <th class="border-0">Ses eki</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for narrative in highlights %}
                                             <tr>
-                                                <td>1</td>
-                                                <td>Nevermore to return</td>
-                                                <td>I order you gone, nevermore to return. </td>
-                                                <td>721</td>
-                                                <td><i class="fa fa-check"></i></td>
-
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ narrative.title }}</td>
+                                                <td>{{ narrative.lead }}</td>
+                                                <td><i class="{% if narrative.sound %}fa fa-check{% else %}fa fa-times {% endif %}"></i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="9"><a href="#"
                                                         class="btn btn-outline-light float-right">Detaylar</a></td>
                                             </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
