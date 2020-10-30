@@ -173,7 +173,7 @@ h5,
 h6 {
     color: #3d405c;
     margin: 0px 0px 15px 0px;
-    font-family: 'Circular Std Medium';
+    font-family: 'metropolis-regular';
 }
 
 h1 {
@@ -2333,7 +2333,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     background-color: #59b3ff;
     padding: 31px 15px;
     text-align: center;
-    left: 10px;  font-family: 'Circular Std Medium'; color: #fff;}
+    left: 10px;  font-family: 'metropolis-regular'; color: #fff;}
 
    .ribbons-text{transform: rotate(90deg);
     position: absolute;
@@ -2360,7 +2360,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 .product-rating{font-size: 12px;
 
     color: #ffa811;}
-.product-price{ position: absolute; top: 0; right: 0; font-size: 16px; color: #3d405c;font-family: 'Circular Std Medium'; line-height: 1;}
+.product-price{ position: absolute; top: 0; right: 0; font-size: 16px; color: #3d405c;font-family: 'metropolis-regular'; line-height: 1;}
 .product-btn{}
 .product-del{font-size: 14px; color: #71748d;}
 .product-sidebar{ background-color: #fff; border:1px solid #e6e6f2;  }
@@ -2552,7 +2552,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
   text-align: center;
   color: #333;
   font-size: 13px;
-  font-family: 'Circular Std Medium';
+  font-family: 'metropolis-regular';
 
   line-height: 1.6;
   -webkit-transform: translateX(-100%);
@@ -4513,7 +4513,7 @@ Pills vertical
 .table thead th,
 .table th {
     color: #3d405c;
-    font-family: 'Circular Std Medium';
+    font-family: 'metropolis-regular';
 }
 
 .table-bordered {
@@ -4545,7 +4545,7 @@ tr.group,
 tr.group:hover {
     background-color: #5969ff !important;
     color: #fff;
-    font-family: 'Circular Std Medium';
+    font-family: 'metropolis-regular';
     font-size: 18px;
 }
 
