@@ -49,8 +49,9 @@ class Narrative(models.Model):
         if not self.uuid: self.uuid = uuid1()
     
     @property
-    def latest_version(self):
-        self.versions.last().version
+    def latest(self):
+        return self.versions.first()
+
 
     @classmethod
     def viewable(cls, user):
@@ -72,30 +73,30 @@ class Narrative(models.Model):
         else:
             return reverse('narrative:detail', kwargs={'slug': self.slug})
     
-
-
     def generate_html(self):
         self.html = html.escape(self.body)
         self.html = self.html.replace('\n\n', '<br />')
         self.html = self.html.replace('\n', '</p><p>')
         self.html = f'<p>{self.html}</p>'
 
-    def save(self, *args, alter_slug=True, update_only=False, **kwargs):
+    def save(self, *args, alter_slug=True, new_version=False, **kwargs):
         self.generate_html()
         if alter_slug: self.generate_slug()
-        self.versioning = self.versions.count() > 0
-        if not update_only:
-            # generate new version, mark old one as readonly
-            latest = NarrativeVersion()
-            latest.reference(self)
-            if self.versions.count() > 0: self.versions.last().archive()
-            self.version = latest.version
-            latest.save()
-        else:
-            latest = NarrativeVersion()
-            latest.reference(self)
-            latest.save()
+        
         super().save(*args, **kwargs)
+
+        initial_version = self.versions.count() == 0
+        if new_version:
+            self.latest.archive()
+            latest = NarrativeVersion(master=self)
+            latest.reference(self)
+            v = self.latest.version + 1 if not initial_version else 1
+            latest.version = v
+            self.version = latest.version
+        else:
+            latest = self.versions.last() if not initial_version else NarrativeVersion(master=self, version=1)
+            latest.reference(self)
+        latest.save()
     
     @property
     def lead(self):
@@ -114,7 +115,7 @@ def create_tagman(sender, instance, created, **kwargs):
         return
     tagman = TagManager.objects.create()
     instance.tags = tagman
-    instance.save()
+    instance.save(new_version=False)
 
 @receiver(post_save, sender=Narrative)
 def update_tagman(sender, instance, **kwargs):
@@ -143,18 +144,17 @@ class NarrativeVersion(models.Model):
         self.html = ref.html
         self.sketch = ref.sketch
         self.master = ref
-
-        self.assign_version(ref)
     
     def assign_version(self, ref=None):
         self.version = 1
     
     def archive(self):
-        self.save(archive=True)
+        return self.save(archive=True)
 
     def save(self, archive=False, *args, **kwargs):
-        self.readonly = True if self.readonly else archive
-        self.assign_version()
+        if self.readonly:
+            raise Exception('This version is read-only.')
+        self.readonly = archive
         super().save(*args, **kwargs)
 
     class Meta:
