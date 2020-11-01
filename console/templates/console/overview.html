@@ -1,5 +1,5 @@
 {% extends 'console/base.html' %}
-{% load static %}
+{% load static usercontext %}
 
 {% block body %}
 <!-- ============================================================== -->
@@ -70,6 +70,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% highlights as highlights %}
                                             {% for narrative in highlights %}
                                             <tr>
                                                 <td>{{ forloop.counter }}</td>
@@ -77,11 +78,11 @@
                                                 <td>{{ narrative.lead }}</td>
                                                 <td><i class="{% if narrative.sound %}fa fa-check{% else %}fa fa-times {% endif %}"></i></td>
                                             </tr>
+                                            {% endfor %}
                                             <tr>
                                                 <td colspan="9"><a href="#"
                                                         class="btn btn-outline-light float-right">Detaylar</a></td>
                                             </tr>
-                                            {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

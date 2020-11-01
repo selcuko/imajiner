@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ doc.description }}">
+    <meta name="author" content="{{ doc.author }}">
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    
     <title>Konsol</title>
 
     {% block standard %}
@@ -129,17 +135,14 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Eserler</a>
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Not defteri</a>
                                 <div id="submenu-2" class="collapse submenu">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/cards.html">Hikayeler <span class="badge badge-secondary">3</span></a>
+                                            <a class="nav-link" href="{% url 'console:narratives' %}">Hikayeler</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/general.html">Taslaklar</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/carousel.html">Seriler</a>
+                                            <a class="nav-link" href="{% url 'console:series' %}">Seriler</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -152,10 +155,24 @@
         <!-- ============================================================== -->
         <!-- end left sidebar -->
         <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
         {% block body %}{% endblock %}
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2020 Imajiner. Tüm hakları saklıdır.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="#0">Hakkında</a>
+                                <a href="#0">İletişim</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper  -->
-    <!-- ============================================================== -->
 </body>
 </html>
