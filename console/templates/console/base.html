@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{% static 'fonts/domine/stylesheet.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/lato/stylesheet.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/metropolis/stylesheet.css' %}">
-    <link rel="stylesheet" href="{% static 'console/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     <link rel="stylesheet" href="{% static 'console/vendor/fonts/circular-std/style.css' %}">
     {% endblock %}
     {% block standard.css %}
@@ -105,44 +105,31 @@
                             <li class="nav-divider">
                                 Mönü
                             </li>
-                            <li class="nav-item">
-                                <a class="active nav-link" href="dashboard-finance.html">Kuş bakışı</a>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'console:overview' %}"><i class="fa fa-fw fa-chart-line"></i>Kuş bakışı</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Şahsiyetim</a>
-                                <div id="submenu-1" class="collapse submenu">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">Profil</a>
-                                            <div id="submenu-1-2" class="collapse submenu">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="index.html">Profil bilgileri</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.html">Erişim ve güvenlik</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-single.html">Radikal işlemler</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">İstatistikler</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a class="nav-link" href="{% url 'console:profile' %}"><i class="fa fa-fw fa-user-circle"></i>Şahsiyet</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'console:access' %}"><i class="fa fa-fw fa-key"></i>Erişim</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Not defteri</a>
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
+                                    <i class="fa fa-fw fa-copy"></i>Çiziktirme defteri</a>
                                 <div id="submenu-2" class="collapse submenu">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'console:narratives' %}">Hikayeler</a>
+                                            <a class="nav-link" href="{% url 'console:publications' %}">Yayınlanmış hikayeler</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'console:sketches' %}">Taslaklar</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{% url 'console:series' %}">Seriler</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'console:medium' %}">Medya içeriği</a>
                                         </li>
                                     </ul>
                                 </div>

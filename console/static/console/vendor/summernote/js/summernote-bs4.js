@@ -8761,4 +8761,4 @@ external_jQuery_default.a.summernote.options.styleTags = ['p', {
 
 /******/ });
 });
-//# sourceMappingURL=summernote-bs4.js.map
+//# srcMap=summernote-bs4.js.map
