@@ -2,132 +2,125 @@
 
 {% block body %}
 
-    <div class="container-fluid dashboard-content">
-        <div class="row">
-            <div class="col-xl-10">
-                <!-- ============================================================== -->
-                <!-- pageheader  -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-header" id="top">
-                            <h2 class="pageheader-title">Kimlik Yönetim</h2>
-                            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
-                            <div class="page-breadcrumb">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item active" aria-current="page">Şahsiyet</li>
-                                    </ol>
-                                </nav>
-                            </div>
+<div class="container-fluid dashboard-content">
+    <div class="row">
+        
+        <div class="col-xl-10">
+            <!-- ============================================================== -->
+            <!-- pageheader  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header" id="top">
+                        <h2 class="pageheader-title">Kimlik Yönetim</h2>
+                        
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end pageheader  -->
+            <!-- ============================================================== -->
+            <div class="page-section" id="overview">
                 <!-- ============================================================== -->
-                <!-- end pageheader  -->
-                <!-- ============================================================== -->
-                <div class="page-section" id="overview">
-                    <!-- ============================================================== -->
-                    <!-- overview  -->
-                    <!-- ============================================================== -->
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <h2>Kimlik Yönetim</h2>
-                            <p class="lead">Hesabınıza dair en gerekli bilgiler bu sayfada toplandı. İstediğiniz bilgileri görüntüleyebilir ve değiştirebilirsiniz.</p>
-                            <ul class="list-unstyled arrow">
-                                <li>Hesabınızı silmek veya askıya almak için Radikal İşlemler sayfasına yönelin.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end overview  -->
-                    <!-- ============================================================== -->
-                </div>
-                <!-- ============================================================== -->
-                <!-- basic form  -->
+                <!-- overview  -->
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="section-block" id="public-info">
-                            <h3 class="section-title">Herkesçe görülen bilgiler</h3>
-                            <p>Güncelledikten sonra kaydet tuşuna tıklayınız.</p>
+                        <p class="lead">Hesabınıza dair en gerekli bilgiler bu sayfada toplandı. İstediğiniz bilgileri
+                            görüntüleyebilir ve değiştirebilirsiniz.</p>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end overview  -->
+                <!-- ============================================================== -->
+            </div>
+            <br>
+            <!-- ============================================================== -->
+            <!-- basic form  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="section-block" id="account-info">
+                        <h3 class="section-title">Hesap</h3>
+                        <p>Güncelledikten sonra kaydet tuşuna tıklamazsan kaydetmem.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="inputText3" class="col-form-label">Mahlas</label>
+                                    <input value="{{ request.user.username }}" id="inputText3" type="text"
+                                        class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword">Password</label>
+                                    <input id="inputPassword" type="password" placeholder="Hmmm..."
+                                        class="form-control">
+                                    <p>Elbette şifreni burada göstermiyorum. Değiştirmek istersen <a style="text-decoration: underline;" href="#0">Erişim</a> kısmından halledersin.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Hakkında</label>
+                                    <textarea placeholder="Sizi ne diye bilsinler?"
+                                        value="{{ request.user.profile.biography }}" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div>
+                                    <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                </div>
+                            </form>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Mahlas</label>
-                                        <input value="{{ request.user.username }}" id="inputText3" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail"></label>
-                                        <input id="inputEmail" type="email" placeholder="Kayıtlı email adresiniz yok." value="{{ request.user.email }}" class="form-control">
-                                        <p>Daha fazla bilgi için hesap erişimi kısmına göz atın.</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Mobil telefon numarası</label>
-                                        <input id="inputText4" type="tel" class="form-control" placeholder="Kayıtlı telefon numaranız yok." value="{{ request.user.profile.phone }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword">Password</label>
-                                        <input id="inputPassword" type="password" placeholder="Hmmm..." class="form-control">
-                                        <p>Elbette şifrenizi burada göstermiyor.</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Hakkında</label>
-                                        <textarea placeholder="Sizi ne diye bilsinler?" value="{{ request.user.profile.biography }}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-body border-top">
-                                <h3>Kayıt türü</h3>
-                                <p>Daha fazla bilgi için tıkla.</p>
-                                <form>
+                        <div class="card-body border-top" id="account-type">
+                            <h3>Hesap türü</h3>
+                            <p>Yazarken de hayalet hesap özelliklerinden faydalanabilirsin, çünkü niye olmasın?</p>
+                            <form>
 
-                                    <div class="form-group">
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Hayalet</label>
-                                            <div class="col-12 col-sm-8 col-lg-6 pt-1">
-                                                <div class="switch-button switch-button-success">
-                                                    <input type="checkbox" {% if request.user.is_shadow %}checked{% endif %} name="switch16" id="switch16"><span>
-                                                <label for="switch16"></label></span>
-                                                </div>
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                        <label class="col-12 col-sm-12 col-form-label text-sm">Hayalet</label>
+                                        <div class="col-12 col-sm-12 col-lg-12">
+                                            <div class="switch-button switch-button-success">
+                                                <input type="checkbox" {% if request.user.is_shadow %}checked{% endif %}
+                                                    name="switch16" id="switch16">
+                                                <span>
+                                                    <label for="switch16"></label>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-
-                                </form>
-                            </div>
+                                </div>
+                                <div>
+                                    <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- end basic form  -->
-                <!-- ============================================================== -->
-                <div>
-                    <form>
-                        <div>
-                            <input type="submit" value="Kaydet">
-                        </div>
-                    </form>
-                </div>
-                
             </div>
             <!-- ============================================================== -->
-            <!-- sidenavbar -->
+            <!-- end basic form  -->
             <!-- ============================================================== -->
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
-                <div class="sidebar-nav-fixed">
-                    <ul class="list-unstyled">
-                        <li><a href="#public-info" class="active">Herkesçe görülen bilgiler</a></li>
-                        <li><a href="#basic-info">Temel bilgiler</a></li>
-                        <li><a href="#access-info">Erişim bilgileri</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end sidenavbar -->
-            <!-- ============================================================== -->
+
         </div>
+        <!-- ============================================================== -->
+        <!-- sidenavbar -->
+        <!-- ============================================================== -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="sidebar-nav-fixed">
+                <ul class="list-unstyled">
+                    <li><a href="#account-info">Hesap bilgileri</a></li>
+                    <li><a href="#account-type">Hesap türü</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end sidenavbar -->
+        <!-- ============================================================== -->
     </div>
+</div>
 {% endblock body %}

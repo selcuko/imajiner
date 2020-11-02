@@ -5,200 +5,173 @@
 <!-- ============================================================== -->
 <!-- wrapper  -->
 <!-- ============================================================== -->
-<div class="dashboard-wrapper">
-    <div class="dashboard-ecommerce">
-        <div class="container-fluid dashboard-content ">
-            <!-- ============================================================== -->
-            <!-- pageheader  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-header">
-                        <h2 class="pageheader-title">İçgörü istatistikleri </h2>
-                        <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel
-                            mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
-                        <div class="page-breadcrumb">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Genel bakış</a></li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end pageheader  -->
-            <!-- ============================================================== -->
-            <div class="ecommerce-widget">
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="text-muted">Yazar skoru</h5>
-                                <div class="metric-value d-inline-block">
-                                    <h1 class="mb-1">120</h1>
-                                </div>
-                                <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                    <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
-                                </div>
-                            </div>
-                            <div id="sparkline-revenue"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- ============================================================== -->
-
-                    <!-- ============================================================== -->
-
-                    <!-- recent orders  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">İlgi gören eserlerim</h5>
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class="bg-light">
-                                            <tr class="border-0">
-                                                <th class="border-0">#</th>
-                                                <th class="border-0">Başlık</th>
-                                                <th class="border-0">Özet</th>
-                                                <th class="border-0">Ses eki</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% highlights as highlights %}
-                                            {% for narrative in highlights %}
-                                            <tr>
-                                                <td>{{ forloop.counter }}</td>
-                                                <td>{{ narrative.title }}</td>
-                                                <td>{{ narrative.lead }}</td>
-                                                <td><i class="{% if narrative.sound %}fa fa-check{% else %}fa fa-times {% endif %}"></i></td>
-                                            </tr>
-                                            {% endfor %}
-                                            <tr>
-                                                <td colspan="9"><a href="#"
-                                                        class="btn btn-outline-light float-right">Detaylar</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <!-- ============================================================== -->
-                        <!-- social source  -->
-                        <!-- ============================================================== -->
-                        <div class="card">
-                            <h5 class="card-header"> Yapılan atıflar</h5>
-                            <div class="card-body p-0">
-                                <ul class="social-sales list-group list-group-flush">
-                                    <li class="list-group-item social-sales-content"><span
-                                            class="social-sales-icon-circle facebook-bgcolor mr-2"><i
-                                                class="fab fa-facebook-f"></i></span><span
-                                            class="social-sales-name">Facebook</span><span
-                                            class="social-sales-count text-dark">120</span>
-                                    </li>
-                                    <li class="list-group-item social-sales-content"><span
-                                            class="social-sales-icon-circle twitter-bgcolor mr-2"><i
-                                                class="fab fa-twitter"></i></span><span
-                                            class="social-sales-name">Twitter</span><span
-                                            class="social-sales-count text-dark">99</span>
-                                    </li>
-                                    <li class="list-group-item social-sales-content"><span
-                                            class="social-sales-icon-circle instagram-bgcolor mr-2"><i
-                                                class="fab fa-instagram"></i></span><span
-                                            class="social-sales-name">Instagram</span><span
-                                            class="social-sales-count text-dark">76</span>
-                                    </li>
-                                    <li class="list-group-item social-sales-content"><span
-                                            class="social-sales-icon-circle pinterest-bgcolor mr-2"><i
-                                                class="fab fa-pinterest-p"></i></span><span
-                                            class="social-sales-name">Pinterest</span><span
-                                            class="social-sales-count text-dark">56</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-footer text-center">
-                                <a href="#" class="btn-primary-link">Detaylar</a>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end social source  -->
-                        <!-- ============================================================== -->
-                    </div>
-
-                    <!-- ============================================================== -->
-                    <!-- sales traffic country source  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Ülkelere göre okuyucu kitlesi dağılımı</h5>
-                            <div class="card-body p-0">
-                                <ul class="country-sales list-group list-group-flush">
-                                    <li class="country-sales-content list-group-item"><span class="mr-2"><i
-                                                class="flag-icon flag-icon-us" title="us" id="us"></i> </span><span
-                                            class="">United States</span><span class="float-right text-dark">78%</span>
-                                    </li>
-                                    <li class="list-group-item country-sales-content"><span class="mr-2"><i
-                                                class="flag-icon flag-icon-ca" title="ca" id="ca"></i></span><span
-                                            class="">Canada</span><span class="float-right text-dark">17%</span>
-                                    </li>
-                                    <li class="list-group-item country-sales-content"><span class="mr-2"><i
-                                                class="flag-icon flag-icon-ru" title="ru" id="ru"></i></span><span
-                                            class="">Russia</span><span class="float-right text-dark">14%</span>
-                                    </li>
-                                    <li class="list-group-item country-sales-content"><span class=" mr-2"><i
-                                                class="flag-icon flag-icon-in" title="in" id="in"></i></span><span
-                                            class="">India</span><span class="float-right text-dark">2%</span>
-                                    </li>
-                                    <li class="list-group-item country-sales-content"><span class=" mr-2"><i
-                                                class="flag-icon flag-icon-fr" title="fr" id="fr"></i></span><span
-                                            class="">France</span><span class="float-right text-dark">1%</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-footer text-center">
-                                <a href="#" class="btn-primary-link">Detaylar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end sales traffice country source  -->
-                    <!-- ============================================================== -->
+<div class="container-fluid dashboard-content ">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h2 class="pageheader-title">İçgörü istatistikleri </h2>
+                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel
+                    mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Genel bakış</a></li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
     <!-- ============================================================== -->
-    <!-- footer -->
+    <!-- end pageheader  -->
     <!-- ============================================================== -->
-    <div class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                    Copyright © 2020 Imajiner. Tüm hakları saklıdır.</a>
+    <div class="ecommerce-widget">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Yazar skoru</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">120</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue"></div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="text-md-right footer-links d-none d-sm-block">
-                        <a href="javascript: void(0);">Hakkında</a>
-                        <a href="javascript: void(0);">İletişim</a>
+            </div>
+        </div>
+        <div class="row">
+            <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+
+            <!-- recent orders  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">İlgi gören eserlerim</h5>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="bg-light">
+                                    <tr class="border-0">
+                                        <th class="border-0">#</th>
+                                        <th class="border-0">Başlık</th>
+                                        <th class="border-0">Özet</th>
+                                        <th class="border-0">Ses eki</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% highlights as highlights %}
+                                    {% for narrative in highlights %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ narrative.title }}</td>
+                                        <td>{{ narrative.lead }}</td>
+                                        <td><i class="{% if narrative.sound %}fa fa-check{% else %}fa fa-times {% endif %}"></i></td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="9"><a href="#"
+                                                class="btn btn-outline-light float-right">Detaylar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
+                <!-- ============================================================== -->
+                <!-- social source  -->
+                <!-- ============================================================== -->
+                <div class="card">
+                    <h5 class="card-header"> Yapılan atıflar</h5>
+                    <div class="card-body p-0">
+                        <ul class="social-sales list-group list-group-flush">
+                            <li class="list-group-item social-sales-content"><span
+                                    class="social-sales-icon-circle facebook-bgcolor mr-2"><i
+                                        class="fab fa-facebook-f"></i></span><span
+                                    class="social-sales-name">Facebook</span><span
+                                    class="social-sales-count text-dark">120</span>
+                            </li>
+                            <li class="list-group-item social-sales-content"><span
+                                    class="social-sales-icon-circle twitter-bgcolor mr-2"><i
+                                        class="fab fa-twitter"></i></span><span
+                                    class="social-sales-name">Twitter</span><span
+                                    class="social-sales-count text-dark">99</span>
+                            </li>
+                            <li class="list-group-item social-sales-content"><span
+                                    class="social-sales-icon-circle instagram-bgcolor mr-2"><i
+                                        class="fab fa-instagram"></i></span><span
+                                    class="social-sales-name">Instagram</span><span
+                                    class="social-sales-count text-dark">76</span>
+                            </li>
+                            <li class="list-group-item social-sales-content"><span
+                                    class="social-sales-icon-circle pinterest-bgcolor mr-2"><i
+                                        class="fab fa-pinterest-p"></i></span><span
+                                    class="social-sales-name">Pinterest</span><span
+                                    class="social-sales-count text-dark">56</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn-primary-link">Detaylar</a>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end social source  -->
+                <!-- ============================================================== -->
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- sales traffic country source  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">Ülkelere göre okuyucu kitlesi dağılımı</h5>
+                    <div class="card-body p-0">
+                        <ul class="country-sales list-group list-group-flush">
+                            <li class="country-sales-content list-group-item"><span class="mr-2"><i
+                                        class="flag-icon flag-icon-us" title="us" id="us"></i> </span><span
+                                    class="">United States</span><span class="float-right text-dark">78%</span>
+                            </li>
+                            <li class="list-group-item country-sales-content"><span class="mr-2"><i
+                                        class="flag-icon flag-icon-ca" title="ca" id="ca"></i></span><span
+                                    class="">Canada</span><span class="float-right text-dark">17%</span>
+                            </li>
+                            <li class="list-group-item country-sales-content"><span class="mr-2"><i
+                                        class="flag-icon flag-icon-ru" title="ru" id="ru"></i></span><span
+                                    class="">Russia</span><span class="float-right text-dark">14%</span>
+                            </li>
+                            <li class="list-group-item country-sales-content"><span class=" mr-2"><i
+                                        class="flag-icon flag-icon-in" title="in" id="in"></i></span><span
+                                    class="">India</span><span class="float-right text-dark">2%</span>
+                            </li>
+                            <li class="list-group-item country-sales-content"><span class=" mr-2"><i
+                                        class="flag-icon flag-icon-fr" title="fr" id="fr"></i></span><span
+                                    class="">France</span><span class="float-right text-dark">1%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn-primary-link">Detaylar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end sales traffice country source  -->
+            <!-- ============================================================== -->
+        </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- end footer -->
-    <!-- ============================================================== -->
 </div>
-<!-- ============================================================== -->
-<!-- end wrapper  -->
-<!-- ============================================================== -->
+   
 {% endblock body %}

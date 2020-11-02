@@ -16,17 +16,43 @@ class Profile(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, self.template)
 
-
-class Narratives(View):
-    template = 'console/narratives.html'
-
+class Access(View):
+    template = 'console/blank.html'
     def get(self, request):
-        ctx = user_content(user)
         return render(request, self.template)
 
+class Narratives(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+class Narrative(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+
+class Sketches(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+class Sketch(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+
+class Medium(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+class Media(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
 
 class Series(View):
-    template = 'console/series.html'
-
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+class Serie(View):
+    template = 'console/blank.html'
     def get(self, request):
         return render(request, self.template)
