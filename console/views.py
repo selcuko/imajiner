@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .context import *
+from identity.forms import ProfileForm
 
 class Overview(LoginRequiredMixin, View):
     template = 'console/overview.html'
@@ -14,7 +15,18 @@ class Profile(LoginRequiredMixin, View):
     template = 'console/profile.html'
 
     def get(self, request):
-        return render(request, self.template)
+        return render(request, self.template, {
+            'form': ProfileForm(instance=request.user.profile)
+        })
+    
+    def post(self, request):
+        form = ProfileForm(request.POST, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            
+        return render(request, self.template, {
+                'form': form
+            })
 
 class Access(View):
     template = 'console/blank.html'

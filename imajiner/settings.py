@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'explore.apps.ExploreConfig',
     'console.apps.ConsoleConfig',
     'django_extensions',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

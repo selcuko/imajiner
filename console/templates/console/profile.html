@@ -1,5 +1,5 @@
 {% extends 'console/base.html' %}
-
+{% load static widget_tweaks %}
 {% block body %}
 
 <div class="container-fluid dashboard-content">
@@ -53,6 +53,7 @@
                     <div class="card">
                         <div class="card-body">
                             <form>
+                                {% csrf_token %}
                                 <div class="form-group">
                                     <label for="inputText3" class="col-form-label">Mahlas</label>
                                     <input value="{{ request.user.username }}" id="inputText3" type="text"
@@ -64,14 +65,8 @@
                                         class="form-control">
                                     <p>Elbette şifreni burada göstermiyorum. Değiştirmek istersen <a style="text-decoration: underline;" href="#0">Erişim</a> kısmından halledersin.</p>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Hakkında</label>
-                                    <textarea placeholder="Sizi ne diye bilsinler?"
-                                        value="{{ request.user.profile.biography }}" class="form-control"
-                                        id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
                                 <div>
-                                    <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                    <input disabled class="btn btn-primary btn-block" value="Kaydet" type="submit">
                                 </div>
                             </form>
                         </div>
@@ -95,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                    <input disabled class="btn btn-primary btn-block" value="Kaydet" type="submit">
                                 </div>
                             </form>
                         </div>
@@ -105,6 +100,30 @@
             <!-- ============================================================== -->
             <!-- end basic form  -->
             <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="section-block" id="account-info">
+                        <h3 class="section-title">Havalı şeyler</h3>
+                        <p>Güncelledikten sonra kaydet tuşuna tıklamazsan kaydetmem.</p>
+                    </div>
+                    <div class="card">
+                  
+                        <div class="card-body border-top">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Hakkında</label>
+                                    {% render_field form.biography class+="form-control" rows="3" placeholder="Sizi ne diye bilsinler?" value=request.user.profile.biography %}
+                                </div>
+                                <div>
+                                    <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                </div>
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- ============================================================== -->
