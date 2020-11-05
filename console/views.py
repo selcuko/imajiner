@@ -34,12 +34,12 @@ class Access(View):
         return render(request, self.template)
 
 class Narratives(View):
-    template = 'console/blank.html'
+    template = 'console/narratives.html'
     def get(self, request):
         return render(request, self.template)
 class Narrative(View):
     template = 'console/blank.html'
-    def get(self, request):
+    def get(self, request, uuid):
         return render(request, self.template)
 
 class Sketches(View):
