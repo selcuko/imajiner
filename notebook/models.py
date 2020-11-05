@@ -8,7 +8,7 @@ from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from django.utils import text, html
 from uuid import uuid1
-
+from django.utils import timezone
 
 class SoundRecord(models.Model):
     file = models.FileField(
@@ -40,6 +40,7 @@ class Narrative(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
     tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
+    published_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         ordering = ('created_at',)
@@ -52,6 +53,9 @@ class Narrative(models.Model):
     def latest(self):
         return self.versions.first()
 
+    @property
+    def published(self):
+        return bool(self.published_at)
 
     @classmethod
     def viewable(cls, user):
@@ -82,6 +86,8 @@ class Narrative(models.Model):
     def save(self, *args, alter_slug=True, new_version=False, **kwargs):
         self.generate_html()
         if alter_slug: self.generate_slug()
+        if not self.published_at and not self.sketch:
+            self.published_at = timezone.now()
         
         super().save(*args, **kwargs)
 

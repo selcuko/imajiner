@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .context import *
+from notebook.models import Narrative as NarrativeModel
 from identity.forms import ProfileForm
+from notebook.forms import NarrativeForm
 
 class Overview(LoginRequiredMixin, View):
     template = 'console/overview.html'
@@ -38,9 +40,22 @@ class Narratives(View):
     def get(self, request):
         return render(request, self.template)
 class Narrative(View):
-    template = 'console/blank.html'
+    template = 'console/narrative.html'
     def get(self, request, uuid):
-        return render(request, self.template)
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=uuid)
+        form = NarrativeForm(instance=narrative)
+        return render(request, self.template, {'form': form,'narrative': narrative})
+    
+    def post(self, request, uuid):
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=uuid)
+        form = NarrativeForm(request.POST, instance=narrative)
+        if form.is_valid(): 
+            narrative = form.save(commit=False)
+            narrative.save(new_version=True)
+        else:
+            print('FORM INVALID')
+            print(form.errors)
+        return render(request, self.template, {'form': form,'narrative': narrative})
 
 class Sketches(View):
     template = 'console/blank.html'
