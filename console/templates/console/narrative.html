@@ -1,0 +1,99 @@
+{% extends 'console/base.html' %}
+{% load static widget_tweaks %}
+<!--
+{% block head %}
+<link rel="stylesheet" href="{% static 'console/vendor/select2/css/select2.css' %}">
+<link rel="stylesheet" href="{% static 'console/vendor/summernote/css/summernote-bs4.css' %}">
+<link rel="stylesheet" href="{% static 'console/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
+
+<script defer src="{% static 'console/vendor/select2/js/select2.min.js' %}"></script>
+<script defer src="{% static 'console/vendor/summernote/js/summernote-bs4.js' %}"></script>
+<script defer src="{% static 'console/libs/js/main-js.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2({ tags: true });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 300
+
+        });
+    });
+</script>
+{% endblock %} -->
+{% block body %}
+
+<div class="container-fluid dashboard-content">
+
+    <div class="col-xl-12">
+        <!-- ============================================================== -->
+        <!-- pageheader  -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h1 class="pageheader-title">{{ narrative.title }}</h1>
+
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li>Düzenleme sayfası</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <div class="page-section" id="overview">
+            <!-- ============================================================== -->
+            <!-- overview  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <p class="lead">Bla bla</p>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end overview  -->
+            <!-- ============================================================== -->
+        </div>
+        <br>
+
+        <!-- ============================================================== -->
+        <!-- end basic form  -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="section-block" id="account-info">
+                    <h3 class="section-title">Asil içerik</h3>
+                    <p>Güncelledikten sonra kaydet tuşuna tıklamazsan kaydetmem.</p>
+                </div>
+                <div class="card">
+
+                    <div class="card-body border-top">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {% render_field form.uuid type="hidden" %}
+                            {% render_field form.title type="hidden" %}
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Gövde</label>
+                                {% render_field form.body rows="10" class+="form-control" %}
+                            </div>
+                            <div>
+                                <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
