@@ -6,17 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 
-DEBUG = False
+DEBUG = True
 
-if DEBUG:
-    DB = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-else:
-    DB_URL = os.getenv('DATABASE_URL', None)
-    if not DB_URL: raise Exception('Environment variable DATABASE_URL is not supplied.')
-    DB = dj_database_url.parse(DB_URL)
+DB_URL = os.getenv('DATABASE_URL', None)
+if not DB_URL: raise Exception('Environment variable DATABASE_URL is not supplied.')
+DB = dj_database_url.parse(DB_URL)
 
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
 
