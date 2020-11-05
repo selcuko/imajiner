@@ -14,7 +14,7 @@
             </h1>
             <ul class="philosophy s-content__header-meta">
                 <li class="philosophy date">{{ narrative.created_at|date }}</li>
-                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'notebook:sketch' uuid=narrative.uuid %}">Düzenle</a></li>{% endif %}
+                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'console:narrative' uuid=narrative.uuid %}">Düzenle</a></li>{% endif %}
             </ul>
         </div>
         {% if narrative.sound %}
