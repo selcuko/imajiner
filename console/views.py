@@ -31,8 +31,21 @@ class Profile(LoginRequiredMixin, View):
             })
 
 class Access(View):
-    template = 'console/blank.html'
+    template = 'console/access.html'
     def get(self, request):
+        return render(request, self.template)
+    
+    def post(self, request):
+        print(request.POST)
+        if 'basics' in request.POST:
+            print('access:basics')
+            username = request.POST.get('username', None)
+            password = request.POST.get('password', None)
+            if username:
+                request.user.username = username
+                request.user.save()
+            if password:
+                request.user.set_password(password)
         return render(request, self.template)
 
 class Narratives(View):
