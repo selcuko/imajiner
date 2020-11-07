@@ -139,6 +139,7 @@ class NarrativeVersion(models.Model):
     sound = models.ForeignKey(SoundRecord, null=True, blank=True, on_delete=models.SET_NULL, related_name='narratives')
     version = models.PositiveIntegerField(default=1)
     master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='versions')
+    created_at = models.DateTimeField(null=True, auto_now_add=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -157,8 +158,8 @@ class NarrativeVersion(models.Model):
     def archive(self):
         return self.save(archive=True)
 
-    def save(self, archive=False, *args, **kwargs):
-        if self.readonly:
+    def save(self, archive=False, overwrite=False, *args, **kwargs):
+        if self.readonly and not overwrite:
             raise Exception('This version is read-only.')
         self.readonly = archive
         super().save(*args, **kwargs)

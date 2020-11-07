@@ -3,8 +3,12 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .context import *
 from notebook.models import Narrative as NarrativeModel
+from notebook.models import NarrativeVersion as NarrativeVersionModel
 from identity.forms import ProfileForm
 from notebook.forms import NarrativeForm
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Overview(LoginRequiredMixin, View):
     template = 'console/overview.html'
@@ -69,6 +73,18 @@ class Narrative(View):
             print('FORM INVALID')
             print(form.errors)
         return render(request, self.template, {'form': form,'narrative': narrative})
+
+class NarrativeVersions(View):
+    template = 'console/narrative/versions.html'
+    def get(self, request, uuid):
+        narrative = NarrativeModel.objects.get(uuid=uuid)
+        return render(request, self.template, {'narrative': narrative})
+
+class NarrativeVersion(View):
+    template = 'console/narrative/readonly.html'
+    def get(self, request, narrative, version):
+        version = NarrativeVersionModel.objects.get(uuid=version)
+        return render(request, self.template, {'version': version})
 
 class Sketches(View):
     template = 'console/blank.html'
