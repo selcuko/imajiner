@@ -91,6 +91,13 @@ class Auth(View):
                 raise SuspiciousOperation(ke.args)
 
 
+class Logout(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            logout(request.user)
+        return HttpResponse('Ç I K T I N')
+
+
 class LoginViews:
 
     class Login(View):

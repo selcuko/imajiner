@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,8 @@
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
-    
-    <title>Konsol</title>
+
+    <title>{{ doc.title|default:'Konsol' }}</title>
 
     {% block standard %}
     {% block standard.fonts %}
@@ -28,7 +29,8 @@
     <link rel="stylesheet" href="{% static 'console/libs/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'console/vendor/charts/chartist-bundle/chartist.css' %}">
     <link rel="stylesheet" href="{% static 'console/vendor/charts/morris-bundle/morris.css' %}">
-    <link rel="stylesheet" href="{% static 'console/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet"
+        href="{% static 'console/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'console/vendor/charts/c3charts/c3.css' %}">
     <link rel="stylesheet" href="{% static 'console/vendor/fonts/flag-icon-css/flag-icon.min.css' %}">
     {% endblock standard.css %}
@@ -44,24 +46,20 @@
     <script defer src="{% static 'console/vendor/charts/c3charts/c3.min.js' %}"></script>
     <script defer src="{% static 'console/vendor/charts/c3charts/d3-5.4.0.min.js' %}"></script>
     <script defer src="{% static 'console/vendor/charts/c3charts/C3chartjs.js' %}"></script>
-    <script defer src="{% static 'console/libs/js/dashboard-ecommerce.js' %}"></script>
     {% endblock standard.js %}
     {% endblock standard %}
 
     {% block head %}{% endblock %}
 </head>
+
 <body>
-    <!-- ============================================================== -->
-    <!-- main wrapper -->
-    <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
-        <!-- ============================================================== -->
-        <!-- navbar -->
-        <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">IMAJINER</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand">IMAJINER</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
@@ -71,33 +69,32 @@
                                 <input class="form-control" type="text" placeholder="Ara">
                             </div>
                         </li>
-                        
-                  
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'console/images/avatar-1.jpg' %}" alt="" class="user-avatar-md rounded-circle"></a>
-                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                    src="{% static 'console/images/avatar-1.jpg' %}" alt=""
+                                    class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                                aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name">{{ request.user.username }}</h5>
-                                    <span class="ml-2">{% if request.user.is_shadow %}Hayalet{% else %}Yazar{% endif %}</span>
+                                    <span
+                                        class="ml-2">{% if request.user.is_shadow %}Hayalet{% else %}Yazar{% endif %}</span>
                                 </div>
-                                <a class="dropdown-item" href="#0"><i class="fas fa-power-off mr-2"></i>Oturumu kapat</a>
+                                <a class="dropdown-item" href="{% url 'gatewall:logout' %}"><i
+                                        class="fas fa-power-off mr-2"></i>Oturumu kapat</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <!-- ============================================================== -->
-        <!-- end navbar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- left sidebar -->
-        <!-- ============================================================== -->
         <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Konsol</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -106,44 +103,28 @@
                                 Mönü
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="{% url 'console:overview' %}"><i class="fa fa-fw fa-chart-line"></i>Kuş bakışı</a>
+                                <a class="nav-link" href="{% url 'console:overview' %}"><i
+                                        class="fa fa-fw fa-chart-line"></i>Kuş bakışı</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="{% url 'console:profile' %}"><i class="fa fa-fw fa-user-circle"></i>Şahsiyet</a>
+                                <a class="nav-link" href="{% url 'console:profile' %}"><i
+                                        class="fa fa-fw fa-user-circle"></i>Şahsiyet</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="{% url 'console:access' %}"><i class="fa fa-fw fa-key"></i>Erişim</a>
+                                <a class="nav-link" href="{% url 'console:access' %}"><i
+                                        class="fa fa-fw fa-key"></i>Erişim</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
-                                    <i class="fa fa-fw fa-copy"></i>Çiziktirme defteri</a>
-                                <div id="submenu-2" class="collapse submenu">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'console:narratives' %}">Yayınlanmış hikayeler</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'console:sketches' %}">Taslaklar</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'console:series' %}">Seriler</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'console:medium' %}">Medya içeriği</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'console:narratives' %}"><i
+                                        class="fa fa-fw fa-copy"></i>Eserler</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end left sidebar -->
-        <!-- ============================================================== -->
         <div class="dashboard-wrapper">
-        {% block body %}{% endblock %}
+            {% block body %}{% endblock %}
             <div class="footer">
                 <div class="container-fluid">
                     <div class="row">
@@ -162,4 +143,5 @@
         </div>
     </div>
 </body>
+
 </html>
