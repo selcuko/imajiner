@@ -108,7 +108,7 @@ class Narrative(models.Model):
     def lead(self):
         if not self.html: return 'SQL yine coşturmuş'
         p = self.html.split('</p><p>')
-        return p[0].replace('<p class="drop-cap">', '').replace('</p>', '')
+        return p[0].replace('<p class="drop-cap">', '').replace('</p>', '').replace('<p>', '')
     
     def generate_slug(self):
         self.slug = f'{text.slugify(self.title, allow_unicode=False)}-{str(self.uuid)[:8]}'
