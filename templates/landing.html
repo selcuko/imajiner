@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'transcend/css/base.css' %}">
@@ -40,16 +40,16 @@
             <h3>IMAJINER</h3>
 
             <ul class="header-nav__list">
-                <li class="current"><a class="smoothscroll" href="#home" title="home">Ana sahife</a></li>
-                <li><a class="" href="{% url 'notebook:list' %}" title="about">Hikayeler</a></li>
-                <li><a class="smoothscroll" href="#about" title="services">Misyoner</a></li>
-                <li><a class="smoothscroll" href="#services" title="services">Mekanizma</a></li>
-                <li><a class="smoothscroll" href="{% url 'console:overview' %}" title="works">Kontrol paneli</a></li>
-                <li><a class="smoothscroll" href="#contact" title="contact">Geribildirim</a></li>
+                <li class="current"><a class="smoothscroll" href="#home" title="home">{% translate 'Homeland' %}</a></li>
+                <li><a class="" href="{% url 'notebook:list' %}" title="about">{% translate 'Narratives' %}</a></li>
+                <li><a class="smoothscroll" href="#about" title="services">{% translate 'Missionary' %}</a></li>
+                <li><a class="smoothscroll" href="#services" title="services">{% translate 'Machinery' %}</a></li>
+                <li><a class="smoothscroll" href="{% url 'console:overview' %}" title="works">{% translate 'Console' %}</a></li>
+                <li><a class="smoothscroll" href="#contact" title="contact">{% translate 'Feedback' %}</a></li>
             </ul>
-
-            <p>Imajiner, açık kaynak kodlu, imajiner bir bölgedir. Detaylı bilgi için <a
-                    href="evangelism:landing">misyoner</a> kısmına göz atın.</p>
+            
+            {% translate 'missionary' as missionary %}
+            {% blocktranslate %}<p>Imajiner is an open-sourced, free platform. Learn more in <a href="evangelism:landing">{{ missionary }}</a> section</p>{% endblocktranslate %}.
 
         </div> <!-- end header-nav__content -->
 
@@ -74,25 +74,24 @@
 
         <div class="row home-content__main">
             <h1>
-                İç dünyanı dış dünyayla paylaş<br>
-                nötralleşme tepkimesi versin.
+                {% translate 'A mixture of inside you and the outer world - a solemn thought, is it not' %}?
             </h1>
 
             <p>
-                Anlaşılmak, senin bir gereksinimin değil.<br>
+                {% translate 'No man is required to be understood' %}.<br>
             </p>
         </div> <!-- end home-content__main -->
 
     </div> <!-- end home-content -->
 
     <ul class="home-sidelinks">
-        <li><a class="smoothscroll" href="#about">İncele<span>mesela burada neler var</span></a></li>
-        <li><a class="smoothscroll" href="#services">Neden<span>niye böyle bir şey var</span></a></li>
-        <li><a class="smoothscroll" href="#contact">Nasıl<span>burası nasıl çalışıyor</span></a></li>
+        <li><a class="smoothscroll" href="#about">{% translate 'Inspect' %}<span>{% translate 'whatcha got there' %}</span></a></li>
+        <li><a class="smoothscroll" href="#services">{% translate 'Why' %}<span>{% translate 'why, sir, why' %}</span></a></li>
+        <li><a class="smoothscroll" href="#contact">{% translate 'How' %}<span>{% translate 'how tf does these work' %}</span></a></li>
     </ul> <!-- end home-sidelinks -->
 
     <ul class="home-social">
-        <li class="home-social-title">Sosyal medya</li>
+        <li class="home-social-title">{% translate 'Pseudosocial' %}</li>
         <li><a href="#0">
                 <i class="fab fa-facebook"></i>
                 <span class="home-social-text">Facebook</span>
@@ -108,7 +107,7 @@
     </ul> <!-- end home-social -->
 
     <a href="#about" class="home-scroll smoothscroll">
-        <span class="home-scroll__text">Aşağı!</span>
+        <span class="home-scroll__text">{% translate 'Go down' %}!</span>
         <span class="home-scroll__icon"></span>
     </a> <!-- end home-scroll -->
 
@@ -121,8 +120,8 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead">MISYONER</h3>
-            <h1 class="display-1">Buranın yegane amacı, insanlara düş özgürlüğü vaat etmektir.</h1>
+            <h3 class="subhead">{% translate 'MISSIONARY' %}</h3>
+            <h1 class="display-1">{% translate 'The divine purpose of this platform is to promise people mental freedom' %}.</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -147,16 +146,14 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead">MEKANIZMA</h3>
-            <h1 class="display-1">Etrafıma şöyle bir baktım, ne canımı sıktıysa burayı ondan arındırdım.</h1>
+            <h3 class="subhead">{% translate 'MACHINERY' %}</h3>
+            <h1 class="display-1">{% translate 'I surely did get rid of any bothersome' %}.</h1>
         </div>
     </div> <!-- end section-header -->
 
     <div class="row">
         <div class="col-full">
-            <p class="lead">
-                Bir takım eşsiz mekanizmalar, size sezgisel bir kullanım deneyimi sunmaya çalışıyor.
-            </p>
+            <p class="lead">{% translate 'Some unique machinery around you is trying to offer a intuitive user experience.' %}</p>
         </div>
     </div> <!-- end about-desc -->
 
@@ -167,12 +164,13 @@
                 <i class="icon-tv"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">Bölünmemiş dikkat</h3>
+                <h3 class="h4">{% translate 'Undivided Attention' %}</h3>
                 <p>
                     O an, sizin için tek önemi olan okuduğunuz parçadır.
                     Imajiner tarafından dikkatinizi dağıtacak bir durum
                     olmayacağına emin olabilirsiniz.
-                    <br><a href="evangelism:machinery">Detaylı bilgi.</a>
+                    {% translate 'The moment you read is the moment you value that piece of text the most. You can be assured that nothing will distract you while you are reading from our side.' %}
+                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
@@ -231,9 +229,8 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead subhead--light">GERIBILDIRIM</h3>
-            <h1 class="display-1 display-1--light">Benim bir hayalim var. Imajiner'in dünya görüşü çerçevesindeki her
-                türlü geri bildirime açığım.</h1>
+            <h3 class="subhead subhead--light">{% translate 'FEEDBACK' %}</h3>
+            <h1 class="display-1 display-1--light">{% translate 'I have a dream where the freedom of expression is truly present' %}.</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -241,7 +238,7 @@
 
         <div class="col-full contact-main">
             <p>
-                <a href="mailto:selam@imajiner.space" class="contact-email">selam@imajiner.space</a>
+                <a href="mailto:{{ doc.mail|default:'hi@imajiner.space' }}" class="contact-email">{{ doc.mail|default:'hi@imajiner.space' }}</a>
             </p>
         </div> <!-- end contact-main -->
 
@@ -252,7 +249,7 @@
 
 
         <div class="col-five tab-full contact-secondary">
-            <h3 class="subhead subhead--light">Yazışalım</h3>
+            <h3 class="subhead subhead--light">{% translate 'Reach me out' %}</h3>
 
             <ul class="contact-social">
                 <li>
@@ -278,9 +275,9 @@
             <span>
                 <br>
                 Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> Tüm hakları saklıdır. <br> Site stili büyük
-                oranda <a href="https://colorlib.com">Colorlib</a>'den alınmıştır. <a href="evangelism:credits">Detaylı
-                    bilgi</a></span>
+                <script>document.write(new Date().getFullYear());</script>{% translate 'All rights reserved' %}. 
+                <br> {% blocktranslate with link='<a href="https://colorlib.com">Colorlib</a>' %}This website is using materials taken from {{ link }}{% endblocktranslate %}
+                <br> <a href="evangelism:credits">{% translate 'Details' %}</a></span>
         </div>
     </div>
 

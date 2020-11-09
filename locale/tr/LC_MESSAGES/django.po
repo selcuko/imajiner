@@ -1,0 +1,157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-09 23:22+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: templates/landing.html:43
+msgid "Homeland"
+msgstr "Anakara"
+
+#: templates/landing.html:44
+msgid "Narratives"
+msgstr "Hikayeler"
+
+#: templates/landing.html:45
+msgid "Missionary"
+msgstr "Misyoner"
+
+#: templates/landing.html:46
+msgid "Machinery"
+msgstr "Mekanizma"
+
+#: templates/landing.html:47
+msgid "Console"
+msgstr "Konsol"
+
+#: templates/landing.html:48
+msgid "Feedback"
+msgstr "Geribildirim"
+
+#: templates/landing.html:51
+msgid "missionary"
+msgstr "misyoner"
+
+#: templates/landing.html:52
+#, python-format
+msgid ""
+"<p>Imajiner is an open-sourced, free platform. Learn more in <a href="
+"\"evangelism:landing\">%(missionary)s</a> section</p>"
+msgstr ""
+
+#: templates/landing.html:77
+msgid ""
+"A mixture of inside you and the outer world - a solemn thought, is it not"
+msgstr ""
+
+#: templates/landing.html:81
+msgid "No man is required to be understood"
+msgstr ""
+
+#: templates/landing.html:88
+msgid "Inspect"
+msgstr ""
+
+#: templates/landing.html:88
+msgid "whatcha got there"
+msgstr ""
+
+#: templates/landing.html:89
+msgid "Why"
+msgstr ""
+
+#: templates/landing.html:89
+msgid "why, sir, why"
+msgstr ""
+
+#: templates/landing.html:90
+msgid "How"
+msgstr ""
+
+#: templates/landing.html:90
+msgid "how tf does these work"
+msgstr ""
+
+#: templates/landing.html:94
+msgid "Pseudosocial"
+msgstr ""
+
+#: templates/landing.html:110
+msgid "Go down"
+msgstr ""
+
+#: templates/landing.html:123
+msgid "MISSIONARY"
+msgstr ""
+
+#: templates/landing.html:124
+msgid "The divine purpose of this platform is to promise people mental freedom"
+msgstr ""
+
+#: templates/landing.html:149
+msgid "MACHINERY"
+msgstr ""
+
+#: templates/landing.html:150
+msgid "I surely did get rid of any bothersome"
+msgstr ""
+
+#: templates/landing.html:156
+msgid ""
+"Some unique machinery around you is trying to offer a intuitive user "
+"experience."
+msgstr ""
+
+#: templates/landing.html:167
+msgid "Undivided Attention"
+msgstr ""
+
+#: templates/landing.html:172
+msgid ""
+"The moment you read is the moment you value that piece of text the most. You "
+"can be assured that nothing will distract you while you are reading from our "
+"side."
+msgstr ""
+
+#: templates/landing.html:173
+msgid "Know more"
+msgstr ""
+
+#: templates/landing.html:232
+msgid "FEEDBACK"
+msgstr ""
+
+#: templates/landing.html:233
+msgid "I have a dream where the freedom of expression is truly present"
+msgstr ""
+
+#: templates/landing.html:252
+msgid "Reach me out"
+msgstr ""
+
+#: templates/landing.html:278
+msgid "All rights reserved"
+msgstr ""
+
+#: templates/landing.html:279
+#, python-format
+msgid "This website is using materials taken from %(link)s"
+msgstr ""
+
+#: templates/landing.html:280
+msgid "Details"
+msgstr ""
