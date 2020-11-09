@@ -94,7 +94,7 @@ class Auth(View):
 class Logout(View):
     def get(self, request):
         if request.user.is_authenticated:
-            logout(request.user)
+            logout(request)
         return HttpResponse('Ç I K T I N')
 
 
