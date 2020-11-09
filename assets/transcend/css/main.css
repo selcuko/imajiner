@@ -1911,7 +1911,7 @@ input::-moz-focus-inner {
 }
 
 /* animate .home-content__main
- * ------------------------------------------------------------------- */
+ * ------------------------------------------------------------------- 
 html.cl-preload .home-content__main {
   opacity: 0;
 }
@@ -1921,7 +1921,7 @@ html.cl-loaded .home-content__main {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
-
+*/
 html.no-csstransitions .home-content__main {
   opacity: 1;
 }

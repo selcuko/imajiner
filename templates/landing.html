@@ -3,16 +3,16 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'transcend/css/base.css' %}">
-<link rel="stylesheet" href="{% static 'transcend/css/vendor.css' %}">
 <link rel="stylesheet" href="{% static 'transcend/css/main.css' %}">
-
-<script src="{% static 'transcend/js/modernizr.js' %}"></script>
-<script src="{% static 'transcend/js/pace.min.js' %}"></script>
 {% endblock head %}
 
 {% block base.foot %}
-<script type="text/javascript" src="{% static 'transcend/js/plugins.js' %}"></script>
 <script type="text/javascript" src="{% static 'transcend/js/main.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'transcend/js/plugins.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'transcend/js/pace.min.js' %}"></script>
+
 {% endblock %}
 
 {% block base.navbar %}{# <!-- navbar override --> #}{% endblock %}
@@ -44,7 +44,7 @@
                 <li><a class="" href="{% url 'notebook:list' %}" title="about">Hikayeler</a></li>
                 <li><a class="smoothscroll" href="#about" title="services">Misyoner</a></li>
                 <li><a class="smoothscroll" href="#services" title="services">Mekanizma</a></li>
-                <li><a class="smoothscroll" href="#0" title="works">Kontrol paneli</a></li>
+                <li><a class="smoothscroll" href="{% url 'console:overview' %}" title="works">Kontrol paneli</a></li>
                 <li><a class="smoothscroll" href="#contact" title="contact">Geribildirim</a></li>
             </ul>
 
@@ -252,7 +252,7 @@
 
 
         <div class="col-five tab-full contact-secondary">
-            <h3 class="subhead subhead--light">Bana ulaşın</h3>
+            <h3 class="subhead subhead--light">Yazışalım</h3>
 
             <ul class="contact-social">
                 <li>
@@ -262,14 +262,12 @@
                     <a href="mailto:omrfyyz@gmail.com"><i class="far fa-envelope"></i></a>
                 </li>
                 <li>
-                    <a href="https://instagram.com/omer.fyyz"><i class="fab fa-instagram"></i></a>
+                    <a href="https://instagram.com/omerfyyz"><i class="fab fa-instagram"></i></a>
                 </li>
                 <li>
                     <a href="https://linkedin.com/in/omerselcuk"><i class="fab fa-linkedin"></i></a>
                 </li>
-                <li>
-                    <a href="https://omerselcuk.engineer"><i class="far fa-user-circle"></i></a>
-                </li>
+                
             </ul> <!-- end contact-social -->
         </div> <!-- end contact-secondary -->
 
@@ -282,59 +280,15 @@
                 Copyright &copy;
                 <script>document.write(new Date().getFullYear());</script> Tüm hakları saklıdır. <br> Site stili büyük
                 oranda <a href="https://colorlib.com">Colorlib</a>'den alınmıştır. <a href="evangelism:credits">Detaylı
-                    bilgi</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+                    bilgi</a></span>
         </div>
     </div>
 
     <div class="cl-go-top">
-        <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+        <a class="smoothscroll" title="Sayfa başı" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
     </div>
 
 </section> <!-- end s-contact -->
-
-
-<!-- photoswipe background
-    ================================================== -->
-<div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
-
-    <div class="pswp__bg"></div>
-    <div class="pswp__scroll-wrap">
-
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <div class="pswp__counter"></div><button class="pswp__button pswp__button--close"
-                    title="Close (Esc)"></button> <button class="pswp__button pswp__button--share"
-                    title="Share"></button> <button class="pswp__button pswp__button--fs"
-                    title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom"
-                    title="Zoom in/out"></button>
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button
-                class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-
-    </div>
-
-</div> <!-- end photoSwipe background -->
-
 
 <!-- preloader
     ================================================== -->
