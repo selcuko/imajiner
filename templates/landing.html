@@ -34,18 +34,18 @@
 
     <nav class="header-nav">
 
-        <a href="#0" class="header-nav__close" title="Kapat"><span>Kapat</span></a>
+        <a href="#0" class="header-nav__close" title="{% translate 'Close' %}"><span>{% translate 'Close' %}</span></a>
 
         <div class="header-nav__content">
             <h3>IMAJINER</h3>
 
             <ul class="header-nav__list">
-                <li class="current"><a class="smoothscroll" href="#home" title="home">{% translate 'Homeland' %}</a></li>
+                <li class="current"><a class="smoothscroll" href="#top" title="home">{% translate 'Homeland' %}</a></li>
                 <li><a class="" href="{% url 'notebook:list' %}" title="about">{% translate 'Narratives' %}</a></li>
-                <li><a class="smoothscroll" href="#about" title="services">{% translate 'Missionary' %}</a></li>
-                <li><a class="smoothscroll" href="#services" title="services">{% translate 'Machinery' %}</a></li>
+                <li><a class="smoothscroll" href="#missionary" title="services">{% translate 'Missionary' %}</a></li>
+                <li><a class="smoothscroll" href="#machinery" title="services">{% translate 'Machinery' %}</a></li>
                 <li><a class="smoothscroll" href="{% url 'console:overview' %}" title="works">{% translate 'Console' %}</a></li>
-                <li><a class="smoothscroll" href="#contact" title="contact">{% translate 'Feedback' %}</a></li>
+                <li><a class="smoothscroll" href="#feedback" title="contact">{% translate 'Feedback' %}</a></li>
             </ul>
             
             {% translate 'missionary' as missionary %}
@@ -64,7 +64,7 @@
 
 <!-- home
     ================================================== -->
-<section id="home" class="s-home target-section" data-parallax="scroll"
+<section id="top" class="s-home target-section" data-parallax="scroll"
     data-image-src="{% static 'transcend/images/hero-bg.jpg' %}" data-natural-width=3000 data-natural-height=2000
     data-position-y=top>
 
@@ -116,7 +116,7 @@
 
 <!-- about
     ================================================== -->
-<section id='about' class="s-about">
+<section id='missionary' class="s-about">
 
     <div class="row section-header">
         <div class="col-full">
@@ -142,7 +142,7 @@
 
 <!-- services
     ================================================== -->
-<section id='services' class="s-services light-gray">
+<section id='machinery' class="s-services light-gray">
 
     <div class="row section-header">
         <div class="col-full">
@@ -166,9 +166,6 @@
             <div class="service-text">
                 <h3 class="h4">{% translate 'Undivided Attention' %}</h3>
                 <p>
-                    O an, sizin için tek önemi olan okuduğunuz parçadır.
-                    Imajiner tarafından dikkatinizi dağıtacak bir durum
-                    olmayacağına emin olabilirsiniz.
                     {% translate 'The moment you read is the moment you value that piece of text the most. You can be assured that nothing will distract you while you are reading from our side.' %}
                     <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
                 </p>
@@ -180,13 +177,10 @@
                 <i class="icon-group"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">Kaymak kayıt</h3>
+                <h3 class="h4">{% translate 'Truly Optional Registration' %}</h3>
                 <p>
-                    Haber okumak için girdiğiniz sitenin TC sorması? Hayır...
-                    Hatta bunu bir tık ileri taşıdım. Kaydolmak için yapmanız 
-                    gereken yalnızca bir butona tıklamak. Evet, kullanıcı adı
-                    dahi zorunlu değil, opsiyonel. 
-                    <br><a href="evangelism:machinery">Detaylı bilgi.</a>
+                    {% lorem 30 w %}
+                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
@@ -196,11 +190,10 @@
                 <i class="icon-earth"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">Kaybolmayan veri</h3>
-                <p><span>Sen istemediğin sürece,</span> bizde yazdığın hiçbir 
-                    içerik kaybolmaz. Tam yazarken zrank telefon kapandı veya 
-                    tarayıcın çöktü, inan hiç sorun değil. 
-                    <br><a href="evangelism:machinery">Detaylı bilgi.</a>
+                <h3 class="h4">{% translate 'Non-disappearing Data' %}</h3>
+                <p>
+                    {% lorem 30 w %}
+                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
@@ -210,11 +203,10 @@
                 <i class="icon-cube"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">Aşağılık kompleksi</h3>
-                <p>Burada tek bir değer ölçütü var: <a href="#0">okunasılık.</a>
-                    Yazdığın hikaye sayısı veya aldığın etkileşimler hiçkimsenin
-                    umrunda değil, olmamalı. Nitekim burada <a>düşünmek</a> için
-                    bulunuyorsunuz, popi olmak için değil.
+                <h3 class="h4">{% translate 'Nothing Complex' %}</h3>
+                <p>
+                    {% lorem 30 w %}
+                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
@@ -225,7 +217,7 @@
 
 <!-- contact
     ================================================== -->
-<section id="contact" class="s-contact">
+<section id="feedback" class="s-contact">
 
     <div class="row section-header">
         <div class="col-full">

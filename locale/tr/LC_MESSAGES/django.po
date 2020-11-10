@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 23:22+0300\n"
+"POT-Creation-Date: 2020-11-10 20:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: templates/base.html:82 templates/base.html:99 templates/landing.html:37
+msgid "Close"
+msgstr "Kapat"
+
+#: templates/base.html:87
+msgid "Menu"
+msgstr "Mönü"
+
+#: templates/base.html:94
+#, fuzzy
+#| msgid "Homeland"
+msgid "Homepage"
+msgstr "Anakara"
+
+#: templates/base.html:95 templates/landing.html:44
+msgid "Narratives"
+msgstr "Hikayeler"
+
+#: templates/base.html:96 templates/landing.html:47
+msgid "Console"
+msgstr "Konsol"
+
+#: templates/base.html:119 templates/landing.html:270
+msgid "All rights reserved"
+msgstr "Tüm hakları saklıdır"
+
+#: templates/base.html:120
+msgid "This website contains materials from third parties"
+msgstr "Bu websitesi üçüntü partilerden alınmış materyaller içermektedir."
+
+#: templates/base.html:120 templates/landing.html:170
+#: templates/landing.html:183 templates/landing.html:196
+#: templates/landing.html:209
+msgid "Know more"
+msgstr "Dahası"
+
+#: templates/base.html:123
+msgid "To the top"
+msgstr "Yukarı"
+
 #: templates/landing.html:43
 msgid "Homeland"
 msgstr "Anakara"
-
-#: templates/landing.html:44
-msgid "Narratives"
-msgstr "Hikayeler"
 
 #: templates/landing.html:45
 msgid "Missionary"
@@ -33,10 +69,6 @@ msgstr "Misyoner"
 #: templates/landing.html:46
 msgid "Machinery"
 msgstr "Mekanizma"
-
-#: templates/landing.html:47
-msgid "Console"
-msgstr "Konsol"
 
 #: templates/landing.html:48
 msgid "Feedback"
@@ -56,102 +88,106 @@ msgstr ""
 #: templates/landing.html:77
 msgid ""
 "A mixture of inside you and the outer world - a solemn thought, is it not"
-msgstr ""
+msgstr "İçindekiler ile dış dünyayı birleştirmek - ciddi şeyler, değil mi?"
 
 #: templates/landing.html:81
 msgid "No man is required to be understood"
-msgstr ""
+msgstr "Hiç kimse anlaşılmak zorunda değildir."
 
 #: templates/landing.html:88
 msgid "Inspect"
-msgstr ""
+msgstr "İncele"
 
 #: templates/landing.html:88
 msgid "whatcha got there"
-msgstr ""
+msgstr "neler var burada"
 
 #: templates/landing.html:89
 msgid "Why"
-msgstr ""
+msgstr "Niçin"
 
 #: templates/landing.html:89
 msgid "why, sir, why"
-msgstr ""
+msgstr "niye yani, niye"
 
 #: templates/landing.html:90
 msgid "How"
-msgstr ""
+msgstr "Nasıl"
 
 #: templates/landing.html:90
 msgid "how tf does these work"
-msgstr ""
+msgstr "bunca şey nasıl çalışıyor"
 
 #: templates/landing.html:94
 msgid "Pseudosocial"
-msgstr ""
+msgstr "Sözdesosyal"
 
 #: templates/landing.html:110
 msgid "Go down"
-msgstr ""
+msgstr "Aşağı"
 
 #: templates/landing.html:123
 msgid "MISSIONARY"
-msgstr ""
+msgstr "MISYONER"
 
 #: templates/landing.html:124
 msgid "The divine purpose of this platform is to promise people mental freedom"
-msgstr ""
+msgstr "Buranın yegane kutsal amacı, insanlığa düş özgürlüğü sunmaktır"
 
 #: templates/landing.html:149
 msgid "MACHINERY"
-msgstr ""
+msgstr "MEKANIZMA"
 
 #: templates/landing.html:150
 msgid "I surely did get rid of any bothersome"
-msgstr ""
+msgstr "Elbette ki can sıkıcı şeylerden arındırıldı"
 
 #: templates/landing.html:156
 msgid ""
 "Some unique machinery around you is trying to offer a intuitive user "
 "experience."
-msgstr ""
+msgstr "Eşsiz bir mekanizme size sezgisel bir deneyim sunuyor."
 
 #: templates/landing.html:167
 msgid "Undivided Attention"
-msgstr ""
+msgstr "Bölünmemiş Dikkat"
 
-#: templates/landing.html:172
+#: templates/landing.html:169
 msgid ""
 "The moment you read is the moment you value that piece of text the most. You "
 "can be assured that nothing will distract you while you are reading from our "
 "side."
-msgstr ""
+msgstr "Okurkan rahatsız edilmek istemezsiniz. Imajiner tarafından can sıkıc şeyler yapmayacağımızı garanti ederiz."
 
-#: templates/landing.html:173
-msgid "Know more"
-msgstr ""
+#: templates/landing.html:180
+msgid "Truly Optional Registration"
+msgstr "Gerçekten de İsteğe Bağlı Kayıt"
 
-#: templates/landing.html:232
+#: templates/landing.html:193
+msgid "Non-disappearing Data"
+msgstr "Yazdıklarınız Kaybolmaz"
+
+#: templates/landing.html:206
+msgid "Nothing Complex"
+msgstr "Sıfır Karmaşa"
+
+#: templates/landing.html:224
 msgid "FEEDBACK"
-msgstr ""
+msgstr "GERIBILDIRIM"
 
-#: templates/landing.html:233
+#: templates/landing.html:225
 msgid "I have a dream where the freedom of expression is truly present"
-msgstr ""
+msgstr "Benim, hakiki ifade özgürlüğün bulunduğu bir evrene dair hayallerim var"
 
-#: templates/landing.html:252
+#: templates/landing.html:244
 msgid "Reach me out"
-msgstr ""
+msgstr "Bana ulaş"
 
-#: templates/landing.html:278
-msgid "All rights reserved"
-msgstr ""
-
-#: templates/landing.html:279
+#: templates/landing.html:271
 #, python-format
 msgid "This website is using materials taken from %(link)s"
-msgstr ""
+msgstr "Bu websitesi %(link)den materyaller içermektedir"
 
-#: templates/landing.html:280
+#: templates/landing.html:272
 msgid "Details"
-msgstr ""
+msgstr "Detaylar"

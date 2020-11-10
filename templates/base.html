@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html class="no-js" lang="tr">
 
@@ -79,26 +79,24 @@
                         <input type="submit" class="search-submit" value="Search">
                     </form>
 
-                    <a href="#0" title="Kapa" class="header__overlay-close">Kapa</a>
+                    <a href="#0" title="{% translate 'Close' %}" class="header__overlay-close">{% translate 'Close' %}</a>
 
                 </div> <!-- end header__search -->
 
 
-                <a class="header__toggle-menu" href="#0" title="Menu"><span>Mönü</span></a>
+                <a class="header__toggle-menu" href="#0" title="{% translate 'Menu' %}"><span>{% translate 'Menu' %}</span></a>
 
                 <nav class="header__nav-wrap">
 
                     <h2 class="header__nav-heading h6">IMAJINER</h2>
 
                     <ul class="header__nav">
-                        <li><a href="{% url 'landing' %}" title="">Ana sahife</a></li>
-                        <li><a href="{% url 'notebook:list' %}" title="">Hikayeler</a></li>
-                        <li><a href="notebook:tags" title="">Etiketler</a></li>
-                        <li><a href="{% url 'console:overview' %}" title="">Kontrol paneli</a></li>
-                        <li><a href="evangelism:index" title="">Bilgi</a></li>
+                        <li><a href="{% url 'landing' %}" title="">{% translate 'Homepage' %}</a></li>
+                        <li><a href="{% url 'notebook:list' %}" title="">{% translate 'Narratives' %}</a></li>
+                        <li><a href="{% url 'console:overview' %}" title="">{% translate 'Console' %}</a></li>
                     </ul> <!-- end header__nav -->
 
-                    <a href="#0" title="Mönüyü iade et" class="header__overlay-close close-mobile-menu">Close</a>
+                    <a href="#0" title="{% translate 'Close' %}" class="header__overlay-close close-mobile-menu">{% translate 'Close' %}</a>
 
                 </nav> <!-- end header__nav-wrap -->
 
@@ -118,11 +116,11 @@
             <div class="row">
                 <div class="col-full">
                     <div class="s-footer__copyright">
-                        <span>{{ copyright|safe|default:'&copy;Imajiner. Tüm hakları saklıdır.' }}</span> 
-                        <span>{{ credits|safe|default:'Bazı elementler üçüncü partilerden alınmıştır.' }}</span>
+                        <span>&copy;Copyright Imajiner. {% translate 'All rights reserved' %}.</span> 
+                        <span>{% translate 'This website contains materials from third parties' %}. <a href="#0">{% translate 'Know more' %}</a></span>
                     </div>
                     <div class="go-top">
-                        <a class="smoothscroll" title="Evine dön" href="#top"></a>
+                        <a class="smoothscroll" title="{% translate 'To the top' %}" href="#top"></a>
                     </div>
                 </div>
             </div>
