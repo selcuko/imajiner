@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 
 DEBUG = True
-ON_HEROKU = os.getenv('ON_HEROKU', False)
+ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
 
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
 
@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'imajiner.wsgi.application'
 
 
 if ON_HEROKU:
-    DATABASE_URL = os.environ('DATABASE_URL', None)
+    DATABASE_URL = os.getenv('DATABASE_URL', None)
     if not DATABASE_URL: raise Exception('DATABASE_URL not supplied.')
     DB = dj_database_url.parse(DATABASE_URL)
 else:
