@@ -1,12 +1,14 @@
 import os
 import dj_database_url
 from uuid import uuid1
+from django.utils.translation import gettext, gettext_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 
 DEBUG = True
+ON_HEROKU = os.getenv('ON_HEROKU', False)
 
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
 
@@ -39,6 +41,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -67,11 +70,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'imajiner.wsgi.application'
 
-DATABASES = {
-    'default': {
+
+if ON_HEROKU:
+    DATABASE_URL = os.environ('DATABASE_URL', None)
+    if not DATABASE_URL: raise Exception('DATABASE_URL not supplied.')
+    DB = dj_database_url.parse(DATABASE_URL)
+else:
+    DB = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
+DATABASES = {
+    'default': DB,
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -89,7 +100,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'tr-tr'
+LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ('en', gettext_lazy('English')),
+    ('tr', gettext_lazy('Türkçe')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 TIME_ZONE = 'Europe/Istanbul'
 
