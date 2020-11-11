@@ -47,9 +47,10 @@
                 <li><a class="smoothscroll" href="{% url 'console:overview' %}" title="works">{% translate 'Console' %}</a></li>
                 <li><a class="smoothscroll" href="#feedback" title="contact">{% translate 'Feedback' %}</a></li>
             </ul>
-            
-            {% translate 'missionary' as missionary %}
-            {% blocktranslate %}<p>Imajiner is an open-sourced, free platform. Learn more in <a href="evangelism:landing">{{ missionary }}</a> section</p>{% endblocktranslate %}.
+            <p>
+            {% blocktranslate trimmed %}
+            Imajiner is an open-sourced, free platform.
+            {% endblocktranslate %}</p>
 
         </div> <!-- end header-nav__content -->
 
@@ -74,11 +75,11 @@
 
         <div class="row home-content__main">
             <h1>
-                {% translate 'A mixture of inside you and the outer world - a solemn thought, is it not' %}?
+                {% translate 'A mixture of inside you and the outer world - a solemn thought, is it not?' %}
             </h1>
 
             <p>
-                {% translate 'No man is required to be understood' %}.<br>
+                {% translate 'No man is required to be understood.' %}<br>
             </p>
         </div> <!-- end home-content__main -->
 
@@ -86,7 +87,7 @@
 
     <ul class="home-sidelinks">
         <li><a class="smoothscroll" href="#about">{% translate 'Inspect' %}<span>{% translate 'whatcha got there' %}</span></a></li>
-        <li><a class="smoothscroll" href="#services">{% translate 'Why' %}<span>{% translate 'why, sir, why' %}</span></a></li>
+        <li><a class="smoothscroll" href="#services">{% translate 'Why' %}<span>{% translate 'why this platform exists' %}</span></a></li>
         <li><a class="smoothscroll" href="#contact">{% translate 'How' %}<span>{% translate 'how tf does these work' %}</span></a></li>
     </ul> <!-- end home-sidelinks -->
 
@@ -107,7 +108,7 @@
     </ul> <!-- end home-social -->
 
     <a href="#about" class="home-scroll smoothscroll">
-        <span class="home-scroll__text">{% translate 'Go down' %}!</span>
+        <span class="home-scroll__text">{% translate 'Go down!' %}</span>
         <span class="home-scroll__icon"></span>
     </a> <!-- end home-scroll -->
 
@@ -120,8 +121,8 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead">{% translate 'MISSIONARY' %}</h3>
-            <h1 class="display-1">{% translate 'The divine purpose of this platform is to promise people mental freedom' %}.</h1>
+            <h3 class="subhead">{% translate 'Missionary'|upper %}</h3>
+            <h1 class="display-1">{% translate 'The divine purpose of this platform is to promise people mental freedom.' %}</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -146,8 +147,8 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead">{% translate 'MACHINERY' %}</h3>
-            <h1 class="display-1">{% translate 'I surely did get rid of any bothersome' %}.</h1>
+            <h3 class="subhead">{% translate 'Machinery'|upper %}</h3>
+            <h1 class="display-1">{% translate 'I surely did get rid of any bothersome.' %}</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -221,8 +222,8 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead subhead--light">{% translate 'FEEDBACK' %}</h3>
-            <h1 class="display-1 display-1--light">{% translate 'I have a dream where the freedom of expression is truly present' %}.</h1>
+            <h3 class="subhead subhead--light">{% translate 'Feedback'|upper %}</h3>
+            <h1 class="display-1 display-1--light">{% translate 'I have a dream where the freedom of expression is truly present.' %}</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -267,7 +268,7 @@
             <span>
                 <br>
                 Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script>{% translate 'All rights reserved' %}. 
+                <script>document.write(new Date().getFullYear());</script>{% translate 'All rights reserved.' %} 
                 <br> {% blocktranslate with link='<a href="https://colorlib.com">Colorlib</a>' %}This website is using materials taken from {{ link }}{% endblocktranslate %}
                 <br> <a href="evangelism:credits">{% translate 'Details' %}</a></span>
         </div>

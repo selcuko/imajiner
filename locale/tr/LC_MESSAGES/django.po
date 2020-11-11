@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-11 20:39+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: imajiner/settings.py:106
+msgid "English"
+msgstr "İngilizce"
+
+#: imajiner/settings.py:107
+msgid "Türkçe"
+msgstr "Türkçe"
+
+#: templates/base.html:8
+msgid "Fly as high as you can."
+msgstr "Uç, uçabildiğin kadar."
+
+#: templates/base.html:83 templates/base.html:100 templates/landing.html:37
+msgid "Close"
+msgstr "Kapat"
+
+#: templates/base.html:88
+msgid "Menu"
+msgstr "Mönü"
+
+#: templates/base.html:95
+msgid "Homepage"
+msgstr "Anasayfa"
+
+#: templates/base.html:96 templates/landing.html:44
+msgid "Narratives"
+msgstr "Hikayeler"
+
+#: templates/base.html:97 templates/landing.html:47
+msgid "Console"
+msgstr "Konsol"
+
+#: templates/base.html:120 templates/landing.html:271
+msgid "All rights reserved."
+msgstr "Tüm hakları saklıdır."
+
+#: templates/base.html:121
+msgid "This website contains materials from third parties."
+msgstr "Bu websitesi üçüncü partilerden alınmış materyaller içermektedir."
+
+#: templates/base.html:121 templates/landing.html:171
+#: templates/landing.html:184 templates/landing.html:197
+#: templates/landing.html:210
+msgid "Know more"
+msgstr "Dahası"
+
+#: templates/base.html:124
+msgid "To the top"
+msgstr "Yukarı"
+
+#: templates/landing.html:43
+msgid "Homeland"
+msgstr "Anakara"
+
+#: templates/landing.html:45 templates/landing.html:124
+msgid "Missionary"
+msgstr "Misyoner"
+
+#: templates/landing.html:46 templates/landing.html:150
+msgid "Machinery"
+msgstr "Mekanizma"
+
+#: templates/landing.html:48 templates/landing.html:225
+msgid "Feedback"
+msgstr "Geribildirim"
+
+#: templates/landing.html:51
+msgid "Imajiner is an open-sourced, free platform."
+msgstr "Imajiner açık kaynak kodlu, özgür bir platformdur."
+
+#: templates/landing.html:78
+msgid ""
+"A mixture of inside you and the outer world - a solemn thought, is it not?"
+msgstr "Zihnindekiler ve ötesi, ürpertici, değil mi?"
+
+#: templates/landing.html:82
+msgid "No man is required to be understood."
+msgstr "Hiç kimse anlaşılmak zorunda değildir."
+
+#: templates/landing.html:89
+msgid "Inspect"
+msgstr "incele"
+
+#: templates/landing.html:89
+msgid "whatcha got there"
+msgstr "burada neler var"
+
+#: templates/landing.html:90
+msgid "Why"
+msgstr "niye"
+
+#: templates/landing.html:90
+msgid "why this platform exists"
+msgstr "burası niye var"
+
+#: templates/landing.html:91
+msgid "How"
+msgstr "Nasıl"
+
+#: templates/landing.html:91
+msgid "how tf does these work"
+msgstr "nasıl çalışıyor"
+
+#: templates/landing.html:95
+msgid "Pseudosocial"
+msgstr "Sözdesosyal"
+
+#: templates/landing.html:111
+msgid "Go down!"
+msgstr "Aşa!"
+
+#: templates/landing.html:125
+msgid ""
+"The divine purpose of this platform is to promise people mental freedom."
+msgstr "Imajiner'in nihai ve yüce amacı, insanlığa düş özgürlüğü sunmaktır."
+
+#: templates/landing.html:151
+msgid "I surely did get rid of any bothersome."
+msgstr "Elbette ki can sıkıcı şeylerden olabildiğince arındırıldı burası."
+
+#: templates/landing.html:157
+msgid ""
+"Some unique machinery around you is trying to offer a intuitive user "
+"experience."
+msgstr "Bir takım eşsiz mekanizma size sezgisel bir deneyim sunmaya çalışıyor."
+
+#: templates/landing.html:168
+msgid "Undivided Attention"
+msgstr "Bölünmemiş dikkat"
+
+#: templates/landing.html:170
+msgid ""
+"The moment you read is the moment you value that piece of text the most. You "
+"can be assured that nothing will distract you while you are reading from our "
+"side."
+msgstr "Okurken rahatsız edilmek istemezsiniz. Burada rahatsız edilmezsiniz."
+
+#: templates/landing.html:181
+msgid "Truly Optional Registration"
+msgstr "Hakiki Opsiyonel Kayıt"
+
+#: templates/landing.html:194
+msgid "Non-disappearing Data"
+msgstr "Veriniz kaybolmaz"
+
+#: templates/landing.html:207
+msgid "Nothing Complex"
+msgstr "Karmaşasız"
+
+#: templates/landing.html:226
+msgid "I have a dream where the freedom of expression is truly present."
+msgstr ""
+"Benim, ifade özgürlüğünün gerçekten de var olduğu bir platforma dair "
+"hayallerim var."
+
+#: templates/landing.html:245
+msgid "Reach me out"
+msgstr "Bana ulaşın"
+
+#: templates/landing.html:272
+#, python-format
+msgid "This website is using materials taken from %(link)s"
+msgstr "Bu websitesi %(link)s'den alınan materyaller içeriyor."
+
+#: templates/landing.html:273
+msgid "Details"
+msgstr "Detaylar"
+
+#~ msgid ""
+#~ "<p>Imajiner is an open-sourced, free platform. Learn more in <a href="
+#~ "\"evangelism:landing\">%(missionary)s</a> section.</p>"
+#~ msgstr "Imajiner açık kaynak kodlu ve özgür bir platformdur. Dahası"

@@ -7,14 +7,7 @@ from notebook.models import Narrative
 class Home(View):
     template_name = 'landing.html'
     def get(self, request, **kwargs):
-        return render(request, self.template_name, {
-            'narratives':Narrative.objects.all()[:3],
-            'doc': {
-                'title': 'Uç, uçabildiğin kadar uç',
-                'author': 'Ömer Selçuk',
-                'description': 'Burası sanal adalar. Burası ütopya. Burası, yuvan.'
-            }
-        })
+        return render(request, self.template_name)
     
     def post(self, request):
         return HttpResponse(status_code=403)
