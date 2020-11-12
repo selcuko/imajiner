@@ -8,7 +8,7 @@ class ValidateHostMiddleware:
     def __call__(self, request):
         if not settings.ON_HEROKU:
             return self.get_response(request)
-        if not host == request.META.get('HTTP_HOST', settings.PRIMARY_HOST):
+        if not settings.PRIMARY_HOST == request.META.get('HTTP_HOST', settings.PRIMARY_HOST):
             return HttpResponseRedirect(settings.PRIMARY_HOST)
         else: return self.get_response(request)
         
