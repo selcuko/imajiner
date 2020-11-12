@@ -10,6 +10,10 @@ SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 DEBUG = True
 ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
 
+if ON_HEROKU:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
 
 ALLOWED_HOSTS = [
@@ -19,6 +23,9 @@ ALLOWED_HOSTS = [
     'imajiner.space',
     'imajiner.herokuapp.com',
 ]
+PRIMARY_HOST = 'imajiner.space'
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'explore.middleware.ValidateHostMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
