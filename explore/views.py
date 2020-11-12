@@ -2,7 +2,13 @@ from django.shortcuts import render, HttpResponse
 from django.views import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from notebook.models import Narrative
+from django.conf import settings
+from django.http import HttpResponsePermanentRedirect
 
+
+
+def red(request):
+    return HttpResponsePermanentRedirect(f'https://{settings.PRIMARY_HOST}')
 
 class Home(View):
     template_name = 'landing.html'
