@@ -29,18 +29,18 @@ class SoundRecord(models.Model):
 
 
 class Narrative(models.Model):
-    versioning = models.BooleanField(default=True)
-    title = models.CharField(max_length=100, default='Başlıklı hikaye')
-    slug = models.SlugField(max_length=100, null=True, unique=True)
-    body = models.TextField(null=True)
-    html = models.TextField(null=True)
-    sketch = models.BooleanField(default=False)
-    uuid = models.UUIDField()
+    versioning = models.BooleanField(default=True, verbose_name='Keeps seperate versions')
+    title = models.CharField(max_length=100, default='Başlıklı hikaye', verbose_name='Title')
+    slug = models.SlugField(max_length=100, null=True, unique=True, verbose_name='Slug')
+    body = models.TextField(null=True, verbose_name='Body')
+    html = models.TextField(null=True, verbose_name='HTML')
+    sketch = models.BooleanField(default=False, verbose_name='Sketch')
+    uuid = models.UUIDField(verbose_name='UUID')
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation date')
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
     tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
-    published_at = models.DateTimeField(null=True, blank=True)
+    published_at = models.DateTimeField(null=True, blank=True, verbose_name='Publication date')
 
     class Meta:
         ordering = ('created_at',)
@@ -48,6 +48,9 @@ class Narrative(models.Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not self.uuid: self.uuid = uuid1()
+    
+    def all_versions(self):
+        return self.versions.all()
     
     @property
     def latest(self):
@@ -69,7 +72,7 @@ class Narrative(models.Model):
         return cls.objects.filter(author=user, sketch=False)
 
     def __str__(self):
-        return f'{self.title} ({self.slug})'
+        return f'"{self.title}" by {self.author.username}'
     
     def get_absolute_url(self):
         if self.sketch:
@@ -144,6 +147,9 @@ class NarrativeVersion(models.Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not self.uuid: self.uuid = uuid1()
+
+    def __str__(self):
+        return f'v{self.version}: {self.title}'
 
     def reference(self, ref):
         self.title = ref.title
