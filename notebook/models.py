@@ -82,8 +82,8 @@ class Narrative(models.Model):
     
     def generate_html(self):
         self.html = html.escape(self.body)
-        self.html = self.html.replace('\n\n', '<br />')
-        self.html = self.html.replace('\n', '</p><p>')
+        self.html = self.html.replace('\n\n', '</p><p>')
+        self.html = self.html.replace('\n', '<br>')
         self.html = f'<p>{self.html}</p>'
 
     def save(self, *args, alter_slug=True, new_version=False, **kwargs):
@@ -105,7 +105,7 @@ class Narrative(models.Model):
         else:
             latest = self.versions.last() if not initial_version else NarrativeVersion(master=self, version=1)
             latest.reference(self)
-        latest.save()
+        latest.save(**kwargs)
     
     @property
     def lead(self):
