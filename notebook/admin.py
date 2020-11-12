@@ -19,7 +19,7 @@ class NarrativeAdmin(admin.ModelAdmin):
         ('Generated Fields',  {'fields': ['html']}),
         ('Dates',             {'fields': ['published_at', 'created_at']}),
     ]
-    readonly_fields = ['created_at', 'versions', 'author']
+    readonly_fields = ['created_at', 'versions']
     empty_value_display = '???'
     
 
