@@ -8,6 +8,9 @@ from django.conf.urls.i18n import i18n_patterns
 
 LoginRequiredMixin.redirect_field_name = 'sonraki'
 
+admin.site.site_header = 'Imajiner God View'
+admin.site.site_title = 'Imajiner God View'
+admin.site.index_title = 'Site Supervision'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
