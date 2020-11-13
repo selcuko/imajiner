@@ -1,5 +1,5 @@
 {% extends 'console/base.html' %}
-{% load static widget_tweaks %}
+{% load static widget_tweaks i18n %}
 {% block body %}
 
 <div class="container-fluid dashboard-content">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header" id="top">
-                        <h2 class="pageheader-title">Erişim & Güvenlik</h2>
+                        <h2 class="pageheader-title">{% translate 'access & security'|title %}</h2>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -21,7 +21,7 @@
             <div class="page-section" id="overview">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p class="lead">Radikal değişiklikler buradan yapılır.</p>
+                        <p class="lead">{% translate 'radical processes this way.'|capfirst %}</p>
                     </div>
                 </div>
             </div>
@@ -29,8 +29,8 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="section-block" id="account-info">
-                        <h3 class="section-title">En temel bilgiler</h3>
-                        <p>Güncelledikten sonra kaydet tuşuna tıklamazsan kaydetmem.</p>
+                        <h3 class="section-title">{% translate 'the most basic information'|capfirst %}</h3>
+                        <p>{% translate 'I will not save unless you hit the button.'|capfirst %}</p>
                     </div>
                     <div class="card">
                         <div class="card-body border-top">
@@ -38,23 +38,22 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="basics">
                                 <div class="form-group">
-                                    <label for="username">Mahlas</label>
+                                    <label for="username">{% translate 'username'|title %}</label>
                                     <input name="username" class="form-control" type="text" value="{{ request.user.username }}">
-                                    <p>Kullanıcı adını yalnızca bir kez güncelleyebilirsin, ve eski adın da bir sümük
-                                        gibi yapışır yakana.</p>
+                                    <p>{% translate 'you may change your username only once.'|capfirst %}</p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Yeni Şifre</label>
+                                    <label for="password">{% translate 'new password'|title %}</label>
                                     <input class="form-control" name="password" type="password"
-                                        placeholder="Yeni şifreni tuşlayabilin">
+                                        placeholder="{% translate 'you may enter your new password'|capfirst %}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password1">Yeni Şifreyi onayla</label>
+                                    <label for="password1">{% translate 'confirm new password'|title %}</label>
                                     <input class="form-control" name="password1" type="password"
-                                        placeholder="Yeni şifreni onaylayabilin">
+                                        placeholder="{% translate 'you may confirm your new password'|title %}">
                                 </div>
                                 <div>
-                                    <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                    <input class="btn btn-primary btn-block" value="{% translate 'save'|title %}" type="submit">
                                 </div>
                             </form>
                         </div>

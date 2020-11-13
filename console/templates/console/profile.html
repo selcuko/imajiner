@@ -1,5 +1,5 @@
 {% extends 'console/base.html' %}
-{% load static widget_tweaks %}
+{% load static widget_tweaks i18n %}
 {% block body %}
 
 <div class="container-fluid dashboard-content">
@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header" id="top">
-                        <h2 class="pageheader-title">Kimlik Yönetim</h2>
+                        <h2 class="pageheader-title">{% translate 'profile'|title %}</h2>
                         
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
@@ -32,8 +32,7 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p class="lead">Hesabınıza dair en gerekli bilgiler bu sayfada toplandı. İstediğiniz bilgileri
-                            görüntüleyebilir ve değiştirebilirsiniz.</p>
+                        <p class="lead">{% translate 'The most useful information regarding to your account is here. You can view and modify them.'|capfirst %}</p>
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -47,57 +46,30 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="section-block" id="account-info">
-                        <h3 class="section-title">Hesap</h3>
-                        <p>Güncelledikten sonra kaydet tuşuna tıklamazsan kaydetmem.</p>
+                        <h3 class="section-title">{% translate 'account'|title %}</h3>
+                        <p>{% translate 'I will not save anything unless you hit the button.'|capfirst %}</p>
                     </div>
                     <div class="card">
                         <div class="card-body">
                             <form>
-                                <p>Bu kısım çok ciddi. Düzenlemek için başka şeyler lazım.</p>
+                                <p>{% translate 'This part concerns the security of your account. You should visit Access & Security to modify them.'|capfirst %}</p>
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label for="inputText3" class="col-form-label">Mahlas</label>
+                                    <label for="inputText3" class="col-form-label">{% translate 'username'|capfirst %}</label>
                                     <input value="{{ request.user.username }}" id="inputText3" type="text"
                                         class="form-control" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword">Password</label>
+                                    <label for="inputPassword">{% translate 'password'|capfirst %}</label>
                                     <input id="inputPassword" type="password" placeholder="Hmmm..."
                                         class="form-control" value="********" disabled>
                                 </div>
                                 <div>
-                                    <a href="{% url 'console:access' %}" class="btn btn-primary btn-block" value="Radikal İşlemler sayfasına git" type="button">Erişim sayfasına git</a>
+                                    <a href="{% url 'console:access' %}" class="btn btn-primary btn-block" type="button">{% translate 'go to'|capfirst %} {% translate 'access & security'|title %}</a>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-body border-top" id="account-type">
-                            <h3>Hesap türü</h3>
-                            <p>Yazar iken de hayalet hesap özelliklerinden faydalanabilirsin, çünkü niye olmasın?</p>
-                            <ul>
-                                <li>Hayaletliği devreye aldığında tıpkı hayalet gibi cihazının dijital parmak izini kullanarak giriş yapabilir, umumi profilini gizleyebilir ancak bunları yaparken yalnızca yazarların sahip olduğu farklı cihazlardan şifreyle giriş yapabilme ve Konsol'a erişim hakkından feragat etmemiş olursun.</li>
-                                <li>Bu işlem sakıncasızdır ve istendiğinde geri alınabilir.</li>
-                            </ul>
-                            <form>
-
-                                <div class="form-group">
-                                    <div class="form-group row">
-                                        <label class="col-12 col-sm-12 col-form-label text-sm">Hayalet</label>
-                                        <div class="col-12 col-sm-12 col-lg-12">
-                                            <div class="switch-button switch-button-success">
-                                                <input type="checkbox" {% if request.user.is_shadow %}checked{% endif %}
-                                                    name="switch16" id="switch16">
-                                                <span>
-                                                    <label for="switch16"></label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <input name="shadowity" class="btn btn-primary btn-block" value="Kaydet" type="submit">
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -107,8 +79,8 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="section-block" id="account-info">
-                        <h3 class="section-title">Havalı şeyler</h3>
-                        <p>Güncelledikten sonra kaydet tuşuna tıklamazsan kaydetmem.</p>
+                        <h3 class="section-title">{% translate 'cool stuff'|title %}</h3>
+                        <p>{% translate 'I will not save anything unless you hit the button.'|capfirst %}</p>
                     </div>
                     <div class="card">
                   
@@ -116,11 +88,11 @@
                             <form action="" method="POST">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Hakkında</label>
-                                    {% render_field form.biography class+="form-control" rows="3" placeholder="Sizi ne diye bilsinler?" value=request.user.profile.biography %}
+                                    <label for="exampleFormControlTextarea1">{% translate 'Biography'|capfirst %}</label>
+                                    {% render_field form.biography class+="form-control" rows="3" value=request.user.profile.biography %}
                                 </div>
                                 <div>
-                                    <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                    <input class="btn btn-primary btn-block" value="{% translate 'save'|capfirst %}" type="submit">
                                 </div>
                             </form>
                         </div>
@@ -136,8 +108,7 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="sidebar-nav-fixed">
                 <ul class="list-unstyled">
-                    <li><a href="#account-info">Hesap bilgileri</a></li>
-                    <li><a href="#account-type">Hesap türü</a></li>
+                    <li><a href="#account-info">{% translate 'account'|capfirst %}</a></li>
                 </ul>
             </div>
         </div>

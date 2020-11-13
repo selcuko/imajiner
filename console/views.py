@@ -58,13 +58,13 @@ class Narratives(View):
         return render(request, self.template)
 class Narrative(View):
     template = 'console/narrative.html'
-    def get(self, request, uuid):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=uuid)
+    def get(self, request, narrative):
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=narrative)
         form = NarrativeForm(instance=narrative)
         return render(request, self.template, {'form': form,'narrative': narrative})
     
-    def post(self, request, uuid):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=uuid)
+    def post(self, request, narrative):
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=narrative)
         form = NarrativeForm(request.POST, instance=narrative)
         if form.is_valid(): 
             narrative = form.save(commit=False)
@@ -76,8 +76,8 @@ class Narrative(View):
 
 class NarrativeVersions(View):
     template = 'console/narrative/versions.html'
-    def get(self, request, uuid):
-        narrative = NarrativeModel.objects.get(uuid=uuid)
+    def get(self, request, narrative):
+        narrative = NarrativeModel.objects.get(uuid=narrative)
         return render(request, self.template, {'narrative': narrative})
 
 class NarrativeVersion(View):
