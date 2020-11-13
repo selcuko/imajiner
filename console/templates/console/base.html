@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
-    <title>{{ doc.title|default:'Konsol' }}</title>
+    <title>{{ doc.title|default:'Untitled Console Page' }}</title>
 
     {% block standard %}
     {% block standard.fonts %}
@@ -79,10 +79,10 @@
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name">{{ request.user.username }}</h5>
                                     <span
-                                        class="ml-2">{% if request.user.is_shadow %}Hayalet{% else %}Yazar{% endif %}</span>
+                                        class="ml-2">{% if request.user.is_shadow %}{% translate 'shadow'|title %}{% else %}{% translate 'author'|title %}{% endif %}</span>
                                 </div>
                                 <a class="dropdown-item" href="{% url 'gatewall:logout' %}"><i
-                                        class="fas fa-power-off mr-2"></i>Oturumu kapat</a>
+                                        class="fas fa-power-off mr-2"></i>{% translate 'log out'|title %}</a>
                             </div>
                         </li>
                     </ul>
@@ -92,7 +92,7 @@
         <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="d-xl-none d-lg-none" href="#">Konsol</a>
+                    <a class="d-xl-none d-lg-none" href="#">{% translate 'console'|title %}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -100,23 +100,39 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav flex-column">
                             <li class="nav-divider">
-                                Mönü
+                                {% translate 'menu'|title %}
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:overview' %}"><i
-                                        class="fa fa-fw fa-chart-line"></i>Kuş bakışı</a>
+                                        class="fa fa-fw fa-chart-line"></i>{% translate 'overview'|title %}</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:profile' %}"><i
-                                        class="fa fa-fw fa-user-circle"></i>Şahsiyet</a>
+                                        class="fa fa-fw fa-user-circle"></i>{% translate 'profile'|title %}</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:access' %}"><i
-                                        class="fa fa-fw fa-key"></i>Erişim</a>
+                                        class="fa fa-fw fa-key"></i>{% translate 'access & security'|title %}</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:narratives' %}"><i
-                                        class="fa fa-fw fa-copy"></i>Eserler</a>
+                                        class="fa fa-fw fa-copy"></i>{% translate 'narratives'|title %}</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'console:refereeship' %}"><i
+                                        class="fa fa-fw fa-link"></i>{% translate 'refereeship'|title %}</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'console:subscriptions' %}"><i
+                                        class="fas fa-fw fa-users"></i>{% translate 'subscriptions'|title %}</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'console:preferences' %}"><i
+                                        class="fa fa-fw fa-cog"></i>{% translate 'preferences'|title %}</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'console:studio' %}"><i
+                                        class="fa fa-fw fa-pen"></i>{% translate 'writing studio'|title %}</a>
                             </li>
                         </ul>
                     </div>
@@ -129,12 +145,12 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            Copyright © 2020 Imajiner. Tüm hakları saklıdır.
+                            &copy;{% translate 'Copyright Imajiner. All rights reserved.' %}
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="#0">Hakkında</a>
-                                <a href="#0">İletişim</a>
+                                <a href="#0">{% translate 'About' %}</a>
+                                <a href="#0">{% translate 'Contact' %}</a>
                             </div>
                         </div>
                     </div>

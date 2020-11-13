@@ -112,3 +112,25 @@ class Serie(View):
     template = 'console/blank.html'
     def get(self, request):
         return render(request, self.template)
+
+
+class Subscriptions(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+
+class Preferences(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+
+class Studio(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+
+class Refereeship(View):
+    template = 'console/blank.html'
+    def get(self, request):
+        return render(request, self.template)
+

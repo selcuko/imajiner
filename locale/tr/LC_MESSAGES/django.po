@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 20:39+0300\n"
+"POT-Creation-Date: 2020-11-13 19:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,127 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: imajiner/settings.py:106
+#: console/templates/console/base.html:82
+msgid "shadow"
+msgstr "hayalet"
+
+#: console/templates/console/base.html:82
+msgid "author"
+msgstr "yazar"
+
+#: console/templates/console/base.html:85
+msgid "log out"
+msgstr "çıkış yap"
+
+#: console/templates/console/base.html:95
+msgid "console"
+msgstr "konsol"
+
+#: console/templates/console/base.html:103
+msgid "menu"
+msgstr "mönü"
+
+#: console/templates/console/base.html:107
+msgid "overview"
+msgstr "kuş bakışı"
+
+#: console/templates/console/base.html:111
+msgid "profile"
+msgstr "şahsiyet"
+
+#: console/templates/console/base.html:115
+msgid "access & security"
+msgstr "erişim & güvenlik"
+
+#: console/templates/console/base.html:119
+#, fuzzy
+#| msgid "Narratives"
+msgid "narratives"
+msgstr "hikayeler"
+
+#: console/templates/console/base.html:123
+msgid "refereeship"
+msgstr "atıflar"
+
+#: console/templates/console/base.html:127
+msgid "subscriptions"
+msgstr "takip ettiklerim"
+
+#: console/templates/console/base.html:131
+msgid "preferences"
+msgstr "tercihler"
+
+#: console/templates/console/base.html:135
+msgid "writing studio"
+msgstr "yazı atölyesi"
+
+#: console/templates/console/base.html:148
+#, fuzzy
+#| msgid "All rights reserved."
+msgid "Copyright Imajiner. All rights reserved."
+msgstr "Tüm hakları saklıdır."
+
+#: console/templates/console/base.html:152
+msgid "About"
+msgstr "Hakkında"
+
+#: console/templates/console/base.html:153
+msgid "Contact"
+msgstr "İletişim"
+
+#: console/urls.py:9
+msgid "iam"
+msgstr "ben"
+
+#: console/urls.py:10
+msgid "access"
+msgstr "erisim"
+
+#: console/urls.py:15
+msgid "sketches/"
+msgstr ""
+
+#: console/urls.py:16
+msgid "sketches/<uuid:uuid>/"
+msgstr ""
+
+#: console/urls.py:17
+msgid "series"
+msgstr "seriler"
+
+#: console/urls.py:18
+msgid "series/<uuid:uuid>/"
+msgstr ""
+
+#: console/urls.py:19
+msgid "media/"
+msgstr ""
+
+#: console/urls.py:20
+msgid "media/<uuid:uuid>/"
+msgstr ""
+
+#: console/urls.py:21
+msgid "refereeship/"
+msgstr ""
+
+#: console/urls.py:22
+msgid "studio/"
+msgstr ""
+
+#: console/urls.py:23
+msgid "subscriptions/"
+msgstr ""
+
+#: console/urls.py:24
+msgid "preferences/"
+msgstr ""
+
+#: imajiner/settings.py:114
 msgid "English"
 msgstr "İngilizce"
 
-#: imajiner/settings.py:107
+#: imajiner/settings.py:115
 msgid "Türkçe"
 msgstr "Türkçe"
 
@@ -30,41 +146,41 @@ msgstr "Türkçe"
 msgid "Fly as high as you can."
 msgstr "Uç, uçabildiğin kadar."
 
-#: templates/base.html:83 templates/base.html:100 templates/landing.html:37
+#: templates/base.html:85 templates/base.html:102 templates/landing.html:37
 msgid "Close"
 msgstr "Kapat"
 
-#: templates/base.html:88
+#: templates/base.html:90
 msgid "Menu"
 msgstr "Mönü"
 
-#: templates/base.html:95
+#: templates/base.html:97
 msgid "Homepage"
 msgstr "Anasayfa"
 
-#: templates/base.html:96 templates/landing.html:44
+#: templates/base.html:98 templates/landing.html:44
 msgid "Narratives"
 msgstr "Hikayeler"
 
-#: templates/base.html:97 templates/landing.html:47
+#: templates/base.html:99 templates/landing.html:47
 msgid "Console"
 msgstr "Konsol"
 
-#: templates/base.html:120 templates/landing.html:271
+#: templates/base.html:122 templates/landing.html:271
 msgid "All rights reserved."
 msgstr "Tüm hakları saklıdır."
 
-#: templates/base.html:121
+#: templates/base.html:123
 msgid "This website contains materials from third parties."
 msgstr "Bu websitesi üçüncü partilerden alınmış materyaller içermektedir."
 
-#: templates/base.html:121 templates/landing.html:171
+#: templates/base.html:123 templates/landing.html:171
 #: templates/landing.html:184 templates/landing.html:197
 #: templates/landing.html:210
 msgid "Know more"
 msgstr "Dahası"
 
-#: templates/base.html:124
+#: templates/base.html:126
 msgid "To the top"
 msgstr "Yukarı"
 
@@ -185,6 +301,11 @@ msgstr "Bu websitesi %(link)s'den alınan materyaller içeriyor."
 #: templates/landing.html:273
 msgid "Details"
 msgstr "Detaylar"
+
+#, fuzzy
+#~| msgid "Narratives"
+#~ msgid "narrative"
+#~ msgstr "Hikayeler"
 
 #~ msgid ""
 #~ "<p>Imajiner is an open-sourced, free platform. Learn more in <a href="
