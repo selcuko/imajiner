@@ -9,22 +9,22 @@ from django.utils.translation import gettext_lazy as _
 
 LoginRequiredMixin.redirect_field_name = 'sonraki'
 
-admin.site.site_header = 'Imajiner God View'
-admin.site.site_title = 'Imajiner God View'
-admin.site.index_title = 'Site Supervision'
+admin.site.site_header = _('Imajiner God View')
+admin.site.site_title = _('Imajiner God View')
+admin.site.index_title = _('Site Supervision')
 
 urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
     path('', Home.as_view(), name='landing'),
-    path(f'{_("admin")}/', admin.site.urls),
-    path(f'{_("narratives")}/', include('notebook.urls', namespace='narrative')),
+    path(_('admin/'), admin.site.urls),
+    path(_('narratives/'), include('notebook.urls', namespace='narrative')),
     path('', include('gatewall.urls', namespace='gatewall')),
     path('', include('explore.urls', namespace='explore')),
     path('', include('identity.urls', namespace='identity')),
     path('', include('tagmanager.urls', namespace='tag')),
-    path(f'{_("console")}/', include('console.urls', namespace='console')),
+    path(_('console/'), include('console.urls', namespace='console')),
     prefix_default_language=False,
 )
 

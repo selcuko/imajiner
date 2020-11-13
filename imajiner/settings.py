@@ -10,9 +10,12 @@ SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 DEBUG = True
 ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
 
+SECURE_SSL_REDIRECT = False
+
 if ON_HEROKU:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
+
 
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
 
