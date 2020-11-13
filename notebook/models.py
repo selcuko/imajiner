@@ -29,11 +29,13 @@ class SoundRecord(models.Model):
 
 
 class Narrative(models.Model):
+    LEAD_MAX_CHAR = 140
     versioning = models.BooleanField(default=True, verbose_name='Keeps seperate versions')
     title = models.CharField(max_length=100, default='Başlıklı hikaye', verbose_name='Title')
     slug = models.SlugField(max_length=100, null=True, unique=True, verbose_name='Slug')
     body = models.TextField(null=True, verbose_name='Body')
     html = models.TextField(null=True, verbose_name='HTML')
+    lead = models.TextField(null=True, blank=True, verbose_name='Summary')
     sketch = models.BooleanField(default=False, verbose_name='Sketch')
     uuid = models.UUIDField(verbose_name='UUID')
 
@@ -51,6 +53,14 @@ class Narrative(models.Model):
     
     def all_versions(self):
         return self.versions.all()
+    
+    def generate_lead(self):
+        append_dots = len(self.body) > self.LEAD_MAX_CHAR
+        self.lead = self.body.split('. ')[0][:self.LEAD_MAX_CHAR]
+        self.lead = self.lead.replace('\n', ' ')
+        while self.lead.endswith(' '):
+            self.lead = self.lead[:-1]
+        if append_dots: self.lead += '...'
     
     @property
     def latest(self):
@@ -86,8 +96,9 @@ class Narrative(models.Model):
         self.html = self.html.replace('\n', '<br>')
         self.html = f'<p>{self.html}</p>'
 
-    def save(self, *args, alter_slug=True, new_version=False, **kwargs):
+    def save(self, *args, lead_specified=False, alter_slug=True, new_version=False, **kwargs):
         self.generate_html()
+        if not lead_specified: self.generate_lead()
         if alter_slug: self.generate_slug()
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
@@ -107,14 +118,8 @@ class Narrative(models.Model):
             latest.reference(self)
         latest.save(**kwargs)
     
-    @property
-    def lead(self):
-        if not self.html: return 'SQL yine coşturmuş'
-        p = self.html.split('</p><p>')
-        return p[0].replace('<p class="drop-cap">', '').replace('</p>', '').replace('<p>', '')
-    
     def generate_slug(self):
-        self.slug = f'{text.slugify(self.title, allow_unicode=False)}-{str(self.uuid)[:8]}'
+        self.slug = f'{text.slugify(self.title.replace("ı", "i"), allow_unicode=False)}-{str(self.uuid)[:8]}'
 
 @receiver(post_save, sender=Narrative)
 def create_tagman(sender, instance, created, **kwargs):

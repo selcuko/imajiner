@@ -15,7 +15,7 @@
             <ul class="philosophy s-content__header-meta">
                 <li class="philosophy date">{{ narrative.created_at|date }}</li>
                 <li class="philosophy date">{% translate 'version'|capfirst %} {{ narrative.latest.version }}</li>
-                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'console:narrative' narrative=narrative.uuid %}">Düzenle</a></li>{% endif %}
+                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'console:narrative' narrative=narrative.uuid %}">{% translate 'edit'|capfirst %}</a></li>{% endif %}
             </ul>
         </div>
         {% if narrative.sound %}
