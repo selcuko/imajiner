@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static tagging %}
+{% load static tagging i18n %}
 
 {% block head %}
 {% endblock head %}
@@ -14,7 +14,8 @@
             </h1>
             <ul class="philosophy s-content__header-meta">
                 <li class="philosophy date">{{ narrative.created_at|date }}</li>
-                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'console:narrative' uuid=narrative.uuid %}">Düzenle</a></li>{% endif %}
+                <li class="philosophy date">{% translate 'version'|capfirst %} {{ narrative.latest.version }}</li>
+                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'console:narrative' narrative=narrative.uuid %}">Düzenle</a></li>{% endif %}
             </ul>
         </div>
         {% if narrative.sound %}
