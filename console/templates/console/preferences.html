@@ -1,0 +1,68 @@
+{% extends 'console/base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'flags/css/flag-icon.min.css' %}">
+<link rel="stylesheet" href="{% static 'console/vendor/bootstrap-select/css/bootstrap-select.css' %}">
+{% endblock head %}
+{% block body %}
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h2 class="pageheader-title">Preferences</h2>
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card ">
+                <h5 class="card-header">Language Preferences</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Your primary language</h5>
+                    <select id="primary-lang" class="selectpicker show-tick">
+                        <option value="none" selected disabled hidden>Click to specify</option>
+                        <option value="tr-tr" data-icon="flag-icon flag-icon-tr">Türkçe</option>
+                        <option value="en-gb" data-subtext="British" data-icon="flag-icon flag-icon-gb">English</option>
+                        <option value="en-us" data-subtext="American" data-icon="flag-icon flag-icon-us">English</option>
+                        <option value="fr-fr" data-icon="flag-icon flag-icon-fr">Français</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- bootstrap select -->
+        <!-- ============================================================== -->
+    </div>
+</div>
+{% endblock body %}
+{% block foot %}
+<script>
+    csrfForm = document.getElementById('csrf');
+    primaryLanguage = document.getElementById('primary-lang');
+    // TODO: initialize with user value if present
+    primaryLanguage.addEventListener('change', (e) => {
+        const fd = new FormData(csrfForm);
+        fd.set('action', 'set-primary-language');
+        fd.set('language-code', primaryLanguage.value);
+        fetch('', {
+            method: 'POST',
+            body: fd,
+        }).then(response => {
+            // alert(response.ok ? 'OK' : 'FAIL')
+        })
+    })
+</script>
+
+<script defer src="{% static 'console/vendor/bootstrap-select/js/bootstrap-select.js' %}"></script>
+{% endblock foot %}

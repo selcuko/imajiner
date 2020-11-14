@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views import View
+from django.core.exceptions import SuspiciousOperation
+from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .context import *
 from notebook.models import Narrative as NarrativeModel
@@ -7,6 +9,7 @@ from notebook.models import NarrativeVersion as NarrativeVersionModel
 from identity.forms import ProfileForm
 from notebook.forms import NarrativeForm
 import logging
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -120,9 +123,22 @@ class Subscriptions(View):
         return render(request, self.template)
 
 class Preferences(View):
-    template = 'console/blank.html'
+    template = 'console/preferences.html'
     def get(self, request):
-        return render(request, self.template)
+        return render(request, self.template, {'settins': settings})
+    
+    def post(self, request):
+        action = request.POST.get('action', None)
+        if not action: raise SuspiciousOperation
+
+        try:
+            if action == 'set-primary-language':
+                language = request.POST.get('language-code')
+                request.user.profile.language = language
+                request.user.save()
+        except: raise SuspiciousOperation
+
+        return HttpResponse()
 
 class Studio(View):
     template = 'console/blank.html'
