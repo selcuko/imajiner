@@ -1,14 +1,15 @@
-from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
-from tagmanager.models import TagManager
-from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
-from django.utils import text, html
+from django.conf import settings
+from django.utils import text, html, timezone
+from django.db import models
+from django.db.models.signals import post_save
 from uuid import uuid1
-from django.utils import timezone
+from tagmanager.models import TagManager
+
 
 class SoundRecord(models.Model):
     file = models.FileField(
@@ -139,6 +140,19 @@ def update_tagman(sender, instance, **kwargs):
     instance.tags.save()
 
 
+
+class NarrativeTranslation(models.Model):
+    uuid = models.UUIDField(unique=True)
+    language = models.CharField(max_length=5, choices=settings.LANGUAGES_DICT.keys())
+    title = models.CharField(max_length=100, default='404')
+    slug = models.SlugField(max_length=100, null=True, unique=True)
+    body = models.TextField(null=True)
+    html = models.TextField(null=True)
+    master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='translations')
+    
+    created_at = models.DateTimeField(null=True, auto_now_add=True)
+
+
 class NarrativeVersion(models.Model):
     readonly = models.BooleanField(default=False)
     title = models.CharField(max_length=100, default='Başlıklı hikaye')
@@ -150,7 +164,6 @@ class NarrativeVersion(models.Model):
     sound = models.ForeignKey(SoundRecord, null=True, blank=True, on_delete=models.SET_NULL, related_name='narratives')
     version = models.PositiveIntegerField(default=1)
     master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='versions')
-    created_at = models.DateTimeField(null=True, auto_now_add=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
