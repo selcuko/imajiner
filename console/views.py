@@ -124,6 +124,8 @@ class Subscriptions(View):
 
 class Preferences(View):
     template = 'console/preferences.html'
+    lang_codes = [l[0] for l in settings.LANGUAGES]
+
     def get(self, request):
         return render(request, self.template, {'settins': settings})
     
@@ -134,6 +136,7 @@ class Preferences(View):
         try:
             if action == 'set-primary-language':
                 language = request.POST.get('language-code')
+                if not language in self.lang_codes: raise SuspiciousOperation
                 request.user.profile.language = language
                 request.user.save()
         except: raise SuspiciousOperation
