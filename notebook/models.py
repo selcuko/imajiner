@@ -55,6 +55,9 @@ class Narrative(models.Model):
         return self.versions.all()
     
     def generate_lead(self):
+        if not self.body: 
+            self.lead = None
+            return
         append_dots = len(self.body) > self.LEAD_MAX_CHAR
         self.lead = self.body.split('. ')[0][:self.LEAD_MAX_CHAR]
         self.lead = self.lead.replace('\n', ' ')

@@ -7,6 +7,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 
+SITE_ID = 1
+
 DEBUG = True
 ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
 
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'notebook.apps.NotebookConfig',
     'tagmanager.apps.TagManagerConfig',
     'gatewall.apps.GatewallConfig',
