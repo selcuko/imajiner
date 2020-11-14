@@ -1547,7 +1547,6 @@ input::-moz-focus-inner {
 }
 .header-menu-toggle::before {
   display: inline-block;
-  content: "MÖNÜ";
   height: 45px;
   left: auto;
   text-align: right;

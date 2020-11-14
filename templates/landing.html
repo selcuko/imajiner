@@ -4,14 +4,16 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'transcend/css/base.css' %}">
 <link rel="stylesheet" href="{% static 'transcend/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'flags/css/flag-icon.min.css' %}">
+<script src="{% static 'js/modernizr.js' %}"></script>
+<script src="{% static 'transcend/js/pace.min.js' %}"></script>
 {% endblock head %}
 
 {% block base.foot %}
-<script type="text/javascript" src="{% static 'transcend/js/main.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'transcend/js/plugins.js' %}"></script>
+<script type="text/javascript" src="{% static 'transcend/js/main.js' %}"></script>
 
-<script type="text/javascript" src="{% static 'transcend/js/pace.min.js' %}"></script>
 
 {% endblock %}
 
@@ -92,18 +94,22 @@
     </ul> <!-- end home-sidelinks -->
 
     <ul class="home-social">
-        <li class="home-social-title">{% translate 'Pseudosocial' %}</li>
-        <li><a href="#0">
-                <i class="fab fa-facebook"></i>
-                <span class="home-social-text">Facebook</span>
+        <li class="home-social-title">{% translate 'available in'|capfirst %}</li>
+        <li><a href="/tr">
+                <span class="flag-icon flag-icon-tr"></span>
+                <span class="home-social-text">Türkçe</span>
+            </a></li>
+        <li><a href="/en">
+            <span class="flag-icon flag-icon-us"></span>
+                <span class="home-social-text">English</span>
+            </a></li>
+            <li><a href="#0">
+                <span class="flag-icon flag-icon-gb"></span>
+                <span class="home-social-text">British</span>
             </a></li>
         <li><a href="#0">
-                <i class="fab fa-twitter"></i>
-                <span class="home-social-text">Twitter</span>
-            </a></li>
-        <li><a href="#0">
-                <i class="fab fa-linkedin"></i>
-                <span class="home-social-text">LinkedIn</span>
+            <span class="flag-icon flag-icon-fr"></span>
+                <span class="home-social-text">Français</span>
             </a></li>
     </ul> <!-- end home-social -->
 
