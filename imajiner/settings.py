@@ -115,12 +115,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
-    ('en', gettext_lazy('English')),
-    ('tr', gettext_lazy('Türkçe')),
+    ('en', 'English'),
+    ('tr', 'Türkçe'),
 )
+
+LANGUAGES_DICT = dict(LANGUAGES)
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
