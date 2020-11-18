@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static tagging %}
+{% load static tagging i18n %}
 
 {% block body.id %}top{% endblock %}
 {% block body %}
@@ -7,15 +7,7 @@
 
         <div class="philosophy row narrow">
             <div class="philosophy col-full s-content__header">
-                <h1 class="philosophy" style="font-family:'librebaskerville-regular'">Öykünüşler</h1>
-
-                <div class="philosophy" style="border:1px black dashed; padding:10px">
-                    <p style="text-align:left" class="philosophy lead">Espresso</p>
-                    <ul style="text-align:left">
-                        <li><a href="{% url 'notebook:write' %}">Hikaye yaz</a></li>
-                        <li><a href="{% url 'notebook:folder' %}">Taslaklarım</a></li>
-                    </ul>
-                </div>
+                <h1 class="philosophy" style="font-family:'librebaskerville-regular'">{% translate 'latest narratives'|capfirst %}</h1>
             </div>
         </div>
 

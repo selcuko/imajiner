@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block head %}
 <style type="text/css" media="screen">
@@ -23,24 +23,17 @@
         <div class="philosophy row">
 
             <div class="philosophy tab-full">
-                <h1 class="philosophy">Bildirge yayınla</h1>
+                <h1 class="philosophy">{% translate 'declare a narrative'|capfirst %}</h1>
                 <br>
                 <form enctype="multipart/form-data" class="philosophy" id="form" action="" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    
-                    <label class="philosophy">Yazıya iliştirilecek ses:</label>
-                    <div class="semantic ui huge icon buttons">
-                        <label id="audio-primary" style="border-right:1px lightgray solid;" class="semantic ui icon button" for="audio-input"><i class="icon paperclip"></i><span style="margin-left:0.8rem;">Ses ekle</span></label>
-                        <input style="display:none;" accept="audio/*" type="file" id="audio-input" capture>
-                        <div id="audio-secondary" class="semantic ui icon button"><i class="icon microphone"></i></div>
-                    </div>
 
                     <blockquote class="philosophy">
-                        <p class="philosophy" id="status">Bişiler oluyo</p>
-                        <cite class="philosophy">Sistem</cite>
+                        <p class="philosophy" id="status">{% translate "something's happening"|capfirst %}</p>
+                        <cite class="philosophy">{% translate 'the system'|capfirst %}</cite>
                     </blockquote>
-                    <input id="submit-button" class="philosophy btn--primary full-width" type="submit" value="Beyan et">
+                    <input id="submit-button" class="philosophy btn--primary full-width" type="submit" value="{% translate 'declare'|capfirst %}">
                 </form>
             </div>
         </div>

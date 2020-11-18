@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'suitcase/css/style.encapsulated.css' %}">
+<link rel="stylesheet" href="{% static 'suitcase/css/style.css' %}">
 <link rel="stylesheet" href="{% static 'suitcase/css/icomoon.css' %}">
 <script defer src="{% static 'suitcase/js/main.js' %}"></script>
 {% endblock head %}
@@ -14,18 +14,17 @@
     <section class="philosophy s-content">
         <div class="philosophy row narrow">
             <div class="philosophy col-full s-content__header">
-                <h1 class="philosophy">Taslakların</h1>
-                <p class="philosophy lead">Evet, hepsi senin
-                </p>
+                <h1 class="philosophy">{% translate 'sketches'|capfirst %}</h1>
+                <p class="philosophy lead">{% translate 'begin writing a new story or mess with the unfinished works'|capfirst %}</p>
             </div>
         </div>
         <div class="philosophy row masonry-wrap">
             <div class="philosophy masonry blog-flex">
                 <div class="philosophy masonry__brick entry format-standard">
                     <a href="{% url 'narrative:write' %}" class="f-blog">
-                        <p class="meta"><span>Tam da şu an</span></p>
-                        <h3 style="font-family: 'librebaskerville-regular'">Yine baştan, yeni baştan bir yazıya başla</h3>
-                        <p class="read-more">Atıl kurt <i class="icon-arrow-right3"></i></p>
+                        <p class="meta"><span>{% translate 'right now'|capfirst %}</span></p>
+                        <h3 style="font-family: 'librebaskerville-regular'">{% translate 'new story, new dreams, new possibilities'|capfirst %}</h3>
+                        <p class="read-more">{% translate 'go ahead'|capfirst %} <i class="icon-arrow-right3"></i></p>
                     </a>
                 </div>
                 {% for sketch in sketches %}

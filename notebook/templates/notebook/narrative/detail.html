@@ -37,7 +37,7 @@
             </div>
 
             <p class="philosophy s-content__tags">
-                <span class="philosophy">Bir tutam</span>
+                <span class="philosophy">{% translate 'pinch of'|capfirst %}</span>
 
                 <span id="tag-list" class="s-content__tag-list">
                     {% tags_for_user 20 as tags %}
@@ -62,7 +62,7 @@
                     </h4>
 
                     <p class="philosophy">
-                        {{ narrative.author.profile.biography|default:'Hakkında kısmı boş.' }}
+                        {{ narrative.author.profile.biography }}
                     </p>
                 </div>
                 <br>
