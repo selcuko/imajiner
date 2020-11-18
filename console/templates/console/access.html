@@ -1,5 +1,9 @@
 {% extends 'console/base.html' %}
 {% load static widget_tweaks i18n %}
+
+{% block head %}
+<script defer src="{% static 'console/sessions.js' %}"></script>
+{% endblock head %}
 {% block body %}
 
 <div class="container-fluid dashboard-content">
@@ -64,6 +68,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <div id="sessions-status" class="alert alert-dismissible fade alert-info" role="alert">
+                                    
+                                </div>
                                 <table class="table table-striped table-bordered first">
                                     <thead>
                                         <tr>
@@ -73,13 +80,13 @@
                                     </thead>
                                     <tbody>
                                         {% for session, user_agent in request.user.sessions %}
-                                        <tr>
+                                        <tr id="{{ session.session_key }}">
                                             <td>{{ user_agent }}</td>
                                             <td>
                                                 {% if request.session.session_key == session.session_key %}
                                                 Current session
                                                 {% else %}
-                                                <a href="#0"><i class="fa fa-times"></i> {% translate 'terminate'|capfirst %}</a>
+                                                <a href="#0" onclick="terminateSession('{{ session.session_key }}');"><i class="fa fa-times"></i> {% translate 'terminate'|capfirst %}</a>
                                                 {% endif %}</td>
 
                                         </tr>

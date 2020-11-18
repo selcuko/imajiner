@@ -13,6 +13,7 @@
 
     <title>{{ doc.title|default:'Untitled Console Page' }}</title>
 
+    <script src="{% url 'javascript-catalog' %}"></script>
     {% block standard %}
     {% block standard.fonts %}
     <link rel="stylesheet" href="{% static 'fonts/librebaskerville/stylesheet.css' %}">
