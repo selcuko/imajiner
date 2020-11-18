@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-18 21:45+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: assets/autosave.js:27 notebook/static/notebook/autosave.js:27
+#: templates/autosave.js:27
+msgid "I'm waiting for you."
+msgstr ""
+
+#: assets/autosave.js:29 notebook/static/notebook/autosave.js:29
+#: templates/autosave.js:29
+msgid "entitled narrative"
+msgstr ""
+
+#: assets/autosave.js:43 notebook/static/notebook/autosave.js:43
+#: templates/autosave.js:43
+msgid "syncing"
+msgstr ""
+
+#: assets/autosave.js:57 notebook/static/notebook/autosave.js:57
+#: templates/autosave.js:57
+msgid ""
+"I have encountered an error. It is my fault and anything you wrote probably "
+"did not synced nor saved."
+msgstr ""
+
+#: assets/autosave.js:63 notebook/static/notebook/autosave.js:63
+#: templates/autosave.js:63
+msgid "Declared. You will be redirected soon."
+msgstr ""
+
+#: assets/autosave.js:66 notebook/static/notebook/autosave.js:66
+#: templates/autosave.js:66
+msgid "changes saved."
+msgstr ""
+
+#: assets/autosave.js:76 notebook/static/notebook/autosave.js:76
+#: templates/autosave.js:76
+msgid ""
+"I have encountered an error. It is probably your internet connection and "
+"anything you wrote probably did not synced nor saved."
+msgstr ""
