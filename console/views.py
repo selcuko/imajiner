@@ -37,7 +37,7 @@ class Profile(LoginRequiredMixin, View):
                 'form': form
             })
 
-class Access(View):
+class AccessSecurity(View):
     template = 'console/access.html'
     def get(self, request):
         return render(request, self.template)

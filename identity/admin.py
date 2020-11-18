@@ -1,3 +1,7 @@
 from django.contrib import admin
+from django.contrib.sessions.models import Session
+from .models import LoggedInUser
 
-# Register your models here.
+
+admin.site.register(LoggedInUser)
+admin.site.register(Session)

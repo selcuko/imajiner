@@ -7,6 +7,7 @@ from django.dispatch import receiver
 import hashlib
 from uuid import uuid1
 from .methods import remote_addr, fingerprint, user_agent
+from django.contrib.auth import user_logged_in, user_logged_out
 
 class Shadow(models.Model):
     fingerprint = models.CharField(max_length=2048, unique=True)
@@ -65,5 +66,23 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+
+class LoggedInUser(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='logged_in')
+    user_agent = models.TextField(null=True, blank=True)
+    session_key = models.CharField(max_length=32)
+
+    def __str__(self): return f'Session of {self.user.username}'
+
+
+@receiver(user_logged_in)
+def on_user_logged_in(sender, request, **kwargs):
+    LoggedInUser.objects.get_or_create(
+        user=kwargs.get('user'), 
+        session_key=request.session.session_key,
+        user_agent=user_agent(request),
+    ) 
 
     
