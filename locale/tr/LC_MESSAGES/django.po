@@ -7,80 +7,267 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-14 00:29+0300\n"
+"POT-Creation-Date: 2020-11-18 21:13+0300\n"
 "PO-Revision-Date: 2020-11-16 17:37+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: console/templates/console/base.html:82
-msgid "shadow"
-msgstr "gölge"
-
-#: console/templates/console/base.html:82
-msgid "author"
-msgstr "yazar"
-
-#: console/templates/console/base.html:85
-msgid "log out"
-msgstr "çıkış yap"
-
-#: console/templates/console/base.html:95
-msgid "console"
-msgstr "konsol"
-
+#: console/templates/console/access.html:11
 #: console/templates/console/base.html:103
-msgid "menu"
-msgstr "mönü"
-
-#: console/templates/console/base.html:107
-msgid "overview"
-msgstr "kuş bakışı"
-
-#: console/templates/console/base.html:111
-msgid "profile"
-msgstr "profil"
-
-#: console/templates/console/base.html:115
+#: console/templates/console/profile.html:68
 msgid "access & security"
 msgstr "erişim & güvenlik"
 
-#: console/templates/console/base.html:119
+#: console/templates/console/access.html:24
+msgid "radical processes this way."
+msgstr ""
+
+#: console/templates/console/access.html:32
+msgid "the most basic information"
+msgstr ""
+
+#: console/templates/console/access.html:33
+msgid "I will not save unless you hit the button."
+msgstr ""
+
+#: console/templates/console/access.html:41
+#: console/templates/console/profile.html:58
+msgid "username"
+msgstr ""
+
+#: console/templates/console/access.html:44
+msgid "you may change your username only once."
+msgstr ""
+
+#: console/templates/console/access.html:47
+msgid "new password"
+msgstr ""
+
+#: console/templates/console/access.html:49
+msgid "you may enter your new password"
+msgstr ""
+
+#: console/templates/console/access.html:52
+msgid "confirm new password"
+msgstr ""
+
+#: console/templates/console/access.html:54
+msgid "you may confirm your new password"
+msgstr ""
+
+#: console/templates/console/access.html:57
+#: console/templates/console/profile.html:95
+msgid "save"
+msgstr ""
+
+#: console/templates/console/access.html:70
+msgid "user agent"
+msgstr ""
+
+#: console/templates/console/access.html:71
+#: console/templates/console/access.html:82
+msgid "terminate"
+msgstr ""
+
+#: console/templates/console/base.html:70
+msgid "shadow"
+msgstr "gölge"
+
+#: console/templates/console/base.html:70
+msgid "author"
+msgstr "yazar"
+
+#: console/templates/console/base.html:73
+msgid "log out"
+msgstr "çıkış yap"
+
+#: console/templates/console/base.html:83
+msgid "console"
+msgstr "konsol"
+
+#: console/templates/console/base.html:91
+msgid "menu"
+msgstr "mönü"
+
+#: console/templates/console/base.html:95
+msgid "espresso"
+msgstr ""
+
+#: console/templates/console/base.html:99
+#: console/templates/console/profile.html:15
+msgid "profile"
+msgstr "profil"
+
+#: console/templates/console/base.html:107 notebook/views.py:82
 msgid "narratives"
 msgstr "hikayeler"
 
-#: console/templates/console/base.html:123
+#: console/templates/console/base.html:111
 msgid "refereeship"
 msgstr "atıflar"
 
-#: console/templates/console/base.html:127
+#: console/templates/console/base.html:115
 msgid "subscriptions"
 msgstr "takip ettiklerin"
 
-#: console/templates/console/base.html:131
+#: console/templates/console/base.html:119
 msgid "preferences"
 msgstr "tercihler"
 
-#: console/templates/console/base.html:135
+#: console/templates/console/base.html:123
 msgid "writing studio"
 msgstr "yazın stüdyosu"
 
-#: console/templates/console/base.html:148
+#: console/templates/console/base.html:136
 msgid "Copyright Imajiner. All rights reserved."
 msgstr "Copyright Imajiner. Tüm hakları saklıdır."
 
-#: console/templates/console/base.html:152
+#: console/templates/console/base.html:140
 msgid "About"
 msgstr "Hakkında"
 
-#: console/templates/console/base.html:153
+#: console/templates/console/base.html:141
 msgid "Contact"
 msgstr "İletişim"
+
+#: console/templates/console/narratives.html:53
+#: console/templates/console/narratives.html:64
+#: console/templates/console/narratives.html:85
+#: notebook/templates/notebook/narrative/detail.html:18
+msgid "edit"
+msgstr ""
+
+#: console/templates/console/narratives.html:54
+#: console/templates/console/narratives.html:86
+msgid "title"
+msgstr ""
+
+#: console/templates/console/narratives.html:55
+#: console/templates/console/narratives.html:87
+#, fuzzy
+#| msgid "series"
+msgid "serie"
+msgstr "seriler"
+
+#: console/templates/console/narratives.html:56
+#: console/templates/console/narratives.html:88
+msgid "published at"
+msgstr ""
+
+#: console/templates/console/narratives.html:57
+#: console/templates/console/narratives.html:89
+#: notebook/templates/notebook/narrative/detail.html:17
+#, fuzzy
+#| msgid "versions"
+msgid "version"
+msgstr "versiyonlar"
+
+#: console/templates/console/narratives.html:75
+msgid "you do not have any narratives"
+msgstr ""
+
+#: console/templates/console/overview.html:8
+#, fuzzy
+#| msgid "console"
+msgid "console espresso"
+msgstr "konsol"
+
+#: console/templates/console/overview.html:14
+msgid "session management"
+msgstr ""
+
+#: console/templates/console/overview.html:22
+msgid "view and manage the devices you are currently logged in."
+msgstr ""
+
+#: console/templates/console/overview.html:24
+#: console/templates/console/overview.html:43
+msgid "manage"
+msgstr ""
+
+#: console/templates/console/overview.html:33
+#, fuzzy
+#| msgid "narratives"
+msgid "unpublished narratives"
+msgstr "hikayeler"
+
+#: console/templates/console/overview.html:41
+msgid "view the narratives you left as a sketch and did not publish."
+msgstr ""
+
+#: console/templates/console/overview.html:53
+#, fuzzy
+#| msgid "narratives"
+msgid "narratives seen outside"
+msgstr "hikayeler"
+
+#: console/templates/console/overview.html:61
+msgid "some of your narratives has seen on different sites."
+msgstr ""
+
+#: console/templates/console/overview.html:63
+#, fuzzy
+#| msgid "overview"
+msgid "view"
+msgstr "kuş bakışı"
+
+#: console/templates/console/overview.html:73
+#, fuzzy
+#| msgid "writing studio"
+msgid "writing atelier"
+msgstr "yazın stüdyosu"
+
+#: console/templates/console/overview.html:81
+msgid "write your next narrative in advanced writing studio."
+msgstr ""
+
+#: console/templates/console/overview.html:83
+msgid "explore"
+msgstr ""
+
+#: console/templates/console/profile.html:35
+msgid ""
+"The most useful information regarding to your account is here. You can view "
+"and modify them."
+msgstr ""
+
+#: console/templates/console/profile.html:49
+#: console/templates/console/profile.html:111
+msgid "account"
+msgstr ""
+
+#: console/templates/console/profile.html:50
+#: console/templates/console/profile.html:83
+msgid "I will not save anything unless you hit the button."
+msgstr ""
+
+#: console/templates/console/profile.html:55
+msgid ""
+"This part concerns the security of your account. You should visit Access & "
+"Security to modify them."
+msgstr ""
+
+#: console/templates/console/profile.html:63
+msgid "password"
+msgstr ""
+
+#: console/templates/console/profile.html:68
+msgid "go to"
+msgstr ""
+
+#: console/templates/console/profile.html:82
+msgid "cool stuff"
+msgstr ""
+
+#: console/templates/console/profile.html:91
+msgid "Biography"
+msgstr ""
 
 #: console/urls.py:9
 msgid "iam/"
@@ -90,7 +277,7 @@ msgstr "ben/"
 msgid "access/"
 msgstr "erisim/"
 
-#: console/urls.py:11 imajiner/urls.py:22
+#: console/urls.py:11 imajiner/urls.py:30
 msgid "narratives/"
 msgstr "hikayeler/"
 
@@ -122,35 +309,79 @@ msgstr "takip-ettiklerin/"
 msgid "preferences/"
 msgstr "tercihler/"
 
-#: imajiner/settings.py:114
-msgid "English"
-msgstr "İngilizce"
-
-#: imajiner/settings.py:115
-msgid "Türkçe"
-msgstr "Türkçe"
-
-#: imajiner/urls.py:12 imajiner/urls.py:13
+#: imajiner/urls.py:16 imajiner/urls.py:17
 msgid "Imajiner God View"
 msgstr "Imajiner Tanrı Görüşü"
 
-#: imajiner/urls.py:14
+#: imajiner/urls.py:18
 msgid "Site Supervision"
 msgstr "Site Süperyönetimi"
 
-#: imajiner/urls.py:21
+#: imajiner/urls.py:29
 msgid "admin/"
 msgstr "sahip/"
 
-#: imajiner/urls.py:27
+#: imajiner/urls.py:35
 msgid "console/"
 msgstr "konsol/"
 
-#: templates/base.html:8
-msgid "Fly as high as you can."
+#: notebook/templates/notebook/narrative/detail.html:40
+msgid "pinch of"
 msgstr ""
 
-#: templates/base.html:85 templates/base.html:102 templates/landing.html:37
+#: notebook/templates/notebook/narrative/folder.html:17
+msgid "sketches"
+msgstr "taslaklar"
+
+#: notebook/templates/notebook/narrative/folder.html:18
+msgid "begin writing a new story or mess with the unfinished works"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:25
+msgid "right now"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:26
+msgid "new story, new dreams, new possibilities"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:27
+msgid "go ahead"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/list.html:10
+#, fuzzy
+#| msgid "narratives"
+msgid "latest narratives"
+msgstr "hikayeler"
+
+#: notebook/templates/notebook/narrative/write.html:27
+#, fuzzy
+#| msgid "narratives"
+msgid "declare a narrative"
+msgstr "hikayeler"
+
+#: notebook/templates/notebook/narrative/write.html:34
+msgid "something's happening"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/write.html:35
+msgid "the system"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/write.html:37
+msgid "declare"
+msgstr ""
+
+#: notebook/views.py:114
+msgid "refreshing the ink"
+msgstr ""
+
+#: templates/base.html:8
+msgid "Fly as high as you can"
+msgstr ""
+
+#: templates/base.html:85 templates/base.html:102 templates/landing.html:38
 msgid "Close"
 msgstr "Kapat"
 
@@ -162,15 +393,15 @@ msgstr "Mönü"
 msgid "Homepage"
 msgstr "Anasayfa"
 
-#: templates/base.html:98 templates/landing.html:44
+#: templates/base.html:98 templates/landing.html:45
 msgid "Narratives"
 msgstr "Hikayeler"
 
-#: templates/base.html:99 templates/landing.html:47
+#: templates/base.html:99 templates/landing.html:48
 msgid "Console"
 msgstr "Konsol"
 
-#: templates/base.html:122 templates/landing.html:271
+#: templates/base.html:122 templates/landing.html:276
 msgid "All rights reserved."
 msgstr "Tüm hakları saklıdır."
 
@@ -178,9 +409,9 @@ msgstr "Tüm hakları saklıdır."
 msgid "This website contains materials from third parties."
 msgstr "Bu websindeki bazı materyaller üçüncü partilerden alınmıştır."
 
-#: templates/base.html:123 templates/landing.html:171
-#: templates/landing.html:184 templates/landing.html:197
-#: templates/landing.html:210
+#: templates/base.html:123 templates/landing.html:176
+#: templates/landing.html:189 templates/landing.html:202
+#: templates/landing.html:215
 msgid "Know more"
 msgstr "Dahası"
 
@@ -188,135 +419,137 @@ msgstr "Dahası"
 msgid "To the top"
 msgstr ""
 
-#: templates/landing.html:43
+#: templates/landing.html:44
 msgid "Homeland"
 msgstr ""
 
-#: templates/landing.html:45 templates/landing.html:124
+#: templates/landing.html:46 templates/landing.html:129
 msgid "Missionary"
 msgstr ""
 
-#: templates/landing.html:46 templates/landing.html:150
+#: templates/landing.html:47 templates/landing.html:155
 msgid "Machinery"
 msgstr ""
 
-#: templates/landing.html:48 templates/landing.html:225
+#: templates/landing.html:49 templates/landing.html:230
 msgid "Feedback"
 msgstr ""
 
-#: templates/landing.html:51
+#: templates/landing.html:52
 msgid "Imajiner is an open-sourced, free platform."
 msgstr ""
 
-#: templates/landing.html:78
+#: templates/landing.html:79
 msgid ""
 "A mixture of inside you and the outer world - a solemn thought, is it not?"
 msgstr "Zihninin derinlikleri karmaşayla dolu, değil mi?"
 
-#: templates/landing.html:82
+#: templates/landing.html:83
 msgid "No man is required to be understood."
 msgstr ""
 "Aydınlatmana gerek yok karanlıkları ama istersen ışığınla diğerlerini "
 "büyüleyebilirsin."
 
-#: templates/landing.html:89
-msgid "Inspect"
+#: templates/landing.html:90
+msgid "what"
 msgstr ""
 
-#: templates/landing.html:89
+#: templates/landing.html:90
 msgid "whatcha got there"
 msgstr ""
 
-#: templates/landing.html:90
-msgid "Why"
-msgstr ""
-
-#: templates/landing.html:90
-msgid "why this platform exists"
+#: templates/landing.html:91
+msgid "feedback"
 msgstr ""
 
 #: templates/landing.html:91
-msgid "How"
+msgid "your fairy wishes"
 msgstr ""
 
-#: templates/landing.html:91
+#: templates/landing.html:92
+#, fuzzy
+#| msgid "shadow"
+msgid "how"
+msgstr "gölge"
+
+#: templates/landing.html:92
 msgid "how tf does these work"
 msgstr ""
 
-#: templates/landing.html:95
-msgid "Pseudosocial"
-msgstr "Sözdesosyal"
+#: templates/landing.html:96
+msgid "available in"
+msgstr ""
 
-#: templates/landing.html:111
+#: templates/landing.html:116
 msgid "Go down!"
 msgstr ""
 
-#: templates/landing.html:125
+#: templates/landing.html:130
 msgid ""
 "The divine purpose of this platform is to promise people mental freedom."
 msgstr ""
 
-#: templates/landing.html:151
+#: templates/landing.html:156
 msgid "I surely did get rid of any bothersome."
 msgstr ""
 
-#: templates/landing.html:157
+#: templates/landing.html:162
 msgid ""
 "Some unique machinery around you is trying to offer a intuitive user "
 "experience."
 msgstr ""
 
-#: templates/landing.html:168
+#: templates/landing.html:173
 msgid "Undivided Attention"
 msgstr "Dikkatiniz bölünmez"
 
-#: templates/landing.html:170
+#: templates/landing.html:175
 msgid ""
 "The moment you read is the moment you value that piece of text the most. You "
 "can be assured that nothing will distract you while you are reading from our "
 "side."
 msgstr ""
 
-#: templates/landing.html:181
+#: templates/landing.html:186
 msgid "Truly Optional Registration"
 msgstr "Kaydolmanız gerekmez"
 
-#: templates/landing.html:194
+#: templates/landing.html:199
 msgid "Non-disappearing Data"
 msgstr "Veriniz kaybolmaz"
 
-#: templates/landing.html:207
+#: templates/landing.html:212
 msgid "Nothing Complex"
 msgstr "Karmaşasız"
 
-#: templates/landing.html:226
+#: templates/landing.html:231
 msgid "I have a dream where the freedom of expression is truly present."
 msgstr "Benim bir hayalim var, ifade özgürlünün gerçekten olduğu."
 
-#: templates/landing.html:245
+#: templates/landing.html:250
 msgid "Reach me out"
 msgstr "Bana ulaşın"
 
-#: templates/landing.html:272
+#: templates/landing.html:277
 #, python-format
 msgid "This website is using materials taken from %(link)s"
 msgstr "Bu websitesi %(link)s'den alınmış materyaller içermektedir."
 
-#: templates/landing.html:273
+#: templates/landing.html:278
 msgid "Details"
 msgstr "Detaylar"
 
+#~ msgid "English"
+#~ msgstr "İngilizce"
+
+#~ msgid "Türkçe"
+#~ msgstr "Türkçe"
+
+#~ msgid "Pseudosocial"
+#~ msgstr "Sözdesosyal"
+
 #~ msgid "iam"
 #~ msgstr "ben"
-
-#~ msgid "versions"
-#~ msgstr "versiyonlar"
-
-#~ msgid "sketches"
-#~ msgstr "taslaklar"
-
-#~ msgid "series"
-#~ msgstr "seriler"
 
 #~ msgid "media"
 #~ msgstr "medya"
