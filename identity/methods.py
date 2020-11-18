@@ -17,7 +17,10 @@ def sessions(self):
             puabr = user_agent_parser.ParseUserAgent(li.user_agent)
             puabrs = '.'.join([puabr[k] for k in puabr.keys() if puabr[k] is not None])
 
-            sessions.append((s, ' '.join([puabrs, puaoss])))
+            puad = user_agent_parser.ParseDevice(li.user_agent)
+            puads = ' '.join([puad[k] for k in puad.keys() if puad[k] is not None])
+
+            sessions.append((s, ' '.join([puads, puaoss, puabrs])))
         except Session.DoesNotExist:
             li.delete()
     return sessions
