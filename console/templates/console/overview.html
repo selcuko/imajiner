@@ -1,8 +1,94 @@
 {% extends 'console/base.html' %}
-{% load static usercontext %}
+{% load static usercontext i18n %}
 
 {% block body %}
 <div class="container-fluid dashboard-content ">
+    <div class="row">
+        <div class="col-xl-10">
+            {% translate 'console espresso' as header %}
+            {% include 'console/page_header.html' with header=header|title %}
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div style="border:1px solid var(--secondary);" class="card bg-secondary">
+                        <div class="card-header text-secondary d-flex">
+                            <h3 class="mb-0">{% translate 'session management'|capfirst %}</h3>
+                            <div class="ml-auto">
+                                <i class="fas fa-desktop fa-fw fa-sm text-secondary"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-inline-block">
+                                <p class="card-text">
+                                    {% translate 'view and manage the devices you are currently logged in.'|capfirst %}
+                                </p>
+                                <a href="#0" class="btn btn-dark">{% translate 'manage'|capfirst %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div style="border:1px solid var(--dark);" class="card bg-dark">
+                        <div class="card-header text-secondary d-flex">
+                            <h3 class="mb-0">{% translate 'unpublished narratives'|capfirst %}</h3>
+                            <div class="ml-auto">
+                                <i class="fas fa-copy fa-fw fa-sm text-dark"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-inline-block">
+                                <p class="card-text">
+                                    {% translate 'view the narratives you left as a sketch and did not publish.'|capfirst %}
+                                </p>
+                                <a href="#0" class="btn btn-primary">{% translate 'manage'|capfirst %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div style="border:1px solid var(--dark);" class="card bg-info">
+                        <div class="card-header text-info d-flex">
+                            <h3 class="mb-0">{% translate 'narratives seen outside'|capfirst %}</h3>
+                            <div class="ml-auto">
+                                <i class="fas fa-link fa-fw fa-sm text-dark"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-inline-block">
+                                <p class="card-text">
+                                    {% translate 'some of your narratives has seen on different sites.'|capfirst %}
+                                </p>
+                                <a href="#0" class="btn btn-light">{% translate 'view'|capfirst %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div style="border:1px solid var(--dark);" class="card bg-light">
+                        <div class="card-header text-info d-flex">
+                            <h3 class="mb-0">{% translate 'writing atelier'|capfirst %}</h3>
+                            <div class="ml-auto">
+                                <i class="fas fa-pen fa-fw fa-sm text-dark"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-inline-block">
+                                <p class="card-text">
+                                    {% translate 'write your next narrative in advanced writing studio.'|capfirst %}
+                                </p>
+                                <a href="#0" class="btn btn-dark">{% translate 'explore'|capfirst %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock body %}
