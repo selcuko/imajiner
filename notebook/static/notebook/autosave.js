@@ -14,17 +14,22 @@ let last = {
     fetch: null,
 };
 
+const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
 $form.onsubmit = function (e) {
     e.preventDefault();
     post('SUBMIT');
 }
 
-$status.innerText = "Seni bekliyorum."
+$status.innerText = gettext("I'm waiting for you.")
 function autosaveSketch() {
-    currentTitle = $title.value ? $title.value : 'Başlıklı hikaye';
+    currentTitle = $title.value ? $title.value : capitalize(gettext('entitled narrative'));
     titleChanged = currentTitle !== last.title;
     if ($textarea.value !== last.value || titleChanged) {
-        if (titleChanged) document.title = currentTitle + ' | Imajiner.'
+        if (titleChanged) document.title = currentTitle + ' • Imajiner'
         post('AUTOSAVE');
     }
 }
@@ -35,16 +40,12 @@ async function post(action = 'SUBMIT') {
     if (action === 'SUBMIT' && last.fetch === null) {
         await post('AUTOSAVE');
     }
-    $status.innerText = 'Eşleniyor.'
+    $status.innerText = capitalize(gettext('syncing')) + '...';
 
     const fd = new FormData($form);
     fd.append('action', action);
     fd.append('count', c++);
     fd.set('title', currentTitle);
-    if (file) {
-        console.log('appended file')
-        fd.append('audio', file)
-    } else console.log('no file selected')
 
     return await fetch('', {
         method: 'POST',
@@ -53,16 +54,16 @@ async function post(action = 'SUBMIT') {
     })
     .then(response => {
         if (!(response.status === 200 || response.status === 302)) {
-            $status.innerText = 'Hata verdim. Sorun bende ve yazdıkların muhtemelen yedeklenemedi.';
+            $status.innerText = gettext('I have encountered an error. It is my fault and anything you wrote probably did not synced nor saved.');
         } else {
             last.value = $textarea.value;
             last.fetch = c;
             if (action === 'SUBMIT') {
                 clearInterval(intervalId);
-                $status.innerText = 'Bildirge yayınlandı. Birazdan yönlendirileceksiniz.'
+                $status.innerText = gettext('Declared. You will be redirected soon.');
                 setTimeout(() => { window.location.replace(response.url); }, 500);
             } else {
-                $status.innerText = 'Değişiklikler kaydedildi.'
+                $status.innerText = capitalize(gettext('changes saved.'));
             }
         }
         response.json();
@@ -72,6 +73,6 @@ async function post(action = 'SUBMIT') {
     })
     .catch(error => {
         console.log(error);
-        $status.innerText = 'Hata verdim. Muhtemelen internet bağlantınla ilgili ve yazdıkların kaydedilmedi.';
+        $status.innerText = gettext('I have encountered an error. It is probably your internet connection and anything you wrote probably did not synced nor saved.')
     })
 }

@@ -9,8 +9,9 @@ from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
 from django.contrib.sitemaps.views import sitemap
 from notebook.sitemap import NarrativeSitemap
+from django.views.i18n import JavaScriptCatalog
 
-LoginRequiredMixin.redirect_field_name = 'sonraki'
+LoginRequiredMixin.redirect_field_name = 'n'
 
 admin.site.site_header = _('Imajiner God View')
 admin.site.site_title = _('Imajiner God View')
@@ -19,7 +20,8 @@ admin.site.index_title = _('Site Supervision')
 urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
     path('sitemap.xml', sitemap, {'sitemaps': {'notebook': NarrativeSitemap}},
-     name='django.contrib.sitemaps.views.sitemap')
+     name='django.contrib.sitemaps.views.sitemap'),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 ]
 
 urlpatterns += i18n_patterns(
