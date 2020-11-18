@@ -8,6 +8,7 @@ from tagmanager.models import *
 import json
 from uuid import UUID
 from django.core.exceptions import SuspiciousOperation
+from django.utils.translation import gettext as _
 
 
 class NarrativeDetail(DetailView):
@@ -33,7 +34,7 @@ class NarrativeDetail(DetailView):
     def post(self, request, *args, **kwargs):
         action = request.POST['action']
         try:
-            if not request.user.is_authenticated: raise SuspiciousOperation('Giriş yapılmamış')
+            if not request.user.is_authenticated: raise SuspiciousOperation('Unauthorized')
 
             narrative = request.POST['narrative']
             narrative = Narrative.objects.get(slug=narrative)
@@ -78,8 +79,8 @@ class NarrativeList(ListView):
         ctx = super().get_context_data(*args, **kwargs)
         ctx.update({
             'doc': {
-                'title': 'Hikayeler',
-                'author': 'Imajiner Müşterileri'
+                'title': _('narratives').capitalize(),
+                'author': ''
             }
         })
         return ctx
@@ -110,7 +111,7 @@ class NarrativeWrite(LoginRequiredMixin, View):
             'form': form,
             'sounds': sounds,
             'doc': {
-                'title': 'Mürekkep dolduruluyor | Imajiner.'
+                'title': _('refreshing the ink').capitalize()
             }
             })
 
@@ -169,17 +170,4 @@ class NarrativeFolder(LoginRequiredMixin, View):
         })
 
 
-class SoundUpload(CreateView):
-    template_name = 'notebook/upload.html'
-    model = SoundRecord
-    fields = [
-        'name',
-        'file',
-    ]
-    def get_success_url(self, *args, **kwargs):
-        return ''
-
-    def form_valid(self, form):
-        form.instance.uploader = self.request.user
-        return super().form_valid(form)
     
