@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-18 21:13+0300\n"
-"PO-Revision-Date: 2020-11-18 23:05+0200\n"
+"PO-Revision-Date: 2020-11-18 23:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -142,12 +142,12 @@ msgstr "İletişim"
 #: console/templates/console/narratives.html:85
 #: notebook/templates/notebook/narrative/detail.html:18
 msgid "edit"
-msgstr ""
+msgstr "düzenle"
 
 #: console/templates/console/narratives.html:54
 #: console/templates/console/narratives.html:86
 msgid "title"
-msgstr ""
+msgstr "başlık"
 
 #: console/templates/console/narratives.html:55
 #: console/templates/console/narratives.html:87
@@ -159,7 +159,7 @@ msgstr "seriler"
 #: console/templates/console/narratives.html:56
 #: console/templates/console/narratives.html:88
 msgid "published at"
-msgstr ""
+msgstr "diğer gezginler de artık okuyabilir"
 
 #: console/templates/console/narratives.html:57
 #: console/templates/console/narratives.html:89
@@ -171,7 +171,7 @@ msgstr "versiyonlar"
 
 #: console/templates/console/narratives.html:75
 msgid "you do not have any narratives"
-msgstr ""
+msgstr "hiçbir öykün yok"
 
 #: console/templates/console/overview.html:8
 #, fuzzy
@@ -185,12 +185,12 @@ msgstr ""
 
 #: console/templates/console/overview.html:22
 msgid "view and manage the devices you are currently logged in."
-msgstr ""
+msgstr "şu anda giriş yaptığın cihazlari görüntüle ve yönet"
 
 #: console/templates/console/overview.html:24
 #: console/templates/console/overview.html:43
 msgid "manage"
-msgstr ""
+msgstr "yönet"
 
 #: console/templates/console/overview.html:33
 #, fuzzy
@@ -225,8 +225,9 @@ msgid "writing atelier"
 msgstr "yazın stüdyosu"
 
 #: console/templates/console/overview.html:81
+#, fuzzy
 msgid "write your next narrative in advanced writing studio."
-msgstr ""
+msgstr "bir sonra ki öykünüzü gelişmiş yazma stüdyosuna yazın"
 
 #: console/templates/console/overview.html:83
 msgid "explore"
@@ -256,7 +257,7 @@ msgstr ""
 
 #: console/templates/console/profile.html:63
 msgid "password"
-msgstr ""
+msgstr "parola"
 
 #: console/templates/console/profile.html:68
 msgid "go to"
@@ -327,28 +328,33 @@ msgid "console/"
 msgstr "konsol/"
 
 #: notebook/templates/notebook/narrative/detail.html:40
+#, fuzzy
 msgid "pinch of"
-msgstr ""
+msgstr "bir tutam"
 
 #: notebook/templates/notebook/narrative/folder.html:17
 msgid "sketches"
 msgstr "taslaklar"
 
 #: notebook/templates/notebook/narrative/folder.html:18
+#, fuzzy
 msgid "begin writing a new story or mess with the unfinished works"
 msgstr ""
+"karışıklıklarla veya bitmemiş çalışmalarla yeni bir öykü yazmya başlayın"
 
 #: notebook/templates/notebook/narrative/folder.html:25
 msgid "right now"
-msgstr ""
+msgstr "şimdi"
 
 #: notebook/templates/notebook/narrative/folder.html:26
+#, fuzzy
 msgid "new story, new dreams, new possibilities"
-msgstr ""
+msgstr "yeni bir öykü, yeni bir hülya ve yeni olasılıklar"
 
 #: notebook/templates/notebook/narrative/folder.html:27
+#, fuzzy
 msgid "go ahead"
-msgstr ""
+msgstr "ileri"
 
 #: notebook/templates/notebook/narrative/list.html:10
 #, fuzzy
@@ -363,24 +369,26 @@ msgid "declare a narrative"
 msgstr "hikayeler"
 
 #: notebook/templates/notebook/narrative/write.html:34
+#, fuzzy
 msgid "something's happening"
-msgstr ""
+msgstr "bir şeyler yolunda gitmiyor galiba"
 
 #: notebook/templates/notebook/narrative/write.html:35
 msgid "the system"
-msgstr ""
+msgstr "sistem"
 
 #: notebook/templates/notebook/narrative/write.html:37
 msgid "declare"
-msgstr ""
+msgstr "beyan et"
 
 #: notebook/views.py:114
+#, fuzzy
 msgid "refreshing the ink"
-msgstr ""
+msgstr "mürekkebini tazele"
 
 #: templates/base.html:8
 msgid "Fly as high as you can"
-msgstr ""
+msgstr "uç uçabildiğin kadar uç"
 
 #: templates/base.html:85 templates/base.html:102 templates/landing.html:38
 msgid "Close"
@@ -422,11 +430,12 @@ msgstr ""
 
 #: templates/landing.html:44
 msgid "Homeland"
-msgstr ""
+msgstr "sema"
 
 #: templates/landing.html:46 templates/landing.html:129
+#, fuzzy
 msgid "Missionary"
-msgstr ""
+msgstr "misyoner"
 
 #: templates/landing.html:47 templates/landing.html:155
 msgid "Machinery"
@@ -434,7 +443,7 @@ msgstr ""
 
 #: templates/landing.html:49 templates/landing.html:230
 msgid "Feedback"
-msgstr ""
+msgstr "geri bilirim"
 
 #: templates/landing.html:52
 msgid "Imajiner is an open-sourced, free platform."
@@ -465,7 +474,7 @@ msgstr ""
 
 #: templates/landing.html:91
 msgid "your fairy wishes"
-msgstr ""
+msgstr "masalsı dilekleriniz"
 
 #: templates/landing.html:92
 #, fuzzy
@@ -479,16 +488,16 @@ msgstr ""
 
 #: templates/landing.html:96
 msgid "available in"
-msgstr ""
+msgstr "uygun"
 
 #: templates/landing.html:116
 msgid "Go down!"
-msgstr ""
+msgstr "Aşağı in!"
 
 #: templates/landing.html:130
 msgid ""
 "The divine purpose of this platform is to promise people mental freedom."
-msgstr ""
+msgstr "bu platformun  kutsal amacı insanlara zihinsel özgürlük vaat etmektir"
 
 #: templates/landing.html:156
 msgid "I surely did get rid of any bothersome."
