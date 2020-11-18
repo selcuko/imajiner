@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-18 21:13+0300\n"
-"PO-Revision-Date: 2020-11-16 17:37+0300\n"
+"PO-Revision-Date: 2020-11-18 23:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr "erişim & güvenlik"
 
 #: console/templates/console/access.html:24
 msgid "radical processes this way."
-msgstr ""
+msgstr "Bu yolda kökten süreçler"
 
 #: console/templates/console/access.html:32
 msgid "the most basic information"
@@ -34,28 +34,29 @@ msgstr ""
 
 #: console/templates/console/access.html:33
 msgid "I will not save unless you hit the button."
-msgstr ""
+msgstr "Seni butonu patlatasaya kadar asla kaydetmeyeceğim hahaha"
 
 #: console/templates/console/access.html:41
 #: console/templates/console/profile.html:58
 msgid "username"
-msgstr ""
+msgstr "Mahlas"
 
 #: console/templates/console/access.html:44
 msgid "you may change your username only once."
 msgstr ""
+"Kimliğini değiştirmek için sadece bir şansın var, bunu iyi düşün gezgin!"
 
 #: console/templates/console/access.html:47
 msgid "new password"
-msgstr ""
+msgstr "Yeni Parola"
 
 #: console/templates/console/access.html:49
 msgid "you may enter your new password"
-msgstr ""
+msgstr "Yeni şifreniz için yol açık, buyurun"
 
 #: console/templates/console/access.html:52
 msgid "confirm new password"
-msgstr ""
+msgstr "Yeni parolayı onayla"
 
 #: console/templates/console/access.html:54
 msgid "you may confirm your new password"
@@ -64,11 +65,11 @@ msgstr ""
 #: console/templates/console/access.html:57
 #: console/templates/console/profile.html:95
 msgid "save"
-msgstr ""
+msgstr "Kaydet gezgin"
 
 #: console/templates/console/access.html:70
 msgid "user agent"
-msgstr ""
+msgstr "Bilgi Taşıyıcı"
 
 #: console/templates/console/access.html:71
 #: console/templates/console/access.html:82
