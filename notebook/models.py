@@ -143,7 +143,7 @@ def update_tagman(sender, instance, **kwargs):
 
 class NarrativeTranslation(models.Model):
     uuid = models.UUIDField(unique=True)
-    language = models.CharField(max_length=5, choices=settings.LANGUAGES_DICT.keys())
+    language = models.CharField(max_length=5, choices=settings.LANGUAGES)
     title = models.CharField(max_length=100, default='404')
     slug = models.SlugField(max_length=100, null=True, unique=True)
     body = models.TextField(null=True)
