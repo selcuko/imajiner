@@ -1,0 +1,532 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-19 00:18+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: console/templates/console/access.html:15
+#: console/templates/console/base.html:104
+#: console/templates/console/profile.html:68
+msgid "access & security"
+msgstr ""
+
+#: console/templates/console/access.html:28
+msgid "radical processes this way."
+msgstr ""
+
+#: console/templates/console/access.html:36
+msgid "the most basic information"
+msgstr ""
+
+#: console/templates/console/access.html:37
+msgid "I will not save unless you hit the button."
+msgstr ""
+
+#: console/templates/console/access.html:45
+#: console/templates/console/profile.html:58
+msgid "username"
+msgstr ""
+
+#: console/templates/console/access.html:48
+msgid "you may change your username only once."
+msgstr ""
+
+#: console/templates/console/access.html:51
+msgid "new password"
+msgstr ""
+
+#: console/templates/console/access.html:53
+msgid "you may enter your new password"
+msgstr ""
+
+#: console/templates/console/access.html:56
+msgid "confirm new password"
+msgstr ""
+
+#: console/templates/console/access.html:58
+msgid "you may confirm your new password"
+msgstr ""
+
+#: console/templates/console/access.html:61
+#: console/templates/console/profile.html:95
+msgid "save"
+msgstr ""
+
+#: console/templates/console/access.html:77
+msgid "user agent"
+msgstr ""
+
+#: console/templates/console/access.html:78
+#: console/templates/console/access.html:89
+msgid "terminate"
+msgstr ""
+
+#: console/templates/console/base.html:71
+msgid "shadow"
+msgstr ""
+
+#: console/templates/console/base.html:71
+msgid "author"
+msgstr ""
+
+#: console/templates/console/base.html:74
+msgid "log out"
+msgstr ""
+
+#: console/templates/console/base.html:84
+msgid "console"
+msgstr ""
+
+#: console/templates/console/base.html:92
+msgid "menu"
+msgstr ""
+
+#: console/templates/console/base.html:96
+msgid "espresso"
+msgstr ""
+
+#: console/templates/console/base.html:100
+#: console/templates/console/profile.html:15
+msgid "profile"
+msgstr ""
+
+#: console/templates/console/base.html:108 notebook/views.py:82
+msgid "narratives"
+msgstr ""
+
+#: console/templates/console/base.html:112
+msgid "refereeship"
+msgstr ""
+
+#: console/templates/console/base.html:116
+msgid "subscriptions"
+msgstr ""
+
+#: console/templates/console/base.html:120
+msgid "preferences"
+msgstr ""
+
+#: console/templates/console/base.html:124
+msgid "writing studio"
+msgstr ""
+
+#: console/templates/console/base.html:137
+msgid "Copyright Imajiner. All rights reserved."
+msgstr ""
+
+#: console/templates/console/base.html:141
+msgid "About"
+msgstr ""
+
+#: console/templates/console/base.html:142
+msgid "Contact"
+msgstr ""
+
+#: console/templates/console/narratives.html:53
+#: console/templates/console/narratives.html:64
+#: console/templates/console/narratives.html:85
+#: notebook/templates/notebook/narrative/detail.html:18
+msgid "edit"
+msgstr ""
+
+#: console/templates/console/narratives.html:54
+#: console/templates/console/narratives.html:86
+msgid "title"
+msgstr ""
+
+#: console/templates/console/narratives.html:55
+#: console/templates/console/narratives.html:87
+msgid "serie"
+msgstr ""
+
+#: console/templates/console/narratives.html:56
+#: console/templates/console/narratives.html:88
+msgid "published at"
+msgstr ""
+
+#: console/templates/console/narratives.html:57
+#: console/templates/console/narratives.html:89
+#: notebook/templates/notebook/narrative/detail.html:17
+msgid "version"
+msgstr ""
+
+#: console/templates/console/narratives.html:75
+msgid "you do not have any narratives"
+msgstr ""
+
+#: console/templates/console/overview.html:8
+msgid "console espresso"
+msgstr ""
+
+#: console/templates/console/overview.html:14
+msgid "session management"
+msgstr ""
+
+#: console/templates/console/overview.html:22
+msgid "view and manage the devices you are currently logged in."
+msgstr ""
+
+#: console/templates/console/overview.html:24
+#: console/templates/console/overview.html:43
+msgid "manage"
+msgstr ""
+
+#: console/templates/console/overview.html:33
+msgid "unpublished narratives"
+msgstr ""
+
+#: console/templates/console/overview.html:41
+msgid "view the narratives you left as a sketch and did not publish."
+msgstr ""
+
+#: console/templates/console/overview.html:53
+msgid "narratives seen outside"
+msgstr ""
+
+#: console/templates/console/overview.html:61
+msgid "some of your narratives has seen on different sites."
+msgstr ""
+
+#: console/templates/console/overview.html:63
+msgid "view"
+msgstr ""
+
+#: console/templates/console/overview.html:73
+msgid "writing atelier"
+msgstr ""
+
+#: console/templates/console/overview.html:81
+msgid "write your next narrative in advanced writing studio."
+msgstr ""
+
+#: console/templates/console/overview.html:83
+msgid "explore"
+msgstr ""
+
+#: console/templates/console/profile.html:35
+msgid ""
+"The most useful information regarding to your account is here. You can view "
+"and modify them."
+msgstr ""
+
+#: console/templates/console/profile.html:49
+#: console/templates/console/profile.html:111
+msgid "account"
+msgstr ""
+
+#: console/templates/console/profile.html:50
+#: console/templates/console/profile.html:83
+msgid "I will not save anything unless you hit the button."
+msgstr ""
+
+#: console/templates/console/profile.html:55
+msgid ""
+"This part concerns the security of your account. You should visit Access & "
+"Security to modify them."
+msgstr ""
+
+#: console/templates/console/profile.html:63
+msgid "password"
+msgstr ""
+
+#: console/templates/console/profile.html:68
+msgid "go to"
+msgstr ""
+
+#: console/templates/console/profile.html:82
+msgid "cool stuff"
+msgstr ""
+
+#: console/templates/console/profile.html:91
+msgid "Biography"
+msgstr ""
+
+#: console/urls.py:9
+msgid "iam/"
+msgstr ""
+
+#: console/urls.py:10
+msgid "access/"
+msgstr ""
+
+#: console/urls.py:11 imajiner/urls.py:30
+msgid "narratives/"
+msgstr ""
+
+#: console/urls.py:12
+msgid "narratives/<uuid:narrative>/"
+msgstr ""
+
+#: console/urls.py:13
+msgid "narratives/<uuid:narrative>/versions/"
+msgstr ""
+
+#: console/urls.py:14
+msgid "narratives/<uuid:narrative>/versions/<uuid:version>/"
+msgstr ""
+
+#: console/urls.py:15
+msgid "refereeship/"
+msgstr ""
+
+#: console/urls.py:16
+msgid "studio/"
+msgstr ""
+
+#: console/urls.py:17
+msgid "subscriptions/"
+msgstr ""
+
+#: console/urls.py:18
+msgid "preferences/"
+msgstr ""
+
+#: imajiner/urls.py:16 imajiner/urls.py:17
+msgid "Imajiner God View"
+msgstr ""
+
+#: imajiner/urls.py:18
+msgid "Site Supervision"
+msgstr ""
+
+#: imajiner/urls.py:29
+msgid "admin/"
+msgstr ""
+
+#: imajiner/urls.py:35
+msgid "console/"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/detail.html:40
+msgid "pinch of"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:17
+msgid "sketches"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:18
+msgid "begin writing a new story or mess with the unfinished works"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:25
+msgid "right now"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:26
+msgid "new story, new dreams, new possibilities"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/folder.html:27
+msgid "go ahead"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/list.html:10
+msgid "latest narratives"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/write.html:26
+msgid "declare a narrative"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/write.html:33
+msgid "something's happening"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/write.html:34
+msgid "the system"
+msgstr ""
+
+#: notebook/templates/notebook/narrative/write.html:36
+msgid "declare"
+msgstr ""
+
+#: notebook/urls.py:10
+msgid "write/"
+msgstr ""
+
+#: notebook/urls.py:11
+msgid "write/new/"
+msgstr ""
+
+#: notebook/urls.py:12
+msgid "write/<uuid:uuid>/"
+msgstr ""
+
+#: notebook/views.py:114
+msgid "refreshing the ink"
+msgstr ""
+
+#: templates/base.html:8
+msgid "Fly as high as you can"
+msgstr ""
+
+#: templates/base.html:86 templates/base.html:103 templates/landing.html:38
+msgid "Close"
+msgstr ""
+
+#: templates/base.html:91
+msgid "Menu"
+msgstr ""
+
+#: templates/base.html:98
+msgid "Homepage"
+msgstr ""
+
+#: templates/base.html:99 templates/landing.html:45
+msgid "Narratives"
+msgstr ""
+
+#: templates/base.html:100 templates/landing.html:48
+msgid "Console"
+msgstr ""
+
+#: templates/base.html:123 templates/landing.html:276
+msgid "All rights reserved."
+msgstr ""
+
+#: templates/base.html:124
+msgid "This website contains materials from third parties."
+msgstr ""
+
+#: templates/base.html:124 templates/landing.html:176
+#: templates/landing.html:189 templates/landing.html:202
+#: templates/landing.html:215
+msgid "Know more"
+msgstr ""
+
+#: templates/base.html:127
+msgid "To the top"
+msgstr ""
+
+#: templates/landing.html:44
+msgid "Homeland"
+msgstr ""
+
+#: templates/landing.html:46 templates/landing.html:129
+msgid "Missionary"
+msgstr ""
+
+#: templates/landing.html:47 templates/landing.html:155
+msgid "Machinery"
+msgstr ""
+
+#: templates/landing.html:49 templates/landing.html:230
+msgid "Feedback"
+msgstr ""
+
+#: templates/landing.html:52
+msgid "Imajiner is an open-sourced, free platform."
+msgstr ""
+
+#: templates/landing.html:79
+msgid ""
+"A mixture of inside you and the outer world - a solemn thought, is it not?"
+msgstr ""
+
+#: templates/landing.html:83
+msgid "No man is required to be understood."
+msgstr ""
+
+#: templates/landing.html:90
+msgid "what"
+msgstr ""
+
+#: templates/landing.html:90
+msgid "whatcha got there"
+msgstr ""
+
+#: templates/landing.html:91
+msgid "feedback"
+msgstr ""
+
+#: templates/landing.html:91
+msgid "your fairy wishes"
+msgstr ""
+
+#: templates/landing.html:92
+msgid "how"
+msgstr ""
+
+#: templates/landing.html:92
+msgid "how tf does these work"
+msgstr ""
+
+#: templates/landing.html:96
+msgid "available in"
+msgstr ""
+
+#: templates/landing.html:116
+msgid "Go down!"
+msgstr ""
+
+#: templates/landing.html:130
+msgid ""
+"The divine purpose of this platform is to promise people mental freedom."
+msgstr ""
+
+#: templates/landing.html:156
+msgid "I surely did get rid of any bothersome."
+msgstr ""
+
+#: templates/landing.html:162
+msgid ""
+"Some unique machinery around you is trying to offer a intuitive user "
+"experience."
+msgstr ""
+
+#: templates/landing.html:173
+msgid "Undivided Attention"
+msgstr ""
+
+#: templates/landing.html:175
+msgid ""
+"The moment you read is the moment you value that piece of text the most. You "
+"can be assured that nothing will distract you while you are reading from our "
+"side."
+msgstr ""
+
+#: templates/landing.html:186
+msgid "Truly Optional Registration"
+msgstr ""
+
+#: templates/landing.html:199
+msgid "Non-disappearing Data"
+msgstr ""
+
+#: templates/landing.html:212
+msgid "Nothing Complex"
+msgstr ""
+
+#: templates/landing.html:231
+msgid "I have a dream where the freedom of expression is truly present."
+msgstr ""
+
+#: templates/landing.html:250
+msgid "Reach me out"
+msgstr ""
+
+#: templates/landing.html:277
+#, python-format
+msgid "This website is using materials taken from %(link)s"
+msgstr ""
+
+#: templates/landing.html:278
+msgid "Details"
+msgstr ""
