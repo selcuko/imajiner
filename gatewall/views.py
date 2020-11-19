@@ -7,15 +7,16 @@ from django.contrib.auth import authenticate, login, logout
 from uuid import uuid4 as uuid
 from django.contrib.auth.models import User
 from identity.models import Shadow
+from django.utils.translation import gettext_lazy as _
 
 class Auth(View):
     def get(self, request):
         return render(request, 'gatewall/gatewall.html', {
             'user': request.user,
             'doc': {
-                'title': 'Kendini tanımla',
-                'author': 'Kapı Güvenliği',
-                'description': 'Tanımlama sayfası.',
+                'title': _('Authorization'),
+                'author': _('Imajiner Gatewall'),
+                'description': _('You need to be authenticated in order to write here.'),
             }
             })
     
@@ -80,7 +81,7 @@ class Auth(View):
             
             elif action == 'logout':
                 if not request.user.is_authenticated:
-                    raise SuspiciousOperation('Girmediğin kapıdan çıkamazsın.')
+                    raise SuspiciousOperation
                 logout(request)
                 return HttpResponse()
 
@@ -95,7 +96,7 @@ class Logout(View):
     def get(self, request):
         if request.user.is_authenticated:
             logout(request)
-        return HttpResponse('Ç I K T I N')
+        return HttpResponse('Y O U R E  O U T')
 
 
 class LoginViews:

@@ -7,7 +7,7 @@ from django.http import HttpResponsePermanentRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
 from .models import Feedback as FeedbackModel
-
+from django.utils.translation import gettext_lazy as _
 
 def red(request):
     return HttpResponsePermanentRedirect(f'https://{settings.PRIMARY_HOST}')
@@ -16,25 +16,6 @@ class Home(View):
     template_name = 'landing.html'
     def get(self, request, **kwargs):
         return render(request, self.template_name)
-    
-    def post(self, request):
-        return HttpResponse(status=403)
-
-
-class Infinite(View):
-    template_name = 'explore/inf.html'
-    numbers_all = Narrative.objects.all()
-    paginator = Paginator(numbers_all, 2)
-
-    def get(self, request):
-        page = request.GET.get('page', 1)
-        try:
-            numbers = self.paginator.page(page)
-        except PageNotAnInteger:
-            numbers = self.paginator.page(1)
-        except EmptyPage:
-            numbers = self.paginator.page(paginator.num_pages)
-        return render(request, self.template_name, {'numbers': numbers})
 
 
 class Feedback(View):
