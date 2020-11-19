@@ -10,7 +10,7 @@ from identity.models import Shadow
 
 class Auth(View):
     def get(self, request):
-        return render(request, 'gatewall/auth.html', {
+        return render(request, 'gatewall/gatewall.html', {
             'user': request.user,
             'doc': {
                 'title': 'Kendini tanımla',

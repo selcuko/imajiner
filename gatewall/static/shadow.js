@@ -43,7 +43,7 @@ function handleShadowButton(found, username=null){
     if (found) {
         $shadowUser.disabled = true;
         $shadowUser.value = username;
-        $shadowButton.innerText = `${username} olarak devam et`;
+        $shadowButton.innerText = interpolate(gettext('proceed as %(username)s'), {username: username}, true).toUpperCase();
     } else {
         
     }

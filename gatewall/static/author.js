@@ -8,7 +8,7 @@ let buttonAction = null;
 function usernameTypeCallback(){
     if ($username.value.length < 6){
         lastUsername = $username.value;
-        $authorButton.innerText = 'Bekliyor';
+        $authorButton.innerText = gettext('waiting username').toUpperCase();
     } else if ($username.value !== lastUsername){
         lastUsername = $username.value;
         checkUsernameAvailability($username.value)
@@ -35,9 +35,9 @@ async function checkUsernameAvailability(username){
 
 function handleAuthorButton(available){
     if (available){
-        $authorButton.innerText = 'Kaydol';
+        $authorButton.innerText = gettext('register new user').toUpperCase();
     } else {
-        $authorButton.innerText = 'Giriş yap';
+        $authorButton.innerText = gettext('log in existing user').toUpperCase();
     }
 }
 
@@ -52,7 +52,7 @@ $authorButton.onclick = (e) => {
     })
     .then(response => {
         if (response.ok) redirect();
-        else $authorButton.innerText = 'Pardon kimsiniz?'
+        else $authorButton.innerText = gettext('credentials are not correct.').toUpperCase()
     })
 }
 

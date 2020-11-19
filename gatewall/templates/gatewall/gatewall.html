@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block head %}
+<script defer src="{% static 'fingerprint.js' %}"></script>
+<script defer src="{% static 'gatewall.js' %}"></script>
+<script defer src="{% static 'shadow.js' %}"></script>
+<script defer src="{% static 'author.js' %}"></script>
+<script defer src="{% static 'auth.js' %}"></script>
+{% endblock %}
+{% block body %}
+
+<section style="background: white; padding:1em;">
+    <div class="col-twelve tab-full text-center">
+        <h1>{% translate 'authentication'|capfirst %}</h1>
+        <p class="muted lead">{% blocktranslate trimmed %}
+            There are two authentication options to choose from.<br>You can find more information
+            below the forms.
+            {% endblocktranslate %}</p>
+    </div>
+    <div class="row half-bottom">
+
+        <div class="col-six tab-full">
+            <h3>{% translate 'author authorization'|title %}</h3>
+            <form id="author-register" method="POST" action="">
+                {% csrf_token %}
+                <label for='username'>{% translate 'username'|capfirst %}</label>
+                <input class="full-width username" type='text'
+                    placeholder="{{ doc.placeholder.username }}" name='username' required>
+                <label for='password'>{% translate 'password'|capfirst %}</label>
+                <input class="full-width" type='password' placeholder="{{ doc.placeholder.username }}"
+                    name='password' required>
+                <a class="btn btn--primary" type='submit'>{% translate 'proceed'|upper %}</a>
+            </form>
+            <p>{% blocktranslate trimmed %}
+                Logging in and registring a new user is done here. Check out the status message
+                as you type your username.
+                {% endblocktranslate %}</p>
+            <p class="">{% blocktranslate trimmed %}
+                This type of registration is the conventional one. Your registration is 
+                persistent and safe; just as you used to.
+                {% endblocktranslate %}</p>
+        </div>
+
+        <div class="col-six tab-full">
+            <h3>{% translate 'shadow authorization'|title %}</h3>
+            <form id="shadow-register" method="POST" action="">
+                {% csrf_token %}
+                <p>{% blocktranslate trimmed %}
+                This type is temporary and designed for hit-and-runners. Know more below.
+                {% endblocktranslate %}</p>
+                <label for='username'>{% translate 'username'|capfirst %}</label>
+                <input class="username" type='text' placeholder="{{ doc.placeholder.username }}"
+                    name='username'>
+                <a id="shadow-button" class="btn btn--stroke" type='submit'>{% translate 'register'|upper %}</a>
+            </form>
+            <p>{% blocktranslate trimmed %}
+                After you type your username, the servers check your device's digital
+                fingerprint and see whether we recognize you. Check the status message.
+                {% endblocktranslate %}</p>
+            <p class="">{% blocktranslate trimmed %}
+                When you register as shadow, you only choose a username to start writing.
+                Although you have the full functionality, it does not last long. Due to
+                its nature, these type of sessions are pretty fragile and mostly considered
+                one-time-only, meaning you probably won't have access to the same shadow session
+                after couple of hours.
+                {% endblocktranslate %}</p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
