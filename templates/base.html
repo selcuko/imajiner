@@ -128,7 +128,7 @@
                     <h4>{% translate 'feedback'|capfirst %}</h4>
 
                     <p>{% blocktranslate trimmed %}
-                        You can quickly report your impressions of Imajiner. No personal information is included in the feedback messages.<br> There's also a <a href="#0">advanced feedback page</a> to let us help a more thorough insight of your experience in Imajiner.
+                        You can quickly report your impressions of Imajiner. No personal information is included in the feedback messages.<br> There's also an <a href="#0">advanced feedback page</a> to help us gain a more thorough insight of your experience in Imajiner.
                     {% endblocktranslate %}</p>
                     <div style="display:none;" class="alert-box alert-box--notice hideit">
                         <p id="fb-status"></p>
@@ -138,7 +138,7 @@
                         
                         <form action="{% url 'feedback' %}" method="POST" id="mc-form" class="group" novalidate="true">
                             {% csrf_token %}
-                            <input type="hidden" name="user-id" value="{{ request.user.id }}">
+                            {% if request.user.is_authenticated %}<input type="hidden" name="user-id" value="{{ request.user.id }}">{% endif %}
                             <input type="hidden" name="session-key" value="{{ request.session.session_key }}">
                             <input type="text" value="" name="message" class="email" id="mc-email" placeholder="And there's that..." required="">
                             <input type="submit" name="subscribe" value="send">

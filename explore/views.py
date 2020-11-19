@@ -40,18 +40,19 @@ class Infinite(View):
 class Feedback(View):
     def post(self, request):
         data = request.POST
-        print('FEEDBACK', data)
         try:
             user_id = data.get('user-id', None)
+            if not isinstance(user_id, int):
+                try: user_id = int(user_id)
+                except: user_id = None
             ua = data['ua']
             session_key = data['session-key']
             location = data['location']
             referrer = data.get('referrer', None)
             message = data['message']
-
-            user = User.objects.filter(id=user_id).first()
-            session = Session.objects.filter(session_key=session_key).first()
-
+            user = User.objects.filter(id=user_id).first() if user_id else None
+            session = Session.objects.filter(session_key=session_key).first() if session_key else None
+            print('USER', user)
             feedback = FeedbackModel.objects.create(
                 user=user,
                 session=session,
