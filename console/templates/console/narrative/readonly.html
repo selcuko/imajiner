@@ -1,5 +1,5 @@
 {% extends 'console/base.html' %}
-{% load static %}
+{% load static i18n %}
 {% block body %}
 
 <div class="container-fluid dashboard-content ">
@@ -9,16 +9,16 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header" id="top">
-                        <h2 class="pageheader-title">Kütüphaneci</h2>
+                        <h2 class="pageheader-title">{% translate 'an old version of'|capfirst %} {{ version.title }}</h2>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#0" class="breadcrumb-link">Hikayeler</a>
+                                    <li class="breadcrumb-item"><a href="#0" class="breadcrumb-link">{% translate 'narratives'|capfirst %}</a>
                                     </li>
                                     <li class="breadcrumb-item"><a href="#0"
                                             class="breadcrumb-link">{{ version.title }}</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Sürüm: {{ version.version }}
+                                    <li class="breadcrumb-item active" aria-current="page">{% translate 'version'|capfirst %}: {{ version.version }}
                                     </li>
                                 </ol>
                             </nav>
@@ -29,13 +29,14 @@
             <div class="page-section" id="overview">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h2>Arşivlenmiş hikaye sürümü görüntüleme</h2>
-                        <p class="lead">Önceden yazıp sonradan düzenlesen de saklıyorum sürümleri ne olur ne olmaz diye.
-                            Zamanda bozunma oluşturma diye ise "arşivlenmiş" sürümleri düzenlemen yasak. Yine de,
-                            ellemeden bakabilirsin.</p>
+                        <p class="lead">{% blocktranslate trimmed %}
+                            You're viewing a version of this narrative. You are not permitted
+                            to edit the content to keep space-time continuum safe.
+                        {% endblocktranslate %}</p>
                         <ul class="list-unstyled arrow">
-                            <li>Eğer bu sürüme dönüş yapmak istersen kolay gelsin çünkü kolay bi yolu yok nsdfnsdlf</li>
-                            <li>Bu sayfayı yalnızca sen görebilirsin.</li>
+                            {% if version.readonly %}
+                            <li>{% translate 'this version is old and archived, meaning you cannot edit it nevermore.'|capfirst %}</li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -43,10 +44,10 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="card" id="headings">
-                        <h5 class="card-header">Arşivlenmiş sürüm no: {{ version.version }}</h5>
+                        <h5 class="card-header">{% translate 'archived version no'|capfirst %}: {{ version.version }}</h5>
                         <div class="card-body">
                             <h1 class="text-center">{{ version.title }}</h1>
-                            <p class="text-center">{{ version.body }}</p>
+                            {{ version.html|safe }}
                         </div>
                     </div> <!-- ============================================================== -->
                 </div>

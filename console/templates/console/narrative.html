@@ -1,5 +1,5 @@
 {% extends 'console/base.html' %}
-{% load static widget_tweaks %}
+{% load static widget_tweaks i18n %}
 <!--
 {% block head %}
 <link rel="stylesheet" href="{% static 'console/vendor/select2/css/select2.css' %}">
@@ -39,7 +39,7 @@
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li>Düzenleme sayfası</li>
+                                <li>{% translate 'editing page'|capfirst %}</li>
                             </ol>
                         </nav>
                     </div>
@@ -55,7 +55,7 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <a class="btn btn-primary" href="{% url 'console:versions' narrative=narrative.uuid %}">Sürüm geçmişini görüntüle</a>
+                    <a class="btn btn-primary" href="{% url 'console:versions' narrative=narrative.uuid %}">{% translate 'view version history'|capfirst %}</a>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -70,8 +70,8 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="section-block" id="account-info">
-                    <h3 class="section-title">Asil içerik</h3>
-                    <p>Güncelledikten sonra kaydet tuşuna tıklamazsan kaydetmem.</p>
+                    <h3 class="section-title">{% translate 'narrative content'|capfirst %}</h3>
+                    <p>{% translate 'I will not save unless you hit the button.'|capfirst %}</p>
                 </div>
                 <div class="card">
 
@@ -81,11 +81,11 @@
                             {% render_field form.uuid type="hidden" %}
                             {% render_field form.title type="hidden" %}
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Gövde</label>
+                                <label for="exampleFormControlTextarea1"></label>
                                 {% render_field form.body rows="10" class+="form-control" %}
                             </div>
                             <div>
-                                <input class="btn btn-primary btn-block" value="Kaydet" type="submit">
+                                <input class="btn btn-primary btn-block" value="{% translate 'save'|capfirst %}" type="submit">
                             </div>
                         </form>
                     </div>
