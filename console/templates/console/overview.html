@@ -21,7 +21,7 @@
                                 <p class="card-text">
                                     {% translate 'view and manage the devices you are currently logged in.'|capfirst %}
                                 </p>
-                                <a href="#0" class="btn btn-dark">{% translate 'manage'|capfirst %}</a>
+                                <a href="{% url 'console:access' %}#sessions" class="btn btn-dark">{% translate 'manage'|capfirst %}</a>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                                 <p class="card-text">
                                     {% translate 'view the narratives you left as a sketch and did not publish.'|capfirst %}
                                 </p>
-                                <a href="#0" class="btn btn-primary">{% translate 'manage'|capfirst %}</a>
+                                <a href="{% url 'console:narratives' %}" class="btn btn-primary">{% translate 'manage'|capfirst %}</a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                 <p class="card-text">
                                     {% translate 'some of your narratives has seen on different sites.'|capfirst %}
                                 </p>
-                                <a href="#0" class="btn btn-light">{% translate 'view'|capfirst %}</a>
+                                <a disabled href="{% url 'console:refereeship' %}" class="btn btn-light">{% translate 'coming soon'|capfirst %}</a>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                                 <p class="card-text">
                                     {% translate 'write your next narrative in advanced writing studio.'|capfirst %}
                                 </p>
-                                <a href="#0" class="btn btn-dark">{% translate 'explore'|capfirst %}</a>
+                                <a disabled href="{% url 'console:studio' %}" class="btn btn-dark">{% translate 'coming soon'|capfirst %}</a>
                             </div>
                         </div>
                     </div>
