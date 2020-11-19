@@ -146,7 +146,13 @@
                             <input type="text" value="" name="message" class="email" id="mc-email" placeholder="And there's that..." required="">
                             <input type="submit" name="subscribe" value="send">
                 
-                            <label for="mc-email" class="subscribe-message"></label>
+                            <label for="mc-email" class="subscribe-message"><i class="fa fa-info"></i> 
+                                {% if not request.user.is_authenticated %}{% blocktranslate trimmed %}
+                                You are not authorized and will be sending this feedback anonymously.
+                                {% endblocktranslate %}{% else %}{% blocktranslate trimmed with username=request.user.username %}
+                                You are authorized and will be sending this feedback as {{ username }}.
+                                {% endblocktranslate %}{% endif %}
+                            </label>
                 
                         </form>
                     </div>
