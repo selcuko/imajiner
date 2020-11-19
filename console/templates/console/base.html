@@ -93,11 +93,13 @@
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:overview' %}"><i
-                                        class="fas fa-fw fa-th"></i>{% translate 'espresso'|title %}</a>
+                                        class="fas fa-fw fa-th"></i>{% translate 'espresso'|title %}
+                                    </a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="{% url 'console:profile' %}"><i
+                            <li class="nav-item nav-disabled disabled">
+                                <a class="nav-link nav-disabled disabled" href="{% url 'console:profile' %}"><i
                                         class="fa fa-fw fa-user-circle"></i>{% translate 'profile'|title %}</a>
+                                        
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:access' %}"><i
@@ -107,6 +109,7 @@
                                 <a class="nav-link" href="{% url 'console:narratives' %}"><i
                                         class="fa fa-fw fa-copy"></i>{% translate 'narratives'|title %}</a>
                             </li>
+                            <!--
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:refereeship' %}"><i
                                         class="fa fa-fw fa-link"></i>{% translate 'refereeship'|title %}</a>
@@ -123,6 +126,7 @@
                                 <a class="nav-link" href="{% url 'console:studio' %}"><i
                                         class="fa fa-fw fa-pen"></i>{% translate 'writing studio'|title %}</a>
                             </li>
+                            -->
                         </ul>
                     </div>
                 </nav>

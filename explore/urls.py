@@ -1,10 +1,10 @@
 from django.urls import path
-
+from django.views.generic import TemplateView
+from django.utils.translation import gettext_lazy as _
 from .views import *
 
 app_name = 'explore'
 urlpatterns = [
     path('', Home.as_view(), name='home'),
-    path('inf', Infinite.as_view(), name='inf'),
-    path('red', red),
+    path(_('about/'), TemplateView.as_view(template_name='static/about.html'), name='about'),
 ]
