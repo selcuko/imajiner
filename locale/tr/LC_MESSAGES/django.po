@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-19 21:33+0300\n"
+"POT-Creation-Date: 2020-11-20 01:50+0300\n"
 "PO-Revision-Date: 2020-11-20 00:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: console/templates/console/access.html:15
 #: console/templates/console/base.html:102
-#: console/templates/console/profile.html:68
+#: console/templates/console/profile.html:68 console/views.py:54
 msgid "access & security"
 msgstr "erişim & güvenlik"
 
@@ -33,11 +33,14 @@ msgid "the most basic information"
 msgstr "en temel bilgi"
 
 #: console/templates/console/access.html:37
+#: console/templates/console/narrative.html:74
 msgid "I will not save unless you hit the button."
 msgstr ""
 
 #: console/templates/console/access.html:45
 #: console/templates/console/profile.html:58
+#: gatewall/templates/gatewall/gatewall.html:27
+#: gatewall/templates/gatewall/gatewall.html:52
 msgid "username"
 msgstr "mahlas"
 
@@ -63,16 +66,22 @@ msgid "you may confirm your new password"
 msgstr "parolanızı onaylayabilirsiniz"
 
 #: console/templates/console/access.html:61
+#: console/templates/console/narrative.html:88
 #: console/templates/console/profile.html:95
 msgid "save"
 msgstr "kaydet gezgin"
 
-#: console/templates/console/access.html:77
+#: console/templates/console/access.html:70
+#: console/templates/console/overview.html:14
+msgid "session management"
+msgstr "oturum yönetimi"
+
+#: console/templates/console/access.html:80
 msgid "user agent"
 msgstr ""
 
-#: console/templates/console/access.html:78
-#: console/templates/console/access.html:89
+#: console/templates/console/access.html:81
+#: console/templates/console/access.html:94
 #, fuzzy
 msgid "terminate"
 msgstr "bitir"
@@ -89,7 +98,11 @@ msgstr "yazar"
 msgid "log out"
 msgstr "çıkış yap"
 
-#: console/templates/console/base.html:80 templates/base.html:102
+#: console/templates/console/base.html:80 console/views.py:123
+#: console/views.py:130 console/views.py:138 console/views.py:145
+#: console/views.py:153 console/views.py:160 console/views.py:169
+#: console/views.py:178 console/views.py:201 console/views.py:209
+#: templates/base.html:102
 msgid "console"
 msgstr "konsol"
 
@@ -102,11 +115,12 @@ msgid "espresso"
 msgstr ""
 
 #: console/templates/console/base.html:97
-#: console/templates/console/profile.html:15
+#: console/templates/console/profile.html:15 console/views.py:32
 msgid "profile"
 msgstr "profil"
 
-#: console/templates/console/base.html:106 notebook/views.py:82
+#: console/templates/console/base.html:106
+#: console/templates/console/narrative/readonly.html:16 notebook/views.py:82
 #: templates/base.html:100
 msgid "narratives"
 msgstr "hikayeler"
@@ -143,44 +157,93 @@ msgstr "Hakkında"
 msgid "Contact"
 msgstr "İletişim"
 
-#: console/templates/console/narratives.html:49
-#: console/templates/console/narratives.html:60
-#: console/templates/console/narratives.html:80
-#: notebook/templates/notebook/narrative/detail.html:18
-msgid "edit"
-msgstr "düzenle"
+#: console/templates/console/narrative.html:42
+msgid "editing page"
+msgstr ""
 
-#: console/templates/console/narratives.html:50
+#: console/templates/console/narrative.html:58
 #, fuzzy
 #| msgid "versions"
-msgid "version history"
+msgid "view version history"
 msgstr "versiyonlar"
 
+#: console/templates/console/narrative.html:73
+#, fuzzy
+#| msgid "narratives"
+msgid "narrative content"
+msgstr "hikayeler"
+
+#: console/templates/console/narrative/readonly.html:12
+msgid "an old version of"
+msgstr ""
+
+#: console/templates/console/narrative/readonly.html:21
 #: console/templates/console/narratives.html:51
 #: console/templates/console/narratives.html:81
-msgid "title"
-msgstr "başlık"
-
-#: console/templates/console/narratives.html:52
-#: console/templates/console/narratives.html:82
-msgid "published at"
-msgstr "diğer gezginler de artık okuyabilir"
-
-#: console/templates/console/narratives.html:53
-#: console/templates/console/narratives.html:83
 #: notebook/templates/notebook/narrative/detail.html:17
 #, fuzzy
 #| msgid "versions"
 msgid "version"
 msgstr "versiyonlar"
 
-#: console/templates/console/narratives.html:62
+#: console/templates/console/narrative/readonly.html:32
+msgid ""
+"You're viewing a version of this narrative. You are not permitted to edit "
+"the content to keep space-time continuum safe."
+msgstr ""
+
+#: console/templates/console/narrative/readonly.html:38
+msgid "this version is old and archived, meaning you cannot edit it nevermore."
+msgstr ""
+
+#: console/templates/console/narrative/readonly.html:47
+#, fuzzy
+#| msgid "narratives"
+msgid "archived version no"
+msgstr "hikayeler"
+
+#: console/templates/console/narrative/versions.html:10
+#, fuzzy
+#| msgid "versions"
+msgid "versions timeline"
+msgstr "versiyonlar"
+
+#: console/templates/console/narratives.html:26
+#, fuzzy
+#| msgid "narratives"
+msgid "all narratives"
+msgstr "hikayeler"
+
+#: console/templates/console/narratives.html:47
+#: console/templates/console/narratives.html:58
+#: console/templates/console/narratives.html:78
+#: notebook/templates/notebook/narrative/detail.html:18
+msgid "edit"
+msgstr "düzenle"
+
+#: console/templates/console/narratives.html:48
+#, fuzzy
+#| msgid "versions"
+msgid "version history"
+msgstr "versiyonlar"
+
+#: console/templates/console/narratives.html:49
+#: console/templates/console/narratives.html:79
+msgid "title"
+msgstr "başlık"
+
+#: console/templates/console/narratives.html:50
+#: console/templates/console/narratives.html:80
+msgid "published at"
+msgstr "diğer gezginler de artık okuyabilir"
+
+#: console/templates/console/narratives.html:60
 #, fuzzy
 #| msgid "versions"
 msgid "versions"
 msgstr "versiyonlar"
 
-#: console/templates/console/narratives.html:71
+#: console/templates/console/narratives.html:69
 msgid "you do not have any narratives"
 msgstr "hiçbir öykün yok"
 
@@ -189,10 +252,6 @@ msgstr "hiçbir öykün yok"
 #| msgid "console"
 msgid "console espresso"
 msgstr "konsol"
-
-#: console/templates/console/overview.html:14
-msgid "session management"
-msgstr "oturum yönetimi"
 
 #: console/templates/console/overview.html:22
 msgid "view and manage the devices you are currently logged in."
@@ -222,6 +281,7 @@ msgid "you may update password indefinite times."
 msgstr "şifreyi sınırsız güncelleyebilirsiniz"
 
 #: console/templates/console/overview.html:63
+#: gatewall/templates/gatewall/gatewall.html:33
 msgid "proceed"
 msgstr "ilerle gezgin"
 
@@ -270,6 +330,7 @@ msgstr ""
 "için Erişim ve Güvenlik'i ziyaret etmelisiniz."
 
 #: console/templates/console/profile.html:63
+#: gatewall/templates/gatewall/gatewall.html:30
 msgid "password"
 msgstr "parola"
 
@@ -325,12 +386,124 @@ msgstr "takip-ettiklerin/"
 msgid "preferences/"
 msgstr "tercihler/"
 
+#: console/views.py:22
+#, fuzzy
+#| msgid "console"
+msgid "console overview"
+msgstr "konsol"
+
+#: console/views.py:76
+#, fuzzy
+#| msgid "narratives"
+msgid "my narratives"
+msgstr "hikayeler"
+
+#: console/views.py:84
+#, fuzzy
+#| msgid "narratives"
+msgid "edit narrative"
+msgstr "hikayeler"
+
+#: console/views.py:105
+#, fuzzy
+#| msgid "narratives"
+msgid "narrative version timeline"
+msgstr "hikayeler"
+
+#: console/views.py:114
+#, fuzzy
+#| msgid "narratives"
+msgid "narrative version history"
+msgstr "hikayeler"
+
 #: explore/templates/static/about.html:10
 msgid "about imajiner"
 msgstr "imajiner hakkında"
 
 #: explore/urls.py:9
 msgid "about/"
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:15
+msgid "authentication"
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:16
+msgid ""
+"There are two authentication options to choose from.<br>You can find more "
+"information below the forms."
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:24
+msgid "author authorization"
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:35
+msgid ""
+"Logging in and registring a new user is done here. Check out the status "
+"message as you type your username."
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:39
+msgid ""
+"This type of registration is the conventional one. Your registration is "
+"persistent and safe; just as you used to."
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:46
+msgid "shadow authorization"
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:49
+msgid ""
+"This type is temporary and designed for hit-and-runners. Know more below."
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:55
+msgid "register"
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:57
+msgid ""
+"After you type your username, the servers check your device's digital "
+"fingerprint and see whether we recognize you. Check the status message."
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:61
+msgid ""
+"When you register as shadow, you only choose a username to start writing. "
+"Although you have the full functionality, it does not last long. Due to its "
+"nature, these type of sessions are pretty fragile and mostly considered one-"
+"time-only, meaning you probably won't have access to the same shadow session "
+"after couple of hours."
+msgstr ""
+
+#: gatewall/urls.py:7
+#, fuzzy
+#| msgid "author"
+msgid "authorization/"
+msgstr "yazar"
+
+#: gatewall/urls.py:8
+msgid "farewell/"
+msgstr ""
+
+#: gatewall/views.py:17
+msgid "Authorization"
+msgstr ""
+
+#: gatewall/views.py:18
+#, fuzzy
+#| msgid "Imajiner God View"
+msgid "Imajiner Gatewall"
+msgstr "Imajiner Tanrı Görüşü"
+
+#: gatewall/views.py:19
+msgid "You need to be authenticated in order to write here."
+msgstr ""
+
+#: identity/urls.py:7
+msgid "author/<str:username>/"
 msgstr ""
 
 #: imajiner/urls.py:17 imajiner/urls.py:18
@@ -459,15 +632,24 @@ msgid ""
 "insight of your experience in Imajiner."
 msgstr ""
 
-#: templates/base.html:163
+#: templates/base.html:150
+msgid "You are not authorized and will be sending this feedback anonymously."
+msgstr ""
+
+#: templates/base.html:152
+#, python-format
+msgid "You are authorized and will be sending this feedback as %(username)s."
+msgstr ""
+
+#: templates/base.html:169
 msgid "all rights reserved"
 msgstr "tüm hakları saklıdır"
 
-#: templates/base.html:164 templates/landing.html:297
+#: templates/base.html:170 templates/landing.html:297
 msgid "This website contains materials from third parties."
 msgstr "Bu websindeki bazı materyaller üçüncü partilerden alınmıştır."
 
-#: templates/base.html:164 templates/landing.html:183
+#: templates/base.html:170 templates/landing.html:183
 #: templates/landing.html:202 templates/landing.html:219
 #: templates/landing.html:235 templates/landing.html:297
 msgid "Know more"
