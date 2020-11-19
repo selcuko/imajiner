@@ -2214,8 +2214,7 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-about {
-  padding-top: 18rem;
-  padding-bottom: 18rem;
+  padding-top: 8rem;
   background-color: #ffffff;
   position: relative;
 }
@@ -2283,8 +2282,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
   .s-about {
-    padding-top: 15rem;
-    padding-bottom: 15rem;
+    padding-top: 5rem;
   }
 
   .process__vline-left {
@@ -2310,8 +2308,7 @@ html.no-csstransitions .home-content__main {
 }
 @media only screen and (max-width: 800px) {
   .s-about {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    padding-top: 2rem;
   }
 
   .process {
@@ -2341,7 +2338,7 @@ html.no-csstransitions .home-content__main {
 }
 @media only screen and (max-width: 400px) {
   .s-about {
-    padding-top: 9.6rem;
+    padding-top: 3.6rem;
   }
 
   .process h4 {
@@ -2375,8 +2372,7 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-services {
-  padding-top: 18rem;
-  padding-bottom: 18rem;
+  padding-top: 10rem;
   color: #555555;
   position: relative;
 }
@@ -2407,8 +2403,8 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
   .s-services {
-    padding-top: 15rem;
-    padding-bottom: 15rem;
+    padding-top: 9rem;
+  
   }
 
   .services-list [class*="col-"]:nth-child(2n + 1) {
@@ -2420,8 +2416,7 @@ html.no-csstransitions .home-content__main {
 }
 @media only screen and (max-width: 800px) {
   .s-services {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    padding-top: 5rem;
   }
 
   .services-list {
@@ -2441,7 +2436,6 @@ html.no-csstransitions .home-content__main {
 }
 @media only screen and (max-width: 400px) {
   .s-services {
-    padding-top: 9.6rem;
   }
 
   .services-list [class*="col-"]:nth-child(n) {

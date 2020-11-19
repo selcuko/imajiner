@@ -49,8 +49,9 @@
                 <li><a class="smoothscroll" href="#feedback" title="contact">{% translate 'Feedback' %}</a></li>
             </ul>
             <p>
-            {% blocktranslate trimmed %}
-            Imajiner is an open-sourced, free platform.
+            {% url 'explore:about' as link %}
+            {% blocktranslate trimmed with link=link %}
+            Imajiner is an open-sourced, free platform. <a href="{{link}}#source-code">Know more</a>
             {% endblocktranslate %}</p>
 
         </div> <!-- end header-nav__content -->
@@ -101,7 +102,7 @@
         <li><a href="/en">
             <span class="flag-icon flag-icon-us"></span>
                 <span class="home-social-text">English</span>
-            </a></li>
+            </a></li><!--
             <li><a href="#0">
                 <span class="flag-icon flag-icon-gb"></span>
                 <span class="home-social-text">British</span>
@@ -109,7 +110,7 @@
         <li><a href="#0">
             <span class="flag-icon flag-icon-fr"></span>
                 <span class="home-social-text">Français</span>
-            </a></li>
+            </a></li> -->
     </ul> <!-- end home-social -->
 
     <a href="#missionary" class="home-scroll smoothscroll">
@@ -126,21 +127,21 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead">{% translate 'Missionary'|upper %}</h3>
-            <h1 class="display-1">{% translate 'The divine purpose of this platform is to promise people mental freedom.' %}</h1>
+            <h3 class="subhead">{% translate 'missionary'|upper %}</h3>
+            <h1 class="display-1">{% blocktranslate trimmed %} 
+                The divine purpose of this platform is to promise people mental freedom.
+                {% endblocktranslate %}</h1>
         </div>
     </div> <!-- end section-header -->
 
     <div class="row">
         <div class="col-full">
-            <p class="lead">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-                Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse.
-            </p>
+            <p class="lead">{% blocktranslate trimmed %}
+                Imagine a sky that forms as you wish. Beneath the sky, there is you.
+                Let the world know what you kept inside for years. Let the people know
+                and wow what you desire. Write about your drives, your dreams, your goals in life.
+                Talk about you.
+            {% endblocktranslate %}</p>
         </div>
     </div> <!-- end about-desc -->
 </section> <!-- end s-about -->
@@ -152,14 +153,16 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead">{% translate 'Machinery'|upper %}</h3>
+            <h3 class="subhead">{% translate 'machinery'|upper %}</h3>
             <h1 class="display-1">{% translate 'I surely did get rid of any bothersome.' %}</h1>
         </div>
     </div> <!-- end section-header -->
 
     <div class="row">
         <div class="col-full">
-            <p class="lead">{% translate 'Some unique machinery around you is trying to offer a intuitive user experience.' %}</p>
+            <p class="lead">{% blocktranslate trimmed %}
+                Some unique machinery around you is trying to offer a intuitive user experience. 
+            {% endblocktranslate %}</p>
         </div>
     </div> <!-- end about-desc -->
 
@@ -167,52 +170,69 @@
 
         <div class="col-block service-item ">
             <div class="service-icon service-icon--brand-identity">
-                <i class="icon-tv"></i>
+                <i class="fas fa-hands-helping"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">{% translate 'Undivided Attention' %}</h3>
+                <h3 class="h4">{% translate 'the solemn promise'|title %}</h3>
                 <p>
-                    {% translate 'The moment you read is the moment you value that piece of text the most. You can be assured that nothing will distract you while you are reading from our side.' %}
-                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
+                    {% blocktranslate trimmed %}
+                    The moment you read is the moment you value that piece of text the most. 
+                    You can be assured that nothing will distract you while you are reading from 
+                    our side.
+                    {% endblocktranslate %}
+                    <br><a href="{% url 'explore:about' %}#attention">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
 
         <div class="col-block service-item">
             <div class="service-icon  service-icon--illustration">
-                <i class="icon-group"></i>
+                <i class="far fa-circle"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">{% translate 'Truly Optional Registration' %}</h3>
+                <h3 class="h4">{% translate 'truly optional registration'|title %}</h3>
                 <p>
-                    {% lorem 30 w %}
-                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
+                    {% blocktranslate trimmed %}
+                    With our unique authorization mechanism named Shadow, 
+                    we never limit the website's functionality based on whether you are registered or not.
+                    What's more, you don't even need a username to start writing, it's auto-generated! 
+                    (You can change your username later too!) 
+
+                    {% endblocktranslate %}
+                    <br><a href="{% url 'explore:about' %}#shadow">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
 
         <div class="col-block service-item">
             <div class="service-icon  service-icon--web-design">
-                <i class="icon-earth"></i>
+                <i class="fas fa-pen-alt"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">{% translate 'Non-disappearing Data' %}</h3>
+                <h3 class="h4">{% translate 'resilient writing studio'|title %}</h3>
                 <p>
-                    {% lorem 30 w %}
-                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
+                    {% blocktranslate trimmed %}
+                    Anything you write at studio is saved in our servers every couple of seconds; 
+                    don't worry about lost data. We quite know how frustrating it is to spend a lot of 
+                    time on a story and lost it.
+                    {% endblocktranslate %}
+                    <br><a href="{% url 'explore:about' %}#studio">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
 
         <div class="col-block service-item">
             <div class="service-icon service-icon--product-strategy">
-                <i class="icon-cube"></i>
+                <i class="fa fa-user"></i>
             </div>
             <div class="service-text">
-                <h3 class="h4">{% translate 'Nothing Complex' %}</h3>
+                <h3 class="h4">{% translate 'by users for users'|title %}</h3>
                 <p>
-                    {% lorem 30 w %}
-                    <br><a href="evangelism:machinery">{% translate 'Know more' %}</a>
+                    {% blocktranslate trimmed %}
+                    We are, just as you, everyday users. We do know the hassles we face,
+                    and exclude them from here. A place designed solely for you and only you.
+                    {% endblocktranslate %}
+                    <br><a href="{% url 'explore:about' %}">{% translate 'Know more' %}</a>
                 </p>
             </div>
         </div>
@@ -227,7 +247,7 @@
 
     <div class="row section-header">
         <div class="col-full">
-            <h3 class="subhead subhead--light">{% translate 'Feedback'|upper %}</h3>
+            <h3 class="subhead subhead--light">{% translate 'feedback'|upper %}</h3>
             <h1 class="display-1 display-1--light">{% translate 'I have a dream where the freedom of expression is truly present.' %}</h1>
         </div>
     </div> <!-- end section-header -->
@@ -247,7 +267,7 @@
 
 
         <div class="col-five tab-full contact-secondary">
-            <h3 class="subhead subhead--light">{% translate 'Reach me out' %}</h3>
+            <h3 class="subhead subhead--light">{% translate 'reach me out'|upper %}</h3>
 
             <ul class="contact-social">
                 <li>
@@ -274,13 +294,12 @@
                 <br>
                 Copyright &copy;
                 <script>document.write(new Date().getFullYear());</script>{% translate 'All rights reserved.' %} 
-                <br> {% blocktranslate with link='<a href="https://colorlib.com">Colorlib</a>' %}This website is using materials taken from {{ link }}{% endblocktranslate %}
-                <br> <a href="evangelism:credits">{% translate 'Details' %}</a></span>
+                <br><span>{% translate 'This website contains materials from third parties.' %} <a href="{% url 'explore:about' %}#credits">{% translate 'Know more' %}</a></span>
         </div>
     </div>
 
     <div class="cl-go-top">
-        <a class="smoothscroll" title="Sayfa başı" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+        <a class="smoothscroll" title="{% translate 'go to top'|capfirst %}" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
     </div>
 
 </section> <!-- end s-contact -->

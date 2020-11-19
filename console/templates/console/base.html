@@ -53,15 +53,11 @@
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
-                        <li class="nav-item">
-                            <div id="custom-search" class="top-search-bar">
-                                <input class="form-control" type="text" placeholder="Ara">
-                            </div>
-                        </li>
+                        
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="{% static 'console/images/avatar-1.jpg' %}" alt=""
+                                    src="{% static 'favicon.png' %}" alt=""
                                     class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                                 aria-labelledby="navbarDropdownMenuLink2">
@@ -108,6 +104,10 @@
                             <li class="nav-item ">
                                 <a class="nav-link" href="{% url 'console:narratives' %}"><i
                                         class="fa fa-fw fa-copy"></i>{% translate 'narratives'|title %}</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'notebook:list' %}">
+                                <i class="fas fa-fw fa-reply"></i>{% translate 'back to the site'|title %}</a>
                             </li>
                             <!--
                             <li class="nav-item ">

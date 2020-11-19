@@ -52,10 +52,10 @@
             <div class="header__content row">
                 <div class="header__logo">
                     <a class="logo">
-                        <img src="{% static 'logo.png' %}" alt="">
+                        <img src="{% static 'logo.png' %}" alt="logo">
                     </a>
                 </div>
-
+                <!--
                 <ul class="header__social">
                     <li>
                         <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -69,9 +69,9 @@
                     <li>
                         <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                     </li>
-                </ul> <!-- end header__social -->
+                </ul> 
 
-                <a class="header__search-trigger" href="#0"></a>
+                <a class="header__search-trigger" href="#0"></a> -->
 
                 <div class="header__search">
 
@@ -96,12 +96,14 @@
                     <h2 class="header__nav-heading h6">IMAJINER</h2>
 
                     <ul class="header__nav">
-                        <li><a href="{% url 'landing' %}" title="">{% translate 'Homepage' %}</a></li>
-                        <li><a href="{% url 'notebook:list' %}" title="">{% translate 'Narratives' %}</a></li>
-                        <li><a href="{% url 'console:overview' %}" title="">{% translate 'Console' %}</a></li>
+                        <li><a href="{% url 'landing' %}" title="">{% translate 'homepage'|capfirst %}</a></li>
+                        <li><a href="{% url 'notebook:list' %}" title="">{% translate 'narratives'|capfirst %}</a></li>
+                        <li><a href="{% if request.user.is_authenticated %}{% url 'notebook:folder' %}{% else %}{% url 'explore:about' %}#write{% endif %}" title="">{% translate 'write'|capfirst %}</a></li>
+                        <li><a href="{% if request.user.is_authenticated %}{% url 'console:overview' %}{% endif %}">{% translate 'console'|capfirst %}</a></li>
+                        <li><a href="{% url 'explore:about' %}" title="">{% translate 'about'|capfirst %}</a></li>
                     </ul> <!-- end header__nav -->
 
-                    <a href="#0" title="{% translate 'Close' %}" class="header__overlay-close close-mobile-menu">{% translate 'Close' %}</a>
+                    <a href="#0" title="{% translate 'close'|capfirst %}" class="header__overlay-close close-mobile-menu">{% translate 'close'|capfirst %}</a>
 
                 </nav> <!-- end header__nav-wrap -->
 
@@ -128,7 +130,8 @@
                     <h4>{% translate 'feedback'|capfirst %}</h4>
 
                     <p>{% blocktranslate trimmed %}
-                        You can quickly report your impressions of Imajiner. No personal information is included in the feedback messages.<br> There's also an <a href="#0">advanced feedback page</a> to help us gain a more thorough insight of your experience in Imajiner.
+                        You can quickly report your impressions of Imajiner. No personal information is included in the feedback messages.
+                        <br>This helps us gain a more thorough insight of your experience in Imajiner.
                     {% endblocktranslate %}</p>
                     <div style="display:none;" class="alert-box alert-box--notice hideit">
                         <p id="fb-status"></p>
