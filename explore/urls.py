@@ -6,5 +6,7 @@ from .views import *
 app_name = 'explore'
 urlpatterns = [
     path('', Home.as_view(), name='home'),
-    path(_('about/'), TemplateView.as_view(template_name='static/about.html'), name='about'),
+    path(_('about/'), TemplateView.as_view(
+        template_name='static/about.html',
+        extra_context={'doc': {'title': _('about').capitalize()}}), name='about'),
 ]
