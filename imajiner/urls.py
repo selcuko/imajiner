@@ -10,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.sitemaps.views import sitemap
 from notebook.sitemap import NarrativeSitemap
 from django.views.i18n import JavaScriptCatalog
+from explore.views import Feedback
 
 LoginRequiredMixin.redirect_field_name = 'n'
 
@@ -18,14 +19,15 @@ admin.site.site_title = _('Imajiner God View')
 admin.site.index_title = _('Site Supervision')
 
 urlpatterns = [
+    path('', Home.as_view(), name='landing'),
+    path('feedback/', Feedback.as_view(), name='feedback'),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
-    path('sitemap.xml', sitemap, {'sitemaps': {'notebook': NarrativeSitemap}},
+    path('sitemap.xml', sitemap, {'sitemaps': {'notebook': NarrativeSitemap }},
      name='django.contrib.sitemaps.views.sitemap'),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 ]
 
 urlpatterns += i18n_patterns(
-    path('', Home.as_view(), name='landing'),
     path(_('admin/'), admin.site.urls),
     path(_('narratives/'), include('notebook.urls', namespace='narrative')),
     path('', include('gatewall.urls', namespace='gatewall')),

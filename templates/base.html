@@ -41,6 +41,7 @@
     {% block head %} {% endblock %}
 
     {% include 'global.html' %}
+    <script defer src="{% static 'feedback.js' %}"></script>
 </head>
 
 {% block body.absolute %}
@@ -116,20 +117,54 @@
 
     {% block base.footer %}
     <footer class="s-footer">
+<br>
+        <div class="s-footer__main">
+            <div class="row">
+                
+            
+
+                <div class="col-five md-full end s-footer__subscribe">
+                        
+                    <h4>{% translate 'feedback'|capfirst %}</h4>
+
+                    <p>{% blocktranslate trimmed %}
+                        You can quickly report your impressions of Imajiner. No personal information is included in the feedback messages.<br> There's also a <a href="#0">advanced feedback page</a> to let us help a more thorough insight of your experience in Imajiner.
+                    {% endblocktranslate %}</p>
+
+                    <div class="subscribe-form">
+                        <form action="{% url 'feedback' %}" method="POST" id="mc-form" class="group" novalidate="true">
+                            {% csrf_token %}
+                            <input type="hidden" name="user-id" value="{{ request.user.id }}">
+                            <input type="hidden" name="session-key" value="{{ request.session.session_key }}">
+                            <input type="text" value="" name="message" class="email" id="mc-email" placeholder="And there's that..." required="">
+                            <input type="submit" name="subscribe" value="send">
+                
+                            <label for="mc-email" class="subscribe-message"></label>
+                
+                        </form>
+                    </div>
+
+                </div> <!-- end s-footer__subscribe -->
+
+            </div>
+        </div> <!-- end s-footer__main -->
+
         <div class="s-footer__bottom">
             <div class="row">
                 <div class="col-full">
                     <div class="s-footer__copyright">
-                        <span>&copy;Copyright Imajiner. {% translate 'All rights reserved.' %}</span> 
+                        <span>&copy; Imajiner. {% translate 'all rights reserved'|capfirst %}</span> 
                         <span>{% translate 'This website contains materials from third parties.' %} <a href="#0">{% translate 'Know more' %}</a></span>
                     </div>
+
                     <div class="go-top">
-                        <a class="smoothscroll" title="{% translate 'To the top' %}" href="#top"></a>
+                        <a class="smoothscroll" title="Back to Top" href="#top"></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer> 
+        </div> <!-- end s-footer__bottom -->
+
+    </footer> <!-- end s-footer -->
     {% endblock base.footer %}
 
     {% block base.foot %} {% endblock %}

@@ -1,10 +1,12 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.views import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from notebook.models import Narrative
 from django.conf import settings
-from django.http import HttpResponsePermanentRedirect
-
+from django.http import HttpResponsePermanentRedirect, HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.sessions.models import Session
+from .models import Feedback as FeedbackModel
 
 
 def red(request):
@@ -16,7 +18,7 @@ class Home(View):
         return render(request, self.template_name)
     
     def post(self, request):
-        return HttpResponse(status_code=403)
+        return HttpResponse(status=403)
 
 
 class Infinite(View):
@@ -33,3 +35,34 @@ class Infinite(View):
         except EmptyPage:
             numbers = self.paginator.page(paginator.num_pages)
         return render(request, self.template_name, {'numbers': numbers})
+
+
+class Feedback(View):
+    def post(self, request):
+        data = request.POST
+        print('FEEDBACK', data)
+        try:
+            user_id = data.get('user-id', None)
+            ua = data['ua']
+            session_key = data['session-key']
+            location = data['location']
+            referrer = data.get('referrer', None)
+            message = data['message']
+
+            user = User.objects.filter(id=user_id).first()
+            session = Session.objects.filter(session_key=session_key).first()
+
+            feedback = FeedbackModel.objects.create(
+                user=user,
+                session=session,
+                ua=ua,
+                location=location,
+                referrer=referrer,
+                message=message,
+            )
+
+        except KeyError as ke:
+            print(repr(ke))
+            return HttpResponse(ke, status=400)
+        
+        return HttpResponse()
