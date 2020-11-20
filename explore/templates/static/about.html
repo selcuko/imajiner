@@ -7,38 +7,76 @@
       <h1 class="s-content__header-title">
         {% translate 'about imajiner'|title %}
       </h1>
+      <p class="lead">{% blocktranslate trimmed %}
+        It's basically a place to talk about your intangible side.
+        {% endblocktranslate %}</p>
+      <div class="s-extra" style="padding: 0; background-color:transparent;">
+        <div class="tagcloud">
+            <a href="#missionary">{% translate 'missionary'|upper %}</a>
+            <a href="#credits">{% translate 'credits'|upper %}</a>
+            <a href="#mastermind">{% translate 'author'|upper %}</a>
+        </div> <!-- end tagcloud -->
+        </div>
+
     </div>
     <div class="col-full s-content__main">
-      <p class="lead">{% lorem 35 w %}</p>
-      <p>{% lorem 35 w %}</p>
-      <p>{% lorem 40 w %}</p>
+
       <div class="row block-1-2 block-tab-full">
         <div class="col-block">
-          <h3 class="quarter-top-margin">Who We Are.</h3>
-          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
-            Duis laborum ad non pariatur sit.</p>
+          <h3 class="quarter-top-margin">Dreams.</h3>
+          <p>{% blocktranslate trimmed %}
+            We have dreams. Without being disturbed, you can
+            talk about your dreams from last night, analyse them maybe.
+
+            {% endblocktranslate %}</p>
         </div>
 
         <div class="col-block">
-          <h3 class="quarter-top-margin">Our Mission.</h3>
-          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
-            Duis laborum ad non pariatur sit.</p>
+          <h3 class="quarter-top-margin">Aspirations.</h3>
+          <p>{% blocktranslate trimmed %}
+            What is your goal in life? Write about it. Writing will
+            make you help conceive yourself as a third person.
+            {% endblocktranslate %}</p>
         </div>
 
         <div class="col-block">
-          <h3 class="quarter-top-margin">Our Vision.</h3>
-          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
-            Duis laborum ad non pariatur sit.</p>
+          <h3 class="quarter-top-margin">Fantasies.</h3>
+          <p>{% blocktranslate trimmed %}
+            You may have surrealistic fantasies, maybe filty ones. Why
+            don't you write about them? We are pretty sure there is at least
+            one mind that would find your fantasies interesting.
+            {% endblocktranslate %}</p>
         </div>
 
         <div class="col-block">
-          <h3 class="quarter-top-margin">Our Values.</h3>
-          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
-            Duis laborum ad non pariatur sit.</p>
+          <h3 class="quarter-top-margin">Utopias.</h3>
+          <p>{% blocktranslate trimmed %}
+            Imajiner itself is an utopia. You shall have utopias too.
+            Let's keep track of what's happening in your utopia by writing.
+            {% endblocktranslate %}</p>
         </div>
       </div>
     </div> <!-- end general info -->
   </div> <!-- end row -->
+</section> <!-- s-content -->
+
+<section id="missionary" class="s-content s-content--narrow">
+  <div class="row">
+    <div class="s-content__header col-full">
+      <h1 class="s-content__header-title">
+        {% translate 'missionary'|title %}
+      </h1>
+      <p class="lead">{% blocktranslate trimmed %}
+        Imajiner's Mission and Beyond
+        {% endblocktranslate %}</p>
+    </div>
+    <div class="col-full s-content__main">
+      <p class="lead">{% blocktranslate trimmed %}
+        Our starting point is to offer a free place where you spend time
+        without being judged constantly. A place where you tinker with only
+        what you want, just like a utopia.
+        {% endblocktranslate %}</p>
+    </div>
 </section> <!-- s-content -->
 
 <section id="credits" class="s-content s-content--narrow">
@@ -65,26 +103,30 @@
           <p>{% blocktranslate trimmed %}This website is built using Django, along with
           Python packages extending Django.{% endblocktranslate %}</p>
           <ul class="disc">
-            <li>django-extensions</li>
-            <li>dj-database-url</li>
-            <li>django-widget-tweaks</li>
+            <li><a href="https://github.com/django-extensions/django-extensions">django-extensions</a></li>
+            <li><a href="https://pypi.org/project/dj-database-url/">dj-database-url</a></li>
+            <li><a href="https://pypi.org/project/django-widget-tweaks/">django-widget-tweaks</a></li>
           </ul>
         </div>
 
         <div class="col-block">
           <h3 class="quarter-top-margin"><a href="https://colorlib.com">Colorlib</a></h3>
-          <p>Most of the frontend code is taken from them.</p>
+          <p>{% blocktranslate trimmed %}
+            Most of the frontend code is taken from them.
+            {% endblocktranslate %}</p>
           <ul class="disc">
-            <li>Philosophy Template</li>
-            <li>Transcend Template</li>
-            <li>Concept Admin Panel</li>
+            <li><a href="https://colorlib.com/wp/template/philosophy/">Philosophy</a></li>
+            <li><a href="https://colorlib.com/wp/template/transcend/">Transcend</a></li>
+            <li><a href="https://github.com/puikinsh/concept">Concept</a></li>
           </ul>
         </div>
 
         <div class="col-block">
           <h3 class="quarter-top-margin"><a href="https://python.org">Python</a></h3>
-          <p>Hereby we thank these packages' authors, as they are
-            indirect contributors of Imajiner.</p>
+          <p>{% blocktranslate trimmed %}
+            Hereby we thank these packages' authors, as they are
+              indirect contributors of Imajiner.
+            {% endblocktranslate %}</p>
           <ul class="disc">
             <li><a href="https://gunicorn.org">gunicorn</a></li>
             <li><a href="https://www.psycopg.org">psycopg2</a></li>
@@ -101,6 +143,28 @@
       </div>
     </div> <!-- end general info -->
   </div> <!-- end row -->
+</section> <!-- s-content -->
+
+<section id="mastermind" class="s-content s-content--narrow">
+  <div class="row">
+    <div class="s-content__header col-full">
+      <h1 class="s-content__header-title">
+        {% translate 'author'|title %}
+      </h1>
+      <p class="lead">{% translate 'the man behind'|capfirst %}, Ömer Selçuk,
+      <br>{% translate 'and his loyal servant' %}, Melek Kaya</p>
+    </div>
+    <div class="col-full s-content__main">
+      <p class="lead">{% blocktranslate trimmed %}
+        I am a human being who have quite silent firestorms inside, occasionally.
+        {% endblocktranslate %}</p>
+      <p>{% blocktranslate trimmed %}
+        I built here as some kind of digital public diary, at first. Some may find
+        my experiences, thoughts, goals and desires thought-provokin, amusing,
+        deep, or even amusing, I thought. Out there, someone might be my mind-mate, who
+        knows? Let's hunt them.
+        {% endblocktranslate %}</p>
+    </div>
 </section> <!-- s-content -->
 
 {% endblock body %}

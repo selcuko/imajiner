@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-20 01:50+0300\n"
+"POT-Creation-Date: 2020-11-20 19:42+0300\n"
 "PO-Revision-Date: 2020-11-20 00:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,8 +39,8 @@ msgstr ""
 
 #: console/templates/console/access.html:45
 #: console/templates/console/profile.html:58
-#: gatewall/templates/gatewall/gatewall.html:27
-#: gatewall/templates/gatewall/gatewall.html:52
+#: gatewall/templates/gatewall/gatewall.html:37
+#: gatewall/templates/gatewall/gatewall.html:62
 msgid "username"
 msgstr "mahlas"
 
@@ -91,10 +91,13 @@ msgid "shadow"
 msgstr "gölge"
 
 #: console/templates/console/base.html:67
+#: explore/templates/static/about.html:17
+#: explore/templates/static/about.html:152
 msgid "author"
 msgstr "yazar"
 
 #: console/templates/console/base.html:70
+#: gatewall/templates/gatewall/gatewall.html:25
 msgid "log out"
 msgstr "çıkış yap"
 
@@ -228,7 +231,7 @@ msgid "version history"
 msgstr "versiyonlar"
 
 #: console/templates/console/narratives.html:49
-#: console/templates/console/narratives.html:79
+#: console/templates/console/narratives.html:79 notebook/forms.py:22
 msgid "title"
 msgstr "başlık"
 
@@ -281,7 +284,7 @@ msgid "you may update password indefinite times."
 msgstr "şifreyi sınırsız güncelleyebilirsiniz"
 
 #: console/templates/console/overview.html:63
-#: gatewall/templates/gatewall/gatewall.html:33
+#: gatewall/templates/gatewall/gatewall.html:43
 msgid "proceed"
 msgstr "ilerle gezgin"
 
@@ -330,7 +333,7 @@ msgstr ""
 "için Erişim ve Güvenlik'i ziyaret etmelisiniz."
 
 #: console/templates/console/profile.html:63
-#: gatewall/templates/gatewall/gatewall.html:30
+#: gatewall/templates/gatewall/gatewall.html:40
 msgid "password"
 msgstr "parola"
 
@@ -416,13 +419,117 @@ msgstr "hikayeler"
 msgid "narrative version history"
 msgstr "hikayeler"
 
-#: explore/templates/static/about.html:10
+#: explore/templates/static/about.html:8
 msgid "about imajiner"
 msgstr "imajiner hakkında"
+
+#: explore/templates/static/about.html:10
+msgid "It's basically a place to talk about your intangible side."
+msgstr ""
+
+#: explore/templates/static/about.html:15
+#: explore/templates/static/about.html:67 templates/landing.html:130
+#, fuzzy
+msgid "missionary"
+msgstr "misyoner"
+
+#: explore/templates/static/about.html:16
+#: explore/templates/static/about.html:86
+#, fuzzy
+#| msgid "edit"
+msgid "credits"
+msgstr "düzenle"
+
+#: explore/templates/static/about.html:27
+msgid ""
+"We have dreams. Without being disturbed, you can talk about your dreams from "
+"last night, analyse them maybe."
+msgstr ""
+
+#: explore/templates/static/about.html:36
+msgid ""
+"What is your goal in life? Write about it. Writing will make you help "
+"conceive yourself as a third person."
+msgstr ""
+
+#: explore/templates/static/about.html:44
+msgid ""
+"You may have surrealistic fantasies, maybe filty ones. Why don't you write "
+"about them? We are pretty sure there is at least one mind that would find "
+"your fantasies interesting."
+msgstr ""
+
+#: explore/templates/static/about.html:53
+msgid ""
+"Imajiner itself is an utopia. You shall have utopias too. Let's keep track "
+"of what's happening in your utopia by writing."
+msgstr ""
+
+#: explore/templates/static/about.html:69
+msgid "Imajiner's Mission and Beyond"
+msgstr ""
+
+#: explore/templates/static/about.html:74
+msgid ""
+"Our starting point is to offer a free place where you spend time without "
+"being judged constantly. A place where you tinker with only what you want, "
+"just like a utopia."
+msgstr ""
+
+#: explore/templates/static/about.html:90
+msgid ""
+"While building this platform, we took advantage of already existing "
+"beautiful stuff, and here we are giving their credits."
+msgstr ""
+
+#: explore/templates/static/about.html:95
+msgid "Without them, Imajiner wouldn't look like this."
+msgstr ""
+
+#: explore/templates/static/about.html:103
+msgid ""
+"This website is built using Django, along with Python packages extending "
+"Django."
+msgstr ""
+
+#: explore/templates/static/about.html:114
+msgid "Most of the frontend code is taken from them."
+msgstr ""
+
+#: explore/templates/static/about.html:126
+msgid ""
+"Hereby we thank these packages' authors, as they are indirect contributors "
+"of Imajiner."
+msgstr ""
+
+#: explore/templates/static/about.html:154
+msgid "the man behind"
+msgstr ""
+
+#: explore/templates/static/about.html:155
+msgid "and his loyal servant"
+msgstr ""
+
+#: explore/templates/static/about.html:158
+msgid ""
+"I am a human being who have quite silent firestorms inside, occasionally."
+msgstr ""
+
+#: explore/templates/static/about.html:161
+msgid ""
+"I built here as some kind of digital public diary, at first. Some may find "
+"my experiences, thoughts, goals and desires thought-provokin, amusing, deep, "
+"or even amusing, I thought. Out there, someone might be my mind-mate, who "
+"knows? Let's hunt them."
+msgstr ""
 
 #: explore/urls.py:9
 msgid "about/"
 msgstr ""
+
+#: explore/urls.py:11 templates/base.html:103
+msgid "about"
+msgstr "hakkında"
 
 #: gatewall/templates/gatewall/gatewall.html:15
 msgid "authentication"
@@ -434,42 +541,47 @@ msgid ""
 "information below the forms."
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:24
+#: gatewall/templates/gatewall/gatewall.html:22
+#, python-format
+msgid "You are already logged in as %(username)s."
+msgstr ""
+
+#: gatewall/templates/gatewall/gatewall.html:34
 msgid "author authorization"
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:35
+#: gatewall/templates/gatewall/gatewall.html:45
 msgid ""
 "Logging in and registring a new user is done here. Check out the status "
 "message as you type your username."
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:39
+#: gatewall/templates/gatewall/gatewall.html:49
 msgid ""
 "This type of registration is the conventional one. Your registration is "
 "persistent and safe; just as you used to."
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:46
+#: gatewall/templates/gatewall/gatewall.html:56
 msgid "shadow authorization"
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:49
+#: gatewall/templates/gatewall/gatewall.html:59
 msgid ""
 "This type is temporary and designed for hit-and-runners. Know more below."
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:55
+#: gatewall/templates/gatewall/gatewall.html:65
 msgid "register"
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:57
+#: gatewall/templates/gatewall/gatewall.html:67
 msgid ""
 "After you type your username, the servers check your device's digital "
 "fingerprint and see whether we recognize you. Check the status message."
 msgstr ""
 
-#: gatewall/templates/gatewall/gatewall.html:61
+#: gatewall/templates/gatewall/gatewall.html:71
 msgid ""
 "When you register as shadow, you only choose a username to start writing. "
 "Although you have the full functionality, it does not last long. Due to its "
@@ -521,6 +633,10 @@ msgstr "sahip/"
 #: imajiner/urls.py:37
 msgid "console/"
 msgstr "konsol/"
+
+#: notebook/forms.py:23
+msgid "body"
+msgstr ""
 
 #: notebook/templates/notebook/narrative/detail.html:40
 #, fuzzy
@@ -612,10 +728,6 @@ msgstr "anasayfa"
 #: templates/base.html:101
 msgid "write"
 msgstr "yazmaya ne dersin gezgin"
-
-#: templates/base.html:103
-msgid "about"
-msgstr "hakkında"
 
 #: templates/base.html:106
 msgid "close"
@@ -726,11 +838,6 @@ msgstr "uygun"
 #: templates/landing.html:117
 msgid "Go down!"
 msgstr "Aşağı in!"
-
-#: templates/landing.html:130
-#, fuzzy
-msgid "missionary"
-msgstr "misyoner"
 
 #: templates/landing.html:131
 msgid ""
