@@ -19,8 +19,8 @@ class SoundRecord(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=128, null=True, blank=True)
     uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    
-    
+
+
     def __str__(self):
         return f'Voice record file {self.file.name} at {self.uploaded_at}'
 
@@ -32,7 +32,7 @@ class SoundRecord(models.Model):
 class Narrative(models.Model):
     LEAD_MAX_CHAR = 140
     versioning = models.BooleanField(default=True, verbose_name='Keeps seperate versions')
-    title = models.CharField(max_length=100, default='Başlıklı hikaye', verbose_name='Title')
+    title = models.CharField(max_length=100, default='', verbose_name='Title')
     slug = models.SlugField(max_length=100, null=True, unique=True, verbose_name='Slug')
     body = models.TextField(null=True, verbose_name='Body')
     html = models.TextField(null=True, verbose_name='HTML')
@@ -51,12 +51,12 @@ class Narrative(models.Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not self.uuid: self.uuid = uuid1()
-    
+
     def all_versions(self):
         return self.versions.all()
-    
+
     def generate_lead(self):
-        if not self.body: 
+        if not self.body:
             self.lead = None
             return
         append_dots = len(self.body) > self.LEAD_MAX_CHAR
@@ -65,7 +65,7 @@ class Narrative(models.Model):
         while self.lead.endswith(' '):
             self.lead = self.lead[:-1]
         if append_dots: self.lead += '...'
-    
+
     @property
     def latest(self):
         return self.versions.first()
@@ -82,18 +82,18 @@ class Narrative(models.Model):
             pass
         else:
             raise Exception('Invalid argument supplied')
-        
+
         return cls.objects.filter(author=user, sketch=False)
 
     def __str__(self):
         return f'"{self.title}" by {self.author.username}'
-    
+
     def get_absolute_url(self):
         if self.sketch:
             return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
         else:
             return reverse('narrative:detail', kwargs={'slug': self.slug})
-    
+
     def generate_html(self):
         self.html = html.escape(self.body)
         self.html = self.html.replace('\n\n', '</p><p>')
@@ -106,7 +106,7 @@ class Narrative(models.Model):
         if alter_slug: self.generate_slug()
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
-        
+
         super().save(*args, **kwargs)
 
         initial_version = self.versions.count() == 0
@@ -121,7 +121,7 @@ class Narrative(models.Model):
             latest = self.versions.last() if not initial_version else NarrativeVersion(master=self, version=1)
             latest.reference(self)
         latest.save(**kwargs)
-    
+
     def generate_slug(self):
         self.slug = f'{text.slugify(self.title.replace("ı", "i"), allow_unicode=False)}-{str(self.uuid)[:8]}'
 
@@ -149,7 +149,7 @@ class NarrativeTranslation(models.Model):
     body = models.TextField(null=True)
     html = models.TextField(null=True)
     master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='translations')
-    
+
     created_at = models.DateTimeField(null=True, auto_now_add=True)
 
 
@@ -178,10 +178,10 @@ class NarrativeVersion(models.Model):
         self.html = ref.html
         self.sketch = ref.sketch
         self.master = ref
-    
+
     def assign_version(self, ref=None):
         self.version = 1
-    
+
     def archive(self):
         return self.save(archive=True)
 

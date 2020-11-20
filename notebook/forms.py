@@ -1,10 +1,7 @@
 from django import forms
 from django.utils import html
+from django.utils.translation import gettext_lazy as _
 from .models import Narrative, SoundRecord
-
-class ButtonWidget(forms.Widget):
-    def render(self, id="button", name="", renderer=None, value="Entitled Button", attrs=None):
-        return f'<button class="ui button" id="{html.escape(id)}">{value}"</button>'
 
 class NarrativeForm(forms.ModelForm):
     class Meta:
@@ -22,8 +19,8 @@ class NarrativeForm(forms.ModelForm):
         }
 
         labels = {
-            'title': 'Önden gelen tekst',
-            'body': 'Asıl yazı',
+            'title': _('title').capitalize(),
+            'body': _('body').capitalize(),
         }
 
 class SoundUploadForm(forms.ModelForm):
@@ -33,4 +30,3 @@ class SoundUploadForm(forms.ModelForm):
             'name',
             'file',
         ]
-        
