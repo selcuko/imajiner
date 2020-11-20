@@ -2,50 +2,105 @@
 {% load static i18n %}
 {% block body %}
 <section class="s-content s-content--narrow">
+  <div class="row">
+    <div class="s-content__header col-full">
+      <h1 class="s-content__header-title">
+        {% translate 'about imajiner'|title %}
+      </h1>
+    </div>
+    <div class="col-full s-content__main">
+      <p class="lead">{% lorem 35 w %}</p>
+      <p>{% lorem 35 w %}</p>
+      <p>{% lorem 40 w %}</p>
+      <div class="row block-1-2 block-tab-full">
+        <div class="col-block">
+          <h3 class="quarter-top-margin">Who We Are.</h3>
+          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
+            Duis laborum ad non pariatur sit.</p>
+        </div>
 
-    <div class="row">
+        <div class="col-block">
+          <h3 class="quarter-top-margin">Our Mission.</h3>
+          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
+            Duis laborum ad non pariatur sit.</p>
+        </div>
 
-        <div class="s-content__header col-full">
-            <h1 class="s-content__header-title">
-                {% translate 'about imajiner'|title %}
-            </h1>
-        </div> <!-- end s-content__header -->
+        <div class="col-block">
+          <h3 class="quarter-top-margin">Our Vision.</h3>
+          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
+            Duis laborum ad non pariatur sit.</p>
+        </div>
 
-        <div class="col-full s-content__main">
-
-            <p class="lead">{% lorem 35 w %}</p>
-            
-            <p>{% lorem 35 w %}</p>
-
-            <p>{% lorem 40 w %}</p>
-
-            <div class="row block-1-2 block-tab-full">
-                <div class="col-block">
-                    <h3 class="quarter-top-margin">Who We Are.</h3>
-                    <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
-                </div>
-
-                <div class="col-block">
-                    <h3 class="quarter-top-margin">Our Mission.</h3>
-                    <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
-                </div>
-
-                <div class="col-block">
-                    <h3 class="quarter-top-margin">Our Vision.</h3>
-                    <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
-                </div>
-
-                <div class="col-block">
-                    <h3 class="quarter-top-margin">Our Values.</h3>
-                    <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
-                </div>
-
-            </div>
-
-
-        </div> <!-- end s-content__main -->
-
-    </div> <!-- end row -->
-
+        <div class="col-block">
+          <h3 class="quarter-top-margin">Our Values.</h3>
+          <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco
+            Duis laborum ad non pariatur sit.</p>
+        </div>
+      </div>
+    </div> <!-- end general info -->
+  </div> <!-- end row -->
 </section> <!-- s-content -->
+
+<section id="credits" class="s-content s-content--narrow">
+  <div class="row">
+    <div class="s-content__header col-full">
+      <h1 class="s-content__header-title">
+        {% translate 'credits'|title %}
+      </h1>
+    </div>
+    <div class="col-full s-content__main">
+      <p class="lead">{% blocktranslate trimmed %}
+        While building this platform, we took advantage of
+        already existing beautiful stuff, and here we are
+        giving their credits.
+        {% endblocktranslate %}</p>
+      <p>{% blocktranslate trimmed %}
+        Without them, Imajiner wouldn't look like this.
+        {% endblocktranslate %}</p>
+
+
+      <div class="row block-1-2 block-tab-full">
+        <div class="col-block">
+          <h3 class="quarter-top-margin">Django</h3>
+          <p>This website is built using Django, along with
+          Python packages extending Django.</p>
+          <ul class="disc">
+            <li>django-extensions</li>
+            <li>dj-database-url</li>
+            <li>django-widget-tweaks</li>
+          </ul>
+        </div>
+
+        <div class="col-block">
+          <h3 class="quarter-top-margin"><a href="https://colorlib.com">Colorlib</a></h3>
+          <p>Most of the frontend code is taken from them.</p>
+          <ul class="disc">
+            <li>Philosophy Template</li>
+            <li>Transcend Template</li>
+            <li>Concept Admin Panel</li>
+          </ul>
+        </div>
+
+        <div class="col-block">
+          <h3 class="quarter-top-margin">Python Packages</h3>
+          <p>Hereby we thank these packages' authors, as they are
+            indirect contributors of Imajiner.</p>
+          <ul class="disc">
+            <li>gunicorn</li>
+            <li>psycopg2</li>
+            <li>whitenoise</li>
+            <li>ua-parser</li>
+          </ul>
+        </div>
+
+        <div class="col-block">
+          <h3 class="quarter-top-margin">Serving</h3>
+          <p>This platform is deployed on Heroku free dynos.</p>
+
+        </div>
+      </div>
+    </div> <!-- end general info -->
+  </div> <!-- end row -->
+</section> <!-- s-content -->
+
 {% endblock body %}
