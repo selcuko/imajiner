@@ -1,2 +1,2 @@
-# Imajiner. Özgürleştiğin yer.
-### Düş özgürlüğündeki imajiner adalar.
+# Set your mind free.
+### Imajiner, where you feel.
