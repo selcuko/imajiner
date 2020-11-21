@@ -14,7 +14,6 @@ nltk==3.5
 numpy==1.19.2
 pandas==1.1.3
 Pillow==8.0.1
-pkg-resources==0.0.0
 psycopg2==2.8.6
 pycld3==0.20
 pydot==1.4.1
