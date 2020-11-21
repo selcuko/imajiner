@@ -45,7 +45,7 @@ class Narrative(models.Model):
     body = models.TextField(null=True, verbose_name='Body')
     html = models.TextField(null=True, verbose_name='HTML')
     lead = models.TextField(null=True, blank=True, verbose_name='Summary')
-    sketch = models.BooleanField(default=False, verbose_name='Sketch')
+    sketch = models.BooleanField(default=True, verbose_name='Sketch')
     uuid = models.UUIDField(verbose_name='UUID')
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation date')
