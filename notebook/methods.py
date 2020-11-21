@@ -1,7 +1,5 @@
 from django.utils.text import slugify
 from django.utils.html import escape
-import cleantext
-
 
 class generate:
     LEAD_MAX_CHAR = 160
@@ -37,6 +35,8 @@ class generate:
     
     @classmethod
     def clean(cls, text):
+        import cleantext
+        
         cleaned = cleantext.replace_urls(text, replace_with='')
         cleaned = cleantext.replace_emails(cleaned, replace_with='')
         return cleaned

@@ -11,7 +11,6 @@ class NarrativeVersionInlineAdmin(admin.StackedInline):
     classes = ['collapse']
 
 class NarrativeAdmin(admin.ModelAdmin):
-    inlines = [NarrativeVersionInlineAdmin]
     fieldsets = [
         (None,                {'fields': ['author']}),
         ('Identifiers',       {'fields': ['uuid', 'slug']}),
@@ -19,7 +18,7 @@ class NarrativeAdmin(admin.ModelAdmin):
         ('Generated Fields',  {'fields': ['html']}),
         ('Dates',             {'fields': ['published_at', 'created_at']}),
     ]
-    readonly_fields = ['created_at', 'versions', 'uuid', 'slug', 'html']
+    readonly_fields = ['created_at', 'uuid', 'slug', 'html']
     empty_value_display = '???'
 
 

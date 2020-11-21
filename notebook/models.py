@@ -1,17 +1,14 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
-from django.dispatch import receiver
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils import text, html, timezone
 from django.db import models
-from django.db.models.signals import post_save
 from uuid import uuid1
 from tagmanager.models import TagManager
 from threading import Thread
 import cld3
-import cleantext
 from .methods import generate
 
 
@@ -39,7 +36,7 @@ class SoundRecord(models.Model):
 
 
 
-class NarrativeBase(models.Model):
+class Base(models.Model):
     class Meta:
         abstract = True
         ordering = ('-published_at', '-created_at')
@@ -54,63 +51,42 @@ class NarrativeBase(models.Model):
     published_at = models.DateTimeField(null=True, blank=True, verbose_name='Publication date')
     edited_at = models.DateTimeField(auto_now=True, verbose_name='Last edited at')
     language = models.CharField(max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
+    sketch = models.BooleanField(default=True)
 
-    def save(self, *args, alter_slug=True, update_lead=True, **kwargs):
+    def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
         self.html = generate.html(self.body)
         if update_lead: self.lead = generate.lead(self.body)
-        if alter_slug: self.slug = generate.slug(self.title)
+        if alter_slug: self.slug = generate.slug(self.title, uuid=self.uuid)
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
         
-        if len(self.body) > 100:
-            cleaned = generate.clean(self.body)
-            language = cld3.get_language(cleaned)
-            if language.is_reliable: self.language = language.language
+        if not self.language and not self.sketch:
+            if len(self.body) > 100:
+                cleaned = generate.clean(self.body)
+                language = cld3.get_language(cleaned)
+                if language.is_reliable: self.language = language.language
+            elif user_language: self.language = user_language
 
         super().save(*args, **kwargs)
     
     def __str__(self, *args, **kwargs):
         return self.title
 
-
-
-
-class Narrative(models.Model):
-    LEAD_MAX_CHAR = 140
-    title = models.CharField(max_length=100, default='', verbose_name='Title')
-    slug = models.SlugField(max_length=100, null=True, unique=True, verbose_name='Slug')
-    body = models.TextField(null=True, verbose_name='Body')
-    html = models.TextField(null=True, verbose_name='HTML')
-    lead = models.TextField(null=True, blank=True, verbose_name='Summary')
-    sketch = models.BooleanField(default=True, verbose_name='Sketch')
-    uuid = models.UUIDField(verbose_name='UUID')
-
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation date')
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
-    tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
-    published_at = models.DateTimeField(null=True, blank=True, verbose_name='Publication date')
-    language = models.CharField(max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
-
-    class Meta:
-        ordering = ('-created_at',)
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not self.uuid: self.uuid = uuid1()
 
-    def all_versions(self):
-        return self.versions.all()
+
+
+class Narrative(Base):
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
 
     @property
     def languages_available(self):
         return [t.language for t in self.translations.all()]
 
-    @property
-    def latest(self):
-        return self.versions.first()
-
     def __str__(self):
-        if not self.author: return f'"{self.title}" from NOBODY'
+        if not self.author: return f'"{self.title}" (unowned)'
         return f'"{self.title}" by {self.author.username}'
 
     def get_absolute_url(self):
@@ -119,109 +95,68 @@ class Narrative(models.Model):
         else:
             return reverse('narrative:detail', kwargs={'slug': self.slug})
 
-    def clean_body(self):
-        cleaned = self.body
-        cleaned = cleantext.replace_urls(cleaned, replace_with='')
-        cleaned = cleantext.replace_emails(cleaned, replace_with='')
-        return cleaned
 
-    def detect_language(self):
-        results = cld3.get_language(self.clean_body())
-        if results.is_reliable:
-            self.language = results.language
-        return results
-
-    def save(self, *args, user_lang=None, update_lead=True, alter_slug=True, new_version=False, **kwargs):
-        self.html = generate.html(self.body)
-        if update_lead: self.lead = generate.lead(self.body)
-        if alter_slug: self.slug = generate.slug(self.title)
-        if not self.published_at and not self.sketch:
-            self.published_at = timezone.now()
-        if not self.sketch:
-            lang_results = self.detect_language()
-            if not lang_results.is_reliable and user_lang:
-                self.language = user_lang
+    def save(self, *args, new_translation=False, **kwargs):
         super().save(*args, **kwargs)
 
         if not self.sketch and not self.language in self.languages_available:
-            nt = NarrativeTranslation(
-                title=self.title,
-                body=self.body,
-                language=self.language,
-                master=self,
-            )
+            nt = NarrativeTranslation()
+            nt.reference(self)
             nt.save()
 
-        initial_version = self.versions.count() == 0
-        if new_version:
-            self.latest.archive()
-            latest = NarrativeVersion(master=self)
-            latest.reference(self)
-            v = self.latest.version + 1 if not initial_version else 1
-            latest.version = v
-            self.version = latest.version
-        else:
-            latest = self.versions.last() if not initial_version else NarrativeVersion(master=self, version=1)
-            latest.reference(self)
-        latest.save(**kwargs)
-
-
-@receiver(post_save, sender=Narrative)
-def create_tagman(sender, instance, created, **kwargs):
-    """Create TagManager for Narrative programmatically."""
-
-    if not created or instance.tags:
-        return
-    tagman = TagManager.objects.create()
-    instance.tags = tagman
-    instance.save(new_version=False)
-
-@receiver(post_save, sender=Narrative)
-def update_tagman(sender, instance, **kwargs):
-    instance.tags.save()
 
 
 
-class NarrativeTranslation(models.Model):
-    uuid = models.UUIDField(unique=True)
-    language = models.CharField(max_length=5, choices=settings.LANGUAGES)
-    title = models.CharField(max_length=100, default='404')
-    slug = models.SlugField(max_length=100, null=True, unique=True)
-    body = models.TextField(null=True)
-    html = models.TextField(null=True)
+class NarrativeTranslation(Base):
     master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='translations')
+    tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
 
-    created_at = models.DateTimeField(null=True, auto_now_add=True)
+
+    def reference(self, ref):
+        self.title = ref.title
+        self.body = ref.body
+        self.language = ref.language
+        self.master = ref
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not self.uuid: self.uuid = uuid1()
 
-    def __save__(self, *args, **kwargs):
-        if not self.uuid: self.uuid = uuid1()
-        self.slug = f'{slugify(self.title)}-{str(self.uuid)[:8]}'
+    def save(self, *args, new_version=True, **kwargs):
         super().save(*args, **kwargs)
 
+        initial_version = self.versions.count() == 0
+        latest = self.versions.first()  # versions are ordered from latest to earliest
+
+        if initial_version:
+            nv = NarrativeVersion()
+            nv.reference(self)
+            nv.save()
+
+        elif new_version:
+            # save a new version and archive latest
+            nv = NarrativeVersion()
+            nv.reference(self)
+            nv.version = latest.version + 1
+            nv.save()
+            latest.archive()     
+        
+        else:
+            # update latest version without creating a new one
+            latest.reference(self)
+            latest.save()
+
+
     def __str__(self):
-        return f'{settings.LANGUAGES_DICT.get(self.language, "???")} translation of {self.master}'
+        return f'{settings.LANGUAGES_DICT.get(self.language, "Unknown")} translation of {self.master}'
 
 
 
-class NarrativeVersion(models.Model):
+
+class NarrativeVersion(Base):
     readonly = models.BooleanField(default=False)
-    title = models.CharField(max_length=100, default='Başlıklı hikaye')
-    slug = models.SlugField(max_length=100, null=True, unique=True)
-    body = models.TextField(null=True)
-    html = models.TextField(null=True)
-    sketch = models.BooleanField(default=False)
-    uuid = models.UUIDField()
-    sound = models.ForeignKey(SoundRecord, null=True, blank=True, on_delete=models.SET_NULL, related_name='narratives')
     version = models.PositiveIntegerField(default=1)
-    master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='versions')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        if not self.uuid: self.uuid = uuid1()
+    master = models.ForeignKey(NarrativeTranslation, on_delete=models.CASCADE, related_name='versions')
 
     def __str__(self):
         return f'v{self.version}: {self.title}'
@@ -229,20 +164,17 @@ class NarrativeVersion(models.Model):
     def reference(self, ref):
         self.title = ref.title
         self.body = ref.body
-        self.html = ref.html
         self.sketch = ref.sketch
         self.master = ref
-
-    def assign_version(self, ref=None):
-        self.version = 1
 
     def archive(self):
         return self.save(archive=True)
 
-    def save(self, archive=False, overwrite=False, *args, **kwargs):
+    def save(self, *args, archive=False, overwrite=False, **kwargs):
         if self.readonly and not overwrite:
-            raise Exception('This version is read-only.')
-        self.readonly = archive
+            raise Exception(f'This version is read-only: {self.title}')
+        if archive: 
+            self.readonly = True
         super().save(*args, **kwargs)
 
     class Meta:
