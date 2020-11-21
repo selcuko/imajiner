@@ -21,6 +21,7 @@ class NarrativeAdmin(admin.ModelAdmin):
     ]
     readonly_fields = ['created_at', 'versions', 'uuid', 'slug', 'html']
     empty_value_display = '???'
-    
+
 
 admin.site.register(Narrative, NarrativeAdmin)
+admin.site.register(NarrativeTranslation)

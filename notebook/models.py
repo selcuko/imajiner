@@ -9,6 +9,14 @@ from django.db import models
 from django.db.models.signals import post_save
 from uuid import uuid1
 from tagmanager.models import TagManager
+from threading import Thread
+import cld3
+import cleantext
+
+
+def slugify(t):
+    t = t.replace('ı', 'i')
+    return text.slugify(t)
 
 
 class SoundRecord(models.Model):
@@ -44,6 +52,7 @@ class Narrative(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
     tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
     published_at = models.DateTimeField(null=True, blank=True, verbose_name='Publication date')
+    language = models.CharField(max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
 
     class Meta:
         ordering = ('created_at',)
@@ -54,6 +63,10 @@ class Narrative(models.Model):
 
     def all_versions(self):
         return self.versions.all()
+
+    @property
+    def languages_available(self):
+        return [t.language for t in self.translations.all()]
 
     def generate_lead(self):
         if not self.body:
@@ -86,6 +99,7 @@ class Narrative(models.Model):
         return cls.objects.filter(author=user, sketch=False)
 
     def __str__(self):
+        if not self.author: return f'"{self.title}" from NOBODY'
         return f'"{self.title}" by {self.author.username}'
 
     def get_absolute_url(self):
@@ -100,14 +114,38 @@ class Narrative(models.Model):
         self.html = self.html.replace('\n', '<br>')
         self.html = f'<p>{self.html}</p>'
 
-    def save(self, *args, lead_specified=False, alter_slug=True, new_version=False, **kwargs):
+    def clean_body(self):
+        cleaned = self.body
+        cleaned = cleantext.replace_urls(cleaned, replace_with='')
+        cleaned = cleantext.replace_emails(cleaned, replace_with='')
+        return cleaned
+
+    def detect_language(self):
+        results = cld3.get_language(self.clean_body())
+        if results.is_reliable:
+            self.language = results.language
+        return results
+
+    def save(self, *args, user_lang=None, lead_specified=False, alter_slug=True, new_version=False, **kwargs):
         self.generate_html()
         if not lead_specified: self.generate_lead()
         if alter_slug: self.generate_slug()
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
-
+        if not self.sketch:
+            lang_results = self.detect_language()
+            if not lang_results.is_reliable and user_lang:
+                self.language = user_lang
         super().save(*args, **kwargs)
+
+        if not self.sketch and not self.language in self.languges_available:
+            nt = NarrativeTranslation(
+                title=self.title,
+                body=self.body,
+                language=self.language,
+                master=self,
+            )
+            nt.save()
 
         initial_version = self.versions.count() == 0
         if new_version:
@@ -123,7 +161,7 @@ class Narrative(models.Model):
         latest.save(**kwargs)
 
     def generate_slug(self):
-        self.slug = f'{text.slugify(self.title.replace("ı", "i"), allow_unicode=False)}-{str(self.uuid)[:8]}'
+        self.slug = f'{slugify(self.title)}-{str(self.uuid)[:8]}'
 
 @receiver(post_save, sender=Narrative)
 def create_tagman(sender, instance, created, **kwargs):
@@ -151,6 +189,19 @@ class NarrativeTranslation(models.Model):
     master = models.ForeignKey(Narrative, on_delete=models.CASCADE, related_name='translations')
 
     created_at = models.DateTimeField(null=True, auto_now_add=True)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.uuid: self.uuid = uuid1()
+
+    def __save__(self, *args, **kwargs):
+        if not self.uuid: self.uuid = uuid1()
+        self.slug = f'{slugify(self.title)}-{str(self.uuid)[:8]}'
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{settings.LANGUAGES_DICT.get(self.language, "???")} translation of {self.master}'
+
 
 
 class NarrativeVersion(models.Model):
