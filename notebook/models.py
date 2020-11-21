@@ -138,7 +138,7 @@ class Narrative(models.Model):
                 self.language = user_lang
         super().save(*args, **kwargs)
 
-        if not self.sketch and not self.language in self.languges_available:
+        if not self.sketch and not self.language in self.languages_available:
             nt = NarrativeTranslation(
                 title=self.title,
                 body=self.body,
