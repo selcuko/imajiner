@@ -1722,7 +1722,6 @@ article.narrative-detail div.s-content__main::first-letter {
  * ------------------------------------------------------------------- */
 .s-pageheader {
    min-height: 174px;
-   background-image: url(../images/hero-bg.jpg);
    background-repeat: no-repeat;
    background-position: center center;
    position: relative;

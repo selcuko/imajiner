@@ -12,6 +12,7 @@ from tagmanager.models import TagManager
 from threading import Thread
 import cld3
 import cleantext
+from .methods import generate
 
 
 def slugify(t):
@@ -37,9 +38,45 @@ class SoundRecord(models.Model):
         super().save(*args, **kwargs)
 
 
+
+class NarrativeBase(models.Model):
+    class Meta:
+        abstract = True
+        ordering = ('-published_at', '-created_at')
+    
+    title = models.CharField(max_length=100, default='', verbose_name='Title')
+    body = models.TextField(null=True, verbose_name='Body')
+    lead = models.TextField(null=True, blank=True, verbose_name='Summary')
+    html = models.TextField(null=True, verbose_name='HTML')
+    slug = models.SlugField(max_length=100, null=True, unique=True, verbose_name='Slug')
+    uuid = models.UUIDField(verbose_name='UUID', unique=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation date')
+    published_at = models.DateTimeField(null=True, blank=True, verbose_name='Publication date')
+    edited_at = models.DateTimeField(auto_now=True, verbose_name='Last edited at')
+    language = models.CharField(max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
+
+    def save(self, *args, alter_slug=True, update_lead=True, **kwargs):
+        self.html = generate.html(self.body)
+        if update_lead: self.lead = generate.lead(self.body)
+        if alter_slug: self.slug = generate.slug(self.title)
+        if not self.published_at and not self.sketch:
+            self.published_at = timezone.now()
+        
+        if len(self.body) > 100:
+            cleaned = generate.clean(self.body)
+            language = cld3.get_language(cleaned)
+            if language.is_reliable: self.language = language.language
+
+        super().save(*args, **kwargs)
+    
+    def __str__(self, *args, **kwargs):
+        return self.title
+
+
+
+
 class Narrative(models.Model):
     LEAD_MAX_CHAR = 140
-    versioning = models.BooleanField(default=True, verbose_name='Keeps seperate versions')
     title = models.CharField(max_length=100, default='', verbose_name='Title')
     slug = models.SlugField(max_length=100, null=True, unique=True, verbose_name='Slug')
     body = models.TextField(null=True, verbose_name='Body')
@@ -55,7 +92,7 @@ class Narrative(models.Model):
     language = models.CharField(max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
 
     class Meta:
-        ordering = ('created_at',)
+        ordering = ('-created_at',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -68,35 +105,9 @@ class Narrative(models.Model):
     def languages_available(self):
         return [t.language for t in self.translations.all()]
 
-    def generate_lead(self):
-        if not self.body:
-            self.lead = None
-            return
-        append_dots = len(self.body) > self.LEAD_MAX_CHAR
-        self.lead = self.body.split('. ')[0][:self.LEAD_MAX_CHAR]
-        self.lead = self.lead.replace('\n', ' ')
-        while self.lead.endswith(' '):
-            self.lead = self.lead[:-1]
-        if append_dots: self.lead += '...'
-
     @property
     def latest(self):
         return self.versions.first()
-
-    @property
-    def published(self):
-        return bool(self.published_at)
-
-    @classmethod
-    def viewable(cls, user):
-        if isinstance(user, str):
-            user = User.objects.get(username=user)
-        elif isinstance(user, User):
-            pass
-        else:
-            raise Exception('Invalid argument supplied')
-
-        return cls.objects.filter(author=user, sketch=False)
 
     def __str__(self):
         if not self.author: return f'"{self.title}" from NOBODY'
@@ -107,12 +118,6 @@ class Narrative(models.Model):
             return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
         else:
             return reverse('narrative:detail', kwargs={'slug': self.slug})
-
-    def generate_html(self):
-        self.html = html.escape(self.body)
-        self.html = self.html.replace('\n\n', '</p><p>')
-        self.html = self.html.replace('\n', '<br>')
-        self.html = f'<p>{self.html}</p>'
 
     def clean_body(self):
         cleaned = self.body
@@ -126,10 +131,10 @@ class Narrative(models.Model):
             self.language = results.language
         return results
 
-    def save(self, *args, user_lang=None, lead_specified=False, alter_slug=True, new_version=False, **kwargs):
-        self.generate_html()
-        if not lead_specified: self.generate_lead()
-        if alter_slug: self.generate_slug()
+    def save(self, *args, user_lang=None, update_lead=True, alter_slug=True, new_version=False, **kwargs):
+        self.html = generate.html(self.body)
+        if update_lead: self.lead = generate.lead(self.body)
+        if alter_slug: self.slug = generate.slug(self.title)
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
         if not self.sketch:
@@ -160,8 +165,6 @@ class Narrative(models.Model):
             latest.reference(self)
         latest.save(**kwargs)
 
-    def generate_slug(self):
-        self.slug = f'{slugify(self.title)}-{str(self.uuid)[:8]}'
 
 @receiver(post_save, sender=Narrative)
 def create_tagman(sender, instance, created, **kwargs):
