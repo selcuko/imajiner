@@ -120,6 +120,9 @@ LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
     ('en', 'English'),
     ('tr', 'Türkçe'),
+    ('fr', 'Français'),
+    ('de', 'Deustch'),
+    ('ru', 'русский'),
 )
 
 LANGUAGES_DICT = dict(LANGUAGES)
@@ -150,4 +153,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 LOGIN_URL = 'gatewall:auth'
-
