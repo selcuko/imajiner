@@ -4,35 +4,34 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'suitcase/css/style.css' %}">
-<link rel="stylesheet" href="{% static 'suitcase/css/icomoon.css' %}">
 <script defer src="{% static 'suitcase/js/main.js' %}"></script>
 {% endblock head %}
 
 
 {% block body.id %}top{% endblock %}
 {% block body %}
-    <section class="philosophy s-content">
-        <div class="philosophy row narrow">
-            <div class="philosophy col-full s-content__header">
+    <section class="s-content">
+        <div class="row narrow">
+            <div class="col-full s-content__header">
                 <h1 class="philosophy">{% translate 'sketches'|capfirst %}</h1>
-                <p class="philosophy lead">{% translate 'begin writing a new story or mess with the unfinished works'|capfirst %}</p>
+                <p class="lead">{% translate 'begin writing a new story or mess with the unfinished works'|capfirst %}</p>
             </div>
         </div>
-        <div class="philosophy row masonry-wrap">
-            <div class="philosophy masonry blog-flex">
-                <div class="philosophy masonry__brick entry format-standard">
+        <div class="row masonry-wrap">
+            <div class="masonry blog-flex">
+                <div class="masonry__brick entry format-standard">
                     <a href="{% url 'narrative:write' %}" class="f-blog">
                         <p class="meta"><span>{% translate 'right now'|capfirst %}</span></p>
                         <h3 style="font-family: 'librebaskerville-regular'">{% translate 'new story, new dreams, new possibilities'|capfirst %}</h3>
-                        <p class="read-more">{% translate 'go ahead'|capfirst %} <i class="icon-arrow-right3"></i></p>
+                        <p class="read-more">{% translate 'go ahead'|capfirst %} <i class="fa fa-arrow-right"></i></p>
                     </a>
                 </div>
                 {% for sketch in sketches %}
-                <div class="philosophy masonry__brick entry format-standard">
+                <div class="masonry__brick entry format-standard">
                     <a href="{{ sketch.get_absolute_url }}" class="f-blog">
                         <p class="meta"><span>{{ sketch.created_at }}</span></p>
                         <h3 style="font-family: 'librebaskerville-regular'">{{ sketch.title }}</h3>
-                        <p class="read-more">Düzenle <i class="icon-arrow-right3"></i></p>
+                        <p class="read-more">{% translate 'edit'|capfirst %} <i class="fa fa-arrow-right"></i></p>
                     </a>
                 </div>
                 {% endfor %}
