@@ -12,11 +12,6 @@ import cld3
 from .methods import generate
 
 
-def slugify(t):
-    t = t.replace('ı', 'i')
-    return text.slugify(t)
-
-
 class SoundRecord(models.Model):
     file = models.FileField(
         upload_to='voice-records',
@@ -93,19 +88,18 @@ class Narrative(Base):
         return f'"{self.title}" by {self.author.username}'
 
 
-    def save(self, *args, new_translation=False, **kwargs):
+    def save(self, *args, new_version=True, new_translation=False, **kwargs):
         super().save(*args, **kwargs)
 
         languages_available = self.languages_available
-        if not self.sketch and not self.language in languages_available:
-            nt = NarrativeTranslation()
-            nt.reference(self)
-            nt.save()
-
-        elif self.language in languages_available:
+        print("LANGS", languages_available)
+        if self.language in languages_available:
             nt = self.translations.get(language=self.language)
-            nt.reference(self)
-            nt.save()
+        else:
+            nt = NarrativeTranslation()
+        
+        nt.reference(self)
+        nt.save(new_version=new_version)
     
     def get_absolute_url(self):
         if self.sketch:

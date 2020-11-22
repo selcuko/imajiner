@@ -14,7 +14,8 @@
             </h1>
             <ul class="s-content__header-meta">
                 <li class="date">{{ narrative.published_at|date }}</li>
-                
+                <li class="date">V{{ narrative.versions.first.version }}</li>
+
                 {% if request.user == narrative.master.author %}
                 {% if narrative.language %}
                 {% get_language_info for narrative.language as language_info %}

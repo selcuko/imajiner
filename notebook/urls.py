@@ -5,10 +5,10 @@ from django.utils.translation import gettext_lazy as _
 
 app_name = 'notebook'
 urlpatterns = [
-    path('', NarrativeList.as_view(), name='list'),
+    path('', List.as_view(), name='list'),
 
-    path(_('write/'), NarrativeFolder.as_view(), name='folder'),
-    path(_('write/new/'), NarrativeWrite.as_view(), name='write'),
-    path(_('write/<uuid:uuid>/'), NarrativeWrite.as_view(), name='sketch'),
-    path('<slug:slug>/', NarrativeDetail.as_view(), name='detail'),
+    path(_('write/'), Folder.as_view(), name='folder'),
+    path(_('write/new/'), FreshWrite.as_view(), name='write'),
+    path(_('write/<uuid:uuid>/'), ContinueSketch.as_view(), name='sketch'),
+    path('<slug:slug>/', Detail.as_view(), name='detail'),
 ]
