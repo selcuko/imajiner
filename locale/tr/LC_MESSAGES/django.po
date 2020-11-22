@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 21:46+0300\n"
-"PO-Revision-Date: 2020-11-20 00:03+0200\n"
+"POT-Creation-Date: 2020-11-19 21:33+0300\n"
+"PO-Revision-Date: 2020-11-22 21:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -20,38 +20,35 @@ msgstr ""
 
 #: console/templates/console/access.html:15
 #: console/templates/console/base.html:102
-#: console/templates/console/profile.html:68 console/views.py:55
+#: console/templates/console/profile.html:68
 msgid "access & security"
 msgstr "erişim & güvenlik"
 
 #: console/templates/console/access.html:28
 msgid "radical processes this way."
-msgstr ""
+msgstr "radikal süreçler bu tarafta."
 
 #: console/templates/console/access.html:36
 msgid "the most basic information"
 msgstr "en temel bilgi"
 
 #: console/templates/console/access.html:37
-#: console/templates/console/narrative.html:74
 msgid "I will not save unless you hit the button."
-msgstr ""
+msgstr "Sen butona basmadan kaydetmeyeceğim gezgin."
 
 #: console/templates/console/access.html:45
 #: console/templates/console/profile.html:58
-#: gatewall/templates/gatewall/gatewall.html:37
-#: gatewall/templates/gatewall/gatewall.html:62
 msgid "username"
 msgstr "mahlas"
 
 #: console/templates/console/access.html:48
 msgid "you may change your username only once."
 msgstr ""
-"kimliğini değiştirmek için sadece bir şansın var, bunu iyi düşün gezgin!"
+"kimliğini değiştirmek için sadece bir şansın var, bunu iyi düşün gezgin."
 
 #: console/templates/console/access.html:51
 msgid "new password"
-msgstr "yeni parola"
+msgstr "yeni şifre"
 
 #: console/templates/console/access.html:53
 msgid "you may enter your new password"
@@ -59,29 +56,24 @@ msgstr "yeni şifreniz için yol açık, buyurun"
 
 #: console/templates/console/access.html:56
 msgid "confirm new password"
-msgstr "yeni parolayı onayla"
+msgstr "yeni şifreni onayla gezgin"
 
 #: console/templates/console/access.html:58
 msgid "you may confirm your new password"
 msgstr "parolanızı onaylayabilirsiniz"
 
 #: console/templates/console/access.html:61
-#: console/templates/console/narrative.html:88
 #: console/templates/console/profile.html:95
 msgid "save"
 msgstr "kaydet gezgin"
 
-#: console/templates/console/access.html:70
-#: console/templates/console/overview.html:14
-msgid "session management"
-msgstr "oturum yönetimi"
-
-#: console/templates/console/access.html:80
+#: console/templates/console/access.html:77
+#, fuzzy
 msgid "user agent"
-msgstr ""
+msgstr "ıdk"
 
-#: console/templates/console/access.html:81
-#: console/templates/console/access.html:94
+#: console/templates/console/access.html:78
+#: console/templates/console/access.html:89
 #, fuzzy
 msgid "terminate"
 msgstr "bitir"
@@ -91,21 +83,15 @@ msgid "shadow"
 msgstr "gölge"
 
 #: console/templates/console/base.html:67
-#: explore/templates/static/about.html:17
-#: explore/templates/static/about.html:152
+#, fuzzy
 msgid "author"
-msgstr "yazar"
+msgstr "gezhin mahlası"
 
 #: console/templates/console/base.html:70
-#: gatewall/templates/gatewall/gatewall.html:25
 msgid "log out"
 msgstr "çıkış yap"
 
-#: console/templates/console/base.html:80 console/views.py:125
-#: console/views.py:132 console/views.py:140 console/views.py:147
-#: console/views.py:155 console/views.py:162 console/views.py:171
-#: console/views.py:180 console/views.py:203 console/views.py:211
-#: templates/base.html:112
+#: console/templates/console/base.html:80 templates/base.html:102
 msgid "console"
 msgstr "konsol"
 
@@ -115,16 +101,15 @@ msgstr "mönü"
 
 #: console/templates/console/base.html:92
 msgid "espresso"
-msgstr ""
+msgstr "menengiç"
 
 #: console/templates/console/base.html:97
-#: console/templates/console/profile.html:15 console/views.py:33
+#: console/templates/console/profile.html:15
 msgid "profile"
 msgstr "profil"
 
-#: console/templates/console/base.html:106
-#: console/templates/console/narrative/readonly.html:16 notebook/views.py:89
-#: templates/base.html:108
+#: console/templates/console/base.html:106 notebook/views.py:82
+#: templates/base.html:100
 msgid "narratives"
 msgstr "hikayeler"
 
@@ -160,101 +145,50 @@ msgstr "Hakkında"
 msgid "Contact"
 msgstr "İletişim"
 
-#: console/templates/console/narrative.html:42
-msgid "editing page"
-msgstr ""
-
-#: console/templates/console/narrative.html:58
-#, fuzzy
-#| msgid "versions"
-msgid "view version history"
-msgstr "versiyonlar"
-
-#: console/templates/console/narrative.html:73
-#, fuzzy
-#| msgid "narratives"
-msgid "narrative content"
-msgstr "hikayeler"
-
-#: console/templates/console/narrative/readonly.html:12
-msgid "an old version of"
-msgstr ""
-
-#: console/templates/console/narrative/readonly.html:21
-#: console/templates/console/narratives.html:51
-#: console/templates/console/narratives.html:81
-#, fuzzy
-#| msgid "versions"
-msgid "version"
-msgstr "versiyonlar"
-
-#: console/templates/console/narrative/readonly.html:32
-msgid ""
-"You're viewing a version of this narrative. You are not permitted to edit "
-"the content to keep space-time continuum safe."
-msgstr ""
-
-#: console/templates/console/narrative/readonly.html:38
-msgid "this version is old and archived, meaning you cannot edit it nevermore."
-msgstr ""
-
-#: console/templates/console/narrative/readonly.html:47
-#, fuzzy
-#| msgid "narratives"
-msgid "archived version no"
-msgstr "hikayeler"
-
-#: console/templates/console/narrative/versions.html:10
-#, fuzzy
-#| msgid "versions"
-msgid "versions timeline"
-msgstr "versiyonlar"
-
-#: console/templates/console/narratives.html:26
-#, fuzzy
-#| msgid "narratives"
-msgid "all narratives"
-msgstr "hikayeler"
-
-#: console/templates/console/narratives.html:47
-#: console/templates/console/narratives.html:58
-#: console/templates/console/narratives.html:78
-#: notebook/templates/notebook/narrative/detail.html:25
-#: notebook/templates/notebook/narrative/folder.html:34
+#: console/templates/console/narratives.html:49
+#: console/templates/console/narratives.html:60
+#: console/templates/console/narratives.html:80
+#: notebook/templates/notebook/narrative/detail.html:18
 msgid "edit"
 msgstr "düzenle"
 
-#: console/templates/console/narratives.html:48
-#, fuzzy
-#| msgid "versions"
+#: console/templates/console/narratives.html:50
 msgid "version history"
-msgstr "versiyonlar"
+msgstr "versiyon tarihi"
 
-#: console/templates/console/narratives.html:49
-#: console/templates/console/narratives.html:79 notebook/forms.py:22
+#: console/templates/console/narratives.html:51
+#: console/templates/console/narratives.html:81
 msgid "title"
 msgstr "başlık"
 
-#: console/templates/console/narratives.html:50
-#: console/templates/console/narratives.html:80
+#: console/templates/console/narratives.html:52
+#: console/templates/console/narratives.html:82
 msgid "published at"
 msgstr "diğer gezginler de artık okuyabilir"
 
-#: console/templates/console/narratives.html:60
+#: console/templates/console/narratives.html:53
+#: console/templates/console/narratives.html:83
+#: notebook/templates/notebook/narrative/detail.html:17
+msgid "version"
+msgstr "versiyon"
+
+#: console/templates/console/narratives.html:62
 #, fuzzy
 #| msgid "versions"
 msgid "versions"
 msgstr "versiyonlar"
 
-#: console/templates/console/narratives.html:69
+#: console/templates/console/narratives.html:71
 msgid "you do not have any narratives"
 msgstr "hiçbir öykün yok"
 
 #: console/templates/console/overview.html:8
-#, fuzzy
-#| msgid "console"
 msgid "console espresso"
-msgstr "konsol"
+msgstr "konsol menengiçi"
+
+#: console/templates/console/overview.html:14
+msgid "session management"
+msgstr "oturum yönetimi"
 
 #: console/templates/console/overview.html:22
 msgid "view and manage the devices you are currently logged in."
@@ -273,18 +207,17 @@ msgstr "hikayeler"
 
 #: console/templates/console/overview.html:41
 msgid "view the narratives you left as a sketch and did not publish."
-msgstr "yayınlamadığın ve taslak halindeki öyküleri görüntüle"
+msgstr "yayınlamadığın ve taslak halindeki öyküleri görüntüle."
 
 #: console/templates/console/overview.html:53
 msgid "update password"
-msgstr "parola güncelle"
+msgstr "şifre güncelle"
 
 #: console/templates/console/overview.html:61
 msgid "you may update password indefinite times."
-msgstr "şifreyi sınırsız güncelleyebilirsiniz"
+msgstr "şifrenizi dilediğiniz kadar güncelleyebilirsiniz."
 
 #: console/templates/console/overview.html:63
-#: gatewall/templates/gatewall/gatewall.html:43
 msgid "proceed"
 msgstr "ilerle gezgin"
 
@@ -295,9 +228,8 @@ msgid "old narrative versions"
 msgstr "hikayeler"
 
 #: console/templates/console/overview.html:81
-#, fuzzy
 msgid "any piece of your work is kept."
-msgstr "çalışmanızın her bir bölümü saklanır"
+msgstr "çalışmanızın her bir parçası saklanır."
 
 #: console/templates/console/overview.html:83
 #, fuzzy
@@ -322,7 +254,7 @@ msgstr "hesap"
 #: console/templates/console/profile.html:50
 #: console/templates/console/profile.html:83
 msgid "I will not save anything unless you hit the button."
-msgstr ""
+msgstr "Sen butona basmadan kaydetmeyeceğim gezgin."
 
 #: console/templates/console/profile.html:55
 msgid ""
@@ -333,9 +265,8 @@ msgstr ""
 "için Erişim ve Güvenlik'i ziyaret etmelisiniz."
 
 #: console/templates/console/profile.html:63
-#: gatewall/templates/gatewall/gatewall.html:40
 msgid "password"
-msgstr "parola"
+msgstr "şifre"
 
 #: console/templates/console/profile.html:68
 msgid "go to"
@@ -375,7 +306,7 @@ msgstr "hikayeler/<uuid:narrative>/versiyonlar/<uuid:version>/"
 
 #: console/urls.py:15
 msgid "refereeship/"
-msgstr "atiflar/"
+msgstr "atıflar/"
 
 #: console/urls.py:16
 msgid "studio/"
@@ -389,234 +320,13 @@ msgstr "takip-ettiklerin/"
 msgid "preferences/"
 msgstr "tercihler/"
 
-#: console/views.py:23
-#, fuzzy
-#| msgid "console"
-msgid "console overview"
-msgstr "konsol"
-
-#: console/views.py:77
-#, fuzzy
-#| msgid "narratives"
-msgid "my narratives"
-msgstr "hikayeler"
-
-#: console/views.py:86
-#, fuzzy
-#| msgid "narratives"
-msgid "edit narrative"
-msgstr "hikayeler"
-
-#: console/views.py:107
-#, fuzzy
-#| msgid "narratives"
-msgid "narrative version timeline"
-msgstr "hikayeler"
-
-#: console/views.py:116
-#, fuzzy
-#| msgid "narratives"
-msgid "narrative version history"
-msgstr "hikayeler"
-
-#: explore/templates/static/about.html:8
+#: explore/templates/static/about.html:10
 msgid "about imajiner"
 msgstr "imajiner hakkında"
 
-#: explore/templates/static/about.html:10
-msgid "It's basically a place to talk about your intangible side."
-msgstr ""
-
-#: explore/templates/static/about.html:15
-#: explore/templates/static/about.html:67 templates/landing.html:130
-#, fuzzy
-msgid "missionary"
-msgstr "misyoner"
-
-#: explore/templates/static/about.html:16
-#: explore/templates/static/about.html:86
-#, fuzzy
-#| msgid "edit"
-msgid "credits"
-msgstr "düzenle"
-
-#: explore/templates/static/about.html:27
-msgid ""
-"We have dreams. Without being disturbed, you can talk about your dreams from "
-"last night, analyse them maybe."
-msgstr ""
-
-#: explore/templates/static/about.html:36
-msgid ""
-"What is your goal in life? Write about it. Writing will make you help "
-"conceive yourself as a third person."
-msgstr ""
-
-#: explore/templates/static/about.html:44
-msgid ""
-"You may have surrealistic fantasies, maybe filty ones. Why don't you write "
-"about them? We are pretty sure there is at least one mind that would find "
-"your fantasies interesting."
-msgstr ""
-
-#: explore/templates/static/about.html:53
-msgid ""
-"Imajiner itself is an utopia. You shall have utopias too. Let's keep track "
-"of what's happening in your utopia by writing."
-msgstr ""
-
-#: explore/templates/static/about.html:69
-msgid "Imajiner's Mission and Beyond"
-msgstr ""
-
-#: explore/templates/static/about.html:74
-msgid ""
-"Our starting point is to offer a free place where you spend time without "
-"being judged constantly. A place where you tinker with only what you want, "
-"just like a utopia."
-msgstr ""
-
-#: explore/templates/static/about.html:90
-msgid ""
-"While building this platform, we took advantage of already existing "
-"beautiful stuff, and here we are giving their credits."
-msgstr ""
-
-#: explore/templates/static/about.html:95
-msgid "Without them, Imajiner wouldn't look like this."
-msgstr ""
-
-#: explore/templates/static/about.html:103
-msgid ""
-"This website is built using Django, along with Python packages extending "
-"Django."
-msgstr ""
-
-#: explore/templates/static/about.html:114
-msgid "Most of the frontend code is taken from them."
-msgstr ""
-
-#: explore/templates/static/about.html:126
-msgid ""
-"Hereby we thank these packages' authors, as they are indirect contributors "
-"of Imajiner."
-msgstr ""
-
-#: explore/templates/static/about.html:154
-msgid "the man behind"
-msgstr ""
-
-#: explore/templates/static/about.html:155
-msgid "and his loyal servant"
-msgstr ""
-
-#: explore/templates/static/about.html:158
-msgid ""
-"I am a human being who have quite silent firestorms inside, occasionally."
-msgstr ""
-
-#: explore/templates/static/about.html:161
-msgid ""
-"I built here as some kind of digital public diary, at first. Some may find "
-"my experiences, thoughts, goals and desires thought-provokin, amusing, deep, "
-"or even amusing, I thought. Out there, someone might be my mind-mate, who "
-"knows? Let's hunt them."
-msgstr ""
-
 #: explore/urls.py:9
 msgid "about/"
-msgstr ""
-
-#: explore/urls.py:11 templates/base.html:114
-msgid "about"
-msgstr "hakkında"
-
-#: gatewall/templates/gatewall/gatewall.html:15
-msgid "authentication"
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:16
-msgid ""
-"There are two authentication options to choose from.<br>You can find more "
-"information below the forms."
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:22
-#, python-format
-msgid "You are already logged in as %(username)s."
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:34
-msgid "author authorization"
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:45
-msgid ""
-"Logging in and registring a new user is done here. Check out the status "
-"message as you type your username."
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:49
-msgid ""
-"This type of registration is the conventional one. Your registration is "
-"persistent and safe; just as you used to."
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:56
-msgid "shadow authorization"
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:59
-msgid ""
-"This type is temporary and designed for hit-and-runners. Know more below."
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:65
-msgid "register"
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:67
-msgid ""
-"After you type your username, the servers check your device's digital "
-"fingerprint and see whether we recognize you. Check the status message."
-msgstr ""
-
-#: gatewall/templates/gatewall/gatewall.html:71
-msgid ""
-"When you register as shadow, you only choose a username to start writing. "
-"Although you have the full functionality, it does not last long. Due to its "
-"nature, these type of sessions are pretty fragile and mostly considered one-"
-"time-only, meaning you probably won't have access to the same shadow session "
-"after couple of hours."
-msgstr ""
-
-#: gatewall/urls.py:7
-#, fuzzy
-#| msgid "author"
-msgid "authorization/"
-msgstr "yazar"
-
-#: gatewall/urls.py:8
-msgid "farewell/"
-msgstr ""
-
-#: gatewall/views.py:17
-msgid "Authorization"
-msgstr ""
-
-#: gatewall/views.py:18
-#, fuzzy
-#| msgid "Imajiner God View"
-msgid "Imajiner Gatewall"
-msgstr "Imajiner Tanrı Görüşü"
-
-#: gatewall/views.py:19
-msgid "You need to be authenticated in order to write here."
-msgstr ""
-
-#: identity/urls.py:7
-msgid "author/<str:username>/"
-msgstr ""
+msgstr "hakkında/"
 
 #: imajiner/urls.py:17 imajiner/urls.py:18
 msgid "Imajiner God View"
@@ -634,39 +344,31 @@ msgstr "sahip/"
 msgid "console/"
 msgstr "konsol/"
 
-#: notebook/forms.py:23
-msgid "body"
-msgstr ""
-
-#: notebook/templates/notebook/narrative/detail.html:23
-msgid "unclassified"
-msgstr ""
-
-#: notebook/templates/notebook/narrative/detail.html:37
+#: notebook/templates/notebook/narrative/detail.html:40
 #, fuzzy
 msgid "pinch of"
 msgstr "bir tutam"
 
-#: notebook/templates/notebook/narrative/folder.html:16
+#: notebook/templates/notebook/narrative/folder.html:17
 msgid "sketches"
 msgstr "taslaklar"
 
-#: notebook/templates/notebook/narrative/folder.html:17
+#: notebook/templates/notebook/narrative/folder.html:18
 #, fuzzy
 msgid "begin writing a new story or mess with the unfinished works"
 msgstr ""
 "karışıklıklarla veya bitmemiş çalışmalarla yeni bir öykü yazmya başlayın"
 
-#: notebook/templates/notebook/narrative/folder.html:24
+#: notebook/templates/notebook/narrative/folder.html:25
 msgid "right now"
 msgstr "şimdi"
 
-#: notebook/templates/notebook/narrative/folder.html:25
+#: notebook/templates/notebook/narrative/folder.html:26
 #, fuzzy
 msgid "new story, new dreams, new possibilities"
 msgstr "yeni bir öykü, yeni bir hülya ve yeni olasılıklar"
 
-#: notebook/templates/notebook/narrative/folder.html:26
+#: notebook/templates/notebook/narrative/folder.html:27
 #, fuzzy
 msgid "go ahead"
 msgstr "ileri"
@@ -676,10 +378,6 @@ msgstr "ileri"
 #| msgid "narratives"
 msgid "latest narratives"
 msgstr "hikayeler"
-
-#: notebook/templates/notebook/narrative/list.html:33
-msgid "this narrative is not visible to public"
-msgstr ""
 
 #: notebook/templates/notebook/narrative/write.html:26
 #, fuzzy
@@ -702,17 +400,17 @@ msgstr "beyan et"
 
 #: notebook/urls.py:10
 msgid "write/"
-msgstr ""
+msgstr "write/"
 
 #: notebook/urls.py:11
 msgid "write/new/"
-msgstr ""
+msgstr "write/new/"
 
 #: notebook/urls.py:12
 msgid "write/<uuid:uuid>/"
-msgstr ""
+msgstr "write/<uuid:uuid>/"
 
-#: notebook/views.py:129
+#: notebook/views.py:114
 #, fuzzy
 msgid "refreshing the ink"
 msgstr "mürekkebini tazele"
@@ -721,55 +419,54 @@ msgstr "mürekkebini tazele"
 msgid "Fly as high as you can"
 msgstr "Uç uçabildiğin kadar uç"
 
-#: templates/base.html:94 templates/landing.html:38
+#: templates/base.html:87 templates/landing.html:38
 msgid "Close"
 msgstr "Kapat"
 
-#: templates/base.html:100
+#: templates/base.html:92
 msgid "Menu"
 msgstr "Mönü"
 
-#: templates/base.html:107
+#: templates/base.html:99
 msgid "homepage"
 msgstr "anasayfa"
 
-#: templates/base.html:110
+#: templates/base.html:101
 msgid "write"
 msgstr "yazmaya ne dersin gezgin"
 
-#: templates/base.html:117 templates/base.html:118
+#: templates/base.html:103
+msgid "about"
+msgstr "hakkında"
+
+#: templates/base.html:106
 msgid "close"
 msgstr "kapat"
 
-#: templates/base.html:142 templates/landing.html:92 templates/landing.html:250
+#: templates/base.html:130 templates/landing.html:92 templates/landing.html:250
 msgid "feedback"
-msgstr ""
+msgstr "geri bildirim"
 
-#: templates/base.html:144
+#: templates/base.html:132
 msgid ""
 "You can quickly report your impressions of Imajiner. No personal information "
 "is included in the feedback messages. <br>This helps us gain a more thorough "
 "insight of your experience in Imajiner."
 msgstr ""
+"Bir yazı yazmak için mailinizin olmasına gerek yok! Sadece bir kullanıcı adı "
+"ve şifre belirleyerek gezginlerin arasında yer alabilirsiniz. Hatta ben bir "
+"kez yazıp çıkacağım derseniz de hayalet kayıt olup yazabililirsiniz. Bu "
+"sayede, gökyünüz size sadece bir kullanıcı adı kadar uzak."
 
-#: templates/base.html:165
-msgid "You are not authorized and will be sending this feedback anonymously."
-msgstr ""
-
-#: templates/base.html:167
-#, python-format
-msgid "You are authorized and will be sending this feedback as %(username)s."
-msgstr ""
-
-#: templates/base.html:184
+#: templates/base.html:163
 msgid "all rights reserved"
 msgstr "tüm hakları saklıdır"
 
-#: templates/base.html:185 templates/landing.html:297
+#: templates/base.html:164 templates/landing.html:297
 msgid "This website contains materials from third parties."
 msgstr "Bu websindeki bazı materyaller üçüncü partilerden alınmıştır."
 
-#: templates/base.html:186 templates/landing.html:183
+#: templates/base.html:164 templates/landing.html:183
 #: templates/landing.html:202 templates/landing.html:219
 #: templates/landing.html:235 templates/landing.html:297
 msgid "Know more"
@@ -789,7 +486,7 @@ msgstr "Misyoner"
 
 #: templates/landing.html:47
 msgid "Machinery"
-msgstr ""
+msgstr "Mekanizma"
 
 #: templates/landing.html:48
 msgid "Console"
@@ -805,6 +502,8 @@ msgid ""
 "Imajiner is an open-sourced, free platform. <a href=\"%(link)s#source-code"
 "\">Know more</a>"
 msgstr ""
+"İmajiner açık kaynaklı, ücretsiz bir platformdur. <a href=\"%(link)s#source-"
+"code\">Know more</a> "
 
 #: templates/landing.html:80
 msgid ""
@@ -819,25 +518,25 @@ msgstr ""
 
 #: templates/landing.html:91
 msgid "what"
-msgstr ""
+msgstr "ne"
 
 #: templates/landing.html:91
+#, fuzzy
 msgid "whatcha got there"
-msgstr ""
+msgstr "orada ne var"
 
 #: templates/landing.html:92
 msgid "your fairy wishes"
 msgstr "masalsı dilekleriniz"
 
 #: templates/landing.html:93
-#, fuzzy
-#| msgid "shadow"
 msgid "how"
-msgstr "gölge"
+msgstr "nasıl"
 
 #: templates/landing.html:93
+#, fuzzy
 msgid "how tf does these work"
-msgstr ""
+msgstr "ıdk"
 
 #: templates/landing.html:97
 msgid "available in"
@@ -846,6 +545,11 @@ msgstr "uygun"
 #: templates/landing.html:117
 msgid "Go down!"
 msgstr "Aşağı in!"
+
+#: templates/landing.html:130
+#, fuzzy
+msgid "missionary"
+msgstr "misyoner"
 
 #: templates/landing.html:131
 msgid ""
@@ -872,7 +576,7 @@ msgstr "mekanizma"
 msgid "I surely did get rid of any bothersome."
 msgstr ""
 "Kesintisiz odaklanma, kesintisiz uçuş:Bir çok dikkat dağıtıcıdan "
-"arındırılmış bir gökyüzü"
+"arındırılmış bir gökyüzü."
 
 #: templates/landing.html:163
 msgid ""
@@ -880,7 +584,7 @@ msgid ""
 "experience."
 msgstr ""
 "Benzersiz bir gökyüzü deneyimi; eşsiz mekanizmalar özgür kuşlara sadece "
-"sezgileriyle yönlerini rahatça bulabilecekleri bir gök vaat ediyor, "
+"sezgileriyle yönlerini rahatça bulabilecekleri bir gök vaat ediyor."
 
 #: templates/landing.html:176
 msgid "the solemn promise"
@@ -908,6 +612,11 @@ msgid ""
 "more, you don't even need a username to start writing, it's auto-generated! "
 "(You can change your username later too!)"
 msgstr ""
+"Gölge isimli eşsiz yazarlık mekanizmamız ile, kayıtlı olup olmamanıza "
+"bakmıyor ve web sitesinin işlevselliğini asla sınırlamıyoruz. Daha fazla ne "
+"olabilir ki! Diye mi düşündünüz? Kullanıcı adı bulmanıza bile gerek yok, "
+"İmajiner sizin için otomatk oluşturur. (İsterseniz mahlasınızı daha sonra "
+"değiştirebilirsiniz!)"
 
 #: templates/landing.html:212
 #, fuzzy
@@ -921,6 +630,9 @@ msgid ""
 "seconds; don't worry about lost data. We quite know how frustrating it is to "
 "spend a lot of time on a story and lost it."
 msgstr ""
+"Fikirlerinizi yeni uçurmaya başlamışken aniden bir internet veya elektrik "
+"kesintisi yaşarsanız korkmayın. Bağlantınıza yeniden kavuştuğunuzda "
+"yazınızın taslaklarda kayıtlı olduğunu göreceksiniz."
 
 #: templates/landing.html:229
 #, fuzzy
@@ -932,6 +644,9 @@ msgid ""
 "We are, just as you, everyday users. We do know the hassles we face, and "
 "exclude them from here. A place designed solely for you and only you."
 msgstr ""
+"Biz de sizin gibi gezginleriz. Karşılaşılan zorlukları biliyoruz ve buradan "
+"uzakta tutuyoruz. Yalnızca sizin için olan ve  istediğiniz gibi tasarlanmış "
+"bir gökyüzü.,bu gökte her kuş istediği gibi özgürce uçabilir."
 
 #: templates/landing.html:251
 msgid "I have a dream where the freedom of expression is truly present."
@@ -948,1197 +663,6 @@ msgstr "Tüm hakları saklıdır."
 #: templates/landing.html:302
 msgid "go to top"
 msgstr "üste dön"
-
-#: venv/lib/python3.6/site-packages/django/contrib/messages/apps.py:7
-msgid "Messages"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/contrib/sitemaps/apps.py:7
-msgid "Site Maps"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/contrib/staticfiles/apps.py:9
-msgid "Static Files"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/contrib/syndication/apps.py:7
-msgid "Syndication"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/paginator.py:48
-msgid "That page number is not an integer"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/paginator.py:50
-msgid "That page number is less than 1"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/paginator.py:55
-msgid "That page contains no results"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:20
-msgid "Enter a valid value."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:91
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:671
-msgid "Enter a valid URL."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:145
-msgid "Enter a valid integer."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:156
-msgid "Enter a valid email address."
-msgstr ""
-
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: venv/lib/python3.6/site-packages/django/core/validators.py:230
-msgid ""
-"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:237
-msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:246
-#: venv/lib/python3.6/site-packages/django/core/validators.py:266
-msgid "Enter a valid IPv4 address."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:251
-#: venv/lib/python3.6/site-packages/django/core/validators.py:267
-msgid "Enter a valid IPv6 address."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:261
-#: venv/lib/python3.6/site-packages/django/core/validators.py:265
-msgid "Enter a valid IPv4 or IPv6 address."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:295
-msgid "Enter only digits separated by commas."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:301
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:334
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:343
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:353
-#, python-format
-msgid ""
-"Ensure this value has at least %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:368
-#, python-format
-msgid ""
-"Ensure this value has at most %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:387
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:292
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:327
-msgid "Enter a number."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:389
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:394
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:399
-#, python-format
-msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:461
-#, python-format
-msgid ""
-"File extension “%(extension)s” is not allowed. Allowed extensions are: "
-"%(allowed_extensions)s."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/core/validators.py:513
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/base.py:1190
-#: venv/lib/python3.6/site-packages/django/forms/models.py:760
-msgid "and"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/base.py:1192
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:100
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:101
-msgid "This field cannot be null."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:102
-msgid "This field cannot be blank."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:103
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
-#. Eg: "Title must be unique for pub_date year"
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:107
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:126
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:939
-#, python-format
-msgid "“%(value)s” value must be either True or False."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:940
-#, python-format
-msgid "“%(value)s” value must be either True, False, or None."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:942
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:983
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1047
-msgid "Comma-separated integers"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1096
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1098
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1241
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1101
-msgid "Date (without time)"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1239
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1243
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1247
-msgid "Date (with time)"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1395
-#, python-format
-msgid "“%(value)s” value must be a decimal number."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1397
-msgid "Decimal number"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1536
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1539
-#, fuzzy
-#| msgid "author"
-msgid "Duration"
-msgstr "yazar"
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1589
-msgid "Email address"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1612
-msgid "File path"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1678
-#, python-format
-msgid "“%(value)s” value must be a float."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1680
-msgid "Floating point number"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1718
-#, python-format
-msgid "“%(value)s” value must be an integer."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1720
-msgid "Integer"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1803
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1819
-msgid "IPv4 address"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1850
-msgid "IP address"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1930
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1931
-#, python-format
-msgid "“%(value)s” value must be either None, True or False."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1933
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1976
-msgid "Positive big integer"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1989
-msgid "Positive integer"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2002
-msgid "Positive small integer"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2016
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2048
-msgid "Small integer"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2055
-msgid "Text"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2083
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2085
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2088
-msgid "Time"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2214
-msgid "URL"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2236
-msgid "Raw binary data"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2301
-#, python-format
-msgid "“%(value)s” is not a valid UUID."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2303
-msgid "Universally unique identifier"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/files.py:231
-msgid "File"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/files.py:379
-msgid "Image"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/json.py:18
-msgid "A JSON object"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/json.py:20
-msgid "Value must be valid JSON."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:790
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r does not exist."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:792
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1045
-msgid "One-to-one relationship"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1099
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1100
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1142
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
-#: venv/lib/python3.6/site-packages/django/forms/boundfield.py:150
-msgid ":?.!"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:54
-msgid "This field is required."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:247
-msgid "Enter a whole number."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:398
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:1139
-msgid "Enter a valid date."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:422
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:1140
-msgid "Enter a valid time."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:450
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:484
-msgid "Enter a valid duration."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:485
-#, python-brace-format
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:545
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:546
-msgid "No file was submitted."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:547
-msgid "The submitted file is empty."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:549
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:552
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:613
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:775
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:865
-#: venv/lib/python3.6/site-packages/django/forms/models.py:1296
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:866
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:981
-#: venv/lib/python3.6/site-packages/django/forms/models.py:1295
-msgid "Enter a list of values."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:982
-msgid "Enter a complete value."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:1198
-msgid "Enter a valid UUID."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/fields.py:1228
-msgid "Enter a valid JSON."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: venv/lib/python3.6/site-packages/django/forms/forms.py:78
-msgid ":"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/forms.py:205
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/formsets.py:93
-msgid "ManagementForm data is missing or has been tampered with"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/formsets.py:345
-#, python-format
-msgid "Please submit %d or fewer forms."
-msgid_plural "Please submit %d or fewer forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/forms/formsets.py:352
-#, python-format
-msgid "Please submit %d or more forms."
-msgid_plural "Please submit %d or more forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/forms/formsets.py:379
-#: venv/lib/python3.6/site-packages/django/forms/formsets.py:386
-msgid "Order"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/formsets.py:391
-msgid "Delete"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/models.py:755
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/models.py:759
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/models.py:765
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/models.py:774
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/models.py:1096
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/models.py:1180
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/models.py:1298
-#, python-format
-msgid "“%(pk)s” is not a valid value."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/utils.py:167
-#, python-format
-msgid ""
-"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/widgets.py:398
-msgid "Clear"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/widgets.py:399
-msgid "Currently"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/widgets.py:400
-msgid "Change"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/widgets.py:709
-msgid "Unknown"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/widgets.py:710
-msgid "Yes"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/forms/widgets.py:711
-msgid "No"
-msgstr ""
-
-#. Translators: Please do not add spaces around commas.
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:790
-msgid "yes,no,maybe"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:819
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:836
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:838
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:840
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:842
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:844
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:846
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:65
-msgid "p.m."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:66
-msgid "a.m."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:71
-msgid "PM"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:72
-msgid "AM"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:149
-msgid "midnight"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:151
-msgid "noon"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
-msgid "Monday"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
-msgid "Tuesday"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
-msgid "Wednesday"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
-msgid "Thursday"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
-msgid "Friday"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:7
-msgid "Saturday"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:7
-msgid "Sunday"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
-msgid "Mon"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
-msgid "Tue"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
-msgid "Wed"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
-msgid "Thu"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
-msgid "Fri"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:11
-msgid "Sat"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:11
-msgid "Sun"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
-msgid "January"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
-msgid "February"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
-msgid "August"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
-msgid "September"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
-msgid "October"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
-msgid "November"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:16
-msgid "December"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
-msgid "jan"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
-msgid "feb"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
-msgid "mar"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
-msgid "apr"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
-msgid "may"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
-msgid "jun"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
-msgid "jul"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
-msgid "aug"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
-msgid "sep"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
-#, fuzzy
-#| msgid "Contact"
-msgid "oct"
-msgstr "İletişim"
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
-msgid "nov"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
-#, fuzzy
-#| msgid "declare"
-msgid "dec"
-msgstr "beyan et"
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:23
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:24
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:25
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:26
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:27
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:28
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:29
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:30
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:31
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:32
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:33
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:34
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:37
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:38
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:39
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:40
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:41
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:42
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:43
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:44
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:45
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:46
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:47
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/dates.py:48
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/ipv6.py:8
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/text.py:70
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s…"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/text.py:236
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: venv/lib/python3.6/site-packages/django/utils/text.py:255
-#: venv/lib/python3.6/site-packages/django/utils/timesince.py:83
-msgid ", "
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/utils/timesince.py:9
-#, python-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/utils/timesince.py:10
-#, python-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/utils/timesince.py:11
-#, python-format
-msgid "%d week"
-msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/utils/timesince.py:12
-#, python-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/utils/timesince.py:13
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/utils/timesince.py:14
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:110
-msgid "Forbidden"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:111
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:115
-msgid ""
-"You are seeing this message because this HTTPS site requires a “Referer "
-"header” to be sent by your Web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:120
-msgid ""
-"If you have configured your browser to disable “Referer” headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for “same-"
-"origin” requests."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:124
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" …> for links to third-party sites."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:132
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:137
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for “same-origin” requests."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/csrf.py:142
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:41
-msgid "No year specified"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:61
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:111
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:208
-msgid "Date out of range"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:90
-msgid "No month specified"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:142
-msgid "No day specified"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:188
-msgid "No week specified"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:338
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:367
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:589
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:623
-#, python-format
-msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/detail.py:54
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/list.py:67
-msgid "Page is not “last”, nor can it be converted to an int."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/list.py:72
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/generic/list.py:154
-#, python-format
-msgid "Empty list and “%(class_name)s.allow_empty” is False."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/static.py:40
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/static.py:42
-#, python-format
-msgid "“%(path)s” does not exist"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/static.py:80
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:7
-msgid "Django: the Web framework for perfectionists with deadlines."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:346
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:368
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:369
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:384
-msgid "Django Documentation"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:385
-msgid "Topics, references, &amp; how-to’s"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:396
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:397
-msgid "Get started with Django"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:408
-msgid "Django Community"
-msgstr ""
-
-#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:409
-msgid "Connect, get help, or contribute"
-msgstr ""
 
 #, fuzzy
 #~| msgid "series"
