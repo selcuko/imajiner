@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .context import *
 from notebook.models import Narrative as NarrativeModel
 from notebook.models import NarrativeVersion as NarrativeVersionModel
+from notebook.models import NarrativeTranslation as NarrativeTranslationModel
 from identity.forms import ProfileForm
 from notebook.forms import NarrativeForm
 import logging
@@ -78,6 +79,7 @@ class Narratives(LoginRequiredMixin, View):
     template = 'console/narratives.html'
     def get(self, request):
         return render(request, self.template, {'doc': self.document})
+        
 class Narrative(LoginRequiredMixin, View):
     template = 'console/narrative.html'
     document = {

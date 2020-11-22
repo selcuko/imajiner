@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, Http404
+from django.http import JsonResponse
 from django.views.generic import DetailView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core import serializers
 from django.views import View
 from .models import Narrative, NarrativeTranslation, SoundRecord
 from .forms import NarrativeForm, SoundUploadForm
@@ -9,7 +11,11 @@ import json
 from uuid import UUID
 from django.core.exceptions import SuspiciousOperation
 from django.utils.translation import gettext as _, get_language_from_request
+from django.conf import settings
+import time
+import logging
 
+logger = logging.getLogger(__name__)
 
 
 class NarrativeRedirect(View):
@@ -104,13 +110,13 @@ class NarrativeWrite(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/write.html'
 
     def get(self, request, uuid=None):
-        new = not bool(uuid)
-        if new:
+        new = uuid is None
+        if new:  # Starting a new narrative 
             sketch = Narrative(sketch=True, author=request.user)
             sketch.save()
             print('Created with UUID', sketch.uuid)
             form = NarrativeForm(instance=sketch)
-        else:
+        else:  # Continuing to edit an existing sketch
             try:
                 sketch = Narrative.objects.get(uuid=uuid, author=request.user)
                 form = NarrativeForm(instance=sketch)
@@ -125,38 +131,46 @@ class NarrativeWrite(LoginRequiredMixin, View):
             })
 
     def post(self, request, uuid=None):
-        new = not bool(uuid)
+        new = uuid is None
+        time.sleep(2)
 
-        if new:
+        if new:  # New narrative
             uuid = request.POST['uuid']
-            print('UUID', uuid)
-            sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
+            sketch = Narrative.objects.get(uuid=uuid, author=request.user)
             form = NarrativeForm(request.POST, request.FILES, instance=sketch)
-        else:
+        else:  # Existing sketch
             try:
-                sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
+                sketch = Narrative.objects.get(uuid=uuid, author=request.user)
                 form = NarrativeForm(request.POST, request.FILES, instance=sketch)
-                print('Returning sketch:', sketch.title)
             except:
-                return HttpResponse(status=404)
+                return JsonResponse({}, status=404)
         
-        action = request.POST.get('action', 'submit').lower()
+        action = request.POST.get('action', '').lower()
         
         if not form.is_valid():
-            return render(self.request, self.template_name, context={'form':form})
+            print('FORM NOT VALID')
+            logger.warn('FORM NOT VALID')
+            return JsonResponse({}, status=400)
         
-        if action == 'submit':
+        print('RETURN JSON')
+        if action == 'autosave':
+            form.save()
+            return JsonResponse({'description': 'OK'})
+        
+        elif action == 'submit':
             narrative = form.save(commit=False)
             narrative.sketch = False
             narrative.save()
-            return redirect(narrative.translations.last())
-        
-        elif action == 'autosave':
-            form.save()
-            return HttpResponse()
-        
-        else:
-            raise Exception('Action ID unknown')
+            response = {
+                'language': settings.LANGUAGES_DICT.get(narrative.language, narrative.language),
+                'publicUrl': narrative.translations.last().get_absolute_url(),
+            }
+            return JsonResponse(response)
+            
+
+        else:  # action id not recognized or absent
+            raise Exception('UNKNOWN ACTION ID')
+            return JsonResponse({}, status=400)
         
         
 

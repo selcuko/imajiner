@@ -3,76 +3,110 @@ const $textarea = document.getElementById('id_body');
 const $status = document.getElementById('status');
 const $title = document.getElementById('id_title');
 const $submit = document.getElementById('submit-button');
-let currentTitle = null;
-
 const intervalMs = 5000;
-const intervalId = setInterval(autosaveSketch, intervalMs);
+const intervalId = setInterval(autosave, intervalMs);
 
-let last = {
+const actionCodes = {
+    SUBMIT: 'SUBMIT',
+    AUTOSAVE: 'AUTOSAVE',
+    REVERT: 'REVERT',
+    PROCEED: 'PROCEED',
+}
+
+const last = {
     value: $textarea.value,
-    title: null,
+    title: document.title,
     fetch: null,
 };
 
-const capitalize = (s) => {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
+let currentTitle = last.title;
+let countFetched = 0;
+let publicUrl = null;
+let fetchOnProgress = false;
+let toBeSubmitted = false;
 
 $form.onsubmit = function (e) {
     e.preventDefault();
-    post('SUBMIT');
+    if (fetchOnProgress) toBeSubmitted = true;
+    else post('SUBMIT');
 }
 
-$status.innerText = gettext("I'm waiting for you.")
-function autosaveSketch() {
-    currentTitle = $title.value ? $title.value : capitalize(gettext('entitled narrative'));
-    titleChanged = currentTitle !== last.title;
-    if ($textarea.value !== last.value || titleChanged) {
-        if (titleChanged) document.title = currentTitle + ' • Imajiner'
-        post('AUTOSAVE');
+$status.innerText = statusMessage.waiting;
+
+
+const req = {
+    began: () => {
+        fetchOnProgress = true;
+        $submit.disabled = true;
+    },
+    ended: () => {
+        fetchOnProgress = false;
+        $submit.disabled = false;
     }
 }
 
-let c = 0;
+function autosave() {
+    currentTitle = $title.value ? $title.value : titleDefault;
+    titleChanged = currentTitle !== last.title;
+    if ($textarea.value !== last.value || titleChanged) {
+        if (titleChanged) document.title = currentTitle + titleSuffix;
+        post('AUTOSAVE');
+    }
+    last.value = $textarea.value;
+    last.title = currentTitle;
+}
+
+
 
 async function post(action = 'SUBMIT') {
+    if (fetchOnProgress) return;
+    req.began();
+    $status.innerText = statusMessage.syncing;
+
     if (action === 'SUBMIT' && last.fetch === null) {
         await post('AUTOSAVE');
     }
-    $status.innerText = capitalize(gettext('syncing')) + '...';
 
+    // generate request body
     const fd = new FormData($form);
     fd.append('action', action);
-    fd.append('count', c++);
-    fd.set('title', currentTitle);
+    fd.append('count', countFetched++);
+    //fd.set('title', currentTitle);
 
-    return await fetch('', {
+    await fetch('', {
         method: 'POST',
         body: fd,
         credentials: 'same-origin',
     })
     .then(response => {
-        if (!(response.status === 200 || response.status === 302)) {
-            $status.innerText = gettext('I have encountered an error. It is my fault and anything you wrote probably did not synced nor saved.');
-        } else {
-            last.value = $textarea.value;
-            last.fetch = c;
-            if (action === 'SUBMIT') {
-                clearInterval(intervalId);
-                $status.innerText = gettext('Declared. You will be redirected soon.');
-                setTimeout(() => { window.location.replace(response.url); }, 500);
-            } else {
-                $status.innerText = capitalize(gettext('changes saved.'));
-            }
-        }
-        response.json();
+        if (!response.ok) $status.innerText = statusMessage.responseNotOk;
+        if (action == actionCodes.SUBMIT){
+            $status.innerText = statusMessage.processing;
+            return response.json();
+        } 
+        return 0;        
     })
     .then(json => {
-        console.log(json);
+        console.log(json)
+        if (action == actionCodes.SUBMIT){
+            // user submitted the narrative and server processed it. here are the results.
+            language = json.language;
+            if (!language) {
+                $status.innerText = statusMessage.languageNotOk;
+                $submit.innerText = statusMessage.proceed;
+            }
+            else {
+                $status.innerText = interpolate(gettext('Declared. You will be redirected soon.'), true);
+                setTimeout(()=>{ location.href = json.publicUrl }, 1000);
+            }
+            publicUrl = json.publicUrl;
+        } 
+        else if (action == actionCodes.AUTOSAVE) {
+            // autosaved
+            $status.innerText = statusMessage.autosaveOk;
+        }
     })
-    .catch(error => {
-        console.log(error);
-        $status.innerText = gettext('I have encountered an error. It is probably your internet connection and anything you wrote probably did not synced nor saved.')
-    })
+    req.ended();
+    if (toBeSubmitted) post('SUBMIT');
 }
+
