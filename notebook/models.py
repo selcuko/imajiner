@@ -54,9 +54,10 @@ class Base(models.Model):
     sketch = models.BooleanField(default=True)
 
     def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
-        self.html = generate.html(self.body)
-        if update_lead: self.lead = generate.lead(self.body)
-        if alter_slug: self.slug = generate.slug(self.title, uuid=self.uuid)
+        if not self.sketch:
+            self.html = generate.html(self.body)
+            if update_lead: self.lead = generate.lead(self.body)
+            if alter_slug: self.slug = generate.slug(self.title, uuid=self.uuid)
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
         
@@ -89,12 +90,6 @@ class Narrative(Base):
         if not self.author: return f'"{self.title}" (unowned)'
         return f'"{self.title}" by {self.author.username}'
 
-    def get_absolute_url(self):
-        if self.sketch:
-            return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
-        else:
-            return reverse('narrative:detail', kwargs={'slug': self.slug})
-
 
     def save(self, *args, new_translation=False, **kwargs):
         super().save(*args, **kwargs)
@@ -112,11 +107,18 @@ class NarrativeTranslation(Base):
     tags = models.OneToOneField(TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
 
 
+    def get_absolute_url(self):
+        if self.sketch:
+            return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
+        else:
+            return reverse('narrative:detail', kwargs={'slug': self.slug})
+    
     def reference(self, ref):
         self.title = ref.title
         self.body = ref.body
         self.language = ref.language
         self.master = ref
+        self.sketch = ref.sketch
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

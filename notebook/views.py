@@ -2,23 +2,31 @@ from django.shortcuts import render, HttpResponse, redirect, reverse, Http404
 from django.views.generic import DetailView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
-from .models import Narrative, SoundRecord
+from .models import Narrative, NarrativeTranslation, SoundRecord
 from .forms import NarrativeForm, SoundUploadForm
 from tagmanager.models import *
 import json
 from uuid import UUID
 from django.core.exceptions import SuspiciousOperation
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext as _, get_language_from_request
+
+
+
+class NarrativeRedirect(View):
+    def get(self, request, uuid, *args, **kwargs):
+        narrative = Narrative.objects.get(uuid=uuid)
+        translation = narrative.translations.last()
+        return redirect(translation)
 
 
 class NarrativeDetail(DetailView):
-    model = Narrative
+    model = NarrativeTranslation
     context_object_name = 'narrative'
     template_name = 'notebook/narrative/detail.html'
 
     def get_object(self):
         self.slug = self.kwargs['slug']
-        self.narrative = Narrative.objects.get(slug=self.slug)
+        self.narrative = NarrativeTranslation.objects.get(slug=self.slug)
         return self.narrative
     
     def get_context_data(self, *args, **kwargs):
@@ -26,7 +34,7 @@ class NarrativeDetail(DetailView):
         ctx.update({
             'doc': {
                 'title': self.narrative.title,
-                'author': self.narrative.author.username,
+                'author': self.narrative.master.author.username,
             }
         })
         return ctx
@@ -58,22 +66,12 @@ class NarrativeDetail(DetailView):
             raise e
     
 
-    def tag_delta(self, slug, amount=1):
-        user = self.request.user
-        if not user.is_authenticated:
-            return False
-        user.tags.delta(
-            slug=slug,
-            diff=amount,
-            narrative=self.kwargs['slug']
-        )
-
 class NarrativeList(ListView):
-    model = Narrative
+    model = NarrativeTranslation
     context_object_name = 'narratives'
     template_name = 'notebook/narrative/list.html'
     paginate_by = 12
-    ordering = ('created_at',)
+    ordering = ('published_at',)
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
@@ -86,7 +84,14 @@ class NarrativeList(ListView):
         return ctx
 
     def get_queryset(self):
-        return Narrative.objects.filter(sketch=False, author__isnull=False).order_by('-created_at')
+        languages = [get_language_from_request(self.request, check_path=True)]
+        if self.request.user.is_authenticated and self.request.user.profile.languages:
+            languages += self.request.user.profile.languages.split(':')
+        print('Searching for ', languages)
+        return NarrativeTranslation.objects.filter(
+            sketch=False, 
+            master__author__isnull=False,
+            language__in=languages)
 
 
 
@@ -98,6 +103,7 @@ class NarrativeWrite(LoginRequiredMixin, View):
         if new:
             sketch = Narrative(sketch=True, author=request.user)
             sketch.save()
+            print('Created with UUID', sketch.uuid)
             form = NarrativeForm(instance=sketch)
         else:
             try:
@@ -120,6 +126,7 @@ class NarrativeWrite(LoginRequiredMixin, View):
 
         if new:
             uuid = request.POST['uuid']
+            print('UUID', uuid)
             sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
             form = NarrativeForm(request.POST, request.FILES, instance=sketch)
         else:
@@ -137,16 +144,8 @@ class NarrativeWrite(LoginRequiredMixin, View):
         if action == 'submit':
             narrative = form.save(commit=False)
             narrative.sketch = False
-            audio = request.FILES.get('audio', None)
-            if audio:
-                audio_file = SoundRecord.objects.create(
-                    file = audio,
-                    uploader = request.user,
-                )
-                narrative.sound = audio_file
-                narrative.sound.save()
             narrative.save()
-            return redirect(narrative)
+            return redirect(narrative.translations.last())
         
         elif action == 'autosave':
             form.save()

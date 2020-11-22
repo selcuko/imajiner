@@ -55,7 +55,7 @@ class Shadow(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     biography = models.TextField(null=True, blank=True)
-    language = models.CharField(blank=True, null=True, max_length=5, choices=settings.LANGUAGES)
+    languages = models.CharField(default='', max_length=100)
     shadow_priviledges = models.BooleanField(default=False)
 
 @receiver(post_save, sender=User)

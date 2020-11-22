@@ -10,6 +10,5 @@ urlpatterns = [
     path(_('write/'), NarrativeFolder.as_view(), name='folder'),
     path(_('write/new/'), NarrativeWrite.as_view(), name='write'),
     path(_('write/<uuid:uuid>/'), NarrativeWrite.as_view(), name='sketch'),
-
     path('<slug:slug>/', NarrativeDetail.as_view(), name='detail'),
 ]
