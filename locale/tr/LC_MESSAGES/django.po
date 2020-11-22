@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-19 21:33+0300\n"
-"PO-Revision-Date: 2020-11-22 21:29+0200\n"
+"PO-Revision-Date: 2020-11-22 21:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -310,7 +310,7 @@ msgstr "atıflar/"
 
 #: console/urls.py:16
 msgid "studio/"
-msgstr "studyo/"
+msgstr "stüdyo/"
 
 #: console/urls.py:17
 msgid "subscriptions/"
@@ -338,7 +338,7 @@ msgstr "Site Süperyönetimi"
 
 #: imajiner/urls.py:31
 msgid "admin/"
-msgstr "sahip/"
+msgstr "admin/"
 
 #: imajiner/urls.py:37
 msgid "console/"
@@ -400,15 +400,15 @@ msgstr "beyan et"
 
 #: notebook/urls.py:10
 msgid "write/"
-msgstr "write/"
+msgstr "yaz/"
 
 #: notebook/urls.py:11
 msgid "write/new/"
-msgstr "write/new/"
+msgstr "yaz/yeni/"
 
 #: notebook/urls.py:12
 msgid "write/<uuid:uuid>/"
-msgstr "write/<uuid:uuid>/"
+msgstr "yaz/<uuid:uuid>/"
 
 #: notebook/views.py:114
 #, fuzzy
@@ -503,7 +503,7 @@ msgid ""
 "\">Know more</a>"
 msgstr ""
 "İmajiner açık kaynaklı, ücretsiz bir platformdur. <a href=\"%(link)s#source-"
-"code\">Know more</a> "
+"code\">Know more</a>  "
 
 #: templates/landing.html:80
 msgid ""
