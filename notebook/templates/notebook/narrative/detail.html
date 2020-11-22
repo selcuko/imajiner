@@ -5,54 +5,51 @@
 {% endblock head %}
 {% block body %}
 
-<section id="content" class="philosophy s-content s-content--narrow s-content--no-padding-bottom">
+<section id="content" class="s-content s-content--narrow s-content--no-padding-bottom">
     <article id="article" class="narrative-detail row format-standard">
 
-        <div class="philosophy s-content__header col-full">
-            <h1 class="philosophy s-content__header-title">
+        <div class="s-content__header col-full">
+            <h1 class="s-content__header-title">
                 {{ narrative.title }}
             </h1>
-            <ul class="philosophy s-content__header-meta">
-                <li class="philosophy date">{{ narrative.created_at|date }}</li>
-                <li class="philosophy date">{% translate 'version'|capfirst %} {{ narrative.latest.version }}</li>
-                {% if request.user == narrative.author %}<li class="cat"><a href="{% url 'console:narrative' narrative=narrative.uuid %}">{% translate 'edit'|capfirst %}</a></li>{% endif %}
+            <ul class="s-content__header-meta">
+                <li class="date">{{ narrative.published_at|date }}</li>
+                
+                {% if request.user == narrative.master.author %}
+                {% if narrative.language %}
+                {% get_language_info for narrative.language as language_info %}
+                <li class="date">{{ language_info.name_local }}</li>
+                {% else %}
+                <li class="">{% translate 'unclassified'|title %}</li>
+                {% endif %}
+                <li class="cat"><a href="{% url 'console:narrative' narrative=narrative.uuid %}">{% translate 'edit'|capfirst %}</a></li>
+                {% endif %}
             </ul>
         </div>
-        {% if narrative.sound %}
-        <div class="philosophy s-content__media col-full">
-            <div class="philosophy s-content__post-thumb">
 
-                <div class="philosophy audio-wrap">
-                    <audio id="player2" src="{{ narrative.sound.file.url }}" width="100%" height="42"
-                        controls="controls"></audio>
-                </div>
-            </div>
-        </div> <!-- end s-content__media -->
-        {% endif %}
-
-        <div class="philosophy col-full s-content__main">
+        <div class="col-full s-content__main">
 
             <div id="article-body">
                 {{ narrative.html|safe }}
             </div>
 
-            <p class="philosophy s-content__tags">
+            <p class="s-content__tags">
                 <span class="philosophy">{% translate 'pinch of'|capfirst %}</span>
 
                 <span id="tag-list" class="s-content__tag-list">
                     {% tags_for_user 20 as tags %}
                     {% for tag in tags %}
-                    <a class="philosophy tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} (<small class="philosophy count">{{ tag.count }}</small>)</a>
+                    <a class="tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} (<small class="count">{{ tag.count }}</small>)</a>
                     {% endfor %}
-                    <a class="philosophy tag-display" id="tag-sample" style="display:none;"></a>
-                    <i id="tag-add-button" style="padding-top:5px;" class="philosophy fa fa-plus fa-lg"></i>
+                    <a class="tag-display" id="tag-sample" style="display:none;"></a>
+                    <i id="tag-add-button" style="padding-top:5px;" class="fa fa-plus fa-lg"></i>
                 </span>
             </p> <!-- end s-content__tags -->
 
-            <div class="philosophy s-content__author">
+            <div class="s-content__author">
 
-                <div class="philosophy s-content__author-about">
-                    <h4 class="philosophy s-content__author-name">
+                <div class="s-content__author-about">
+                    <h4 class="s-content__author-name">
                         {% if narrative.author.is_shadow %}
                         <p class="philosophy">{{ narrative.master.author.username }}  <i class="fas fa-ghost"></i></p>
                         {% else %}
@@ -83,7 +80,7 @@
     ================================================== -->
 <div id="preloader">
     <div id="loader">
-        <div class="philosophy line-scale">
+        <div class="line-scale">
             <div></div>
             <div></div>
             <div></div>

@@ -26,7 +26,7 @@
 
                             {% if narrative.language %}
                             <div class="entry__date">
-                                <a class="philosophy" href="#0">{{ narrative.created_at|naturalday }}</a>
+                                <a class="philosophy" href="#0">{{ narrative.created_at|naturalday|capfirst }}</a>
                             </div>
                             {% else %}
                             <div class="entry__date">
