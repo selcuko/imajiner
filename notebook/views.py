@@ -19,6 +19,7 @@ class NarrativeRedirect(View):
         return redirect(translation)
 
 
+
 class NarrativeDetail(DetailView):
     model = NarrativeTranslation
     context_object_name = 'narrative'
@@ -66,6 +67,7 @@ class NarrativeDetail(DetailView):
             raise e
     
 
+
 class NarrativeList(ListView):
     model = NarrativeTranslation
     context_object_name = 'narratives'
@@ -87,11 +89,13 @@ class NarrativeList(ListView):
         languages = [get_language_from_request(self.request, check_path=True)]
         if self.request.user.is_authenticated and self.request.user.profile.languages:
             languages += self.request.user.profile.languages.split(':')
-        print('Searching for ', languages)
-        return NarrativeTranslation.objects.filter(
-            sketch=False, 
-            master__author__isnull=False,
-            language__in=languages)
+        qs = NarrativeTranslation.objects.filter(
+                sketch=False, 
+                master__author__isnull=False,
+                language__in=languages)
+        if self.request.user.is_authenticated:
+            qs = qs | NarrativeTranslation.objects.filter(master__author=self.request.user)
+        return qs
 
 
 
@@ -112,10 +116,8 @@ class NarrativeWrite(LoginRequiredMixin, View):
             except Narrative.DoesNotExist:
                 return HttpResponse(status=404)
                 
-        sounds = SoundRecord.objects.filter(uploader=request.user)
         return render(self.request, self.template_name, context={
             'form': form,
-            'sounds': sounds,
             'doc': {
                 'title': _('refreshing the ink').capitalize()
             }
@@ -133,6 +135,7 @@ class NarrativeWrite(LoginRequiredMixin, View):
             try:
                 sketch = Narrative.objects.get(uuid=uuid, sketch=True, author=request.user)
                 form = NarrativeForm(request.POST, request.FILES, instance=sketch)
+                print('Returning sketch:', sketch.title)
             except:
                 return HttpResponse(status=404)
         
@@ -155,8 +158,6 @@ class NarrativeWrite(LoginRequiredMixin, View):
             raise Exception('Action ID unknown')
         
         
-
-
 
 class NarrativeFolder(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/folder.html'

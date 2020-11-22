@@ -37,6 +37,8 @@ class SoundRecord(models.Model):
 
 
 class Base(models.Model):
+    LANG_MIN_LEN = 50
+    
     class Meta:
         abstract = True
         ordering = ('-published_at', '-created_at')
@@ -62,7 +64,7 @@ class Base(models.Model):
             self.published_at = timezone.now()
         
         if not self.language and not self.sketch:
-            if len(self.body) > 100:
+            if len(self.body) > self.LANG_MIN_LEN:
                 cleaned = generate.clean(self.body)
                 language = cld3.get_language(cleaned)
                 if language.is_reliable: self.language = language.language
@@ -94,10 +96,22 @@ class Narrative(Base):
     def save(self, *args, new_translation=False, **kwargs):
         super().save(*args, **kwargs)
 
-        if not self.sketch and not self.language in self.languages_available:
+        languages_available = self.languages_available
+        if not self.sketch and not self.language in languages_available:
             nt = NarrativeTranslation()
             nt.reference(self)
             nt.save()
+
+        elif self.language in languages_available:
+            nt = self.translations.get(language=self.language)
+            nt.reference(self)
+            nt.save()
+    
+    def get_absolute_url(self):
+        if self.sketch:
+            return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
+        else:
+            return reverse('narrative:detail', kwargs={'slug': self.slug})
 
 
 
@@ -114,6 +128,7 @@ class NarrativeTranslation(Base):
             return reverse('narrative:detail', kwargs={'slug': self.slug})
     
     def reference(self, ref):
+        print('Saving by reference:', ref)
         self.title = ref.title
         self.body = ref.body
         self.language = ref.language

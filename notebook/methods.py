@@ -12,7 +12,7 @@ class generate:
         slugified = slugify(slugified, allow_unicode=unicode)
         if uuid:
             uuid = str(uuid)
-            slugified += uuid[:8]
+            slugified += ('-' + uuid[:8])
         return slugified
     
     @classmethod
