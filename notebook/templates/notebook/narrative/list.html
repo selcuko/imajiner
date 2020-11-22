@@ -1,39 +1,45 @@
 {% extends 'base.html' %}
-{% load static tagging i18n %}
+{% load static tagging i18n humanize %}
 
 {% block body.id %}top{% endblock %}
 {% block body %}
-    <section class="philosophy s-content">
+    <section class="s-content">
 
-        <div class="philosophy row narrow">
-            <div class="philosophy col-full s-content__header">
+        <div class="row narrow">
+            <div class="col-full s-content__header">
                 <h1 class="philosophy" style="font-family:'librebaskerville-regular'">{% translate 'latest narratives'|capfirst %}</h1>
             </div>
         </div>
 
-        <div class="philosophy row masonry-wrap">
-            <div class="philosophy masonry infinite-container">
+        <div class="row masonry-wrap">
+            <div class="masonry infinite-container">
 
-                <div class="philosophy grid-sizer"></div>
+                <div class="grid-sizer"></div>
 
                 {% for narrative in narratives %}
 
-                <article class="philosophy infinite-item masonry__brick entry format-standard">
+                <article class="infinite-item masonry__brick entry format-standard">
 
 
-                    <div class="philosophy entry__text">
-                        <div class="philosophy entry__header">
+                    <div class="entry__text">
+                        <div class="entry__header">
 
-                            <div class="philosophy entry__date">
-                                <a class="philosophy" href="#0">{{ narrative.created_at|date }}</a>
+                            {% if narrative.language %}
+                            <div class="entry__date">
+                                <a class="philosophy" href="#0">{{ narrative.created_at|naturalday }}</a>
                             </div>
-                            <h1 class="philosophy entry__title"><a class="philosophy"
+                            {% else %}
+                            <div class="entry__date">
+                                <a style="color:red" class="philosophy" href="#0"><i class="fa fa-info-circle"></i>  {% translate 'this narrative is not visible to public'|capfirst %}</a>
+                            </div>
+                            {% endif %}
+                            <h1 class="entry__title"><a class="philosophy"
                                     href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a>
                             </h1>
 
                         </div>
                         {% if narrative.lead %}
-                        <div class="philosophy entry__excerpt">
+                        <div class="entry__excerpt">
                             <p class="philosophy">
                                 {{ narrative.lead|truncatechars:140 }}
                             </p>
@@ -41,8 +47,8 @@
                         {% endif %}
                         {% if narrative.tags.has_tags %}
                             {% tags_for_user 3 as tags %}
-                            <div class="philosophy entry__meta">
-                                <span class="philosophy entry__meta-links">
+                            <div class="entry__meta">
+                                <span class="entry__meta-links">
                                     {% for tag in tags %}
                                     <a class="philosophy" href="#0">{{ tag.abstract.name }}</a>
                                     {% endfor %}
@@ -57,12 +63,12 @@
             </div> <!-- end masonry -->
 
             {% if page_obj.has_next %}
-            <a style="display:none;" class="philosophy infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+            <a style="display:none;" class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
             {% endif %}
 
-            <div class="philosophy d-flex justify-content-center" style="display:none;">
-                <div class="philosophy spinner-border" role="status">
-                    <span class="philosophy sr-only"></span>
+            <div class="d-flex justify-content-center" style="display:none;">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only"></span>
                 </div>
             </div>
         </div> <!-- end masonry-wrap -->
@@ -72,7 +78,7 @@
     ================================================== -->
     <div id="preloader">
         <div id="loader">
-            <div class="philosophy line-scale">
+            <div class="line-scale">
                 <div></div>
                 <div></div>
                 <div></div>

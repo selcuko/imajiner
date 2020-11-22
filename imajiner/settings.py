@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django.contrib.humanize',
     'notebook.apps.NotebookConfig',
     'tagmanager.apps.TagManagerConfig',
     'gatewall.apps.GatewallConfig',
