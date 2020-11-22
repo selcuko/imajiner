@@ -24,9 +24,11 @@ let countFetched = 0;
 let publicUrl = null;
 let fetchOnProgress = false;
 let toBeSubmitted = false;
+let submitSucceed = false;
 
 $form.onsubmit = function (e) {
     e.preventDefault();
+    if (submitSucceed) location.href = publicUrl;
     if (fetchOnProgress) toBeSubmitted = true;
     else post('SUBMIT');
 }
@@ -78,34 +80,35 @@ async function post(action = 'SUBMIT') {
         body: fd,
         credentials: 'same-origin',
     })
-    .then(response => {
-        if (!response.ok) $status.innerText = statusMessage.responseNotOk;
-        if (action == actionCodes.SUBMIT){
-            $status.innerText = statusMessage.processing;
-            return response.json();
-        } 
-        return 0;        
-    })
-    .then(json => {
-        console.log(json)
-        if (action == actionCodes.SUBMIT){
-            // user submitted the narrative and server processed it. here are the results.
-            language = json.language;
-            if (!language) {
-                $status.innerText = statusMessage.languageNotOk;
-                $submit.innerText = statusMessage.proceed;
+        .then(response => {
+            if (!response.ok) $status.innerText = statusMessage.responseNotOk;
+            if (action == actionCodes.SUBMIT) {
+                $status.innerText = statusMessage.processing;
+                if (response.ok) submitSucceed = true;
+                return response.json();
             }
-            else {
-                $status.innerText = interpolate(gettext('Declared. You will be redirected soon.'), true);
-                setTimeout(()=>{ location.href = json.publicUrl }, 1000);
+            return 0;
+        })
+        .then(json => {
+            console.log(json)
+            if (action == actionCodes.SUBMIT) {
+                // user submitted the narrative and server processed it. here are the results.
+                language = json.language;
+                if (!language) {
+                    publicUrl = json.publicUrl;
+                    $status.innerText = statusMessage.languageNotOk;
+                    $submit.value = statusMessage.proceedAnyway;
+                }
+                else {
+                    $status.innerText = interpolate(gettext('Declared. You will be redirected soon.'), true);
+                    setTimeout(() => { location.href = json.publicUrl }, 1000);
+                }
             }
-            publicUrl = json.publicUrl;
-        } 
-        else if (action == actionCodes.AUTOSAVE) {
-            // autosaved
-            $status.innerText = statusMessage.autosaveOk;
-        }
-    })
+            else if (action == actionCodes.AUTOSAVE) {
+                // autosaved
+                $status.innerText = statusMessage.autosaveOk;
+            }
+        })
     req.ended();
     if (toBeSubmitted) post('SUBMIT');
 }

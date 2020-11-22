@@ -4,7 +4,7 @@ const statusMessage = {
     responseNotOk: gettext('Something bad happened. You better save your writing somewhere else manually.'),
     languageNotOk: gettext("We couldn't detect the language of this masterpiece, therefore it won't be visible to public."),
     autosaveOk: gettext('Changes are saved.'),
-    proceed: capitalize(gettext('proceed to view')),
+    proceedAnyway: capitalize(gettext('proceed anyway')),
     processing: capitalize(gettext('processing')) + '...',
 }
 
