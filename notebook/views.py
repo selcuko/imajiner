@@ -36,6 +36,7 @@ class NarrativeDetail(DetailView):
             'doc': {
                 'title': self.narrative.title,
                 'author': self.narrative.master.author.username,
+                'description': self.narrative.lead,
             }
         })
         return ctx

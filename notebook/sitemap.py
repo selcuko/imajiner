@@ -6,7 +6,7 @@ class NarrativeSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        return Narrative.objects.filter(sketch=False)
+        return NarrativeTranslation.objects.filter(sketch=False)
 
     def lastmod(self, obj):
         return obj.published_at
