@@ -124,6 +124,7 @@ LANGUAGES = (
     ('fr', 'Français'),
     ('de', 'Deustch'),
     ('ru', 'русский'),
+    ('es', 'Español'),
 )
 
 LANGUAGES_DICT = dict(LANGUAGES)
