@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 09:03+0300\n"
-"PO-Revision-Date: 2020-11-22 21:36+0200\n"
+"PO-Revision-Date: 2020-11-23 11:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -420,7 +420,7 @@ msgstr "imajiner hakkında"
 
 #: explore/templates/static/about.html:10
 msgid "It's basically a place to talk about your intangible side."
-msgstr ""
+msgstr "Basitçe soyut tarafınız hakkında konuşabileceğiniz bir yer."
 
 #: explore/templates/static/about.html:15
 #: explore/templates/static/about.html:67 templates/landing.html:130
@@ -465,41 +465,52 @@ msgid "Imajiner's Mission and Beyond"
 msgstr ""
 
 #: explore/templates/static/about.html:74
+#, fuzzy
 msgid ""
 "Our starting point is to offer a free place where you spend time without "
 "being judged constantly. A place where you tinker with only what you want, "
 "just like a utopia."
 msgstr ""
+"Başlangıç noktamız, sürekli yargılanmadan vakit geçirebileceğiniz, ücretsiz "
+"bir yer sunmaktır. Tıpkı bir ütopya gibi, sadece istediğinizi [tinker] bir "
+"yer."
 
 #: explore/templates/static/about.html:90
 msgid ""
 "While building this platform, we took advantage of already existing "
 "beautiful stuff, and here we are giving their credits."
 msgstr ""
+"Bu platformu oluştururken zaten var olan güzel şeylerden faydalandık, bu "
+"güzellikleri aldığımız yerleri burada belirtiyoruz yani kısaca Sezar`ın "
+"hakkı Sezar`a."
 
 #: explore/templates/static/about.html:95
 msgid "Without them, Imajiner wouldn't look like this."
-msgstr ""
+msgstr "Onlar olmadan, İmajiner böyle gözükmezdi."
 
 #: explore/templates/static/about.html:103
+#, fuzzy
 msgid ""
 "This website is built using Django, along with Python packages extending "
 "Django."
 msgstr ""
+"Bu web sitesi, Django'yu [genişleten] Python paketleri ile birlikte Django "
+"kullanılarak oluşturulmuştur."
 
 #: explore/templates/static/about.html:114
 msgid "Most of the frontend code is taken from them."
-msgstr ""
+msgstr "Çoğu frontend kodu onlardan alınmıştır."
 
 #: explore/templates/static/about.html:126
+#, fuzzy
 msgid ""
 "Hereby we thank these packages' authors, as they are indirect contributors "
 "of Imajiner."
-msgstr ""
+msgstr "ıdk"
 
 #: explore/templates/static/about.html:154
 msgid "the man behind"
-msgstr ""
+msgstr "arkasındaki adam"
 
 #: explore/templates/static/about.html:155
 msgid "and his loyal servant"
@@ -556,25 +567,32 @@ msgid ""
 "This type of registration is the conventional one. Your registration is "
 "persistent and safe; just as you used to."
 msgstr ""
+"Bu tür kayıt geleneksel olanıdır. Kaydınız kalıcı ve güvenlidir; tıpkı "
+"eskiden olduğu gibi."
 
 #: gatewall/templates/gatewall/gatewall.html:56
 msgid "shadow authorization"
-msgstr ""
+msgstr "hayalwt kayır"
 
 #: gatewall/templates/gatewall/gatewall.html:59
 msgid ""
 "This type is temporary and designed for hit-and-runners. Know more below."
 msgstr ""
+"Bu tür geçicidir, hikayesini hızlıca yazmak isteyenler için tasarlanmıştır. "
+"Aşağıda daha fazlasını öğrenin."
 
 #: gatewall/templates/gatewall/gatewall.html:65
 msgid "register"
-msgstr ""
+msgstr "kayıt ol"
 
 #: gatewall/templates/gatewall/gatewall.html:67
 msgid ""
 "After you type your username, the servers check your device's digital "
 "fingerprint and see whether we recognize you. Check the status message."
 msgstr ""
+"Kullanıcı adınızı yazdıktan sonra, sunucular cihazınızın dijital parmak "
+"izini kontrol eder ve sizi tanıyıp tanımadığımıza bakar. Durum mesajını "
+"kontrol edin."
 
 #: gatewall/templates/gatewall/gatewall.html:71
 msgid ""
@@ -584,15 +602,19 @@ msgid ""
 "time-only, meaning you probably won't have access to the same shadow session "
 "after couple of hours."
 msgstr ""
+"Gölge olarak kaydolduğunuzda, yazmaya başlamak için yalnızca bir kullanıcı "
+"adı seçersiniz. Tam işlevselliğe sahip olmanıza rağmen, gölge olarak "
+"açtığınız oturumlar uzun sürmez. Doğası gereği, bu tür oturumlar oldukça "
+"kırılgandır ve çoğunlukla tek seferlik olarak kabul edilir, bu da muhtemelen "
+"birkaç saat sonra aynı gölge oturumuna erişemeyeceğiniz anlamına gelir."
 
 #: gatewall/urls.py:7
-#, fuzzy
 msgid "authorization/"
-msgstr "gezhin mahlası"
+msgstr "gezhinmahlası/"
 
 #: gatewall/urls.py:8
 msgid "farewell/"
-msgstr ""
+msgstr "veda/"
 
 #: gatewall/views.py:17
 msgid "Authorization"
@@ -606,11 +628,11 @@ msgstr "Imajiner Tanrı Görüşü"
 
 #: gatewall/views.py:19
 msgid "You need to be authenticated in order to write here."
-msgstr ""
+msgstr "Buraya yazabilmek için kimliğinizin doğrulanması gerekiyor."
 
 #: identity/urls.py:7
 msgid "author/<str:username>/"
-msgstr ""
+msgstr "yazar/<str:username>/"
 
 #: imajiner/urls.py:17 imajiner/urls.py:18
 msgid "Imajiner God View"
@@ -630,11 +652,11 @@ msgstr "konsol/"
 
 #: notebook/forms.py:23
 msgid "body"
-msgstr ""
+msgstr "gövde"
 
 #: notebook/templates/notebook/narrative/detail.html:24
 msgid "unclassified"
-msgstr ""
+msgstr "sınıflandırılmamış"
 
 #: notebook/templates/notebook/narrative/detail.html:38
 #, fuzzy
@@ -673,7 +695,7 @@ msgstr "hikayeler"
 
 #: notebook/templates/notebook/narrative/list.html:33
 msgid "this narrative is not visible to public"
-msgstr ""
+msgstr "bu hikayeyi diğer gezginler göremez"
 
 #: notebook/templates/notebook/narrative/write.html:26
 #, fuzzy
@@ -745,19 +767,21 @@ msgid ""
 "is included in the feedback messages. <br>This helps us gain a more thorough "
 "insight of your experience in Imajiner."
 msgstr ""
-"Bir yazı yazmak için mailinizin olmasına gerek yok! Sadece bir kullanıcı adı "
-"ve şifre belirleyerek gezginlerin arasında yer alabilirsiniz. Hatta ben bir "
-"kez yazıp çıkacağım derseniz de hayalet kayıt olup yazabililirsiniz. Bu "
-"sayede, gökyünüz size sadece bir kullanıcı adı kadar uzak."
+"İmajiner hakkındaki izlenimlerinizi veya dileklerinizi hızlıca "
+"bildirebilirsiniz. Geri bildirim mesajlarında hiçbir kişisel bilgi yer "
+"almaz. <br> Bu, İmajiner'deki deneyiminiz hakkında daha kapsamlı bir fikir "
+"edinmemize yardımcı olur."
 
 #: templates/base.html:165
+#, fuzzy
 msgid "You are not authorized and will be sending this feedback anonymously."
 msgstr ""
+"Kayıtlı değilsiniz ve bu geri bildirimi isimsiz olarak göndereceksiniz."
 
 #: templates/base.html:167
-#, python-format
+#, fuzzy, python-format
 msgid "You are authorized and will be sending this feedback as %(username)s."
-msgstr ""
+msgstr "Kayıtlısınız ve bu geri bildirimi"
 
 #: templates/base.html:184
 msgid "all rights reserved"
@@ -804,7 +828,7 @@ msgid ""
 "\">Know more</a>"
 msgstr ""
 "İmajiner açık kaynaklı, ücretsiz bir platformdur. <a href=\"%(link)s#source-"
-"code\">Know more</a>  "
+"code\">Know more</a>"
 
 #: templates/landing.html:80
 msgid ""
