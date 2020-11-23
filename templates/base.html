@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <title>{% if doc.title %}{{ doc.title }}{% else %}{% translate 'Fly as high as you can' %}{% endif %} • Imajiner
     </title>
-    <meta name="description" content="{{ doc.description }}">
+    {% translate 'Imagine a sky that forms as you wish. Beneath the sky, there is you. Let the world know what you kept inside for years. Let the people know and wow what you desire. Write about your drives, your dreams, your goals in life. Talk about you.' as description %}
+    <meta name="description" content="{{ doc.description|default:description }}">
     <meta name="author" content="{{ doc.author }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 

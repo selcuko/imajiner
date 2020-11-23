@@ -88,6 +88,7 @@ class List(ListView):
             'doc': {
                 'title': _('narratives').capitalize(),
                 'author': self.request.user.username,
+                'description': _('view the latest narratives published on Imajiner').capitalize()
             }
         })
         return ctx
