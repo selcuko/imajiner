@@ -50,10 +50,10 @@
                 <li><a class="smoothscroll" href="#feedback" title="contact">{% translate 'Feedback' %}</a></li>
             </ul>
             <p>
-            {% url 'explore:about' as link %}
-            {% blocktranslate trimmed with link=link %}
-            Imajiner is an open-sourced, free platform. <a href="{{ link }}#privacy">Know more</a>
-            {% endblocktranslate %}</p>
+                {% url 'explore:about' as link %}
+                {% blocktranslate trimmed with link=link %}
+                Imajiner is an open-sourced, free platform. <a href="{{ link }}#privacy">Know more</a>
+                {% endblocktranslate %}</p>
 
         </div> <!-- end header-nav__content -->
 
@@ -68,7 +68,7 @@
 
 <!-- home
     ================================================== -->
-<section id="top" class="s-home target-section"  data-parallax="scroll"
+<section id="top" class="s-home target-section" data-parallax="scroll"
     data-image-src="{% static 'transcend/images/hero-bg.jpg' %}" data-natural-width=3000 data-natural-height=2000
     data-position-y=top>
 
@@ -89,21 +89,37 @@
     </div> <!-- end home-content -->
 
     <ul class="home-sidelinks">
-        <li><a class="smoothscroll" href="#missionary">{% translate 'what'|capfirst %}<span>{% translate 'whatcha got there' %}</span></a></li>
-        <li><a class="smoothscroll" href="#feedback">{% translate 'feedback'|capfirst %}<span>{% translate 'your fairy wishes' %}</span></a></li>
-        <li><a class="smoothscroll" href="#machinery">{% translate 'how'|capfirst %}<span>{% translate 'how tf does these work' %}</span></a></li>
+        <li><a class="smoothscroll"
+                href="#missionary">{% translate 'what'|capfirst %}<span>{% translate 'whatcha got there' %}</span></a>
+        </li>
+        <li><a class="smoothscroll"
+                href="#feedback">{% translate 'feedback'|capfirst %}<span>{% translate 'your fairy wishes' %}</span></a>
+        </li>
+        <li><a class="smoothscroll"
+                href="#machinery">{% translate 'how'|capfirst %}<span>{% translate 'how tf does these work' %}</span></a>
+        </li>
     </ul> <!-- end home-sidelinks -->
 
     <ul class="home-social">
         <li class="home-social-title">{% translate 'available in'|capfirst %}</li>
-        <li><a href="/tr">
-                <span class="flag-icon flag-icon-tr"></span>
-                <span class="home-social-text">Türkçe</span>
-            </a></li>
-        <li><a href="/en">
-            <span class="flag-icon flag-icon-us"></span>
-                <span class="home-social-text">English</span>
-            </a></li><!--
+        {% get_available_languages as LANGUAGES %}
+
+        {% for language_code, language_name in LANGUAGES %}
+        {% if language_code == 'en' %}
+        <li><a hreflang="{{ language_code }}" href="/{{ language_code }}">
+                <span class="flag-icon flag-icon-us"></span>
+                <span class="home-social-text">{{ language_name }}</span>
+            </a>
+        </li>
+        {% else %}
+        <li><a hreflang="{{ language_code }}" href="/{{ language_code }}">
+                <span class="flag-icon flag-icon-{{ language_code }}"></span>
+                <span class="home-social-text">{{ language_name }}</span>
+            </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        <!--
             <li><a href="#0">
                 <span class="flag-icon flag-icon-gb"></span>
                 <span class="home-social-text">British</span>
@@ -128,7 +144,7 @@
     <div class="row section-header">
         <div class="col-full">
             <h3 class="subhead">{% translate 'missionary'|upper %}</h3>
-            <h1 class="display-1">{% blocktranslate trimmed %} 
+            <h1 class="display-1">{% blocktranslate trimmed %}
                 The divine purpose of this platform is to promise people mental freedom.
                 {% endblocktranslate %}</h1>
         </div>
@@ -141,7 +157,7 @@
                 Let the world know what you kept inside for years. Let the people know
                 and wow what you desire. Write about your drives, your dreams, your goals in life.
                 Talk about you.
-            {% endblocktranslate %}</p>
+                {% endblocktranslate %}</p>
         </div>
     </div> <!-- end about-desc -->
 </section> <!-- end s-about -->
@@ -159,14 +175,14 @@
     <div class="row">
         <div class="col-full">
             <p class="lead">{% blocktranslate trimmed %}
-                You will be redirected to authorization page to select a username - we 
+                You will be redirected to authorization page to select a username - we
                 need an author to display, yes? Then you can start writing without any
                 further bother.
-            {% endblocktranslate %}</p>
+                {% endblocktranslate %}</p>
         </div>
     </div> <!-- end about-desc -->
 
-   
+
 </section> <!-- end s-services -->
 
 
@@ -184,8 +200,8 @@
     <div class="row">
         <div class="col-full">
             <p class="lead">{% blocktranslate trimmed %}
-                Some unique machinery around you is trying to offer a intuitive user experience. 
-            {% endblocktranslate %}</p>
+                Some unique machinery around you is trying to offer a intuitive user experience.
+                {% endblocktranslate %}</p>
         </div>
     </div> <!-- end about-desc -->
 
@@ -199,8 +215,8 @@
                 <h3 class="h4">{% translate 'the solemn promise'|title %}</h3>
                 <p>
                     {% blocktranslate trimmed %}
-                    The moment you read is the moment you value that piece of text the most. 
-                    You can be assured that nothing will distract you while you are reading from 
+                    The moment you read is the moment you value that piece of text the most.
+                    You can be assured that nothing will distract you while you are reading from
                     our side.
                     {% endblocktranslate %}
                     <br><a href="{% url 'explore:about' %}#attention">{% translate 'Know more' %}</a>
@@ -216,10 +232,10 @@
                 <h3 class="h4">{% translate 'truly optional registration'|title %}</h3>
                 <p>
                     {% blocktranslate trimmed %}
-                    With our unique authorization mechanism named Shadow, 
+                    With our unique authorization mechanism named Shadow,
                     we never limit the website's functionality based on whether you are registered or not.
-                    What's more, you don't even need a username to start writing, it's auto-generated! 
-                    (You can change your username later too!) 
+                    What's more, you don't even need a username to start writing, it's auto-generated!
+                    (You can change your username later too!)
 
                     {% endblocktranslate %}
                     <br><a href="{% url 'explore:about' %}#shadow">{% translate 'Know more' %}</a>
@@ -235,8 +251,8 @@
                 <h3 class="h4">{% translate 'resilient writing studio'|title %}</h3>
                 <p>
                     {% blocktranslate trimmed %}
-                    Anything you write at studio is saved in our servers every couple of seconds; 
-                    don't worry about lost data. We quite know how frustrating it is to spend a lot of 
+                    Anything you write at studio is saved in our servers every couple of seconds;
+                    don't worry about lost data. We quite know how frustrating it is to spend a lot of
                     time on a story and lost it.
                     {% endblocktranslate %}
                     <br><a href="{% url 'explore:about' %}#studio">{% translate 'Know more' %}</a>
@@ -271,7 +287,8 @@
     <div class="row section-header">
         <div class="col-full">
             <h3 class="subhead subhead--light">{% translate 'feedback'|upper %}</h3>
-            <h1 class="display-1 display-1--light">{% translate 'We have a dream where the freedom of expression is truly present.' %}</h1>
+            <h1 class="display-1 display-1--light">
+                {% translate 'We have a dream where the freedom of expression is truly present.' %}</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -279,7 +296,8 @@
 
         <div class="col-full contact-main">
             <p>
-                <a href="mailto:{{ doc.mail|default:'hi@imajiner.space' }}" class="contact-email">{{ doc.mail|default:'hi@imajiner.space' }}</a>
+                <a href="mailto:{{ doc.mail|default:'hi@imajiner.space' }}"
+                    class="contact-email">{{ doc.mail|default:'hi@imajiner.space' }}</a>
             </p>
         </div> <!-- end contact-main -->
 
@@ -309,13 +327,17 @@
             <span>
                 <br>
                 Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script>{% translate 'All rights reserved.' %} 
-                <br><span>{% translate 'This website contains materials from third parties.' %} <a href="{% url 'explore:about' %}#credits">{% translate 'Know more' %}</a></span>
+                <script>
+                    document.write(new Date().getFullYear());
+                </script>{% translate 'All rights reserved.' %}
+                <br><span>{% translate 'This website contains materials from third parties.' %} <a
+                        href="{% url 'explore:about' %}#credits">{% translate 'Know more' %}</a></span>
         </div>
     </div>
 
     <div class="cl-go-top">
-        <a class="smoothscroll" title="{% translate 'go to top'|capfirst %}" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+        <a class="smoothscroll" title="{% translate 'go to top'|capfirst %}" href="#top"><i class="icon-arrow-up"
+                aria-hidden="true"></i></a>
     </div>
 
 </section> <!-- end s-contact -->
