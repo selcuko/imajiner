@@ -43,15 +43,16 @@
             <ul class="header-nav__list">
                 <li class="current"><a class="smoothscroll" href="#top" title="home">{% translate 'Homeland' %}</a></li>
                 <li><a class="" href="{% url 'notebook:list' %}">{% translate 'Narratives' %}</a></li>
+                <li><a class="" href="#write">{% translate 'write'|capfirst %}</a></li>
                 <li><a class="smoothscroll" href="#missionary" title="services">{% translate 'Missionary' %}</a></li>
-                <li><a class="smoothscroll" href="#machinery" title="services">{% translate 'Machinery' %}</a></li>
                 <li><a class="" href="{% url 'console:overview' %}">{% translate 'Console' %}</a></li>
+                <li><a class="" href="{% url 'explore:about' %}">{% translate 'about'|capfirst %}</a></li>
                 <li><a class="smoothscroll" href="#feedback" title="contact">{% translate 'Feedback' %}</a></li>
             </ul>
             <p>
             {% url 'explore:about' as link %}
             {% blocktranslate trimmed with link=link %}
-            Imajiner is an open-sourced, free platform. <a href="{{link}}#source-code">Know more</a>
+            Imajiner is an open-sourced, free platform. <a href="{{ link }}#privacy">Know more</a>
             {% endblocktranslate %}</p>
 
         </div> <!-- end header-nav__content -->
@@ -67,7 +68,7 @@
 
 <!-- home
     ================================================== -->
-<section id="top" class="s-home target-section" data-parallax="scroll"
+<section id="top" class="s-home target-section"  data-parallax="scroll"
     data-image-src="{% static 'transcend/images/hero-bg.jpg' %}" data-natural-width=3000 data-natural-height=2000
     data-position-y=top>
 
@@ -121,8 +122,7 @@
 </section> <!-- end s-home -->
 
 
-<!-- about
-    ================================================== -->
+
 <section id='missionary' class="s-about">
 
     <div class="row section-header">
@@ -147,9 +147,32 @@
 </section> <!-- end s-about -->
 
 
+<section id='write' class="s-services light-gray">
+
+    <div class="row section-header">
+        <div class="col-full">
+            <h3 class="subhead">{% translate 'write'|upper %}</h3>
+            <h1 class="display-1">{% translate 'Shall you begin writing, whenever you feel like.' %}</h1>
+        </div>
+    </div> <!-- end section-header -->
+
+    <div class="row">
+        <div class="col-full">
+            <p class="lead">{% blocktranslate trimmed %}
+                You will be redirected to authorization page to select a username - we 
+                need an author to display, yes? Then you can start writing without any
+                further bother.
+            {% endblocktranslate %}</p>
+        </div>
+    </div> <!-- end about-desc -->
+
+   
+</section> <!-- end s-services -->
+
+
 <!-- services
     ================================================== -->
-<section id='machinery' class="s-services light-gray">
+<section id='machinery' class="s-about">
 
     <div class="row section-header">
         <div class="col-full">
@@ -248,7 +271,7 @@
     <div class="row section-header">
         <div class="col-full">
             <h3 class="subhead subhead--light">{% translate 'feedback'|upper %}</h3>
-            <h1 class="display-1 display-1--light">{% translate 'I have a dream where the freedom of expression is truly present.' %}</h1>
+            <h1 class="display-1 display-1--light">{% translate 'We have a dream where the freedom of expression is truly present.' %}</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -267,22 +290,15 @@
 
 
         <div class="col-five tab-full contact-secondary">
-            <h3 class="subhead subhead--light">{% translate 'reach me out'|upper %}</h3>
+            <h3 class="subhead subhead--light">{% translate 'reach us out'|upper %}</h3>
 
             <ul class="contact-social">
                 <li>
-                    <a href="https://t.me/divisia"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://t.me/imajinerspace"><i class="fab fa-telegram-plane"></i></a>
                 </li>
                 <li>
-                    <a href="mailto:omrfyyz@gmail.com"><i class="far fa-envelope"></i></a>
+                    <a href="mailto:webmaster@imajiner.space"><i class="far fa-envelope"></i></a>
                 </li>
-                <li>
-                    <a href="https://instagram.com/omerfyyz"><i class="fab fa-instagram"></i></a>
-                </li>
-                <li>
-                    <a href="https://linkedin.com/in/omerselcuk"><i class="fab fa-linkedin"></i></a>
-                </li>
-                
             </ul> <!-- end contact-social -->
         </div> <!-- end contact-secondary -->
 

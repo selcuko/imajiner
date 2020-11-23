@@ -12,11 +12,13 @@
         {% endblocktranslate %}</p>
       <div class="s-extra" style="padding: 0; background-color:transparent;">
         <div class="tagcloud">
-            <a href="#missionary">{% translate 'missionary'|upper %}</a>
-            <a href="#credits">{% translate 'credits'|upper %}</a>
-            <a href="#mastermind">{% translate 'author'|upper %}</a>
+          <a class="smoothscroll" href="#missionary">{% translate 'missionary'|upper %}</a>
+          <a class="smoothscroll" href="#privacy">{% translate 'privacy'|upper %}</a>
+          <a class="smoothscroll" href="#machinery">{% translate 'machinery'|upper %}</a>
+          <a class="smoothscroll" href="#credits">{% translate 'credits'|upper %}</a>
+          <a class="smoothscroll" href="#masterminds">{% translate 'masterminds'|upper %}</a>
         </div> <!-- end tagcloud -->
-        </div>
+      </div>
 
     </div>
     <div class="col-full s-content__main">
@@ -54,7 +56,7 @@
             Imajiner itself is an utopia. You shall have utopias too.
             Let's keep track of what's happening in your utopia by writing.
             {% endblocktranslate %}</p>
-        </div>
+        </div> 
       </div>
     </div> <!-- end general info -->
   </div> <!-- end row -->
@@ -79,12 +81,99 @@
     </div>
 </section> <!-- s-content -->
 
+
+
+
+<section id="machinery" class="s-content s-content--narrow">
+  <div class="row">
+    <div class="s-content__header col-full">
+      <h1 class="s-content__header-title">
+        {% translate 'machinery'|title %}
+      </h1>
+      <p class="lead">{% blocktranslate trimmed %}
+        A whole platform, designed for your experience.
+        {% endblocktranslate %}</p>
+    </div>
+    <div class="col-full s-content__main">
+      <p class="lead">{% blocktranslate trimmed %}
+        Although explaining it would break the spell, here are what to expect.
+        {% endblocktranslate %}</p>
+    </div>
+    <div class="row block-1-2 block-tab-full">
+      <div class="col-block">
+        <h3 id="shadow-auth" class="quarter-top-margin">{% translate 'shadow authentication'|title %}</h3>
+        <p>{% blocktranslate trimmed %}
+          Every narrative needs an author, but not every author wants to be registered.
+          With this, we basically authorize your device by getting its digital fingerprint - which is 
+          calculated by its technical abilities and serial numbers. For technical users: 
+          <code>Fingerprint.js</code> used heavily here.
+          {% endblocktranslate %}</p>
+      </div>
+    </div>
+</section> <!-- s-content -->
+
+
+<section id="privacy" class="s-content s-content--narrow">
+  <div class="row">
+    <div class="s-content__header col-full">
+      <h1 class="s-content__header-title">
+        {% translate 'privacy'|title %}
+      </h1>
+      <p class="lead">{% blocktranslate trimmed %}
+        No system is safe.
+        {% endblocktranslate %}</p>
+    </div>
+    <div class="col-full s-content__main">
+      <p class="lead">{% blocktranslate trimmed %}
+        Here are our statements regarding to privacy concerns.
+        {% endblocktranslate %}</p>
+    </div>
+    <div class="row block-1-2 block-tab-full">
+      <div class="col-block">
+        <h3 class="quarter-top-margin">{% translate 'open-sourced'|title %}</h3>
+        <p>{% blocktranslate trimmed with source=source_code link="https://github.com/divisia/imajiner" %}
+          We respect your privacy; it's in our code.
+          You can view the <a href="{{ link }}">source code</a> in our GitHub Repository.
+          {% endblocktranslate %}</p>
+      </div>
+      <div class="col-block">
+        <h3 class="quarter-top-margin">{% translate 'zero personal data'|title %}</h3>
+        <p>{% blocktranslate trimmed with email="mailto:webmaster@imajiner.space" %}
+          Unless you want to submit, we never collect your personal data in any way.
+          Do you still have concerns, <a href="{{ email }}">send us an email</a>.
+          {% endblocktranslate %}</p>
+      </div>
+    </div>
+    <div class="row block-1-2 block-tab-full">
+      <div class="col-block">
+        <h3 class="quarter-top-margin">{% translate 'Security'|title %}</h3>
+        <p>{% blocktranslate trimmed %}
+          We are using Heroku PostgreSQL, known for its durability and security.
+          Besides, in an event of data leakage, no one could find valuable information
+          to blackmail anyone in our database. Note that all passwords are stored hashed and
+          salted (Django's default!).
+          {% endblocktranslate %}</p>
+      </div>
+      <div class="col-block">
+        <h3 class="quarter-top-margin">{% translate 'Anonymousity'|title %}</h3>
+        <p>{% blocktranslate trimmed with link="#shadow-auth" %}
+          Shall you choose to use Shadow Authentication, you don't lose your status of anonymousity.
+          Check out the <a href="{{ link }}">Shadow Authentication</a> in Machinery.
+          {% endblocktranslate %}</p>
+      </div>
+    </div>
+</section> <!-- s-content -->
+
+
 <section id="credits" class="s-content s-content--narrow">
   <div class="row">
     <div class="s-content__header col-full">
       <h1 class="s-content__header-title">
         {% translate 'credits'|title %}
       </h1>
+      <p>{% blocktranslate trimmed %}
+        Without them, Imajiner wouldn't look like this.
+        {% endblocktranslate %}</p>
     </div>
     <div class="col-full s-content__main">
       <p class="lead">{% blocktranslate trimmed %}
@@ -92,16 +181,14 @@
         already existing beautiful stuff, and here we are
         giving their credits.
         {% endblocktranslate %}</p>
-      <p>{% blocktranslate trimmed %}
-        Without them, Imajiner wouldn't look like this.
-        {% endblocktranslate %}</p>
+
 
 
       <div class="row block-1-2 block-tab-full">
         <div class="col-block">
           <h3 class="quarter-top-margin"><a href="https://djangoproject.com">Django</a></h3>
           <p>{% blocktranslate trimmed %}This website is built using Django, along with
-          Python packages extending Django.{% endblocktranslate %}</p>
+            Python packages extending Django.{% endblocktranslate %}</p>
           <ul class="disc">
             <li><a href="https://github.com/django-extensions/django-extensions">django-extensions</a></li>
             <li><a href="https://pypi.org/project/dj-database-url/">dj-database-url</a></li>
@@ -125,7 +212,7 @@
           <h3 class="quarter-top-margin"><a href="https://python.org">Python</a></h3>
           <p>{% blocktranslate trimmed %}
             Hereby we thank these packages' authors, as they are
-              indirect contributors of Imajiner.
+            indirect contributors of Imajiner.
             {% endblocktranslate %}</p>
           <ul class="disc">
             <li><a href="https://gunicorn.org">gunicorn</a></li>
@@ -145,23 +232,23 @@
   </div> <!-- end row -->
 </section> <!-- s-content -->
 
-<section id="mastermind" class="s-content s-content--narrow">
+<section id="masterminds" class="s-content s-content--narrow">
   <div class="row">
     <div class="s-content__header col-full">
       <h1 class="s-content__header-title">
         {% translate 'author'|title %}
       </h1>
       <p class="lead">{% translate 'the man behind'|capfirst %}, Ömer Selçuk,
-      <br>{% translate 'and his loyal servant' %}, Melek Kaya</p>
+        <br>{% translate 'and the goddess' %}, Melek Kaya</p>
     </div>
     <div class="col-full s-content__main">
       <p class="lead">{% blocktranslate trimmed %}
-        I am a human being who have quite silent firestorms inside, occasionally.
+        We are two human beings who have quite silent firestorms inside, occasionally.
         {% endblocktranslate %}</p>
       <p>{% blocktranslate trimmed %}
-        I built here as some kind of digital public diary, at first. Some may find
-        my experiences, thoughts, goals and desires thought-provokin, amusing,
-        deep, or even amusing, I thought. Out there, someone might be my mind-mate, who
+        We built here as some kind of digital public diary, at first. Some may find
+        our experiences, thoughts, goals and desires thought-provokin,
+        deep, or even amusing, we thought. Out there, someone might be our mind-mate, who
         knows? Let's hunt them.
         {% endblocktranslate %}</p>
     </div>
