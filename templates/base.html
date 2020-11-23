@@ -1,5 +1,4 @@
 {% load static i18n %}
-{% get_current_language as LANG %}
 <!DOCTYPE html>
 <html class="no-js" lang="tr">
 
@@ -159,8 +158,8 @@
                                 value="{{ request.user.id }}">{% endif %}
                             <input type="hidden" name="session-key" value="{{ request.session.session_key }}">
                             <input type="text" value="" name="message" class="email" id="mc-email"
-                                placeholder="And there's that..." required="">
-                            <input type="submit" name="subscribe" value="send">
+                                placeholder="{% translate 'and there is that'|capfirst %}..." required="">
+                            <input type="submit" name="subscribe" value="{% translate 'send'|upper %}">
 
                             <label for="mc-email" class="subscribe-message"><i class="fa fa-info"></i>
                                 {% if not request.user.is_authenticated %}{% blocktranslate trimmed %}

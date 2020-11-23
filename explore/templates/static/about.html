@@ -25,7 +25,7 @@
 
       <div class="row block-1-2 block-tab-full">
         <div class="col-block">
-          <h3 class="quarter-top-margin">Dreams.</h3>
+          <h3 class="quarter-top-margin">{% translate 'dreams'|title %}.</h3>
           <p>{% blocktranslate trimmed %}
             We have dreams. Without being disturbed, you can
             talk about your dreams from last night, analyse them maybe.
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-block">
-          <h3 class="quarter-top-margin">Aspirations.</h3>
+          <h3 class="quarter-top-margin">{% translate 'aspirations'|title %}.</h3>
           <p>{% blocktranslate trimmed %}
             What is your goal in life? Write about it. Writing will
             make you help conceive yourself as a third person.
@@ -42,7 +42,7 @@
         </div>
 
         <div class="col-block">
-          <h3 class="quarter-top-margin">Fantasies.</h3>
+          <h3 class="quarter-top-margin">{% translate 'fantasies'|title %}.</h3>
           <p>{% blocktranslate trimmed %}
             You may have surrealistic fantasies, maybe filty ones. Why
             don't you write about them? We are pretty sure there is at least
@@ -51,7 +51,7 @@
         </div>
 
         <div class="col-block">
-          <h3 class="quarter-top-margin">Utopias.</h3>
+          <h3 class="quarter-top-margin">{% translate 'utopias'|title %}.</h3>
           <p>{% blocktranslate trimmed %}
             Imajiner itself is an utopia. You shall have utopias too.
             Let's keep track of what's happening in your utopia by writing.
@@ -171,7 +171,7 @@
       <h1 class="s-content__header-title">
         {% translate 'credits'|title %}
       </h1>
-      <p>{% blocktranslate trimmed %}
+      <p class="lead">{% blocktranslate trimmed %}
         Without them, Imajiner wouldn't look like this.
         {% endblocktranslate %}</p>
     </div>
@@ -224,7 +224,7 @@
 
         <div class="col-block">
           <h3 class="quarter-top-margin"><a href="https://heroku.com">Heroku</a></h3>
-          <p>This platform is deployed on Heroku free dynos.</p>
+          <p>{% translate 'This platform is deployed on Heroku dynos.' %}</p>
 
         </div>
       </div>
