@@ -3,92 +3,96 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 18:04+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-11-23 21:38+0300\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: assets/feedback.js:17
 msgid "Feedback sent successfully."
-msgstr ""
+msgstr "Geribildirimini gönderdim."
 
 #: assets/feedback.js:18
 msgid "Oh no! I encountered an error whilst sending your report."
-msgstr ""
+msgstr "Nolamaz! Bi' sıkıntı çıktı bu raporu gönderirken."
 
 #: console/static/console/sessions.js:15
 msgid "Session terminated successfully."
-msgstr ""
+msgstr "O cihazdaki oturumu kapattım. "
 
 #: console/static/console/sessions.js:19
 msgid "Some error occured and session did not terminated."
-msgstr ""
+msgstr "Oturumu kapatırken sorun çıktı."
 
 #: gatewall/static/author.js:11
 msgid "waiting username"
-msgstr ""
+msgstr "rumuz bekliyorum"
 
 #: gatewall/static/author.js:38
 msgid "register new user"
-msgstr ""
+msgstr "kaydol"
 
 #: gatewall/static/author.js:40
 msgid "log in existing user"
-msgstr ""
+msgstr "giriş yap"
 
 #: gatewall/static/author.js:55
 msgid "credentials are not correct."
-msgstr ""
+msgstr "bilgiler hatalı"
 
 #: gatewall/static/shadow.js:46
 msgid "proceed as %(username)s"
-msgstr ""
+msgstr "%(username)s olarak devam et"
 
 #: notebook/static/notebook/autosave.js:118
 msgid "Declared. You will be redirected soon."
-msgstr ""
+msgstr "Yayınlandı. Birazdan yönlendirileceksiniz."
 
 #: notebook/static/notebook/messages.js:2
 msgid "syncing"
-msgstr ""
+msgstr "eşleniyor"
 
 #: notebook/static/notebook/messages.js:3
 msgid "waiting for you"
-msgstr ""
+msgstr "seni bekliyorum"
 
 #: notebook/static/notebook/messages.js:4
 msgid ""
 "Something bad happened. You better save your writing somewhere else manually."
 msgstr ""
+"Çok kötü şeyler oldu. Yazdıklarını başka bir yere yedeklesen iyi olacak - "
+"sanırım ben kaydedemedim."
 
 #: notebook/static/notebook/messages.js:5
 msgid ""
 "We couldn't detect the language of this masterpiece, therefore it won't be "
 "visible to public."
 msgstr ""
+"Bu şaheserin hangi dilde olduğunu anlayamadım, dolayısıyla halka açık "
+"olmayacak."
 
 #: notebook/static/notebook/messages.js:6
 msgid "Changes are saved."
-msgstr ""
+msgstr "Değişiklikler kaydedildi."
 
 #: notebook/static/notebook/messages.js:7
 msgid "proceed anyway"
-msgstr ""
+msgstr "bir bakayım"
 
 #: notebook/static/notebook/messages.js:8
 msgid "processing"
-msgstr ""
+msgstr "işleniyor"
 
 #: notebook/static/notebook/messages.js:13
 msgid "entitled narrative"
-msgstr ""
+msgstr "başlıklı hikaye"
