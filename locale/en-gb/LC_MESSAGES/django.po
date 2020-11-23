@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 18:05+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-11-23 19:08+0300\n"
+"Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: console/templates/console/access.html:15
 #: console/templates/console/base.html:102
@@ -81,7 +81,7 @@ msgstr ""
 #: console/templates/console/access.html:81
 #: console/templates/console/access.html:94
 msgid "terminate"
-msgstr ""
+msgstr "cease"
 
 #: console/templates/console/base.html:67
 msgid "shadow"
@@ -90,7 +90,7 @@ msgstr ""
 #: console/templates/console/base.html:67
 #: explore/templates/static/about.html:239
 msgid "author"
-msgstr ""
+msgstr "wordsmith"
 
 #: console/templates/console/base.html:70
 #: gatewall/templates/gatewall/gatewall.html:25
@@ -138,11 +138,11 @@ msgstr ""
 
 #: console/templates/console/base.html:123
 msgid "preferences"
-msgstr ""
+msgstr "predilections"
 
 #: console/templates/console/base.html:127
 msgid "writing studio"
-msgstr ""
+msgstr "composing studio"
 
 #: console/templates/console/base.html:141
 msgid "Copyright Imajiner. All rights reserved."
@@ -162,11 +162,11 @@ msgstr ""
 
 #: console/templates/console/narrative.html:58
 msgid "view version history"
-msgstr ""
+msgstr "view genres history"
 
 #: console/templates/console/narrative.html:73
 msgid "narrative content"
-msgstr ""
+msgstr "chronicle content"
 
 #: console/templates/console/narrative/readonly.html:12
 msgid "an old version of"
@@ -176,7 +176,7 @@ msgstr ""
 #: console/templates/console/narratives.html:51
 #: console/templates/console/narratives.html:81
 msgid "version"
-msgstr ""
+msgstr "genre"
 
 #: console/templates/console/narrative/readonly.html:32
 msgid ""
@@ -190,15 +190,15 @@ msgstr ""
 
 #: console/templates/console/narrative/readonly.html:47
 msgid "archived version no"
-msgstr ""
+msgstr "archived genre no"
 
 #: console/templates/console/narrative/versions.html:10
 msgid "versions timeline"
-msgstr ""
+msgstr "genres timeline"
 
 #: console/templates/console/narratives.html:26
 msgid "all narratives"
-msgstr ""
+msgstr "all chronicles"
 
 #: console/templates/console/narratives.html:47
 #: console/templates/console/narratives.html:58
@@ -210,7 +210,7 @@ msgstr ""
 
 #: console/templates/console/narratives.html:48
 msgid "version history"
-msgstr ""
+msgstr "genre history"
 
 #: console/templates/console/narratives.html:49
 #: console/templates/console/narratives.html:79 notebook/forms.py:22
@@ -224,7 +224,7 @@ msgstr ""
 
 #: console/templates/console/narratives.html:60
 msgid "versions"
-msgstr ""
+msgstr "genres"
 
 #: console/templates/console/narratives.html:69
 msgid "you do not have any narratives"
@@ -266,7 +266,7 @@ msgstr ""
 
 #: console/templates/console/overview.html:73
 msgid "old narrative versions"
-msgstr ""
+msgstr "old chronicle genres"
 
 #: console/templates/console/overview.html:81
 msgid "any piece of your work is kept."
@@ -325,11 +325,11 @@ msgstr ""
 
 #: console/urls.py:11 imajiner/urls.py:32
 msgid "narratives/"
-msgstr ""
+msgstr "chronicles/"
 
 #: console/urls.py:12
 msgid "narratives/<uuid:narrative>/"
-msgstr ""
+msgstr "chronicle/<uuid:narrative>/"
 
 #: console/urls.py:13
 msgid "narratives/<uuid:narrative>/versions/"
@@ -345,7 +345,7 @@ msgstr ""
 
 #: console/urls.py:16
 msgid "studio/"
-msgstr ""
+msgstr "studio/"
 
 #: console/urls.py:17
 msgid "subscriptions/"
@@ -353,7 +353,7 @@ msgstr ""
 
 #: console/urls.py:18
 msgid "preferences/"
-msgstr ""
+msgstr "predilections/"
 
 #: console/views.py:23
 msgid "console overview"
@@ -361,19 +361,19 @@ msgstr ""
 
 #: console/views.py:77
 msgid "my narratives"
-msgstr ""
+msgstr "my chronicles"
 
 #: console/views.py:86
 msgid "edit narrative"
-msgstr ""
+msgstr "edit chronicle"
 
 #: console/views.py:107
 msgid "narrative version timeline"
-msgstr ""
+msgstr "chronicle genre timeline"
 
 #: console/views.py:116
 msgid "narrative version history"
-msgstr ""
+msgstr "chronicle genre history"
 
 #: explore/templates/static/about.html:8
 msgid "about imajiner"
@@ -591,7 +591,7 @@ msgstr ""
 
 #: gatewall/templates/gatewall/gatewall.html:34
 msgid "author authorization"
-msgstr ""
+msgstr "wordsmith authorization"
 
 #: gatewall/templates/gatewall/gatewall.html:45
 msgid ""
@@ -651,11 +651,11 @@ msgstr ""
 
 #: gatewall/views.py:19
 msgid "You need to be authenticated in order to write here."
-msgstr ""
+msgstr "Thou need to be authenticated in order to write here."
 
 #: identity/urls.py:7
 msgid "author/<str:username>/"
-msgstr ""
+msgstr "wordsmith/<str:username>/"
 
 #: imajiner/urls.py:17 imajiner/urls.py:18
 msgid "Imajiner God View"
@@ -679,7 +679,7 @@ msgstr ""
 
 #: notebook/forms.py:28
 msgid "[Entitled Narrative]"
-msgstr ""
+msgstr "[Entitled Chronicle]"
 
 #: notebook/templates/notebook/narrative/detail.html:24
 msgid "unclassified"
@@ -720,19 +720,19 @@ msgstr ""
 
 #: notebook/templates/notebook/narrative/folder.html:29
 msgid "untitled narrative"
-msgstr ""
+msgstr "untitled chronicle"
 
 #: notebook/templates/notebook/narrative/list.html:10
 msgid "latest narratives"
-msgstr ""
+msgstr "latest chronicles"
 
 #: notebook/templates/notebook/narrative/list.html:33
 msgid "this narrative is not visible to public"
-msgstr ""
+msgstr "this chronicle is not visible to public"
 
 #: notebook/templates/notebook/narrative/write.html:26
 msgid "declare a narrative"
-msgstr ""
+msgstr "declare a declaration"
 
 #: notebook/templates/notebook/narrative/write.html:33
 msgid "something's happening"
@@ -793,6 +793,10 @@ msgid ""
 "you desire. Write about your drives, your dreams, your goals in life. Talk "
 "about you."
 msgstr ""
+"Imagine a sky that forms as thou wish. Beneath the sky, there is thou. Let "
+"the world know what thou kept inside for years. Let the people know and wow "
+"what thou desire. Write about thour drives, thour dreams, thour goals in "
+"life. Talk about thou."
 
 #: templates/base.html:95 templates/landing.html:38
 msgid "Close"
@@ -808,7 +812,7 @@ msgstr ""
 
 #: templates/base.html:118 templates/base.html:119
 msgid "close"
-msgstr ""
+msgstr "dismiss"
 
 #: templates/base.html:143 templates/landing.html:93 templates/landing.html:273
 msgid "feedback"
@@ -823,7 +827,7 @@ msgstr ""
 
 #: templates/base.html:166
 msgid "You are not authorized and will be sending this feedback anonymously."
-msgstr ""
+msgstr "Thou are not authorized and will be sending this feedback anonymously."
 
 #: templates/base.html:168
 #, python-format
@@ -850,7 +854,7 @@ msgstr ""
 
 #: templates/landing.html:45
 msgid "Narratives"
-msgstr ""
+msgstr "Chronicles"
 
 #: templates/landing.html:47
 msgid "Missionary"
@@ -858,7 +862,7 @@ msgstr ""
 
 #: templates/landing.html:48
 msgid "Console"
-msgstr ""
+msgstr "Instrument Board"
 
 #: templates/landing.html:50
 msgid "Feedback"
@@ -944,6 +948,9 @@ msgid ""
 "can be assured that nothing will distract you while you are reading from our "
 "side."
 msgstr ""
+"Ye moment thou read is ye moment thou value that piece of text ye most. Thou "
+"are hereby assured that nothing will distract thou while thou are reading "
+"from our side."
 
 #: templates/landing.html:216
 msgid "truly optional registration"
@@ -959,7 +966,7 @@ msgstr ""
 
 #: templates/landing.html:235
 msgid "resilient writing studio"
-msgstr ""
+msgstr "resilient composing studio"
 
 #: templates/landing.html:237
 msgid ""
@@ -992,4 +999,4 @@ msgstr ""
 
 #: templates/landing.html:318
 msgid "go to top"
-msgstr ""
+msgstr "go above"
