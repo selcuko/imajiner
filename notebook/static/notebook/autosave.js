@@ -15,7 +15,7 @@ const actionCodes = {
 
 const last = {
     value: $textarea.value,
-    title: document.title,
+    title: $title.value,
     fetch: null,
 };
 
@@ -25,10 +25,15 @@ let publicUrl = null;
 let fetchOnProgress = false;
 let toBeSubmitted = false;
 let submitSucceed = false;
+let stopFetch = false;
 
 $form.onsubmit = function (e) {
+    clearInterval(intervalId);
     e.preventDefault();
-    if (submitSucceed) location.href = publicUrl;
+    if (submitSucceed) {
+        location.href = publicUrl;
+        return;
+    }
     if (fetchOnProgress) toBeSubmitted = true;
     else post('SUBMIT');
 }
@@ -48,9 +53,10 @@ const req = {
 }
 
 function autosave() {
-    currentTitle = $title.value ? $title.value : titleDefault;
-    titleChanged = currentTitle !== last.title;
-    if ($textarea.value !== last.value || titleChanged) {
+    titleChanged = $title.value !== last.title;
+    valueChanged = $textarea.value !== last.value;
+    console.log(titleChanged, valueChanged);
+    if (valueChanged || titleChanged) {
         if (titleChanged) document.title = currentTitle + titleSuffix;
         post('AUTOSAVE');
     }
