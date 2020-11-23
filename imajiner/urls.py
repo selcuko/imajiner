@@ -19,7 +19,6 @@ admin.site.site_title = _('Imajiner God View')
 admin.site.index_title = _('Site Supervision')
 
 urlpatterns = [
-    path('', Home.as_view(), name='landing'),
     path('feedback/', Feedback.as_view(), name='feedback'),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
     path('sitemap.xml', sitemap, {'sitemaps': {'notebook': NarrativeSitemap }},
@@ -28,6 +27,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('', Home.as_view(), name='landing'),
     path(_('admin/'), admin.site.urls),
     path(_('narratives/'), include('notebook.urls', namespace='narrative')),
     path('', include('gatewall.urls', namespace='gatewall')),
