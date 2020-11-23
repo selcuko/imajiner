@@ -23,7 +23,7 @@
                 {% else %}
                 <li class="">{% translate 'unclassified'|title %}</li>
                 {% endif %}
-                <li class="cat"><a href="{% url 'notebook:sketch' uuid=narrative.master.uuid %}">{% translate 'edit'|capfirst %}</a></li>
+                <li class="cat"><a href="{% url 'notebook:sketch' uuid=narrative.uuid %}">{% translate 'edit'|capfirst %}</a></li>
                 {% endif %}
             </ul>
         </div>

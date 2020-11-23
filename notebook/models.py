@@ -38,7 +38,7 @@ class Base(models.Model):
         abstract = True
         ordering = ('-published_at', '-created_at')
     
-    title = models.CharField(max_length=100, default='', verbose_name='Title')
+    title = models.CharField(null=True, blank=True, max_length=100, default='', verbose_name='Title')
     body = models.TextField(null=True, verbose_name='Body')
     lead = models.TextField(null=True, blank=True, verbose_name='Summary')
     html = models.TextField(null=True, verbose_name='HTML')
@@ -49,6 +49,7 @@ class Base(models.Model):
     edited_at = models.DateTimeField(auto_now=True, verbose_name='Last edited at')
     language = models.CharField(max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
     sketch = models.BooleanField(default=True)
+
 
     def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
         if not self.sketch:
@@ -77,7 +78,7 @@ class Base(models.Model):
 
 
 class Narrative(Base):
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='narratives', null=True, blank=True)
 
     @property
     def languages_available(self):
@@ -177,6 +178,7 @@ class NarrativeVersion(Base):
         self.body = ref.body
         self.sketch = ref.sketch
         self.master = ref
+        self.language = ref.language
 
     def archive(self):
         return self.save(archive=True)

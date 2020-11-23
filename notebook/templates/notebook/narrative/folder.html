@@ -26,11 +26,12 @@
                         <p class="read-more">{% translate 'go ahead'|capfirst %} <i class="fa fa-arrow-right"></i></p>
                     </a>
                 </div>
+                {% translate 'untitled narrative'|title as untitled %}
                 {% for sketch in sketches %}
                 <div class="masonry__brick entry format-standard">
                     <a href="{{ sketch.get_absolute_url }}" class="f-blog">
                         <p class="meta"><span>{{ sketch.created_at }}</span></p>
-                        <h3 style="font-family: 'librebaskerville-regular'">{{ sketch.title }}</h3>
+                        <h3 style="font-family: 'librebaskerville-regular'">{% firstof sketch.title untitled %}</h3>
                         <p class="read-more">{% translate 'edit'|capfirst %} <i class="fa fa-arrow-right"></i></p>
                     </a>
                 </div>
