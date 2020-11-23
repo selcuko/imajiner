@@ -79,7 +79,7 @@ class List(ListView):
     model = NarrativeTranslation
     context_object_name = 'narratives'
     template_name = 'notebook/narrative/list.html'
-    paginate_by = 12
+    paginate_by = 20
     ordering = ('published_at',)
 
     def get_context_data(self, *args, **kwargs):
@@ -87,7 +87,7 @@ class List(ListView):
         ctx.update({
             'doc': {
                 'title': _('narratives').capitalize(),
-                'author': ''
+                'author': self.request.user.username,
             }
         })
         return ctx
@@ -111,7 +111,7 @@ class Folder(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/folder.html'
     def get(self, request):
         NarrativeTranslation.objects.filter(sketch=True, master__author=request.user, title='', body__isnull=True).delete()
-        sketches = NarrativeTranslation.objects.filter(sketch=True, master__author=request.user)
+        sketches = NarrativeTranslation.objects.filter(sketch=True, master__author=request.user).order_by('-edited_at')
         [print(s.title, s.body) for s in sketches]
         return render(request, self.template_name, {
             'sketches': sketches,

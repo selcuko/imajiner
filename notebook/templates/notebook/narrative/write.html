@@ -28,12 +28,13 @@
                 <form enctype="multipart/form-data" class="philosophy" id="form" action="" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-
+                    <input type="hidden" id="sketches-url" value="{% url 'notebook:folder' %}">
                     <blockquote class="philosophy">
                         <p class="philosophy" id="status">{% translate "something's happening"|capfirst %}</p>
                         <cite class="philosophy">{% translate 'the system'|capfirst %}</cite>
                     </blockquote>
-                    <input id="submit-button" class="philosophy btn--primary full-width" type="submit" value="{% translate 'declare'|capfirst %}">
+                    <input id="submit-button" class="btn--primary full-width" type="submit" value="{% translate 'declare'|capfirst %}">
+                    <input id="sketch-button" class="btn--stroke full-width" type="button" value="{% translate 'left as sketch'|capfirst %}">
                 </form>
             </div>
         </div>

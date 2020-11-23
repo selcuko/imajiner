@@ -1,7 +1,9 @@
 const $form = document.getElementById('form');
 const $textarea = document.getElementById('id_body');
 const $status = document.getElementById('status');
+const $sketchesUrl = document.getElementById('sketches-url');
 const $title = document.getElementById('id_title');
+const $leftSketch = document.getElementById('sketch-button');
 const $submit = document.getElementById('submit-button');
 const intervalMs = 5000;
 const intervalId = setInterval(autosave, intervalMs);
@@ -26,6 +28,13 @@ let fetchOnProgress = false;
 let toBeSubmitted = false;
 let submitSucceed = false;
 let stopFetch = false;
+
+
+$leftSketch.onclick = (e) => {
+    e.preventDefault();
+    post('AUTOSAVE');
+    location.href = $sketchesUrl.value;
+}
 
 $form.onsubmit = function (e) {
     clearInterval(intervalId);

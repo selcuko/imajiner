@@ -32,7 +32,7 @@ class SoundRecord(models.Model):
 
 
 class Base(models.Model):
-    LANG_MIN_LEN = 50
+    LANG_MIN_LEN = 40
     
     class Meta:
         abstract = True
@@ -59,7 +59,7 @@ class Base(models.Model):
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
         
-        if not self.language and not self.sketch:
+        if not self.sketch:
             if len(self.body) > self.LANG_MIN_LEN:
                 cleaned = generate.clean(self.body)
                 language = cld3.get_language(cleaned)
