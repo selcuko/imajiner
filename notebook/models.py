@@ -83,10 +83,17 @@ class Narrative(Base):
     @property
     def languages_available(self):
         return [t.language for t in self.translations.all()]
+    
+    @property
+    def languages_available_verbose(self, seperator=' | '):
+        return seperator.join([str(settings.LANGUAGES_DICT.get(l, l)) for l in self.languages_available])
 
     def __str__(self):
-        if not self.author: return f'"{self.title}" (unowned)'
-        return f'"{self.title}" by {self.author.username}'
+        languages_available = self.languages_available
+        if len(languages_available) == 0:
+            return '[Empty]'
+        else:
+            return self.title
 
 
     def save(self, *args, new_version=True, new_translation=False, **kwargs):

@@ -20,6 +20,8 @@ class NarrativeAdmin(admin.ModelAdmin):
     ]
     readonly_fields = ['created_at', 'uuid', 'slug', 'html']
     empty_value_display = '???'
+    list_display = ['title', 'sketch', 'languages_available_verbose', 'edited_at', 'author']
+    list_filter = ['sketch']
 
 
 admin.site.register(Narrative, NarrativeAdmin)
