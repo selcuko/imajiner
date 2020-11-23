@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse, redirect, reverse, Http404
+from django.shortcuts import render, HttpResponse, reverse, Http404
+from django.shortcuts import redirect as dj_redirect
 from django.http import JsonResponse
 from django.views.generic import DetailView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -22,7 +23,7 @@ class Redirect(View):
     def get(self, request, uuid, *args, **kwargs):
         narrative = Narrative.objects.get(uuid=uuid)
         translation = narrative.translations.last()
-        return redirect(translation)
+        return dj_redirect(translation)
 
 
 
@@ -95,14 +96,14 @@ class List(ListView):
 
     def get_queryset(self):
         languages = [get_language_from_request(self.request, check_path=True)]
+        baseqs = NarrativeTranslation.objects.filter(
+                    sketch=False, 
+                    master__author__isnull=False)
         if self.request.user.is_authenticated and self.request.user.profile.languages:
             languages += self.request.user.profile.languages.split(':')
-        qs = NarrativeTranslation.objects.filter(
-                sketch=False, 
-                master__author__isnull=False,
-                language__in=languages)
+        qs = baseqs.filter(language__in=languages)
         if self.request.user.is_authenticated:
-            qs = qs | NarrativeTranslation.objects.filter(master__author=self.request.user)
+            qs = qs | baseqs.filter(master__author=self.request.user, sketch=False)
         return qs
 
 
@@ -237,4 +238,54 @@ class ContinueSketch(LoginRequiredMixin, View):
 
 
 class AddTranslation(LoginRequiredMixin, View):
-    pass
+    template_name = 'notebook/narrative/write.html'
+
+    def get(self, request, uuid, redirect=False):
+        if redirect:
+            master = Narrative.objects.get(uuid=uuid, author=request.user)
+            translation = NarrativeTranslation(master=master)
+            translation.save()
+            link = reverse('notebook:translate', kwargs={'uuid': translation.uuid})
+            print('REDIRECTING', link)
+            return dj_redirect(to=link)
+                
+
+        translation = NarrativeTranslation.objects.get(uuid=uuid)
+        form = NarrativeForm(instance=translation)
+        return render(self.request, self.template_name, {
+            'form': form,
+            'doc': {
+                'title': _('Translation')
+            }
+        })
+    
+    def post(self, request, uuid, redirect=None):
+
+        translation = NarrativeTranslation.objects.get(uuid=uuid)
+        form = NarrativeForm(request.POST, instance=translation)
+        action = request.POST.get('action', '').lower()
+
+        if not form.is_valid():
+            logger.warn('NarrativeForm (Translation) not valid.')
+            return JsonResponse({}, status=400)
+
+
+        if action == 'submit':
+            translation = form.save(commit=False)
+            translation.sketch = False
+            translation.save()
+            response = {
+                    'language': settings.LANGUAGES_DICT.get(translation.language, translation.language),
+                    'publicUrl': translation.get_absolute_url(),
+                }
+            return JsonResponse(response)
+        
+        elif action == 'autosave':
+            translation = form.save(commit=False)
+            translation.sketch = True
+            translation.save(new_version=False)
+            return JsonResponse({})
+        
+        else:  # action id not recognized or absent
+            logger.warn('NarrativeForm submitted with no known action ID.')
+            return JsonResponse({}, status=400)
