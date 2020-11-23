@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 18:05+0300\n"
-"PO-Revision-Date: 2020-11-23 11:03+0200\n"
+"PO-Revision-Date: 2020-11-23 18:40+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -77,15 +77,13 @@ msgid "session management"
 msgstr "oturum yönetimi"
 
 #: console/templates/console/access.html:80
-#, fuzzy
 msgid "user agent"
-msgstr "ıdk"
+msgstr "user agent"
 
 #: console/templates/console/access.html:81
 #: console/templates/console/access.html:94
-#, fuzzy
 msgid "terminate"
-msgstr "bitir"
+msgstr "sonlandır"
 
 #: console/templates/console/base.html:67
 msgid "shadow"
@@ -93,9 +91,8 @@ msgstr "gölge"
 
 #: console/templates/console/base.html:67
 #: explore/templates/static/about.html:239
-#, fuzzy
 msgid "author"
-msgstr "gezhin mahlası"
+msgstr "yazar"
 
 #: console/templates/console/base.html:70
 #: gatewall/templates/gatewall/gatewall.html:25
@@ -116,7 +113,7 @@ msgstr "mönü"
 
 #: console/templates/console/base.html:92
 msgid "espresso"
-msgstr "menengiç"
+msgstr "espresso"
 
 #: console/templates/console/base.html:97
 #: console/templates/console/profile.html:15 console/views.py:33
@@ -163,23 +160,20 @@ msgstr "İletişim"
 
 #: console/templates/console/narrative.html:42
 msgid "editing page"
-msgstr ""
+msgstr "düzenleme sayfası"
 
 #: console/templates/console/narrative.html:58
-#, fuzzy
-#| msgid "version history"
 msgid "view version history"
-msgstr "versiyon tarihi"
+msgstr "versiyon geçmişini görüntüle"
 
 #: console/templates/console/narrative.html:73
-#, fuzzy
-#| msgid "narratives"
 msgid "narrative content"
-msgstr "hikayeler"
+msgstr "hikaye içeriği"
 
 #: console/templates/console/narrative/readonly.html:12
+#, fuzzy
 msgid "an old version of"
-msgstr ""
+msgstr "şunun eski bir versiyonu:"
 
 #: console/templates/console/narrative/readonly.html:21
 #: console/templates/console/narratives.html:51
@@ -198,22 +192,16 @@ msgid "this version is old and archived, meaning you cannot edit it nevermore."
 msgstr ""
 
 #: console/templates/console/narrative/readonly.html:47
-#, fuzzy
-#| msgid "narratives"
 msgid "archived version no"
-msgstr "hikayeler"
+msgstr "arşivlenmiş versiyon numarası"
 
 #: console/templates/console/narrative/versions.html:10
-#, fuzzy
-#| msgid "versions"
 msgid "versions timeline"
-msgstr "versiyonlar"
+msgstr "versiyon geçmişi"
 
 #: console/templates/console/narratives.html:26
-#, fuzzy
-#| msgid "narratives"
 msgid "all narratives"
-msgstr "hikayeler"
+msgstr "tüm hikayeler"
 
 #: console/templates/console/narratives.html:47
 #: console/templates/console/narratives.html:58
@@ -225,7 +213,7 @@ msgstr "düzenle"
 
 #: console/templates/console/narratives.html:48
 msgid "version history"
-msgstr "versiyon tarihi"
+msgstr "versiyon geçmişi"
 
 #: console/templates/console/narratives.html:49
 #: console/templates/console/narratives.html:79 notebook/forms.py:22
@@ -238,8 +226,6 @@ msgid "published at"
 msgstr "diğer gezginler de artık okuyabilir"
 
 #: console/templates/console/narratives.html:60
-#, fuzzy
-#| msgid "versions"
 msgid "versions"
 msgstr "versiyonlar"
 
@@ -261,10 +247,8 @@ msgid "manage"
 msgstr "yönet"
 
 #: console/templates/console/overview.html:33
-#, fuzzy
-#| msgid "narratives"
 msgid "unpublished narratives"
-msgstr "hikayeler"
+msgstr "yayınlanmamış hikayeler"
 
 #: console/templates/console/overview.html:41
 msgid "view the narratives you left as a sketch and did not publish."
@@ -284,20 +268,16 @@ msgid "proceed"
 msgstr "ilerle gezgin"
 
 #: console/templates/console/overview.html:73
-#, fuzzy
-#| msgid "narratives"
 msgid "old narrative versions"
-msgstr "hikayeler"
+msgstr "hikayenin eski versiyonları"
 
 #: console/templates/console/overview.html:81
 msgid "any piece of your work is kept."
 msgstr "çalışmanızın her bir parçası saklanır."
 
 #: console/templates/console/overview.html:83
-#, fuzzy
-#| msgid "overview"
 msgid "view"
-msgstr "kuş bakışı"
+msgstr "görüntüle"
 
 #: console/templates/console/profile.html:35
 #, fuzzy
@@ -333,7 +313,7 @@ msgstr "şifre"
 
 #: console/templates/console/profile.html:68
 msgid "go to"
-msgstr "ileri/git"
+msgstr "git"
 
 #: console/templates/console/profile.html:82
 msgid "cool stuff"
@@ -384,34 +364,24 @@ msgid "preferences/"
 msgstr "tercihler/"
 
 #: console/views.py:23
-#, fuzzy
-#| msgid "console espresso"
 msgid "console overview"
-msgstr "konsol menengiçi"
+msgstr "konsol espresso"
 
 #: console/views.py:77
-#, fuzzy
-#| msgid "narratives"
 msgid "my narratives"
-msgstr "hikayeler"
+msgstr "hikayelerim"
 
 #: console/views.py:86
-#, fuzzy
-#| msgid "narratives"
 msgid "edit narrative"
-msgstr "hikayeler"
+msgstr "hikayeyi düzenle"
 
 #: console/views.py:107
-#, fuzzy
-#| msgid "narratives"
 msgid "narrative version timeline"
-msgstr "hikayeler"
+msgstr "hikaye versiyon geçmişi"
 
 #: console/views.py:116
-#, fuzzy
-#| msgid "narratives"
 msgid "narrative version history"
-msgstr "hikayeler"
+msgstr "hikaye versiyon geçmişi"
 
 #: explore/templates/static/about.html:8
 msgid "about imajiner"
@@ -423,14 +393,13 @@ msgstr "Basitçe soyut tarafınız hakkında konuşabileceğiniz bir yer."
 
 #: explore/templates/static/about.html:15
 #: explore/templates/static/about.html:69 templates/landing.html:130
-#, fuzzy
 msgid "missionary"
 msgstr "misyoner"
 
 #: explore/templates/static/about.html:16
 #: explore/templates/static/about.html:120
 msgid "privacy"
-msgstr ""
+msgstr "mahremiyet"
 
 #: explore/templates/static/about.html:17
 #: explore/templates/static/about.html:91 templates/landing.html:179
@@ -439,15 +408,12 @@ msgstr "mekanizma"
 
 #: explore/templates/static/about.html:18
 #: explore/templates/static/about.html:172
-#, fuzzy
-#| msgid "edit"
 msgid "credits"
-msgstr "düzenle"
+msgstr "emeği geçenler"
 
 #: explore/templates/static/about.html:19
-#, fuzzy
 msgid "masterminds"
-msgstr "bitir"
+msgstr "yapımcılar"
 
 #: explore/templates/static/about.html:29
 msgid ""
@@ -479,15 +445,13 @@ msgid "Imajiner's Mission and Beyond"
 msgstr ""
 
 #: explore/templates/static/about.html:76
-#, fuzzy
 msgid ""
 "Our starting point is to offer a free place where you spend time without "
 "being judged constantly. A place where you tinker with only what you want, "
 "just like a utopia."
 msgstr ""
-"Başlangıç noktamız, sürekli yargılanmadan vakit geçirebileceğiniz, ücretsiz "
-"bir yer sunmaktır. Tıpkı bir ütopya gibi, sadece istediğinizi [tinker] bir "
-"yer."
+"Başlangıç noktamız, sürekli yargılanmadan vakit geçirebileceğiniz, özgür bir "
+"yer sunmaktır. Tıpkı bir ütopya gibi, sadece istediğinizi [tinker] bir yer."
 
 #: explore/templates/static/about.html:93
 msgid "A whole platform, designed for your experience."
@@ -498,10 +462,8 @@ msgid "Although explaining it would break the spell, here are what to expect."
 msgstr ""
 
 #: explore/templates/static/about.html:104
-#, fuzzy
-#| msgid "shadow authorization"
 msgid "shadow authentication"
-msgstr "hayalwt kayır"
+msgstr "hayalet kaydı"
 
 #: explore/templates/static/about.html:105
 msgid ""
@@ -522,7 +484,7 @@ msgstr ""
 
 #: explore/templates/static/about.html:133
 msgid "open-sourced"
-msgstr ""
+msgstr "açık kaynak kodlu"
 
 #: explore/templates/static/about.html:134
 #, python-format
@@ -533,7 +495,7 @@ msgstr ""
 
 #: explore/templates/static/about.html:140
 msgid "zero personal data"
-msgstr ""
+msgstr "sıfır kişisel veri"
 
 #: explore/templates/static/about.html:141
 #, python-format
@@ -544,7 +506,7 @@ msgstr ""
 
 #: explore/templates/static/about.html:149
 msgid "Security"
-msgstr ""
+msgstr "Güvenlik"
 
 #: explore/templates/static/about.html:150
 msgid ""
@@ -556,7 +518,7 @@ msgstr ""
 
 #: explore/templates/static/about.html:158
 msgid "Anonymousity"
-msgstr ""
+msgstr "Anonimlik"
 
 #: explore/templates/static/about.html:159
 #, python-format
@@ -590,14 +552,15 @@ msgstr ""
 
 #: explore/templates/static/about.html:201
 msgid "Most of the frontend code is taken from them."
-msgstr "Çoğu frontend kodu onlardan alınmıştır."
+msgstr "Frontend kodlarının çoğunu onlardan aldık."
 
 #: explore/templates/static/about.html:213
-#, fuzzy
 msgid ""
 "Hereby we thank these packages' authors, as they are indirect contributors "
 "of Imajiner."
-msgstr "ıdk"
+msgstr ""
+"Bu paketlerin yapımcılarına, dolaylı olarak emekleri geçtiği için, teşekkür "
+"ediyoruz."
 
 #: explore/templates/static/about.html:241
 msgid "the man behind"
@@ -605,7 +568,7 @@ msgstr "arkasındaki adam"
 
 #: explore/templates/static/about.html:242
 msgid "and the goddess"
-msgstr ""
+msgstr "ve tanrıça"
 
 #: explore/templates/static/about.html:245
 msgid ""
@@ -631,7 +594,7 @@ msgstr "hakkında"
 
 #: gatewall/templates/gatewall/gatewall.html:15
 msgid "authentication"
-msgstr ""
+msgstr "yetkilendirme"
 
 #: gatewall/templates/gatewall/gatewall.html:16
 msgid ""
@@ -646,7 +609,7 @@ msgstr ""
 
 #: gatewall/templates/gatewall/gatewall.html:34
 msgid "author authorization"
-msgstr ""
+msgstr "yazar yetkilendirilmesi"
 
 #: gatewall/templates/gatewall/gatewall.html:45
 msgid ""
@@ -710,13 +673,11 @@ msgstr "veda/"
 
 #: gatewall/views.py:17
 msgid "Authorization"
-msgstr ""
+msgstr "Yetkilendirme"
 
 #: gatewall/views.py:18
-#, fuzzy
-#| msgid "Imajiner God View"
 msgid "Imajiner Gatewall"
-msgstr "Imajiner Tanrı Görüşü"
+msgstr "Imajiner Sur"
 
 #: gatewall/views.py:19
 msgid "You need to be authenticated in order to write here."
@@ -736,7 +697,7 @@ msgstr "Site Süperyönetimi"
 
 #: imajiner/urls.py:31
 msgid "admin/"
-msgstr "admin/"
+msgstr "amdin/"
 
 #: imajiner/urls.py:37
 msgid "console/"
@@ -747,10 +708,8 @@ msgid "body"
 msgstr "gövde"
 
 #: notebook/forms.py:28
-#, fuzzy
-#| msgid "narratives"
 msgid "[Entitled Narrative]"
-msgstr "hikayeler"
+msgstr "[Başlıklı Hikaye]"
 
 #: notebook/templates/notebook/narrative/detail.html:24
 msgid "unclassified"
@@ -758,10 +717,9 @@ msgstr "sınıflandırılmamış"
 
 #: notebook/templates/notebook/narrative/detail.html:27
 msgid "translate"
-msgstr ""
+msgstr "çeviri yap"
 
 #: notebook/templates/notebook/narrative/detail.html:40
-#, fuzzy
 msgid "pinch of"
 msgstr "bir tutam"
 
@@ -774,17 +732,14 @@ msgid "sketches"
 msgstr "taslaklar"
 
 #: notebook/templates/notebook/narrative/folder.html:17
-#, fuzzy
 msgid "begin writing a new story or mess with the unfinished works"
-msgstr ""
-"karışıklıklarla veya bitmemiş çalışmalarla yeni bir öykü yazmya başlayın"
+msgstr "yeni bir öyküye başla veya bitirmediklerinle uğraşmaya devam et"
 
 #: notebook/templates/notebook/narrative/folder.html:24
 msgid "right now"
-msgstr "şimdi"
+msgstr "tam şu an"
 
 #: notebook/templates/notebook/narrative/folder.html:25
-#, fuzzy
 msgid "new story, new dreams, new possibilities"
 msgstr "yeni bir öykü, yeni bir hülya ve yeni olasılıklar"
 
@@ -794,31 +749,24 @@ msgid "write"
 msgstr "yazmaya ne dersin gezgin"
 
 #: notebook/templates/notebook/narrative/folder.html:29
-#, fuzzy
-#| msgid "narratives"
 msgid "untitled narrative"
-msgstr "hikayeler"
+msgstr "başlıksız hikayeler"
 
 #: notebook/templates/notebook/narrative/list.html:10
-#, fuzzy
-#| msgid "narratives"
 msgid "latest narratives"
-msgstr "hikayeler"
+msgstr "son hikayeler"
 
 #: notebook/templates/notebook/narrative/list.html:33
 msgid "this narrative is not visible to public"
 msgstr "bu hikayeyi diğer gezginler göremez"
 
 #: notebook/templates/notebook/narrative/write.html:26
-#, fuzzy
-#| msgid "narratives"
 msgid "declare a narrative"
-msgstr "hikayeler"
+msgstr "bildirge yayınla"
 
 #: notebook/templates/notebook/narrative/write.html:33
-#, fuzzy
 msgid "something's happening"
-msgstr "bir şeyler yolunda gitmiyor galiba"
+msgstr "bişiler oluyo"
 
 #: notebook/templates/notebook/narrative/write.html:34
 msgid "the system"
@@ -830,7 +778,7 @@ msgstr "beyan et"
 
 #: notebook/templates/notebook/narrative/write.html:37
 msgid "left as sketch"
-msgstr ""
+msgstr "taslak olarak bırak"
 
 #: notebook/urls.py:10
 msgid "write/"
@@ -845,29 +793,24 @@ msgid "write/<uuid:uuid>/"
 msgstr "yaz/<uuid:uuid>/"
 
 #: notebook/urls.py:13
-#, fuzzy
-#| msgid "write/<uuid:uuid>/"
 msgid "translate/<uuid:uuid>/"
-msgstr "yaz/<uuid:uuid>/"
+msgstr "ceviri/<uuid:uuid>/"
 
 #: notebook/urls.py:14
-#, fuzzy
-#| msgid "write/<uuid:uuid>/"
 msgid "retranslate/<uuid:uuid>/"
-msgstr "yaz/<uuid:uuid>/"
+msgstr "receviri/<uuid:uuid>/"
 
 #: notebook/views.py:92
 msgid "view the latest narratives published on Imajiner"
 msgstr ""
 
 #: notebook/views.py:141 notebook/views.py:196
-#, fuzzy
 msgid "refreshing the ink"
-msgstr "mürekkebini tazele"
+msgstr "mürekkep tazeleniyor"
 
 #: notebook/views.py:258
 msgid "Translation"
-msgstr ""
+msgstr "Çeviri"
 
 #: templates/base.html:8
 msgid "Fly as high as you can"
@@ -923,9 +866,10 @@ msgstr ""
 "Kayıtlı değilsiniz ve bu geri bildirimi isimsiz olarak göndereceksiniz."
 
 #: templates/base.html:168
-#, fuzzy, python-format
+#, python-format
 msgid "You are authorized and will be sending this feedback as %(username)s."
-msgstr "Kayıtlısınız ve bu geri bildirimi"
+msgstr ""
+"Giriş yaptınız ve bu geribildirimi %(username)s olarak gönderiyorsunuz."
 
 #: templates/base.html:185
 msgid "all rights reserved"
@@ -943,7 +887,7 @@ msgstr "Dahası"
 
 #: templates/landing.html:44
 msgid "Homeland"
-msgstr "Sema"
+msgstr "Anakara"
 
 #: templates/landing.html:45
 msgid "Narratives"
@@ -989,9 +933,8 @@ msgid "what"
 msgstr "ne"
 
 #: templates/landing.html:92
-#, fuzzy
 msgid "whatcha got there"
-msgstr "orada ne var"
+msgstr "neler var"
 
 #: templates/landing.html:93
 msgid "your fairy wishes"
@@ -1002,9 +945,8 @@ msgid "how"
 msgstr "nasıl"
 
 #: templates/landing.html:94
-#, fuzzy
 msgid "how tf does these work"
-msgstr "ıdk"
+msgstr "nasıl çalışıyor"
 
 #: templates/landing.html:98
 msgid "available in"
@@ -1077,8 +1019,6 @@ msgstr ""
 "değiştirebilirsiniz!)"
 
 #: templates/landing.html:235
-#, fuzzy
-#| msgid "writing studio"
 msgid "resilient writing studio"
 msgstr "yazın stüdyosu"
 
@@ -1093,9 +1033,8 @@ msgstr ""
 "yazınızın taslaklarda kayıtlı olduğunu göreceksiniz."
 
 #: templates/landing.html:252
-#, fuzzy
 msgid "by users for users"
-msgstr "gezginler tarafından gezginler için"
+msgstr "yazarlar tarafından yazarlar için"
 
 #: templates/landing.html:254
 msgid ""
@@ -1113,10 +1052,8 @@ msgid "We have a dream where the freedom of expression is truly present."
 msgstr "Benim bir hayalim var, ifade özgürlünün gerçekten olduğu."
 
 #: templates/landing.html:293
-#, fuzzy
-#| msgid "reach me out"
 msgid "reach us out"
-msgstr "bana ulaşın"
+msgstr "bize ulaşın"
 
 #: templates/landing.html:312
 msgid "All rights reserved."
@@ -1124,7 +1061,7 @@ msgstr "Tüm hakları saklıdır."
 
 #: templates/landing.html:318
 msgid "go to top"
-msgstr "üste dön"
+msgstr "yukarı"
 
 #, fuzzy
 #~ msgid "go ahead"
