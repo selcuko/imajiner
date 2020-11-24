@@ -19,8 +19,8 @@ class NarrativeForm(forms.ModelForm):
         }
 
         labels = {
-            'title': _('title').capitalize(),
-            'body': _('body').capitalize(),
+            'title': _('Title'),
+            'body': _('Body'),
         }
     
     def clean_title(self):

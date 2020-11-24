@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-24 12:10+0300\n"
-"PO-Revision-Date: 2020-11-24 12:13+0300\n"
+"POT-Creation-Date: 2020-11-24 13:00+0300\n"
+"PO-Revision-Date: 2020-11-24 13:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -20,7 +20,8 @@ msgstr ""
 
 #: console/templates/console/access.html:15
 #: console/templates/console/base.html:102
-#: console/templates/console/profile.html:68 console/views.py:55
+#: console/templates/console/profile.html:68 console/views.py:59
+#: console/views.py:76
 msgid "access & security"
 msgstr "erişim & güvenlik"
 
@@ -86,12 +87,15 @@ msgstr "user agent"
 msgid "terminate"
 msgstr "sonlandır"
 
+#: console/templates/console/access.html:90
+msgid "current session"
+msgstr "bu cihaz"
+
 #: console/templates/console/base.html:67
 msgid "shadow"
 msgstr "gölge"
 
 #: console/templates/console/base.html:67
-#: explore/templates/static/about.html:239
 msgid "author"
 msgstr "yazar"
 
@@ -100,11 +104,9 @@ msgstr "yazar"
 msgid "log out"
 msgstr "çıkış yap"
 
-#: console/templates/console/base.html:80 console/views.py:125
-#: console/views.py:132 console/views.py:140 console/views.py:147
-#: console/views.py:155 console/views.py:162 console/views.py:171
-#: console/views.py:180 console/views.py:203 console/views.py:211
-#: templates/base.html:113
+#: console/templates/console/base.html:80 console/views.py:130
+#: console/views.py:136 console/views.py:144 console/views.py:153
+#: console/views.py:176 console/views.py:184 templates/base.html:113
 msgid "console"
 msgstr "konsol"
 
@@ -117,12 +119,13 @@ msgid "espresso"
 msgstr "espresso"
 
 #: console/templates/console/base.html:97
-#: console/templates/console/profile.html:15 console/views.py:33
+#: console/templates/console/profile.html:15 console/views.py:37
+#: console/views.py:51
 msgid "profile"
 msgstr "profil"
 
 #: console/templates/console/base.html:106
-#: console/templates/console/narrative/readonly.html:16 notebook/views.py:90
+#: console/templates/console/narrative/readonly.html:16 notebook/views.py:92
 #: templates/base.html:109
 msgid "narratives"
 msgstr "hikayeler"
@@ -151,7 +154,7 @@ msgstr "yazın stüdyosu"
 msgid "Copyright Imajiner. All rights reserved."
 msgstr "Copyright Imajiner. Tüm hakları saklıdır."
 
-#: console/templates/console/base.html:145
+#: console/templates/console/base.html:145 explore/urls.py:11
 msgid "About"
 msgstr "Hakkında"
 
@@ -208,7 +211,7 @@ msgstr "tüm hikayeler"
 #: console/templates/console/narratives.html:47
 #: console/templates/console/narratives.html:58
 #: console/templates/console/narratives.html:78
-#: notebook/templates/notebook/narrative/detail.html:26
+#: notebook/templates/notebook/narrative/detail.html:28
 #: notebook/templates/notebook/narrative/folder.html:35
 msgid "edit"
 msgstr "düzenle"
@@ -218,7 +221,7 @@ msgid "version history"
 msgstr "sürüm geçmişi"
 
 #: console/templates/console/narratives.html:49
-#: console/templates/console/narratives.html:79 notebook/forms.py:22
+#: console/templates/console/narratives.html:79
 msgid "title"
 msgstr "başlık"
 
@@ -332,7 +335,7 @@ msgstr "ben/"
 msgid "access/"
 msgstr "erişim/"
 
-#: console/urls.py:11 imajiner/urls.py:32
+#: console/urls.py:11 imajiner/urls.py:31
 msgid "narratives/"
 msgstr "hikayeler/"
 
@@ -364,23 +367,23 @@ msgstr "takip-ettiklerin/"
 msgid "preferences/"
 msgstr "tercihler/"
 
-#: console/views.py:23
+#: console/views.py:25
 msgid "console overview"
 msgstr "konsol espresso"
 
-#: console/views.py:77
+#: console/views.py:83
 msgid "my narratives"
 msgstr "hikayelerim"
 
-#: console/views.py:86
+#: console/views.py:93 console/views.py:107
 msgid "edit narrative"
 msgstr "hikayeyi düzenle"
 
-#: console/views.py:107
+#: console/views.py:115
 msgid "narrative version timeline"
 msgstr "hikaye versiyon geçmişi"
 
-#: console/views.py:116
+#: console/views.py:123
 msgid "narrative version history"
 msgstr "hikaye versiyon geçmişi"
 
@@ -413,6 +416,7 @@ msgid "credits"
 msgstr "emeği geçenler"
 
 #: explore/templates/static/about.html:19
+#: explore/templates/static/about.html:239
 msgid "masterminds"
 msgstr "yapımcılar"
 
@@ -637,10 +641,6 @@ msgstr ""
 msgid "about/"
 msgstr "hakkında/"
 
-#: explore/urls.py:11 templates/base.html:115 templates/landing.html:49
-msgid "about"
-msgstr "hakkında"
-
 #: gatewall/templates/gatewall/gatewall.html:15
 msgid "authentication"
 msgstr "yetkilendirme"
@@ -748,37 +748,45 @@ msgstr "Imajiner Tanrı Görüşü"
 msgid "Site Supervision"
 msgstr "Site Süperyönetimi"
 
-#: imajiner/urls.py:31
+#: imajiner/urls.py:30
 msgid "admin/"
 msgstr "amdin/"
 
-#: imajiner/urls.py:37
+#: imajiner/urls.py:36
 msgid "console/"
 msgstr "konsol/"
 
+#: notebook/forms.py:22
+msgid "Title"
+msgstr "Başlık"
+
 #: notebook/forms.py:23
-msgid "body"
-msgstr "gövde"
+msgid "Body"
+msgstr "Metin"
 
 #: notebook/forms.py:28
 msgid "[Entitled Narrative]"
 msgstr "[Başlıklı Hikaye]"
 
-#: notebook/templates/notebook/narrative/detail.html:24
+#: notebook/templates/notebook/narrative/detail.html:26
 msgid "unclassified"
 msgstr "tanımlanamamış"
 
-#: notebook/templates/notebook/narrative/detail.html:27
+#: notebook/templates/notebook/narrative/detail.html:29
 msgid "translate"
 msgstr "çeviri yap"
 
-#: notebook/templates/notebook/narrative/detail.html:40
+#: notebook/templates/notebook/narrative/detail.html:42
 msgid "pinch of"
 msgstr "bir tutam"
 
-#: notebook/templates/notebook/narrative/detail.html:52
+#: notebook/templates/notebook/narrative/detail.html:54
 msgid "languages"
 msgstr "diller"
+
+#: notebook/templates/notebook/narrative/detail.html:62
+msgid "unknown"
+msgstr "bilinmiyor"
 
 #: notebook/templates/notebook/narrative/folder.html:16
 msgid "sketches"
@@ -853,15 +861,15 @@ msgstr "çeviri/<uuid:uuid>/"
 msgid "retranslate/<uuid:uuid>/"
 msgstr "reçeviri/<uuid:uuid>/"
 
-#: notebook/views.py:92
+#: notebook/views.py:94
 msgid "view the latest narratives published on Imajiner"
 msgstr "imajine'de yayınlanmış son hikayeleri görüntüle"
 
-#: notebook/views.py:141 notebook/views.py:196
+#: notebook/views.py:143 notebook/views.py:198
 msgid "refreshing the ink"
 msgstr "mürekkebin tazeleniyor"
 
-#: notebook/views.py:258
+#: notebook/views.py:260
 msgid "Translation"
 msgstr "Çeviri"
 
@@ -892,6 +900,10 @@ msgstr "Mönü"
 #: templates/base.html:108
 msgid "homepage"
 msgstr "anasayfa"
+
+#: templates/base.html:115 templates/landing.html:49
+msgid "about"
+msgstr "hakkında"
 
 #: templates/base.html:118 templates/base.html:119
 msgid "close"
@@ -1114,6 +1126,9 @@ msgstr "Tüm hakları saklıdır."
 #: templates/landing.html:340
 msgid "go to top"
 msgstr "yukarı"
+
+#~ msgid "body"
+#~ msgstr "gövde"
 
 #, fuzzy
 #~ msgid "go ahead"

@@ -47,7 +47,7 @@ $form.onsubmit = function (e) {
     else post('SUBMIT');
 }
 
-$status.innerText = statusMessage.waiting;
+$status.innerText = statusMessage.waiting();
 
 
 const req = {
@@ -70,7 +70,7 @@ function autosave() {
         post('AUTOSAVE');
     }
     last.value = $textarea.value;
-    last.title = currentTitle;
+    last.title = $title.value;
 }
 
 
@@ -78,7 +78,7 @@ function autosave() {
 async function post(action = 'SUBMIT') {
     if (fetchOnProgress) return;
     req.began();
-    $status.innerText = statusMessage.syncing;
+    $status.innerText = statusMessage.syncing();
 
     if (action === 'SUBMIT' && last.fetch === null) {
         await post('AUTOSAVE');
@@ -96,9 +96,9 @@ async function post(action = 'SUBMIT') {
         credentials: 'same-origin',
     })
         .then(response => {
-            if (!response.ok) $status.innerText = statusMessage.responseNotOk;
+            if (!response.ok) $status.innerText = statusMessage.responseNotOk();
             if (action == actionCodes.SUBMIT) {
-                $status.innerText = statusMessage.processing;
+                $status.innerText = statusMessage.processing();
                 if (response.ok) submitSucceed = true;
                 return response.json();
             }
@@ -111,8 +111,8 @@ async function post(action = 'SUBMIT') {
                 language = json.language;
                 if (!language) {
                     publicUrl = json.publicUrl;
-                    $status.innerText = statusMessage.languageNotOk;
-                    $submit.value = statusMessage.proceedAnyway;
+                    $status.innerText = statusMessage.languageNotOk();
+                    $submit.value = statusMessage.proceedAnyway();
                 }
                 else {
                     $status.innerText = interpolate(gettext('Declared. You will be redirected soon.'), true);
@@ -121,7 +121,7 @@ async function post(action = 'SUBMIT') {
             }
             else if (action == actionCodes.AUTOSAVE) {
                 // autosaved
-                $status.innerText = statusMessage.autosaveOk;
+                $status.innerText = statusMessage.autosaveOk();
             }
         })
     req.ended();

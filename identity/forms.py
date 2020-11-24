@@ -3,6 +3,5 @@ from .models import Profile
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        fields = '__all__'
-        exclude = ['user']
+        fields = ['biography']
         model = Profile

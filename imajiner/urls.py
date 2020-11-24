@@ -23,7 +23,6 @@ urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
     path('sitemap.xml', sitemap, {'sitemaps': {'notebook': NarrativeSitemap }},
      name='django.contrib.sitemaps.views.sitemap'),
-    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 ]
 
 urlpatterns += i18n_patterns(
@@ -35,6 +34,7 @@ urlpatterns += i18n_patterns(
     path('', include('identity.urls', namespace='identity')),
     path('', include('tagmanager.urls', namespace='tag')),
     path(_('console/'), include('console.urls', namespace='console')),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     prefix_default_language=False,
 )
 

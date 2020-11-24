@@ -17,9 +17,11 @@
                 <li class="date">V{{ narrative.versions.first.version }}</li>
 
                 {% if request.user == narrative.master.author %}
-                {% if narrative.language %}
+                {% if narrative.language in LANG_INFO.keys %}
                 {% get_language_info for narrative.language as language_info %}
                 <li class="date">{{ language_info.name_local }}</li>
+                {% elif narrative.language %}
+                <li class="date">{{ narrative.language|upper }}</li>
                 {% else %}
                 <li class="">{% translate 'unclassified'|title %}</li>
                 {% endif %}
@@ -53,9 +55,11 @@
     
                     <span id="tag-list" class="s-content__tag-list">
                         {% for t in narrative.master.translations.all %}
-                        {% if t.language and not t.sketch %}
-                        {% get_language_info for t.language as linfo %}
+                        {% if t.language in LANG_INFO.keys and not t.sketch %}
+                        {% get_language_info for t as linfo %}
                         <a href="{% url 'notebook:detail' slug=t.slug %}" class="tag-display">{{ linfo.name_local }} ({{ linfo.name_translated }})</a>
+                        {% elif t.language %}
+                        <a href="{% url 'notebook:detail' slug=t.slug %}" class="tag-display">{{ t.language|upper }} ({% translate 'unknown'|title %})</a>
                         {% endif %}{% endfor %}
                         <i id="tag-add-button" style="padding-top:5px;" class="fa fa-plus fa-lg"></i>
                     </span>

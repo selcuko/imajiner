@@ -12,6 +12,7 @@ import json
 from uuid import UUID
 from django.core.exceptions import SuspiciousOperation
 from django.utils.translation import gettext as _, get_language_from_request
+from django.conf.locale import LANG_INFO
 from django.conf import settings
 import time
 import logging
@@ -44,7 +45,8 @@ class Detail(DetailView):
                 'title': self.narrative.title,
                 'author': self.narrative.master.author.username,
                 'description': self.narrative.lead,
-            }
+            },
+            'LANG_INFO': LANG_INFO,
         })
         return ctx
     

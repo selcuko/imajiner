@@ -87,7 +87,7 @@
                                             <td>{{ user_agent }}</td>
                                             <td>
                                                 {% if request.session.session_key == session.session_key %}
-                                                Current session
+                                                {% translate 'current session'|capfirst %}
                                                 {% else %}
                                                 <a href="#0" onclick="terminateSession('{{ session.session_key }}');"><i
                                                         class="fa fa-times"></i>
