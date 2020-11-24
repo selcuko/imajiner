@@ -25,8 +25,11 @@
                 {% else %}
                 <li class="">{% translate 'unclassified'|title %}</li>
                 {% endif %}
-                <li class="cat"><a href="{% url 'notebook:sketch' uuid=narrative.uuid %}">{% translate 'edit'|capfirst %}</a></li>
-                <li class="cat"><a href="{% url 'notebook:retranslate' uuid=narrative.master.uuid %}">{% translate 'translate'|capfirst %}</a></li>
+                <li class="cat"><a
+                        href="{% url 'notebook:sketch' uuid=narrative.uuid %}">{% translate 'edit'|capfirst %}</a></li>
+                <li class="cat"><a
+                        href="{% url 'notebook:retranslate' uuid=narrative.master.uuid %}">{% translate 'translate'|capfirst %}</a>
+                </li>
                 {% endif %}
             </ul>
         </div>
@@ -40,11 +43,12 @@
             <div class="row" style="display:flex; flex-direction: row; justify-content: space-between;">
                 <p class="s-content__tags">
                     <span class="philosophy">{% translate 'pinch of'|capfirst %}</span>
-    
+
                     <span id="tag-list" class="s-content__tag-list">
                         {% tags_for_user 20 as tags %}
                         {% for tag in tags %}
-                        <a class="tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} (<small class="count">{{ tag.count }}</small>)</a>
+                        <a class="tag-display" id="{{ tag.abstract.slug }}">{{ tag.abstract.name }} (<small
+                                class="count">{{ tag.count }}</small>)</a>
                         {% endfor %}
                         <a class="tag-display" id="tag-sample" style="display:none;"></a>
                         <i id="tag-add-button" style="padding-top:5px;" class="fa fa-plus fa-lg"></i>
@@ -52,16 +56,19 @@
                 </p> <!-- end s-content__tags -->
                 <p class="s-content__tags">
                     <span class="philosophy">{% translate 'languages'|capfirst %}</span>
-    
+
                     <span id="tag-list" class="s-content__tag-list">
                         {% for t in narrative.master.translations.all %}
                         {% if t.language in LANG_INFO.keys and not t.sketch %}
-                        {% get_language_info for t as linfo %}
-                        <a href="{% url 'notebook:detail' slug=t.slug %}" class="tag-display">{{ linfo.name_local }} ({{ linfo.name_translated }})</a>
+                        {% get_language_info for t.language as linfo %}
+                        <a href="{% url 'notebook:detail' slug=t.slug %}" class="tag-display">
+                            {{ linfo.name_local }} ({{ linfo.name_translated }})</a>
                         {% elif t.language %}
-                        <a href="{% url 'notebook:detail' slug=t.slug %}" class="tag-display">{{ t.language|upper }} ({% translate 'unknown'|title %})</a>
-                        {% endif %}{% endfor %}
-                        <i id="tag-add-button" style="padding-top:5px;" class="fa fa-plus fa-lg"></i>
+                        <a href="{% url 'notebook:detail' slug=t.slug %}" class="tag-display">
+                            {{ t.language|upper }} ({% translate 'unknown'|title %})</a>
+                        {% endif %}
+                        {% endfor %}
+                        
                     </span>
                 </p>
             </div>
@@ -70,7 +77,7 @@
                 <div class="s-content__author-about">
                     <h4 class="s-content__author-name">
                         {% if narrative.author.is_shadow %}
-                        <p class="philosophy">{{ narrative.master.author.username }}  <i class="fas fa-ghost"></i></p>
+                        <p class="philosophy">{{ narrative.master.author.username }} <i class="fas fa-ghost"></i></p>
                         {% else %}
                         <a class="philosophy"
                             href="{% url 'identity:author' username=narrative.master.author.username %}">{{ narrative.master.author.username }}</a>
@@ -78,7 +85,7 @@
                     </h4>
 
                     <p class="philosophy">
-                        {{ narrative.author.profile.biography }}
+                        {{ narrative.master.author.profile.biography }}
                     </p>
                 </div>
                 <br>
