@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 18:05+0300\n"
-"PO-Revision-Date: 2020-11-23 22:12+0300\n"
+"POT-Creation-Date: 2020-11-24 12:10+0300\n"
+"PO-Revision-Date: 2020-11-24 12:13+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -393,7 +393,7 @@ msgid "It's basically a place to talk about your intangible side."
 msgstr "Basitçe, soyut yanınız hakkında konuşabileceğiniz bir yer."
 
 #: explore/templates/static/about.html:15
-#: explore/templates/static/about.html:69 templates/landing.html:130
+#: explore/templates/static/about.html:69 templates/landing.html:146
 msgid "missionary"
 msgstr "misyoner"
 
@@ -403,7 +403,7 @@ msgid "privacy"
 msgstr "mahremiyet"
 
 #: explore/templates/static/about.html:17
-#: explore/templates/static/about.html:91 templates/landing.html:179
+#: explore/templates/static/about.html:91 templates/landing.html:196
 msgid "machinery"
 msgstr "mekanizma"
 
@@ -416,6 +416,10 @@ msgstr "emeği geçenler"
 msgid "masterminds"
 msgstr "yapımcılar"
 
+#: explore/templates/static/about.html:28
+msgid "dreams"
+msgstr "hülyalar"
+
 #: explore/templates/static/about.html:29
 msgid ""
 "We have dreams. Without being disturbed, you can talk about your dreams from "
@@ -424,6 +428,10 @@ msgstr ""
 "Hepimizin hayalleri var. Rahatsız hissetmeden, geçen geceki düşleriniz "
 "hakkında yazabilir ve isterseniz bu düşleri yorumlayabilirsiniz."
 
+#: explore/templates/static/about.html:37
+msgid "aspirations"
+msgstr "gayeler"
+
 #: explore/templates/static/about.html:38
 msgid ""
 "What is your goal in life? Write about it. Writing will make you help "
@@ -431,6 +439,10 @@ msgid ""
 msgstr ""
 "Hayatta ki gayen ne? Bundan bahset. Yazmak, kendinizi üçüncü bir kişinin "
 "gözünden algılamanıza yardımcı olacaktır."
+
+#: explore/templates/static/about.html:45
+msgid "fantasies"
+msgstr "fanteziler"
 
 #: explore/templates/static/about.html:46
 msgid ""
@@ -441,6 +453,10 @@ msgstr ""
 "Sürrealistik fantezileriniz olabilir, belki de kirlidirler. Neden onlar "
 "hakkında yazmıyorsunuz? Fantezilerinizi ilginç bulacak en az birkaç kişi "
 "olduğundan eminiz."
+
+#: explore/templates/static/about.html:54
+msgid "utopias"
+msgstr "ütopyalar"
 
 #: explore/templates/static/about.html:55
 msgid ""
@@ -587,6 +603,10 @@ msgstr ""
 "Bu paketlerin yapımcılarına, dolaylı olarak emekleri geçtiği için, teşekkür "
 "ediyoruz."
 
+#: explore/templates/static/about.html:227
+msgid "This platform is deployed on Heroku dynos."
+msgstr "Bu platform Heroku'ya deploy edildi."
+
 #: explore/templates/static/about.html:241
 msgid "the man behind"
 msgstr "arkasındaki adam"
@@ -655,7 +675,7 @@ msgid ""
 "This type of registration is the conventional one. Your registration is "
 "persistent and safe; just as you used to."
 msgstr ""
-"Bu tip gelenekseldir.. Kaydınız kalıcı ve güvenlidir; tıpkı alışık olduğunuz "
+"Bu tip gelenekseldir. Kaydınız kalıcı ve güvenlidir; tıpkı alışık olduğunuz "
 "gibi."
 
 #: gatewall/templates/gatewall/gatewall.html:56
@@ -777,7 +797,7 @@ msgid "new story, new dreams, new possibilities"
 msgstr "yeni bir öykü, yeni bir hülya ve yeni olasılıklar"
 
 #: notebook/templates/notebook/narrative/folder.html:26 templates/base.html:111
-#: templates/landing.html:46 templates/landing.html:154
+#: templates/landing.html:46 templates/landing.html:170
 msgid "write"
 msgstr "yaz"
 
@@ -849,7 +869,7 @@ msgstr "Çeviri"
 msgid "Fly as high as you can"
 msgstr "Uç uçabildiğin kadar uç"
 
-#: templates/base.html:10 templates/landing.html:139
+#: templates/base.html:10 templates/landing.html:155
 msgid ""
 "Imagine a sky that forms as you wish. Beneath the sky, there is you. Let the "
 "world know what you kept inside for years. Let the people know and wow what "
@@ -877,7 +897,7 @@ msgstr "anasayfa"
 msgid "close"
 msgstr "kapat"
 
-#: templates/base.html:143 templates/landing.html:93 templates/landing.html:273
+#: templates/base.html:143 templates/landing.html:96 templates/landing.html:290
 msgid "feedback"
 msgstr "geribildirim"
 
@@ -890,6 +910,14 @@ msgstr ""
 "Buradan hızlıca izlenimlerinizi bildirebilirsiniz. Geribildirim mesajlarında "
 "hiçbir kişisel bilgi yer almaz. <br> Bu, İmajiner'deki deneyiminiz hakkında "
 "daha kapsamlı bir fikir edinmemize yardımcı olur."
+
+#: templates/base.html:162
+msgid "and there is that"
+msgstr "işte böyle böyle"
+
+#: templates/base.html:163
+msgid "send"
+msgstr "gönder"
 
 #: templates/base.html:166
 msgid "You are not authorized and will be sending this feedback anonymously."
@@ -905,13 +933,13 @@ msgstr ""
 msgid "all rights reserved"
 msgstr "tüm hakları saklıdır"
 
-#: templates/base.html:186 templates/landing.html:313
+#: templates/base.html:186 templates/landing.html:334
 msgid "This website contains materials from third parties."
 msgstr "Bu websindeki bazı materyaller üçüncü partilerden alınmıştır."
 
-#: templates/base.html:187 templates/landing.html:206
-#: templates/landing.html:225 templates/landing.html:242
-#: templates/landing.html:258 templates/landing.html:313
+#: templates/base.html:187 templates/landing.html:223
+#: templates/landing.html:242 templates/landing.html:259
+#: templates/landing.html:275 templates/landing.html:335
 msgid "Know more"
 msgstr "Dahası"
 
@@ -955,44 +983,44 @@ msgstr ""
 "Aydınlatmana gerek yok karanlıkları ama istersen ışığınla diğerlerini "
 "büyüleyebilirsin."
 
-#: templates/landing.html:92
+#: templates/landing.html:93
 msgid "what"
 msgstr "ne"
 
-#: templates/landing.html:92
+#: templates/landing.html:93
 msgid "whatcha got there"
 msgstr "neler var"
 
-#: templates/landing.html:93
+#: templates/landing.html:96
 msgid "your fairy wishes"
 msgstr "masalsı dilekleriniz"
 
-#: templates/landing.html:94
+#: templates/landing.html:99
 msgid "how"
 msgstr "nasıl"
 
-#: templates/landing.html:94
+#: templates/landing.html:99
 msgid "how tf does these work"
 msgstr "nasıl çalışıyor"
 
-#: templates/landing.html:98
+#: templates/landing.html:104
 msgid "available in"
 msgstr "uygun"
 
-#: templates/landing.html:118
+#: templates/landing.html:134
 msgid "Go down!"
 msgstr "Aşağı in!"
 
-#: templates/landing.html:131
+#: templates/landing.html:147
 msgid ""
 "The divine purpose of this platform is to promise people mental freedom."
 msgstr "Bu platformun  kutsal amacı insanlara düşsel özgürlük sunmaktır."
 
-#: templates/landing.html:155
+#: templates/landing.html:171
 msgid "Shall you begin writing, whenever you feel like."
 msgstr "Ne zaman istersen, yazmaya başlayabilirsin."
 
-#: templates/landing.html:161
+#: templates/landing.html:177
 msgid ""
 "You will be redirected to authorization page to select a username - we need "
 "an author to display, yes? Then you can start writing without any further "
@@ -1002,21 +1030,25 @@ msgstr ""
 "kullanıcı adı seçmek için yetkilendirme sayfasına yönlendirileceksiniz, "
 "ancak hepsi bu kadar. Ardından, keyfiniz kaçmadan yazmaya başlayabilirsiniz."
 
-#: templates/landing.html:180
+#: templates/landing.html:182
+msgid "start writing"
+msgstr "yazmaya başla"
+
+#: templates/landing.html:197
 msgid "I surely did get rid of any bothersome."
 msgstr "Elbette, can sıkan şeylerden kurtulduk."
 
-#: templates/landing.html:186
+#: templates/landing.html:203
 msgid ""
 "Some unique machinery around you is trying to offer a intuitive user "
 "experience."
 msgstr "Etrafınızdaki mekanizma, size sezgisel bir deneyim sunmaya çalışıyor."
 
-#: templates/landing.html:199
+#: templates/landing.html:216
 msgid "the solemn promise"
 msgstr "vicdani söz"
 
-#: templates/landing.html:201
+#: templates/landing.html:218
 msgid ""
 "The moment you read is the moment you value that piece of text the most. You "
 "can be assured that nothing will distract you while you are reading from our "
@@ -1025,11 +1057,11 @@ msgstr ""
 "Okuduğunuz an, bir metne en çok değer verdiğiniz andır. Bu sırada "
 "dikkatinizi dağıtmayacağımızdan emin olabilirsiniz."
 
-#: templates/landing.html:216
+#: templates/landing.html:233
 msgid "truly optional registration"
 msgstr "kaydolmanız gerekmez"
 
-#: templates/landing.html:218
+#: templates/landing.html:235
 msgid ""
 "With our unique authorization mechanism named Shadow, we never limit the "
 "website's functionality based on whether you are registered or not. What's "
@@ -1040,11 +1072,11 @@ msgstr ""
 "bakmıyor ve web sitesinin işlevselliğini asla sınırlamıyoruz. Yalnızca bir "
 "kullanıcı adı seçip yazmaya başlayabilirsiniz."
 
-#: templates/landing.html:235
+#: templates/landing.html:252
 msgid "resilient writing studio"
 msgstr "yazın stüdyosu"
 
-#: templates/landing.html:237
+#: templates/landing.html:254
 msgid ""
 "Anything you write at studio is saved in our servers every couple of "
 "seconds; don't worry about lost data. We quite know how frustrating it is to "
@@ -1054,11 +1086,11 @@ msgstr ""
 "düşse, korkmayın. Geri geldiğinizde göreceksiniz ki yazdıklarınız taslaklar "
 "kısmında güvenle size gülümsüyor."
 
-#: templates/landing.html:252
+#: templates/landing.html:269
 msgid "by users for users"
 msgstr "yazarlar tarafından yazarlar için"
 
-#: templates/landing.html:254
+#: templates/landing.html:271
 msgid ""
 "We are, just as you, everyday users. We do know the hassles we face, and "
 "exclude them from here. A place designed solely for you and only you."
@@ -1067,19 +1099,19 @@ msgstr ""
 "ve onları buradan uzakta tutmaya çabalıyoruz. Burasu yalnız ve yalnızca "
 "sizin için tasarlandı."
 
-#: templates/landing.html:274
+#: templates/landing.html:292
 msgid "We have a dream where the freedom of expression is truly present."
 msgstr "Bizim bir hayalimiz var, ifade özgürlünün gerçekten mevcut olduğu."
 
-#: templates/landing.html:293
+#: templates/landing.html:312
 msgid "reach us out"
 msgstr "bize ulaşın"
 
-#: templates/landing.html:312
+#: templates/landing.html:333
 msgid "All rights reserved."
 msgstr "Tüm hakları saklıdır."
 
-#: templates/landing.html:318
+#: templates/landing.html:340
 msgid "go to top"
 msgstr "yukarı"
 
