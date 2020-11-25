@@ -66,7 +66,7 @@ function autosave() {
     valueChanged = $textarea.value !== last.value;
     console.log(titleChanged, valueChanged);
     if (valueChanged || titleChanged) {
-        if (titleChanged) document.title = currentTitle + titleSuffix;
+        if (titleChanged) document.title = $title.value + titleSuffix;
         post('AUTOSAVE');
     }
     last.value = $textarea.value;

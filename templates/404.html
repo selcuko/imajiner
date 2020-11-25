@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block body %}
+
+<section id="content" class="s-content s-content--narrow s-content--no-padding-bottom">
+    <article id="article" class="narrative-detail row format-standard">
+
+        <div class="s-content__header col-full">
+            <h1 class="s-content__header-title">
+                {% translate 'Are you lost, stranger?'|title %}
+            </h1>
+            <p class="lead">&lt;404&gt;{% translate 'Apparently you are.' %}&lt;/404&gt;</p>
+            <p class="">{% translate 'We find your lack of navigation disturbing.'|capfirst %}</p>
+
+        </div>
+
+        <div class="col-full s-content__main">
+
+            <div id="article-body">
+            </div>
+
+           
+        </div>
+    </article>
+
+    <form id="template-vars" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" name="narrative-slug" value="{{ narrative.slug }}">
+        <input type="hidden" name="user-username" value="{{ request.user.username }}">
+    </form>
+
+</section> <!-- s-content -->
+
+
+{% endblock body %}

@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 
 SITE_ID = 1
 
-DEBUG = True
+DEBUG = False
 ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
 
 SECURE_SSL_REDIRECT = False
@@ -17,6 +17,7 @@ SECURE_SSL_REDIRECT = False
 if ON_HEROKU:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
+    DEBUG = False
 
 
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
@@ -31,6 +32,41 @@ ALLOWED_HOSTS = [
 PRIMARY_HOST = 'imajiner.space'
 
 
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'server@imajiner.space'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', None)
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
+FROM_EMAILS = [
+    'server@imajiner.space',
+    'webserver@imajiner.space',
+    'django@imajiner.space',
+]
+
+ADMINS = [
+    ('Ömer Selçuk', 'omerselcuk@imajiner.space'),
+    ('Melek Kaya', 'astronaut.melek@imajiner.space'),
+]
+MANAGERS = ADMINS
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'ERROR',
+    },
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,6 +91,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -63,6 +100,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
     'identity.middleware.ShadowMiddleware',
 ]
 

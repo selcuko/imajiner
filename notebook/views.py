@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, reverse, Http404
 from django.shortcuts import redirect as dj_redirect
+from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views.generic import DetailView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -35,7 +36,7 @@ class Detail(DetailView):
 
     def get_object(self):
         self.slug = self.kwargs['slug']
-        self.narrative = NarrativeTranslation.objects.get(slug=self.slug)
+        self.narrative = get_object_or_404(NarrativeTranslation, slug=self.slug)
         return self.narrative
     
     def get_context_data(self, *args, **kwargs):

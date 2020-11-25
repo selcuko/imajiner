@@ -18,6 +18,8 @@ admin.site.site_header = _('Imajiner God View')
 admin.site.site_title = _('Imajiner God View')
 admin.site.index_title = _('Site Supervision')
 
+handle404 = 'imajiner.views.handle404'
+
 urlpatterns = [
     path('feedback/', Feedback.as_view(), name='feedback'),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
