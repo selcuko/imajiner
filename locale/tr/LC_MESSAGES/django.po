@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-25 18:44+0300\n"
-"PO-Revision-Date: 2020-11-24 19:19+0200\n"
+"PO-Revision-Date: 2020-11-26 00:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: console/templates/console/access.html:15
 #: console/templates/console/base.html:102
@@ -27,16 +27,16 @@ msgstr "erişim & güvenlik"
 
 #: console/templates/console/access.html:28
 msgid "radical processes this way."
-msgstr "radikal süreçler bu tarafta."
+msgstr "radikal işlemler buradan yapılır."
 
 #: console/templates/console/access.html:36
 msgid "the most basic information"
-msgstr "en temel bilgi"
+msgstr "temel bilgiler"
 
 #: console/templates/console/access.html:37
 #: console/templates/console/narrative.html:74
 msgid "I will not save unless you hit the button."
-msgstr "Sen butona basmadan kaydetmeyeceğim gezgin."
+msgstr "Kaydete basmazsan kaydetmem."
 
 #: console/templates/console/access.html:45
 #: console/templates/console/profile.html:58
@@ -47,8 +47,7 @@ msgstr "mahlas"
 
 #: console/templates/console/access.html:48
 msgid "you may change your username only once."
-msgstr ""
-"kimliğini değiştirmek için sadece bir şansın var, bunu iyi düşün gezgin."
+msgstr "mahlasını yalnızca bir kez değiştirebilirsin."
 
 #: console/templates/console/access.html:51
 msgid "new password"
@@ -56,15 +55,15 @@ msgstr "yeni şifre"
 
 #: console/templates/console/access.html:53
 msgid "you may enter your new password"
-msgstr "yeni şifreniz için yol açık, buyurun"
+msgstr "yeni şifreni girebilin"
 
 #: console/templates/console/access.html:56
 msgid "confirm new password"
-msgstr "yeni şifreni onayla gezgin"
+msgstr "yeni şifreyi onayla"
 
 #: console/templates/console/access.html:58
 msgid "you may confirm your new password"
-msgstr "parolanızı onaylayabilirsiniz"
+msgstr "şifreni onaylayabilin"
 
 #: console/templates/console/access.html:61
 #: console/templates/console/narrative.html:88
@@ -88,7 +87,7 @@ msgstr "sonlandır"
 
 #: console/templates/console/access.html:90
 msgid "current session"
-msgstr ""
+msgstr "bu cihaz"
 
 #: console/templates/console/base.html:67
 msgid "shadow"
@@ -193,7 +192,7 @@ msgstr ""
 
 #: console/templates/console/narrative/readonly.html:38
 msgid "this version is old and archived, meaning you cannot edit it nevermore."
-msgstr "bu sürüm eski ve arşivlenmiştir, yani onu bir daha düzenleyemezsiniz."
+msgstr "bu sürüm eski ve arşivlenmiştir, yani onu düzenleyemezsiniz."
 
 #: console/templates/console/narrative/readonly.html:47
 msgid "archived version no"
@@ -227,7 +226,7 @@ msgstr "başlık"
 #: console/templates/console/narratives.html:50
 #: console/templates/console/narratives.html:80
 msgid "published at"
-msgstr "diğer gezginler de artık okuyabilir"
+msgstr "yayın tarihi"
 
 #: console/templates/console/narratives.html:60
 msgid "versions"
@@ -239,11 +238,11 @@ msgstr "hiçbir hikayen yok"
 
 #: console/templates/console/overview.html:8
 msgid "console espresso"
-msgstr "konsol espressosu"
+msgstr "konsol espresso"
 
 #: console/templates/console/overview.html:22
 msgid "view and manage the devices you are currently logged in."
-msgstr "şu anda giriş yaptığın cihazlari görüntüle ve yönet."
+msgstr "şu anda oturumunun açık olduğu cihazları görüntüle ve yönet."
 
 #: console/templates/console/overview.html:24
 #: console/templates/console/overview.html:43
@@ -269,7 +268,7 @@ msgstr "şifrenizi dilediğiniz kadar güncelleyebilirsiniz."
 #: console/templates/console/overview.html:63
 #: gatewall/templates/gatewall/gatewall.html:43
 msgid "proceed"
-msgstr "ilerle gezgin"
+msgstr "ilerle"
 
 #: console/templates/console/overview.html:73
 msgid "old narrative versions"
@@ -284,7 +283,6 @@ msgid "view"
 msgstr "görüntüle"
 
 #: console/templates/console/profile.html:35
-#, fuzzy
 msgid ""
 "The most useful information regarding to your account is here. You can view "
 "and modify them."
@@ -300,15 +298,15 @@ msgstr "hesap"
 #: console/templates/console/profile.html:50
 #: console/templates/console/profile.html:83
 msgid "I will not save anything unless you hit the button."
-msgstr "Sen butona basmadan kaydetmeyeceğim gezgin."
+msgstr "Kaydete basmazsan kaydetmem."
 
 #: console/templates/console/profile.html:55
 msgid ""
 "This part concerns the security of your account. You should visit Access & "
 "Security to modify them."
 msgstr ""
-"Bu bölüm, hesabınızın güvenliği ile ilgilidir. Bunları/Onları değiştirmek "
-"için Erişim ve Güvenlik'i ziyaret etmelisiniz."
+"Bu bölüm, hesabınızın güvenliği ile ilgilidir. Bunları değiştirmek için "
+"Erişim ve Güvenlik'i ziyaret etmelisiniz."
 
 #: console/templates/console/profile.html:63
 #: gatewall/templates/gatewall/gatewall.html:40
@@ -333,7 +331,7 @@ msgstr "ben/"
 
 #: console/urls.py:10
 msgid "access/"
-msgstr "erisim/"
+msgstr "erişim/"
 
 #: console/urls.py:11 imajiner/urls.py:33
 msgid "narratives/"
@@ -393,7 +391,7 @@ msgstr "imajiner hakkında"
 
 #: explore/templates/static/about.html:10
 msgid "It's basically a place to talk about your intangible side."
-msgstr "Basitçe soyut tarafınız hakkında konuşabileceğiniz bir yer."
+msgstr "Temelde, soyut tarafınız hakkında konuşabileceğiniz bir yer."
 
 #: explore/templates/static/about.html:15
 #: explore/templates/static/about.html:69 templates/landing.html:146
@@ -422,7 +420,7 @@ msgstr "yapımcılar"
 
 #: explore/templates/static/about.html:28
 msgid "dreams"
-msgstr ""
+msgstr "hayaller"
 
 #: explore/templates/static/about.html:29
 msgid ""
@@ -430,15 +428,13 @@ msgid ""
 "last night, analyse them maybe."
 msgstr ""
 "Hepimizin düşlediği şeyler var; gerçekleşmesi için büyük arzular duyduğu ama "
-"yargılanmaktan ve dışlanmaktan korktuğu için paylaşamadığı.Bu tür korkuları "
+"yargılanmaktan ve dışlanmaktan korktuğu için paylaşamadığı. Bu tür korkuları "
 "yaşamadan, tüm hayallerinizi özgürce yazabilir ve isterseniz "
 "paylaşabilirsiniz."
 
 #: explore/templates/static/about.html:37
-#, fuzzy
-#| msgid "Translation"
 msgid "aspirations"
-msgstr "Çeviri"
+msgstr "ilhamlar"
 
 #: explore/templates/static/about.html:38
 msgid ""
@@ -450,7 +446,7 @@ msgstr ""
 
 #: explore/templates/static/about.html:45
 msgid "fantasies"
-msgstr ""
+msgstr "fanteziler"
 
 #: explore/templates/static/about.html:46
 msgid ""
@@ -464,16 +460,15 @@ msgstr ""
 
 #: explore/templates/static/about.html:54
 msgid "utopias"
-msgstr ""
+msgstr "ütopyalar"
 
 #: explore/templates/static/about.html:55
 msgid ""
 "Imajiner itself is an utopia. You shall have utopias too. Let's keep track "
 "of what's happening in your utopia by writing."
 msgstr ""
-"İmajiner bir ütopyadır, sizlerin de zihinlerini süsleyen hayali diyarlar "
-"olabilir.  Zihinlerinizde ki dünyaları yazarak bizlerinde haberdar olmasını "
-"sağlayabilirsiniz. Kim bilir, belki de gerçekleşirler."
+"İmajiner bir ütopyadır. Sizlerin de zihinlerini süsleyen hayali diyarlar "
+"olabilir; bunları yazarak dünyaya bildirebilirsiniz."
 
 #: explore/templates/static/about.html:71
 msgid "Imajiner's Mission and Beyond"
@@ -485,19 +480,18 @@ msgid ""
 "being judged constantly. A place where you tinker with only what you want, "
 "just like a utopia."
 msgstr ""
-"Bu platformu oluşturmamızı sağlayan asıl güdü, yargılanmaktan uzak ve "
-"özgürce yazılarınızı paylaşabileceğiniz bir yer sunmaktı; tıpkı bir ütopya "
-"gibi."
+"Bu platformu oluşturmamızdaki asıl amaç, yargılanmaktan uzak ve özgürce "
+"yazılarınızı paylaşabileceğiniz bir yer sunmaktı; tıpkı bir ütopya gibi."
 
 #: explore/templates/static/about.html:93
 msgid "A whole platform, designed for your experience."
-msgstr "Tüm platform, deneyimleriniz için tasarlanmıştır."
+msgstr "Tüm platform, kaliteli zaman geçirmeniz için tasarlanmıştır."
 
 #: explore/templates/static/about.html:98
 msgid "Although explaining it would break the spell, here are what to expect."
 msgstr ""
-"Açıklamak büyüyü bozacak olsa da, bunları bekleyebilirsiniz(:ile bitse iyi "
-"olur)."
+"Belki de söylemek büyüsünü bozacak ama, işte neler bekleyebileceğinize dair "
+"bir öngösterim."
 
 #: explore/templates/static/about.html:104
 msgid "shadow authentication"
@@ -512,9 +506,9 @@ msgid ""
 "heavily here."
 msgstr ""
 "Her hikayenin bir yazara ihtiyacı var ama her yazar kayıt olmak istemiyor. "
-"Temelde teknik becerileri ve seri numaraları ile hesaplanan dijital parmak "
-"izini alarak cihazınızı yetkilendiriyoruz. Teknik kullanıcılar için: <code> "
-"Fingerprint.js </code> burada yoğun bir şekilde kullanıldı."
+"Temelde teknik kabiliyetleri ve seri numaraları ile hesaplanan dijital "
+"parmak izini alarak cihazınızı yetkilendiriyoruz. Teknik kullanıcılar için: "
+"<code> Fingerprint.js</code> burada yoğun bir şekilde kullanıldı."
 
 #: explore/templates/static/about.html:122
 msgid "No system is safe."
@@ -522,7 +516,7 @@ msgstr "Hiçbir sistem güvenli değildir."
 
 #: explore/templates/static/about.html:127
 msgid "Here are our statements regarding to privacy concerns."
-msgstr "İşte gizlilik endişeleriyle ilgili beyanlarımız(: ile bitmeli)."
+msgstr "İşte gizlilik yaygın gizlilik endişeleriyle ilgili beyanlarımız."
 
 #: explore/templates/static/about.html:133
 msgid "open-sourced"
@@ -534,8 +528,8 @@ msgid ""
 "We respect your privacy; it's in our code. You can view the <a href="
 "\"%(link)s\">source code</a> in our GitHub Repository."
 msgstr ""
-"Kodumuzda; gizliliğinize saygı duyuyoruz <a href=\"%(link)s\"> kaynak kodunu "
-"</a> GitHub Depomuzda görüntüleyebilirsiniz."
+"Gizliliğinize saygı duyuyoruz, kodumuzda var. <a href=\"%(link)s\"> Kaynak "
+"kodumuzu </a> GitHub Depomuzda görüntüleyebilirsiniz."
 
 #: explore/templates/static/about.html:140
 msgid "zero personal data"
@@ -564,8 +558,8 @@ msgid ""
 msgstr ""
 "Dayanıklılığı ve güvenilirliği ile bilinen Heroku PostgreSQL kullanıyoruz. "
 "Ayrıca, bir veri sızıntısı durumunda, hiç kimse veritabanımızdaki birine "
-"şantaj yapabileceği değerli kişisel bilgileri bulamaz. Tüm parolaların \"hash"
-"\" ve \"salt\" edilerek saklandığını unutmayın (Django hallediyor!)."
+"şantaj yapabileceği değerli kişisel bilgileri bulamaz. Tüm şifreler de "
+"hashed ve salted olarak saklanıyor. (Django'ya teşekkürler.)"
 
 #: explore/templates/static/about.html:158
 msgid "Anonymousity"
@@ -578,8 +572,8 @@ msgid ""
 "anonymousity. Check out the <a href=\"%(link)s\">Shadow Authentication</a> "
 "in Machinery."
 msgstr ""
-"Hayalet kayıt olduğunuzda, anaonimlik durumunu kaybetmezsiniz! Misyonerden "
-"<a href=\"%(link)s\"> Hayalet kayda </a>  bakın."
+"Hayalet kayıt olduğunuzda, anonim statünüzü kaybetmezsiniz! Misyonerden <a "
+"href=\"%(link)s\"> Hayalet kayda </a>  bakın."
 
 #: explore/templates/static/about.html:174
 msgid "Without them, Imajiner wouldn't look like this."
@@ -595,13 +589,12 @@ msgstr ""
 "hakkı Sezar`a."
 
 #: explore/templates/static/about.html:190
-#, fuzzy
 msgid ""
 "This website is built using Django, along with Python packages extending "
 "Django."
 msgstr ""
-"Bu web sitesi, Django'yu [genişleten] Python paketleri ile birlikte Django "
-"kullanılarak oluşturulmuştur."
+"Bu web uygulaması Django ve beraberinde bir takım üçüncü parti destek "
+"paketleri ile yapıldı."
 
 #: explore/templates/static/about.html:201
 msgid "Most of the frontend code is taken from them."
@@ -617,7 +610,7 @@ msgstr ""
 
 #: explore/templates/static/about.html:227
 msgid "This platform is deployed on Heroku dynos."
-msgstr ""
+msgstr "Heroku dyno'larına deploy edildi."
 
 #: explore/templates/static/about.html:241
 msgid "the man behind"
@@ -644,9 +637,8 @@ msgid ""
 msgstr ""
 "İlk başta burada bir tür dijital ve halka açık bir günlük oluşturduk. "
 "Bazıları deneyimlerimizi, düşüncelerimizi, hedeflerimizi ve arzularımızı; "
-"düşündürücü, derin ve hatta eğlenceli bulabilir diye düşündük. Sizleden "
-"birisi belki de bizim akıl arkadaşımız olabilir, kim bilir? Hadi onları "
-"avlayalım(! olmalı)."
+"düşündürücü, derin ve hatta eğlenceli bulabilir diye düşündük. Bu sırada "
+"belki de ruh eşlerimizi bulacağız, kim bilir? Hadi onları avlayalım."
 
 #: explore/urls.py:9
 msgid "about/"
@@ -665,9 +657,9 @@ msgstr ""
 "Formların altında daha fazla bilgi bulabilirsiniz."
 
 #: gatewall/templates/gatewall/gatewall.html:22
-#, fuzzy, python-format
+#, python-format
 msgid "You are already logged in as %(username)s."
-msgstr "Çoktan %(username) ile giriş yaptınız."
+msgstr "Halihazırda %(username)s olarak giriş yaptınız."
 
 #: gatewall/templates/gatewall/gatewall.html:34
 msgid "author authorization"
@@ -686,8 +678,8 @@ msgid ""
 "This type of registration is the conventional one. Your registration is "
 "persistent and safe; just as you used to."
 msgstr ""
-"Bu tür kayıt geleneksel olanıdır. Kaydınız kalıcı ve güvenlidir; tıpkı "
-"eskiden olduğu gibi."
+"Bu tür, geleneksel kayıttır. Kaydınız kalıcı ve güvenlidir - tıpkı alışık "
+"olduğunuz gibi."
 
 #: gatewall/templates/gatewall/gatewall.html:56
 msgid "shadow authorization"
@@ -702,7 +694,7 @@ msgstr ""
 
 #: gatewall/templates/gatewall/gatewall.html:65
 msgid "register"
-msgstr "kayıt ol"
+msgstr "kaydol"
 
 #: gatewall/templates/gatewall/gatewall.html:67
 msgid ""
@@ -724,12 +716,12 @@ msgstr ""
 "Gölge olarak kaydolduğunuzda, yazmaya başlamak için yalnızca bir kullanıcı "
 "adı seçersiniz. Tam işlevselliğe sahip olmanıza rağmen, gölge olarak "
 "açtığınız oturumlar uzun sürmez. Doğası gereği, bu tür oturumlar oldukça "
-"kırılgandır ve çoğunlukla tek seferlik olarak kabul edilir, bu da muhtemelen "
-"birkaç saat sonra aynı gölge oturumuna erişemeyeceğiniz anlamına gelir."
+"kırılgandır ve çoğunlukla tek seferlik varsayılız, bu da muhtemelen birkaç "
+"saat sonra aynı gölge oturumuna erişemeyeceğiniz anlamına gelir."
 
 #: gatewall/urls.py:7
 msgid "authorization/"
-msgstr "gezhinmahlası/"
+msgstr "yetkilendirme/"
 
 #: gatewall/urls.py:8
 msgid "farewell/"
@@ -745,7 +737,7 @@ msgstr "Imajiner Sur"
 
 #: gatewall/views.py:19
 msgid "You need to be authenticated in order to write here."
-msgstr "Buraya yazabilmek için kimliğinizin doğrulanması gerekiyor."
+msgstr "Buraya yazabilmek için giriş yapmış olmanız gerekiyor."
 
 #: identity/urls.py:7
 msgid "author/<str:username>/"
@@ -768,14 +760,12 @@ msgid "console/"
 msgstr "konsol/"
 
 #: notebook/forms.py:22
-#, fuzzy
-#| msgid "title"
 msgid "Title"
-msgstr "başlık"
+msgstr "Başlık"
 
 #: notebook/forms.py:23
 msgid "Body"
-msgstr ""
+msgstr "Metin"
 
 #: notebook/forms.py:28
 msgid "[Entitled Narrative]"
@@ -799,7 +789,7 @@ msgstr "diller"
 
 #: notebook/templates/notebook/narrative/detail.html:68
 msgid "unknown"
-msgstr ""
+msgstr "bilinmiyor"
 
 #: notebook/templates/notebook/narrative/folder.html:16
 msgid "sketches"
@@ -820,11 +810,11 @@ msgstr "yeni bir öykü, yeni bir hülya ve yeni olasılıklar"
 #: notebook/templates/notebook/narrative/folder.html:26 templates/base.html:111
 #: templates/landing.html:46 templates/landing.html:170
 msgid "write"
-msgstr "yazmaya ne dersin gezgin"
+msgstr "yaz"
 
 #: notebook/templates/notebook/narrative/folder.html:29
 msgid "untitled narrative"
-msgstr "başlıksız hikayeler"
+msgstr "başlıksız hikaye"
 
 #: notebook/templates/notebook/narrative/list.html:10
 msgid "latest narratives"
@@ -832,11 +822,11 @@ msgstr "son hikayeler"
 
 #: notebook/templates/notebook/narrative/list.html:33
 msgid "this narrative is not visible to public"
-msgstr "bu hikayeyi diğer gezginler göremez"
+msgstr "bu yazı halka açık değil"
 
 #: notebook/templates/notebook/narrative/write.html:26
 msgid "declare a narrative"
-msgstr "bildirgeni yayınla"
+msgstr "bildirge yayınla"
 
 #: notebook/templates/notebook/narrative/write.html:33
 msgid "something's happening"
@@ -876,11 +866,11 @@ msgstr "receviri/<uuid:uuid>/"
 
 #: notebook/views.py:95
 msgid "view the latest narratives published on Imajiner"
-msgstr "imajiner`de ki son yayınlanmış hikayeleri görüntüleyin"
+msgstr "imajiner'de yayınlanmış son hikayeleri görüntüleyin"
 
 #: notebook/views.py:144 notebook/views.py:199
 msgid "refreshing the ink"
-msgstr "mürekkep tazeleniyor"
+msgstr "mürekkebin tazeleniyor"
 
 #: notebook/views.py:261
 msgid "Translation"
@@ -888,19 +878,19 @@ msgstr "Çeviri"
 
 #: templates/404.html:10
 msgid "Are you lost, stranger?"
-msgstr ""
+msgstr "Kayıp mı oldun, yabancı?"
 
 #: templates/404.html:12
 msgid "Apparently you are."
-msgstr ""
+msgstr "Görünüşe göre öyle."
 
 #: templates/404.html:13
 msgid "We find your lack of navigation disturbing."
-msgstr ""
+msgstr "Yön bulma yeteneğinden şüphe duyduk."
 
 #: templates/base.html:8
 msgid "Fly as high as you can"
-msgstr "Uç uçabildiğin kadar uç"
+msgstr "Uç, uçabildiğin kadar uç"
 
 #: templates/base.html:10 templates/landing.html:155
 msgid ""
@@ -909,10 +899,10 @@ msgid ""
 "you desire. Write about your drives, your dreams, your goals in life. Talk "
 "about you."
 msgstr ""
-"Dilediğiniz gibi şekillenen bir gök hayal edin. Bu gök sadece hayallerinizde "
-"kalmayacak, olmasını dilediğiniz yenilikleri değerli geliştiricimize "
-"bildirin. Kullanışlı veya estetik bir dilekse hayalinizin gerçek olacağına "
-"emin olabilirsiniz."
+"Dilediğiniz gibi şekillenen bir gök hayal edin. Göğün altında, işte sen. "
+"Dünyaya, yıllardır kendine sakladıklarından bahset. İnsanların neler arzu "
+"ettiğini öğrenmesine ve bunlara şaşırmasına izin ver. Güdülerinden yaz, "
+"hayallerinden, gayelerinden. Senden yaz."
 
 #: templates/base.html:95 templates/landing.html:38
 msgid "Close"
@@ -936,7 +926,7 @@ msgstr "kapat"
 
 #: templates/base.html:143 templates/landing.html:96 templates/landing.html:290
 msgid "feedback"
-msgstr "geri bildirim"
+msgstr "geribildirim"
 
 #: templates/base.html:145
 msgid ""
@@ -951,23 +941,22 @@ msgstr ""
 
 #: templates/base.html:162
 msgid "and there is that"
-msgstr ""
+msgstr "işte böyle böyle"
 
 #: templates/base.html:163
 msgid "send"
-msgstr ""
+msgstr "gönder"
 
 #: templates/base.html:166
-#, fuzzy
 msgid "You are not authorized and will be sending this feedback anonymously."
 msgstr ""
 "Kayıtlı değilsiniz ve bu geri bildirimi isimsiz olarak göndereceksiniz."
 
 #: templates/base.html:168
-#, fuzzy, python-format
+#, python-format
 msgid "You are authorized and will be sending this feedback as %(username)s."
 msgstr ""
-"Giriş yaptınız ve bu geribildirimi %(username)s olarak gönderiyorsunuz."
+"Giriş yaptınız ve bu geribildirimi %(username)s olarak göndereceksiniz."
 
 #: templates/base.html:185
 msgid "all rights reserved"
@@ -1001,19 +990,16 @@ msgstr "Konsol"
 
 #: templates/landing.html:50
 msgid "Feedback"
-msgstr "Geri bildirim"
+msgstr "Geribildirim"
 
 #: templates/landing.html:54
-#, fuzzy, python-format
-#| msgid ""
-#| "Imajiner is an open-sourced, free platform. <a href=\"%(link)s#source-code"
-#| "\">Know more</a>"
+#, python-format
 msgid ""
 "Imajiner is an open-sourced, free platform. <a href=\"%(link)s#privacy"
 "\">Know more</a>"
 msgstr ""
-"İmajiner açık kaynaklı, ücretsiz bir platformdur. <a href=\"%(link)s#source-"
-"code\">Know more</a>"
+"İmajiner açık kaynaklı, özgün bir platformdur. <a href=\"%(link)s#source-code"
+"\">Dahası</a>"
 
 #: templates/landing.html:81
 msgid ""
@@ -1023,8 +1009,7 @@ msgstr "Zihninin derinlikleri karmaşayla dolu, değil mi?"
 #: templates/landing.html:85
 msgid "No man is required to be understood."
 msgstr ""
-"Aydınlatmana gerek yok karanlıkları ama istersen ışığınla diğerlerini "
-"büyüleyebilirsin."
+"Aydınlatmana gerek yok karanlıkları, ama büyüleyebilirsin ışığınla insanları."
 
 #: templates/landing.html:93
 msgid "what"
@@ -1048,7 +1033,7 @@ msgstr "nasıl çalışıyor"
 
 #: templates/landing.html:104
 msgid "available in"
-msgstr "uygun"
+msgstr "mevcut diller"
 
 #: templates/landing.html:134
 msgid "Go down!"
@@ -1071,26 +1056,23 @@ msgid ""
 msgstr ""
 "Bir kullanıcı adı seçmek için yetkilendirme sayfasına yönlendirileceksiniz, "
 "hikayenin sahibini göstermemiz için bir yazara ihtiyacımız var, değil mi? O "
-"zaman artık, kimse tarafaından rahatsız edilmeyeceğiniz bu platformda "
-"yazmaya başlayabilirsiniz."
+"zaman artık, kimse tarafından rahatsız edilmeyeceğiniz bu platformda yazmaya "
+"başlayabilirsiniz."
 
 #: templates/landing.html:182
 msgid "start writing"
-msgstr ""
+msgstr "yazmaya başla"
 
 #: templates/landing.html:197
 msgid "I surely did get rid of any bothersome."
-msgstr ""
-"Kesintisiz odaklanma, kesintisiz uçuş:Bir çok dikkat dağıtıcıdan "
-"arındırılmış bir gökyüzü."
+msgstr "Elbette, can sıkan unsurlardan kurtulduk."
 
 #: templates/landing.html:203
 msgid ""
 "Some unique machinery around you is trying to offer a intuitive user "
 "experience."
 msgstr ""
-"Benzersiz bir gökyüzü deneyimi; eşsiz mekanizmalar özgür kuşlara sadece "
-"sezgileriyle yönlerini rahatça bulabilecekleri bir gök vaat ediyor."
+"Etrafınızdaki eşsiz mekanizma, size sezgisel bir deneyim sunmaya çabalıyor."
 
 #: templates/landing.html:216
 msgid "the solemn promise"
@@ -1102,8 +1084,8 @@ msgid ""
 "can be assured that nothing will distract you while you are reading from our "
 "side."
 msgstr ""
-"Okuduğunuz an, bir metne en çok değer verdiğiniz andır. Bu gökyüzünde "
-"okurken hiçbir şeyin dikkatinizi dağıtmayacağından emin olabilirsiniz."
+"Okuduğunuz an, bir metne en çok değer verdiğiniz andır. Okurken dikkatinizi "
+"dağıtmayacağımızdan emin olabilirsiniz."
 
 #: templates/landing.html:233
 msgid "truly optional registration"
@@ -1116,11 +1098,10 @@ msgid ""
 "more, you don't even need a username to start writing, it's auto-generated! "
 "(You can change your username later too!)"
 msgstr ""
-"Gölge isimli eşsiz yazarlık mekanizmamız ile, kalıcı bir şekilde kayıtlı "
-"olup olmamanıza bakmıyor ve web sitesinin işlevselliğini asla "
-"sınırlamıyoruz. Daha fazla ne olabilir ki! Diye mi düşündünüz? Kullanıcı adı "
-"bulmanıza bile gerek yok, İmajiner sizin için otomatk oluşturur. (İsterseniz "
-"mahlasınızı daha sonra değiştirebilirsiniz!)"
+"Gölge isimli eşsiz kayıt mekanizmamız ile, kalıcı bir şekilde kayıtlı olup "
+"olmamanıza bakmıyor ve web sitesinin işlevselliğini asla sınırlamıyoruz. "
+"Kaydolmak için kullanıcı adına dahi ihtiyacınız yok, isterseniz otomatik "
+"oluşturuluyor. (Elbette ki sonradan güncelleyebilirsiniz.)"
 
 #: templates/landing.html:252
 msgid "resilient writing studio"
@@ -1132,9 +1113,9 @@ msgid ""
 "seconds; don't worry about lost data. We quite know how frustrating it is to "
 "spend a lot of time on a story and lost it."
 msgstr ""
-"Fikir kuşlarınızı yazıya yeni dökmeye başlamışken, aniden bir internet veya "
-"elektrik kesintisi yaşarsanız korkmayın. Bağlantınıza yeniden kavuştuğunuzda "
-"yazınızın taslaklarda kayıtlı olduğunu göreceksiniz."
+"Tam bir ilham silsilesi yakalamışken aniden bir internet veya elektrik "
+"kesintisi yaşarsanız korkmayın. Bağlantınıza yeniden kavuştuğunuzda "
+"yazınızın taslaklar kısmında güvende göreceksiniz."
 
 #: templates/landing.html:269
 msgid "by users for users"
@@ -1151,10 +1132,7 @@ msgstr ""
 
 #: templates/landing.html:292
 msgid "We have a dream where the freedom of expression is truly present."
-msgstr ""
-"Benim bir hayalim var, ifade özgürlünün gerçekten mevcut olduğu bir yerin "
-"hayali.(Çeviri kısmına ben dokanmadan önce ben`li idi bu yüzen ingilizcesi "
-"bence I have a dream... şeklinde olmalı)."
+msgstr "Bizim bir hayalimiz var, ifade özgürlünün gerçekten mevcut olduğu."
 
 #: templates/landing.html:312
 msgid "reach us out"
