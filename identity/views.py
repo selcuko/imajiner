@@ -6,7 +6,7 @@ def author_view(request, username):
     user = User.objects.get(username=username)
     return render(request, 'identity/author.html', {
         'user': user,
-        'narratives': NarrativeTranslations.objects.filter(master__author=user, sketch=False),
+        'narratives': NarrativeTranslation.objects.filter(master__author=user, sketch=False),
         })
 
 
