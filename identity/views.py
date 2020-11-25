@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from notebook.models import Narrative
+from notebook.models import *
 from .models import *
 
 def author_view(request, username):
