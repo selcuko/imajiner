@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', str(uuid1()))
 
 SITE_ID = 1
 
-DEBUG = False
+DEBUG = True
 ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
 
 SECURE_SSL_REDIRECT = False
