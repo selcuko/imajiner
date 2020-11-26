@@ -41,7 +41,7 @@ EMAIL_USE_TLS = False
 
 
 SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = SERVER_EMAIL
+DEFAULT_FROM_EMAIL = f'Imajiner Sunucu <{EMAIL_HOST_USER}>'
 FROM_EMAILS = [
     'server@imajiner.space',
     'webserver@imajiner.space',

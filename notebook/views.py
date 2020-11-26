@@ -117,7 +117,6 @@ class Folder(LoginRequiredMixin, View):
     def get(self, request):
         NarrativeTranslation.objects.filter(sketch=True, master__author=request.user, title='', body__isnull=True).delete()
         sketches = NarrativeTranslation.objects.filter(sketch=True, master__author=request.user).order_by('-edited_at')
-        [print(s.title, s.body) for s in sketches]
         return render(request, self.template_name, {
             'sketches': sketches,
             'no_sketch': not sketches.exists(),
@@ -152,7 +151,6 @@ class FreshWrite(LoginRequiredMixin, View):
             form = NarrativeForm(request.POST, request.FILES, instance=sketch)
 
             action = request.POST.get('action', '').lower()
-            print(request.POST)
 
             if not form.is_valid():
                 logger.warn('NarrativeForm is not valid.')
@@ -216,14 +214,12 @@ class ContinueSketch(LoginRequiredMixin, View):
             if action == 'autosave':
                 narrative = form.save(commit=False)
                 narrative.save(new_version=False)
-                print('V', narrative.versions.count())
                 return JsonResponse({'description': 'OK'})
             
             elif action == 'submit':
                 narrative = form.save(commit=False)
                 narrative.sketch = False
                 narrative.save()
-                print('V', narrative.versions.count())
                 response = {
                     'language': settings.LANGUAGES_DICT.get(narrative.language, narrative.language),
                     'publicUrl': narrative.get_absolute_url(),
@@ -249,7 +245,6 @@ class AddTranslation(LoginRequiredMixin, View):
             translation = NarrativeTranslation(master=master)
             translation.save()
             link = reverse('notebook:translate', kwargs={'uuid': translation.uuid})
-            print('REDIRECTING', link)
             return dj_redirect(to=link)
                 
 
