@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import *
 
 
@@ -10,6 +11,7 @@ class NarrativeVersionInlineAdmin(admin.StackedInline):
     max_num = 30
     classes = ['collapse']
 
+
 class NarrativeAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,                {'fields': ['author']}),
@@ -20,7 +22,8 @@ class NarrativeAdmin(admin.ModelAdmin):
     ]
     readonly_fields = ['created_at', 'uuid', 'slug', 'html']
     empty_value_display = '???'
-    list_display = ['title', 'sketch', 'languages_available_verbose', 'edited_at', 'author']
+    list_display = ['title', 'sketch',
+                    'languages_available_verbose', 'edited_at', 'author']
     list_filter = ['sketch']
 
 
