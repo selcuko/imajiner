@@ -14,18 +14,30 @@ class NarrativeVersionInlineAdmin(admin.StackedInline):
 
 class NarrativeAdmin(admin.ModelAdmin):
     fieldsets = [
+        (None,                {'fields': ['author', 'created_at']}),
+        ('Identifiers',       {'fields': ['uuid', 'slug']}),
+    ]
+    readonly_fields = ['author', 'created_at', 'uuid', 'slug']
+    list_display = ['author', 'created_at']
+    list_filter = ['sketch']
+
+class NarrativeTranslationAdmin(admin.ModelAdmin):
+    fieldsets = [
         (None,                {'fields': ['author']}),
         ('Identifiers',       {'fields': ['uuid', 'slug']}),
-        ('Content',           {'fields': ['title', 'body']}),
+        ('Content',           {'fields': ['title', 'body', 'language']}),
         ('Generated Fields',  {'fields': ['html']}),
         ('Dates',             {'fields': ['published_at', 'created_at']}),
     ]
-    readonly_fields = ['created_at', 'uuid', 'slug', 'html']
-    empty_value_display = '???'
-    list_display = ['title', 'sketch',
-                    'languages_available_verbose', 'edited_at', 'author']
+    readonly_fields = ['author', 'created_at', 'uuid', 'slug', 'html']
+    list_display = ['title', 'language_display', 'sketch', 'edited_at']
     list_filter = ['sketch']
 
+    def language_display(self, instance):
+        return settings.LANGUAGES_DICT[instance.language] if settings.LANGUAGES_DICT.get(instance.language) else instance.language
+
+    def author(self, instance):
+        return instance.master.author.username
 
 admin.site.register(Narrative, NarrativeAdmin)
-admin.site.register(NarrativeTranslation)
+admin.site.register(NarrativeTranslation, NarrativeTranslationAdmin)

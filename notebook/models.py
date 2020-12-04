@@ -100,12 +100,12 @@ class Narrative(Base):
     def languages_available_verbose(self, seperator=' | '):
         return seperator.join([str(settings.LANGUAGES_DICT.get(l, l)) for l in self.languages_available])
 
+    @property
+    def languages_available_count(self):
+        return self.translations.count()
+
     def __str__(self):
-        languages_available = self.languages_available
-        if len(languages_available) == 0:
-            return '[Empty]'
-        else:
-            return self.title
+        return self.title
 
     def save(self, *args, new_version=True, new_translation=False, **kwargs):
         super().save(*args, **kwargs)
