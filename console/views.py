@@ -148,7 +148,7 @@ class Subscriptions(LoginRequiredMixin, View):
 
 class Preferences(LoginRequiredMixin, View):
     template = 'console/preferences.html'
-    lang_codes = [l[0] for l in settings.LANGUAGES]
+    lang_codes = set(settings.LANGUAGES_DICT.keys())
     document = {
         'title': _('console').capitalize(),
     }
@@ -160,13 +160,16 @@ class Preferences(LoginRequiredMixin, View):
         action = request.POST.get('action', None)
         if not action: raise SuspiciousOperation
 
-        try:
-            if action == 'set-primary-language':
-                language = request.POST.get('language-code')
-                if not language in self.lang_codes: raise SuspiciousOperation
-                request.user.profile.language = language
-                request.user.save()
-        except: raise SuspiciousOperation
+        if action == 'set-languages':
+            languages = set(request.POST.get('language-codes').split(','))
+            
+            if not languages.issubset(self.lang_codes): 
+                raise SuspiciousOperation
+            request.user.profile.languages = list(languages)
+            request.user.profile.save()
+        
+        else:
+            raise SuspiciousOperation('action is not supplied in POST or recognized.')
 
         return HttpResponse()
 

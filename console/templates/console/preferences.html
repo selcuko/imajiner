@@ -3,7 +3,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'flags/css/flag-icon.min.css' %}">
-<link rel="stylesheet" href="{% static 'console/vendor/bootstrap-select/css/bootstrap-select.css' %}">
+<link rel="stylesheet" href="{% static 'console/vendor/multi-select/css/multi-select.css' %}">
 {% endblock head %}
 {% block body %}
 <div class="container-fluid dashboard-content">
@@ -26,17 +26,24 @@
 
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="card ">
-                <h5 class="card-header">Language Preferences</h5>
+            <div class="card">
+                <h5 class="card-header">Preferred languages</h5>
                 <div class="card-body">
-                    <h5 class="card-title">Your primary language</h5>
-                    <select id="primary-lang" class="selectpicker show-tick">
-                        <option value="none" selected disabled hidden>Click to specify</option>
-                        <option value="tr-tr" data-icon="flag-icon flag-icon-tr">Türkçe</option>
-                        <option value="en-gb" data-subtext="British" data-icon="flag-icon flag-icon-gb">English</option>
-                        <option value="en-us" data-subtext="American" data-icon="flag-icon flag-icon-us">English</option>
-                        <option value="fr-fr" data-icon="flag-icon flag-icon-fr">Français</option>
-                    </select>
+                    <form id="submit-langs">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-6"><p>Available languages</p></div>
+                            <div class="col-6"><p>My languages</p></div>
+                        </div>
+                        <select id='select-languages' multiple='multiple'>
+                            {% get_available_languages as LANGUAGES %}
+                                {% for lang_code, lang_local in LANGUAGES %}
+                                <option value='{{ lang_code }}'{% if lang_code in request.user.profile.languages %} selected{% endif %}>{{ lang_local }}</option>
+                                {% endfor %}
+                        </select>
+                        <br>
+                        <input type="submit" class="btn btn-primary btn-block" value="Submit"></input>
+                    </form>
                 </div>
             </div>
         </div>
@@ -47,22 +54,28 @@
 </div>
 {% endblock body %}
 {% block foot %}
+<script src="{% static 'console/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'console/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'console/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+<script src="{% static 'console/vendor/multi-select/js/jquery.multi-select.js' %}"></script>
+<script src="{% static 'console/libs/js/main-js.js' %}"></script>
 <script>
-    csrfForm = document.getElementById('csrf');
-    primaryLanguage = document.getElementById('primary-lang');
-    // TODO: initialize with user value if present
-    primaryLanguage.addEventListener('change', (e) => {
-        const fd = new FormData(csrfForm);
-        fd.set('action', 'set-primary-language');
-        fd.set('language-code', primaryLanguage.value);
+$('#select-languages').multiSelect({ selectableOptgroup: true });
+</script>
+<script>
+    submitLanguages = document.getElementById('submit-langs');
+    selectedLanguages = document.getElementById('select-languages');
+    submitLanguages.onsubmit = (e) => {
+        e.preventDefault();
+        const fd = new FormData(submitLanguages);
+        const langs = Array.from(selectedLanguages.selectedOptions).map(i => i.value).join(',');
+        fd.set('language-codes', langs);
+        fd.set('action', 'set-languages');
         fetch('', {
             method: 'POST',
             body: fd,
-        }).then(response => {
-            // alert(response.ok ? 'OK' : 'FAIL')
         })
-    })
+    }
 </script>
 
-<script defer src="{% static 'console/vendor/bootstrap-select/js/bootstrap-select.js' %}"></script>
 {% endblock foot %}
