@@ -104,14 +104,15 @@ class List(ListView):
 
     def get_queryset(self):
         languages = [get_language_from_request(self.request, check_path=True)]
-        baseqs = NarrativeTranslation.objects.filter(
-            sketch=False,
-            master__author__isnull=False)
         if self.request.user.is_authenticated and self.request.user.profile.languages:
-            languages += self.request.user.profile.languages.split(':')
-        qs = baseqs.filter(language__in=languages)
+            languages += self.request.user.profile.languages
+        base_qs = NarrativeTranslation.objects.filter(
+            sketch=False,
+            master__author__isnull=False,
+        )
+        qs = base_qs.filter(language__in=languages)
         if self.request.user.is_authenticated:
-            qs = qs | baseqs.filter(
+            qs = qs | base_qs.filter(
                 master__author=self.request.user, sketch=False)
         return qs
 
