@@ -124,19 +124,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'imajiner.wsgi.application'
 
-
-if ON_HEROKU:
-    DATABASE_URL = os.getenv('DATABASE_URL', None)
-    if not DATABASE_URL: raise Exception('DATABASE_URL not supplied.')
-    DB = dj_database_url.parse(DATABASE_URL)
-else:
-    DB = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+DATABASE_URL = os.getenv('DATABASE_URL', None)
+if not DATABASE_URL: raise Exception('DATABASE_URL not supplied.')
 
 DATABASES = {
-    'default': DB,
+    'default': dj_database_url.parse(DATABASE_URL),
 }
 
 AUTH_PASSWORD_VALIDATORS = [
