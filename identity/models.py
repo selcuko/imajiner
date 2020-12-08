@@ -56,7 +56,7 @@ class Shadow(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     biography = models.TextField(null=True, blank=True)
-    languages = fields.ArrayField(models.CharField(max_length=5), null=True, blank=True)
+    languages = fields.ArrayField(models.CharField(max_length=5), default=list)
     preferences = models.JSONField(default=dict)
 
     def __str__(self):

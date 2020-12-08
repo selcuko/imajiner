@@ -43,6 +43,14 @@ class Auth(View):
                 username = p.get('username', None)
                 shadow = Shadow.create_shadow(request, fingerprint, username)
                 login(request, shadow.user)
+                user = shadow.user
+                request_language = get_language_from_request(request)
+                request_language_path = get_language_from_request(request, check_path=True)
+                print(request_language, request_language_path)
+                if request_language:
+                    user.profile.languages += [request_language]
+                if request_language_path != request_language and request_language_path:
+                    user.profile.languages += [request_language_path]
                 return HttpResponse()
 
             elif action == 'shadow-login':
@@ -62,6 +70,15 @@ class Auth(View):
                     login(request, user)
                 except IntegrityError:
                     return JsonResponse({'error': True})
+                
+                request_language = get_language_from_request(request)
+                request_language_path = get_language_from_request(request, check_path=True)
+                print(request_language, request_language_path)
+                if request_language:
+                    user.profile.languages += [request_language]
+                if request_language_path != request_language and request_language_path:
+                    user.profile.languages += [request_language_path]
+                user.profile.save()
                 return JsonResponse({'error': False})
             
             elif action == 'author-login':
@@ -156,12 +173,6 @@ class LoginViews:
                 user = shadow.user
                 login(request, user),
 
-            request_language = get_language_from_request(request)
-            request_language_path = get_language_from_request(request, check_path=True)
-            if request_language:
-                user.profile.languages += [request_language]
-            if request_language_path != request_language and request_language_path:
-                user.profile.languages += [request_language_path]
-            user.profile.save()
+            
             return HttpResponse()
 
