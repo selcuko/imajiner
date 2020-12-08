@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils.ipv6 import ipaddress
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.postgres import fields
 import hashlib
 from uuid import uuid1
 from .methods import remote_addr, fingerprint, user_agent
@@ -55,8 +56,11 @@ class Shadow(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     biography = models.TextField(null=True, blank=True)
-    languages = models.CharField(default='', max_length=100)
+    languages = fields.ArrayField(models.CharField(max_length=5), null=True, blank=True)
     shadow_priviledges = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -74,7 +78,7 @@ class LoggedInUser(models.Model):
     user_agent = models.TextField(null=True, blank=True)
     session_key = models.CharField(max_length=32)
 
-    def __str__(self): return f'Session of {self.user.username}'
+    def __str__(self): return f'{self.user.username}-{self.session_key}'
 
 
 @receiver(user_logged_in)
