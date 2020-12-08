@@ -98,7 +98,8 @@ class List(ListView):
                 'title': _('narratives').capitalize(),
                 'author': self.request.user.username,
                 'description': _('view the latest narratives published on Imajiner').capitalize()
-            }
+            },
+            'LANG_INFO': LANG_INFO,
         })
         return ctx
 

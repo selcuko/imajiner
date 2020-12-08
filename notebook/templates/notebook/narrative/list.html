@@ -25,11 +25,17 @@
                         <div class="entry__header">
 
                             {% if narrative.language %}
+                            {% if narrative.language in LANG_INFO.keys %}
                             {% get_language_info for narrative.language as language_info %}
                             <div class="entry__date">
                                 <a class="philosophy" href="#0">{{ narrative.created_at|naturalday|capfirst }}</a>
                                 •<a> {{ language_info.name_local }}</a>
                             </div>
+                            {% else %}
+                            <div class="entry__date">
+                                <a class="philosophy" href="#0">{{ narrative.created_at|naturalday|capfirst }}</a>
+                            </div>
+                            {% endif %}
                             {% else %}
                             <div class="entry__date">
                                 <a style="color:red" class="philosophy" href="#0"><i class="fa fa-info-circle"></i>  {% translate 'this narrative is not visible to public'|capfirst %}</a>
