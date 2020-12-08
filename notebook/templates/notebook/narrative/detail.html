@@ -84,9 +84,11 @@
                         {% endif %}
                     </h4>
 
+                    {% if narrative.master.author.profile.biography %}
                     <p class="philosophy">
                         {{ narrative.master.author.profile.biography }}
                     </p>
+                    {% endif %}
                 </div>
                 <br>
             </div>
