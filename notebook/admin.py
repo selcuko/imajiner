@@ -33,7 +33,7 @@ class NarrativeTranslationAdmin(admin.ModelAdmin):
     readonly_fields = ['author', 'created_at', 'uuid', 'slug', 'html']
     list_display = ['title', 'language_display', 'sketch', 'edited_at']
     list_display_links = ['title', 'edited_at']
-    list_filter = ['sketch']
+    list_filter = ['sketch', 'language']
 
     def language_display(self, instance):
         return settings.LANGUAGES_DICT[instance.language] if settings.LANGUAGES_DICT.get(instance.language) else instance.language
