@@ -19,6 +19,7 @@ class NarrativeAdmin(admin.ModelAdmin):
     ]
     readonly_fields = ['author', 'created_at', 'uuid', 'slug']
     list_display = ['author', 'created_at']
+    list_display_links = ['author', 'created_at']
     list_filter = ['sketch']
 
 class NarrativeTranslationAdmin(admin.ModelAdmin):
@@ -31,6 +32,7 @@ class NarrativeTranslationAdmin(admin.ModelAdmin):
     ]
     readonly_fields = ['author', 'created_at', 'uuid', 'slug', 'html']
     list_display = ['title', 'language_display', 'sketch', 'edited_at']
+    list_display_links = ['title', 'edited_at']
     list_filter = ['sketch']
 
     def language_display(self, instance):
