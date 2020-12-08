@@ -83,6 +83,9 @@ class LoggedInUser(models.Model):
 
 @receiver(user_logged_in)
 def on_user_logged_in(sender, request, **kwargs):
+    if not request.session.session_key:
+        request.session.save()
+    
     LoggedInUser.objects.get_or_create(
         user=kwargs.get('user'), 
         session_key=request.session.session_key,
