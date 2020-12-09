@@ -47,11 +47,14 @@
                                 {% for narrative in narratives %}
                                 <tr>
                                     <td>
-                                        {% if narrative.title %}
-                                        <a href="{% url 'console:narrative-detail' n_uuid=narrative.master.uuid t_uuid=narrative.uuid %}">{{ narrative.title }}</a>
-                                        {% else %}
-                                        <i class="fa fa-edit"></i>
-                                        {% endif %}
+                                        <a
+                                            href="{% url 'console:narrative-detail' n_uuid=narrative.master.uuid t_uuid=narrative.uuid %}">
+                                            {% if narrative.title %}
+                                            {{ narrative.title }}
+                                            {% else %}
+                                            <i class="fa fa-edit"></i>
+                                            {% endif %}
+                                        </a>
                                     </td>
                                     <td>
                                         {% if narrative.language in LANG_INFO %}
@@ -81,9 +84,9 @@
                 </div>
             </div>
         </div>
-        
-        
-        
+
+
+
     </div>
 </div>
 {% endblock %}
