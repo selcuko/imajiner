@@ -42,7 +42,7 @@
                                 {% endfor %}
                         </select>
                         <br>
-                        <input type="submit" class="btn btn-primary btn-block" value="Submit"></input>
+                        <button id="languages-button" type="submit" class="btn btn-primary btn-block" value="Save">Save</button>
                     </form>
                 </div>
             </div>
@@ -65,6 +65,7 @@ $('#select-languages').multiSelect({ selectableOptgroup: true });
 <script>
     submitLanguages = document.getElementById('submit-langs');
     selectedLanguages = document.getElementById('select-languages');
+    languagesButton = document.getElementById('languages-button');
     submitLanguages.onsubmit = (e) => {
         e.preventDefault();
         const fd = new FormData(submitLanguages);
@@ -74,7 +75,26 @@ $('#select-languages').multiSelect({ selectableOptgroup: true });
         fetch('', {
             method: 'POST',
             body: fd,
+        }).then(response => {
+            if (response.ok){
+                buttonSuccess(languagesButton);
+            } else {
+                buttonError(languagesButton);
+            }
+        }).catch(error => {
+            buttonError(languagesButton);
         })
+    }
+
+    function buttonSuccess(btn){
+        languagesButton.innerHTML = '<i class="fa fa-check"></i>';
+        languagesButton.style.backgroundColor = 'green';
+        languagesButton.style.borderColor = 'white';
+    }
+    function buttonError(btn){
+        languagesButton.innerHTML = '<i class="fa fa-times"></i>';
+        languagesButton.style.backgroundColor = 'red';
+        languagesButton.style.borderColor = 'black';
     }
 </script>
 
