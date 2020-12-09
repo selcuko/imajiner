@@ -44,18 +44,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for narrative in request.user.narratives.all %}
+                                {% for narrative in narratives %}
                                 <tr>
                                     <td>
                                         {% if narrative.title %}
-                                        <a href="{% url 'console:narrative' n_uuid=narrative.uuid %}">{{ narrative.title }}</a>
+                                        <a href="{% url 'console:narrative-detail' n_uuid=narrative.uuid %}">{{ narrative.title }}</a>
                                         {% else %}
                                         <i class="fa fa-edit"></i>
                                         {% endif %}
                                     </td>
                                     <td>
                                         {% if narrative.language in LANG_INFO %}
-                                        {% get_language_info narrative.language as language_info %}
+                                        {% get_language_info for narrative.language as language_info %}
                                         {{ lang_info.name }}
                                         {% else %}
                                         {% firstof narrative.language '-' %}

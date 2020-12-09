@@ -5,6 +5,7 @@ from django.core.exceptions import SuspiciousOperation
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .context import *
+from django.conf.locale import LANG_INFO
 from notebook.models import Narrative as NarrativeModel
 from notebook.models import NarrativeVersion as NarrativeVersionModel
 from notebook.models import NarrativeTranslation as NarrativeTranslationModel
@@ -140,32 +141,23 @@ class Narratives(LoginRequiredMixin, ListView):
         return queryset
 
 
-class NarrativeTranslations(LoginRequiredMixin, View):
-    template = 'console/narrative/detail.html'
+class NarrativeTranslations(LoginRequiredMixin, ListView):
+    template_name = 'console/narrative/translations.html'
+    context_object_name = 'narratives'
+    model = NarrativeTranslationModel
 
-    def get(self, request, n_uuid):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
-        form = NarrativeForm(instance=narrative)
-        return render(request, self.template, {
-            'form': form,
-            'narrative': narrative,
-            'doc':{
-                'title': _('edit narrative').capitalize(),
-            }
-        })
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['doc'] = {'title': _('narrative details').capitalize()}
+        context['LANG_INFO'] = LANG_INFO
+        return context
     
-    def post(self, request, n_uuid):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
-        form = NarrativeForm(request.POST, instance=narrative)
-        if form.is_valid(): 
-            narrative = form.save(commit=False)
-            narrative.save(new_version=True)
-        return render(request, self.template, {
-            'form': form,'narrative': narrative,
-            'doc': {
-                'title': _('edit narrative').capitalize(),
-            }
-        })
+    def get_queryset(self, *args, **kwargs):
+        queryset = NarrativeTranslationModel.objects.filter(
+            master__author=self.request.user,
+            master__uuid=self.kwargs['n_uuid'],
+            )
+        return queryset
 
 
 class NarrativeDetail(LoginRequiredMixin, View):

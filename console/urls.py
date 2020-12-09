@@ -10,7 +10,7 @@ urlpatterns = [
     path(_('access/'), AccessSecurity.as_view(), name='access'),
 
     path(_('narratives/'),                       Narratives.as_view(), name='narratives'),
-    path(_('n/<uuid:n_uuid>/'),                  NarrativeDetail.as_view(), name='narrative-latest'),
+    path(_('n/<uuid:n_uuid>/'),                  NarrativeDetail.as_view(), name='narrative-detail'),
     path(_('n/<uuid:n_uuid>/languages/'),        NarrativeTranslations.as_view(), name='narrative-translations'),
     path(_('n/<uuid:n_uuid>/versions/'),         NarrativeTimeline.as_view(), name='narrative-timeline'),
     path(_('n/<uuid:n_uuid>/v/<uuid:v_uuid>/'),  NarrativeVersionDetail.as_view(), name='narrative-version'),
