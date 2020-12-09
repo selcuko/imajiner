@@ -66,7 +66,12 @@
                                     </td>
                                     <td>{{ narrative.versions.count }}</td>
                                     <td>{{ narrative.edited_at|date }}</td>
-                                    <td>{{ narrative.created_at|date }}</td>
+                                    <td>{% if narrative.is_published %}
+                                        {{ narrative.published_at|date }}
+                                        {% else %}
+                                        <i class="fa fa-times"></i>
+                                        {% endif %}
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

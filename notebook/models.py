@@ -100,6 +100,23 @@ class Narrative(Base):
     author = models.ForeignKey(
         User, on_delete=models.SET_NULL, related_name='narratives', null=True, blank=True)
 
+    class Meta:
+        ordering = ('author',)
+    
+    @cached_property
+    def is_published(self):
+        return self.translations.filter(is_published=True).exists()
+    
+    @cached_property
+    def edited_at(self):
+        return self.translations.order_by('-edited_at').first().edited_at
+    
+    @cached_property
+    def published_at(self):
+        published_at = self.translations.filter(published_at__isnull=False).order_by('-published_at').first().published_at
+        print('PA', published_at)
+        return published_at
+
 
     @cached_property
     def title(self):

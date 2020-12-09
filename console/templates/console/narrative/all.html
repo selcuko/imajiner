@@ -36,18 +36,23 @@
                             <thead>
                                 <tr>
                                     <th>{% translate 'title'|capfirst %}</th>
-                                    <th>{% translate 'published at'|capfirst %}</th>
+                                    <th>{% translate 'published'|capfirst %}</th>
                                     <th>{% translate 'last edit'|capfirst %}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for narrative in request.user.narratives.all %}
+                                {% for narrative in narratives %}
                                 <tr>
-                                    <td>{% if narrative.title %}<a
-                                            href="{% url 'console:narrative-translations' n_uuid=narrative.uuid %}">{{ narrative.title }}</a>{% else %}<i
-                                            class="fa fa-edit"></i>{% endif %}</td>
-                                    <td>{% if narrative.latest.is_published %}{{ narrative.published_at|date }}{% else %}<i
-                                            class="fa fa-times"></i>{% endif %}</td>
+                                    <td>{% if narrative.title %}
+                                        <a href="{% url 'console:narrative-translations' n_uuid=narrative.uuid %}">
+                                            {{ narrative.title }}
+                                        </a>
+                                        {% else %}
+                                        <i class="fa fa-edit"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>{% if narrative.is_published %}{{ narrative.published_at|date }}
+                                        {% else %}<i class="fa fa-times"></i>{% endif %}</td>
                                     <td>{{ narrative.edited_at|date }}</td>
                                 </tr>
                                 {% endfor %}
