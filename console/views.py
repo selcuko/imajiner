@@ -10,6 +10,7 @@ from notebook.models import NarrativeTranslation as NarrativeTranslationModel
 from identity.forms import ProfileForm
 from notebook.forms import NarrativeForm
 import logging
+import time
 from django.conf import settings
 from django.contrib.sessions.models import Session
 from django.utils.translation import gettext_lazy as _
@@ -165,6 +166,7 @@ class Preferences(LoginRequiredMixin, View):
     
     def post(self, request):
         action = request.POST.get('action', None)
+        time.sleep(2)
 
         if action == 'set-languages':
             languages = set(request.POST.get('language-codes').split(','))

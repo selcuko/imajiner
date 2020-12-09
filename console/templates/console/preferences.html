@@ -42,7 +42,7 @@
                                 {% endfor %}
                         </select>
                         <br>
-                        <button id="languages-button" type="submit" class="btn btn-primary btn-block" value="Save">Save</button>
+                        <button style="transition: ease 0.5s;" id="languages-button" type="submit" class="btn btn-primary btn-block" value="Save">Save</button>
                     </form>
                 </div>
             </div>
@@ -58,6 +58,7 @@
 <script src="{% static 'console/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
 <script src="{% static 'console/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
 <script src="{% static 'console/vendor/multi-select/js/jquery.multi-select.js' %}"></script>
+<script src="{% static 'console/form-feedback.js' %}"></script>
 <script src="{% static 'console/libs/js/main-js.js' %}"></script>
 <script>
 $('#select-languages').multiSelect({ selectableOptgroup: true });
@@ -67,6 +68,7 @@ $('#select-languages').multiSelect({ selectableOptgroup: true });
     selectedLanguages = document.getElementById('select-languages');
     languagesButton = document.getElementById('languages-button');
     submitLanguages.onsubmit = (e) => {
+        buttonLoading(languagesButton);
         e.preventDefault();
         const fd = new FormData(submitLanguages);
         const langs = Array.from(selectedLanguages.selectedOptions).map(i => i.value).join(',');
@@ -84,17 +86,6 @@ $('#select-languages').multiSelect({ selectableOptgroup: true });
         }).catch(error => {
             buttonError(languagesButton);
         })
-    }
-
-    function buttonSuccess(btn){
-        languagesButton.innerHTML = '<i class="fa fa-check"></i>';
-        languagesButton.style.backgroundColor = 'green';
-        languagesButton.style.borderColor = 'white';
-    }
-    function buttonError(btn){
-        languagesButton.innerHTML = '<i class="fa fa-times"></i>';
-        languagesButton.style.backgroundColor = 'red';
-        languagesButton.style.borderColor = 'black';
     }
 </script>
 
