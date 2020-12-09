@@ -109,14 +109,15 @@ class Narrative(Base):
     
     @cached_property
     def edited_at(self):
-        return self.translations.order_by('-edited_at').first().edited_at
+        qs = self.translations.order_by('-edited_at')
+        if qs.exists():
+            return qs.first().edited_at
     
     @cached_property
     def published_at(self):
-        published_at = self.translations.filter(published_at__isnull=False).order_by('-published_at').first().published_at
-        print('PA', published_at)
-        return published_at
-
+        qs = self.translations.filter(published_at__isnull=False).order_by('-published_at')
+        if qs.exists():
+            return qs.first().published_at
 
     @cached_property
     def title(self):
