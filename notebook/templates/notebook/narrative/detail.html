@@ -10,11 +10,11 @@
 
         <div class="s-content__header col-full">
             <h1 class="s-content__header-title">
-                {{ narrative.title }}
+                {{ narrative.latest.title }}
             </h1>
             <ul class="s-content__header-meta">
-                <li class="date">{{ narrative.published_at|date }}</li>
-                <li class="date">V{{ narrative.versions.first.version }}</li>
+                <li class="date">{{ narrative.latest.published_at|date }}</li>
+                <li class="date">V{{ narrative.latest.version }}</li>
 
                 {% if request.user == narrative.master.author %}
                 {% if narrative.language in LANG_INFO.keys %}
@@ -37,7 +37,7 @@
         <div class="col-full s-content__main">
 
             <div id="article-body">
-                {{ narrative.html|safe }}
+                {{ narrative.latest.html|safe }}
             </div>
 
             <div class="row" style="display:flex; flex-direction: row; justify-content: space-between;">

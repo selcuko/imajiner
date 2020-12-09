@@ -122,10 +122,9 @@ class Folder(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/folder.html'
 
     def get(self, request):
-        NarrativeTranslation.objects.filter(
-            sketch=True, master__author=request.user, title='', body__isnull=True).delete()
-        sketches = NarrativeTranslation.objects.filter(
-            sketch=True, master__author=request.user).order_by('-edited_at')
+        qs = NarrativeTranslation.objects.filter(master__author=request.user).order_by('-edited_at')
+        qs.filter(title='', body__isnull=True).delete()
+        sketches = qs.filter(edited=True) | qs.filter(sketch=True)
         return render(request, self.template_name, {
             'sketches': sketches,
             'no_sketch': not sketches.exists(),

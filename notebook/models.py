@@ -1,3 +1,6 @@
+import logging
+import inspect
+from datetime import datetime
 from threading import Thread
 from uuid import uuid1
 
@@ -11,8 +14,11 @@ from django.shortcuts import reverse
 from django.utils import html, text, timezone
 from django.utils.functional import cached_property
 from tagmanager.models import TagManager
-
 from .methods import generate
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 
 class SoundRecord(models.Model):
@@ -58,6 +64,7 @@ class Base(models.Model):
     language = models.CharField(
         max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
     sketch = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=False)
 
     def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
         if not self.sketch:
@@ -77,7 +84,7 @@ class Base(models.Model):
                     self.language = language.language
             elif user_language:
                 self.language = user_language
-
+        self.is_published = not self.sketch
         super().save(*args, **kwargs)
 
     def __str__(self, *args, **kwargs):
@@ -114,7 +121,7 @@ class Narrative(Base):
         return self.translations.count()
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else ''
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -139,10 +146,14 @@ class NarrativeTranslation(Base):
         Narrative, on_delete=models.CASCADE, related_name='translations')
     tags = models.OneToOneField(
         TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
+    edited = models.BooleanField(default=False)
 
     @property
     def at_version(self):
         return self.versions.filter(sketch=False).count()
+    @property
+    def latest(self):
+        return self.versions.filter(sketch=False).first()
 
     def get_absolute_url(self):
         if self.sketch:
@@ -151,7 +162,6 @@ class NarrativeTranslation(Base):
             return reverse('narrative:detail', kwargs={'slug': self.slug})
 
     def reference(self, ref):
-        print('Saving by reference:', ref)
         self.title = ref.title
         self.body = ref.body
         self.language = ref.language
@@ -160,15 +170,25 @@ class NarrativeTranslation(Base):
 
 
     def save(self, *args, new_version=True, **kwargs):
-        super().save(*args, **kwargs)
-
         initial_version = self.versions.count() == 0
         latest = self.versions.first()  # versions are ordered from latest to earliest
+        if latest is not None:
+            if latest.is_published:
+                self.edited = True
 
         if initial_version:
             nv = NarrativeVersion()
             nv.reference(self)
+            nv.version = 0
             nv.save()
+        
+        elif self.is_published and not new_version:
+            #  gotta be an edit after the publish
+            if not latest.sketch:
+                latest = self.versions.filter(sketch=True).first()
+            latest.reference(self)
+            latest.sketch = True
+            latest.save()
 
         elif new_version:
             # save a new version and archive latest
@@ -176,12 +196,18 @@ class NarrativeTranslation(Base):
             nv.reference(self)
             nv.version = latest.version + 1
             nv.save()
-            latest.archive()
+            # latest.reference(self)
+            # latest.sketch = False
+            latest.save(archive=True)
+            self.edited = False
 
         else:
             # update latest version without creating a new one
             latest.reference(self)
             latest.save()
+        
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return f'{settings.LANGUAGES_DICT.get(self.language, "Unknown")} translation of {self.master}'
@@ -202,6 +228,7 @@ class NarrativeVersion(Base):
         self.sketch = ref.sketch
         self.master = ref
         self.language = ref.language
+        self.is_published = ref.is_published
 
     def archive(self):
         return self.save(archive=True)
