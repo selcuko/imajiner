@@ -92,13 +92,21 @@ class Narrative(Base):
     author = models.ForeignKey(
         User, on_delete=models.SET_NULL, related_name='narratives', null=True, blank=True)
 
+
+    @property
+    def title(self):
+        for t in self.translations.all():
+            if t.title:
+                return t.title
+        return None
+
     @property
     def languages_available(self):
         return [t.language for t in self.translations.all()]
 
     @property
-    def languages_available_verbose(self, seperator=' | '):
-        return seperator.join([str(settings.LANGUAGES_DICT.get(l, l)) for l in self.languages_available])
+    def languages_available_verbose(self, seperator=' • '):
+        return seperator.join([str(settings.LANGUAGES_DICT.get(l, l)) for l in self.languages_available if l])
 
     @property
     def languages_available_count(self):
@@ -132,6 +140,10 @@ class NarrativeTranslation(Base):
         Narrative, on_delete=models.CASCADE, related_name='translations')
     tags = models.OneToOneField(
         TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
+
+    @property
+    def at_version(self):
+        return self.versions.filter(sketch=False).count()
 
     def get_absolute_url(self):
         if self.sketch:
