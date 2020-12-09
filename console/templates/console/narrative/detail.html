@@ -1,99 +1,45 @@
 {% extends 'console/base.html' %}
-{% load static widget_tweaks i18n %}
-<!--
-{% block head %}
-<link rel="stylesheet" href="{% static 'console/vendor/select2/css/select2.css' %}">
-<link rel="stylesheet" href="{% static 'console/vendor/summernote/css/summernote-bs4.css' %}">
-<link rel="stylesheet" href="{% static 'console/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
-
-<script defer src="{% static 'console/vendor/select2/js/select2.min.js' %}"></script>
-<script defer src="{% static 'console/vendor/summernote/js/summernote-bs4.js' %}"></script>
-<script defer src="{% static 'console/libs/js/main-js.js' %}"></script>
-<script>
-    $(document).ready(function() {
-        $('.js-example-basic-multiple').select2({ tags: true });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            height: 300
-
-        });
-    });
-</script>
-{% endblock %} -->
+{% load static widget_tweaks i18n humanize %}
 {% block body %}
-
 <div class="container-fluid dashboard-content">
-
-    <div class="col-xl-12">
-        <!-- ============================================================== -->
-        <!-- pageheader  -->
-        <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-12">
+            {% translate 'narrative details'|capfirst as header %}
+            {% include 'console/page/header.html' with header=header %}
+        </div>
+    </div>
+    <div class="page-section" id="overview">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="page-header" id="top">
-                    <h1 class="pageheader-title">{{ narrative.title }}</h1>
-
-                    <div class="page-breadcrumb">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li>{% translate 'editing page'|capfirst %}</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
+            <div class="col-12">
+                <h1>{{ narrative.title }}</h1>
+                <ul>
+                    <li>Last version: V{{ narrative.versions.count }}</li>
+                    <li>Published version: V{{ narrative.latest.version }}</li>
+                    <li>Last edited at: {{ narrative.edited_at|naturaltime }}</li>
+                    <li>Created at: {{ narrative.created_at|naturaltime }}</li>
+                </ul>
+            </div>
+            <div class="col-12">
+                {% if narrative.latest.is_published %}
+                <a href="{{ narrative.get_absolute_url }}" class="btn btn-disabled btn-primary">
+                    View in site
+                </a>
+                {% else %}
+                <button title="Unavailable: it's still a sketch" data-toggle="tooltip" data-placement="top"
+                    class="btn btn-secondary">
+                    View in site
+                </button>
+                {% endif %}
+                <a href="{% url 'console:narrative-timeline' n_uuid=narrative.master.uuid t_uuid=narrative.uuid %}"
+                    class="btn btn-primary">
+                    Version history</a>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end pageheader  -->
-        <!-- ============================================================== -->
-        <div class="page-section" id="overview">
-            <!-- ============================================================== -->
-            <!-- overview  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <a class="btn btn-primary" href="{% url 'console:versions' n_uuid=narrative.uuid %}">{% translate 'view version history'|capfirst %}</a>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end overview  -->
-            <!-- ============================================================== -->
-        </div>
-        <br>
-
-        <!-- ============================================================== -->
-        <!-- end basic form  -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="section-block" id="account-info">
-                    <h3 class="section-title">{% translate 'narrative content'|capfirst %}</h3>
-                    <p>{% translate 'I will not save unless you hit the button.'|capfirst %}</p>
-                </div>
-                <div class="card">
-
-                    <div class="card-body border-top">
-                        <form action="" method="POST">
-                            {% csrf_token %}
-                            {% render_field form.uuid type="hidden" %}
-                            {% render_field form.title type="hidden" %}
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1"></label>
-                                {% render_field form.body rows="10" class+="form-control" %}
-                            </div>
-                            <div>
-                                <input class="btn btn-primary btn-block" value="{% translate 'save'|capfirst %}" type="submit">
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
+        <div style="margin-top:2em;" class="row">
+            <div class="col-12">
+                {{ narrative.html|safe }}
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

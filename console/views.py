@@ -148,7 +148,7 @@ class NarrativeTranslations(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['doc'] = {'title': _('narrative details').capitalize()}
+        context['doc'] = {'title': _('narrative information').capitalize()}
         context['LANG_INFO'] = LANG_INFO
         return context
     
@@ -160,29 +160,44 @@ class NarrativeTranslations(LoginRequiredMixin, ListView):
         return queryset
 
 
-class NarrativeDetail(LoginRequiredMixin, View):
-    template = 'console/narrative/versions.html'
+class NarrativeDetail(LoginRequiredMixin, DetailView):
+    template_name = 'console/narrative/detail.html'
+    context_object_name = 'narrative'
+    model = NarrativeTranslationModel
 
-    def get(self, request, n_uuid):
-        narrative = NarrativeModel.objects.get(uuid=n_uuid)
-        return render(request, self.template, {
-            'narrative': narrative,
-            'doc':{
-                'title': _('narrative version timeline').capitalize(),
-            }
-        })
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['doc'] = {'title': _('narrative details').capitalize()}
+        context['LANG_INFO'] = LANG_INFO
+        return context
+    
+    def get_object(self, *args, **kwargs):
+        instance = NarrativeTranslationModel.objects.get(
+            master__author=self.request.user,
+            master__uuid=self.kwargs['n_uuid'],
+            uuid=self.kwargs['t_uuid'],
+            )
+        return instance
 
-class NarrativeTimeline(LoginRequiredMixin, View):
-    template = 'console/narrative/readonly.html'
 
-    def get(self, request, n_uuid, v_uuid):
-        version = NarrativeVersionModel.objects.get(uuid=v_uuid)
-        return render(request, self.template, {
-            'version': version,
-            'doc': {
-                'title': _('narrative version history').capitalize(),
-            }
-        })
+class NarrativeTimeline(LoginRequiredMixin, ListView):
+    template_name = 'console/narrative/timeline.html'
+    context_object_name = 'versions'
+    model = NarrativeVersionModel
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['doc'] = {'title': _('narrative timeline').capitalize()}
+        context['LANG_INFO'] = LANG_INFO
+        return context
+    
+    def get_queryset(self, *args, **kwargs):
+        queryset = NarrativeVersionModel.objects.filter(
+            master__master__author=self.request.user,
+            master__master__uuid=self.kwargs['n_uuid'],
+            master__uuid=self.kwargs['t_uuid'],
+            )
+        return queryset
 
 
 class NarrativeVersionDetail(LoginRequiredMixin, View):

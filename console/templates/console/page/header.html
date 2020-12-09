@@ -5,7 +5,9 @@
             <div class="page-breadcrumb">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        {{ breadcrumbs }}
+                        {% for bc_name, bc_link in breadcrumbs %}
+                        <li class="breadcrumb-item{% if forloop.last %} active{% endif %}"><a href="{{ bc_link }}" class="breadcrumb-link">{{ bc_name }}</a></li>
+                        {% endfor %}
                     </ol>
                 </nav>
             </div>
