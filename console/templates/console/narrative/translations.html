@@ -22,7 +22,7 @@
 <div class="container-fluid  dashboard-content">
     <div class="row">
         <div class="col-12">
-            {% translate 'my narratives'|capfirst as header %}
+            {% translate 'narrative languages'|capfirst as header %}
             {% include 'console/page/header.html' with header=header %}
         </div>
     </div>
@@ -36,19 +36,34 @@
                             <thead>
                                 <tr>
                                     <th>{% translate 'title'|capfirst %}</th>
-                                    <th>{% translate 'published at'|capfirst %}</th>
+                                    <th>{% translate 'language'|capfirst %}</th>
+                                    <th>{% translate 'version'|capfirst %}</th>
                                     <th>{% translate 'last edit'|capfirst %}</th>
+                                    <th>{% translate 'published'|capfirst %}</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for narrative in request.user.narratives.all %}
                                 <tr>
-                                    <td>{% if narrative.title %}<a
-                                            href="{% url 'console:narrative' n_uuid=narrative.uuid %}">{{ narrative.title }}</a>{% else %}<i
-                                            class="fa fa-edit"></i>{% endif %}</td>
-                                    <td>{% if narrative.latest.is_published %}{{ narrative.published_at|date }}{% else %}<i
-                                            class="fa fa-times"></i>{% endif %}</td>
+                                    <td>
+                                        {% if narrative.title %}
+                                        <a href="{% url 'console:narrative' n_uuid=narrative.uuid %}">{{ narrative.title }}</a>
+                                        {% else %}
+                                        <i class="fa fa-edit"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if narrative.language in LANG_INFO %}
+                                        {% get_language_info narrative.language as language_info %}
+                                        {{ lang_info.name }}
+                                        {% else %}
+                                        {% firstof narrative.language '-' %}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ narrative.versions.count }}</td>
                                     <td>{{ narrative.edited_at|date }}</td>
+                                    <td>{{ narrative.created_at|date }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -56,7 +71,7 @@
                             <tfoot>
                                 <tr>
                                     <th>{% translate 'title'|capfirst %}</th>
-                                    <th>{% translate 'published at'|capfirst %}</th>
+                                    <th>{% translate 'language'|capfirst %}</th>
                                     <th>{% translate 'last edit'|capfirst %}</th>
                                 </tr>
                             </tfoot>
@@ -66,9 +81,9 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end basic table  -->
-        <!-- ============================================================== -->
+        
+        
+        
     </div>
 </div>
 {% endblock %}

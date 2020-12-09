@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.core.exceptions import SuspiciousOperation
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -89,70 +90,6 @@ class AccessSecurity(LoginRequiredMixin, View):
         })
 
 
-class Narratives(LoginRequiredMixin, View):
-    template = 'console/narratives.html'
-
-    def get(self, request):
-        return render(request, self.template, {
-            'doc': {
-                'title': _('my narratives').capitalize(),
-            }
-        })
-
-
-class Narrative(LoginRequiredMixin, View):
-    template = 'console/narrative.html'
-
-    def get(self, request, n_uuid):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
-        form = NarrativeForm(instance=narrative)
-        return render(request, self.template, {
-            'form': form,
-            'narrative': narrative,
-            'doc':{
-                'title': _('edit narrative').capitalize(),
-            }
-        })
-    
-    def post(self, request, n_uuid):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
-        form = NarrativeForm(request.POST, instance=narrative)
-        if form.is_valid(): 
-            narrative = form.save(commit=False)
-            narrative.save(new_version=True)
-        return render(request, self.template, {
-            'form': form,'narrative': narrative,
-            'doc': {
-                'title': _('edit narrative').capitalize(),
-            }
-        })
-
-
-class NarrativeVersions(LoginRequiredMixin, View):
-    template = 'console/narrative/versions.html'
-
-    def get(self, request, n_uuid):
-        narrative = NarrativeModel.objects.get(uuid=n_uuid)
-        return render(request, self.template, {
-            'narrative': narrative,
-            'doc':{
-                'title': _('narrative version timeline').capitalize(),
-            }
-        })
-
-class NarrativeVersion(LoginRequiredMixin, View):
-    template = 'console/narrative/readonly.html'
-
-    def get(self, request, n_uuid, v_uuid):
-        version = NarrativeVersionModel.objects.get(uuid=v_uuid)
-        return render(request, self.template, {
-            'version': version,
-            'doc': {
-                'title': _('narrative version history').capitalize(),
-            }
-        })
-
-
 
 class Preferences(LoginRequiredMixin, View):
     template = 'console/preferences.html'
@@ -185,3 +122,85 @@ class Preferences(LoginRequiredMixin, View):
 
         return HttpResponse()
 
+
+
+
+class Narratives(LoginRequiredMixin, ListView):
+    template_name = 'console/narrative/all.html'
+    context_object_name = 'narratives'
+    model = NarrativeModel
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['doc'] = {'title': _('my narratives').capitalize()}
+        return context
+    
+    def get_queryset(self, *args, **kwargs):
+        queryset = NarrativeModel.objects.filter(author=self.request.user)
+        return queryset
+
+
+class NarrativeTranslations(LoginRequiredMixin, View):
+    template = 'console/narrative/detail.html'
+
+    def get(self, request, n_uuid):
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
+        form = NarrativeForm(instance=narrative)
+        return render(request, self.template, {
+            'form': form,
+            'narrative': narrative,
+            'doc':{
+                'title': _('edit narrative').capitalize(),
+            }
+        })
+    
+    def post(self, request, n_uuid):
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
+        form = NarrativeForm(request.POST, instance=narrative)
+        if form.is_valid(): 
+            narrative = form.save(commit=False)
+            narrative.save(new_version=True)
+        return render(request, self.template, {
+            'form': form,'narrative': narrative,
+            'doc': {
+                'title': _('edit narrative').capitalize(),
+            }
+        })
+
+
+class NarrativeDetail(LoginRequiredMixin, View):
+    template = 'console/narrative/versions.html'
+
+    def get(self, request, n_uuid):
+        narrative = NarrativeModel.objects.get(uuid=n_uuid)
+        return render(request, self.template, {
+            'narrative': narrative,
+            'doc':{
+                'title': _('narrative version timeline').capitalize(),
+            }
+        })
+
+class NarrativeTimeline(LoginRequiredMixin, View):
+    template = 'console/narrative/readonly.html'
+
+    def get(self, request, n_uuid, v_uuid):
+        version = NarrativeVersionModel.objects.get(uuid=v_uuid)
+        return render(request, self.template, {
+            'version': version,
+            'doc': {
+                'title': _('narrative version history').capitalize(),
+            }
+        })
+
+
+class NarrativeVersionDetail(LoginRequiredMixin, View):
+    template = 'console/narrative/versions.html'
+
+    def get(self, request, n_uuid):
+        narrative = NarrativeModel.objects.get(uuid=n_uuid)
+        return render(request, self.template, {
+            'narrative': narrative,
+            'doc':{
+                'title': _('narrative version timeline').capitalize(),
+            }
+        })

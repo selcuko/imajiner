@@ -34,7 +34,7 @@ msgid "the most basic information"
 msgstr "temel bilgiler"
 
 #: console/templates/console/access.html:37
-#: console/templates/console/narrative.html:74
+#: console/templates/console/narrative/detail.html:74
 msgid "I will not save unless you hit the button."
 msgstr "Kaydete basmazsan kaydetmem."
 
@@ -66,7 +66,7 @@ msgid "you may confirm your new password"
 msgstr "şifreni onaylayabilin"
 
 #: console/templates/console/access.html:61
-#: console/templates/console/narrative.html:88
+#: console/templates/console/narrative/detail.html:88
 #: console/templates/console/profile.html:95
 msgid "save"
 msgstr "kaydet"
@@ -160,15 +160,15 @@ msgstr "Hakkında"
 msgid "Contact"
 msgstr "İletişim"
 
-#: console/templates/console/narrative.html:42
+#: console/templates/console/narrative/detail.html:42
 msgid "editing page"
 msgstr "düzenleme sayfası"
 
-#: console/templates/console/narrative.html:58
+#: console/templates/console/narrative/detail.html:58
 msgid "view version history"
 msgstr "versiyon geçmişini görüntüle"
 
-#: console/templates/console/narrative.html:73
+#: console/templates/console/narrative/detail.html:73
 msgid "narrative content"
 msgstr "hikaye içeriği"
 
@@ -177,8 +177,8 @@ msgid "an old version of"
 msgstr "hikayenin eski bir sürümü"
 
 #: console/templates/console/narrative/readonly.html:21
-#: console/templates/console/narratives.html:51
-#: console/templates/console/narratives.html:81
+#: console/templates/console/narrative/list.html:51
+#: console/templates/console/narrative/list.html:81
 msgid "version"
 msgstr "versiyon"
 
@@ -202,37 +202,37 @@ msgstr "arşivlenmiş versiyon numarası"
 msgid "versions timeline"
 msgstr "sürüm geçmişi"
 
-#: console/templates/console/narratives.html:26
+#: console/templates/console/narrative/list.html:26
 msgid "all narratives"
 msgstr "tüm hikayeler"
 
-#: console/templates/console/narratives.html:47
-#: console/templates/console/narratives.html:58
-#: console/templates/console/narratives.html:78
+#: console/templates/console/narrative/list.html:47
+#: console/templates/console/narrative/list.html:58
+#: console/templates/console/narrative/list.html:78
 #: notebook/templates/notebook/narrative/detail.html:29
 #: notebook/templates/notebook/narrative/folder.html:35
 msgid "edit"
 msgstr "düzenle"
 
-#: console/templates/console/narratives.html:48
+#: console/templates/console/narrative/list.html:48
 msgid "version history"
 msgstr "sürüm geçmişi"
 
-#: console/templates/console/narratives.html:49
-#: console/templates/console/narratives.html:79
+#: console/templates/console/narrative/list.html:49
+#: console/templates/console/narrative/list.html:79
 msgid "title"
 msgstr "başlık"
 
-#: console/templates/console/narratives.html:50
-#: console/templates/console/narratives.html:80
+#: console/templates/console/narrative/list.html:50
+#: console/templates/console/narrative/list.html:80
 msgid "published at"
 msgstr "yayın tarihi"
 
-#: console/templates/console/narratives.html:60
+#: console/templates/console/narrative/list.html:60
 msgid "versions"
 msgstr "versiyonlar"
 
-#: console/templates/console/narratives.html:69
+#: console/templates/console/narrative/list.html:69
 msgid "you do not have any narratives"
 msgstr "hiçbir hikayen yok"
 

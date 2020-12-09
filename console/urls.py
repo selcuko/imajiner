@@ -8,9 +8,12 @@ urlpatterns = [
     path('', Overview.as_view(), name='overview'),
     path(_('iam/'), Profile.as_view(), name='profile'),
     path(_('access/'), AccessSecurity.as_view(), name='access'),
-    path(_('narratives/'), Narratives.as_view(), name='narratives'),
-    path(_('narratives/<uuid:n_uuid>/'), Narrative.as_view(), name='narrative'),
-    path(_('narratives/<uuid:n_uuid>/versions/'), NarrativeVersions.as_view(), name='versions'),
-    path(_('narratives/<uuid:n_uuid>/versions/<uuid:v_uuid>/'), NarrativeVersion.as_view(), name='version'),
+
+    path(_('narratives/'),                       Narratives.as_view(), name='narratives'),
+    path(_('n/<uuid:n_uuid>/'),                  NarrativeDetail.as_view(), name='narrative-latest'),
+    path(_('n/<uuid:n_uuid>/languages/'),        NarrativeTranslations.as_view(), name='narrative-translations'),
+    path(_('n/<uuid:n_uuid>/versions/'),         NarrativeTimeline.as_view(), name='narrative-timeline'),
+    path(_('n/<uuid:n_uuid>/v/<uuid:v_uuid>/'),  NarrativeVersionDetail.as_view(), name='narrative-version'),
+    
     path(_('preferences/'), Preferences.as_view(), name='preferences'),
 ]

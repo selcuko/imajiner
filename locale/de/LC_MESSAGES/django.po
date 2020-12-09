@@ -136,35 +136,35 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: console/templates/console/narratives.html:53
-#: console/templates/console/narratives.html:64
-#: console/templates/console/narratives.html:85
+#: console/templates/console/narrative/list.html:53
+#: console/templates/console/narrative/list.html:64
+#: console/templates/console/narrative/list.html:85
 #: notebook/templates/notebook/narrative/detail.html:18
 msgid "edit"
 msgstr ""
 
-#: console/templates/console/narratives.html:54
-#: console/templates/console/narratives.html:86
+#: console/templates/console/narrative/list.html:54
+#: console/templates/console/narrative/list.html:86
 msgid "title"
 msgstr ""
 
-#: console/templates/console/narratives.html:55
-#: console/templates/console/narratives.html:87
+#: console/templates/console/narrative/list.html:55
+#: console/templates/console/narrative/list.html:87
 msgid "serie"
 msgstr ""
 
-#: console/templates/console/narratives.html:56
-#: console/templates/console/narratives.html:88
+#: console/templates/console/narrative/list.html:56
+#: console/templates/console/narrative/list.html:88
 msgid "published at"
 msgstr ""
 
-#: console/templates/console/narratives.html:57
-#: console/templates/console/narratives.html:89
+#: console/templates/console/narrative/list.html:57
+#: console/templates/console/narrative/list.html:89
 #: notebook/templates/notebook/narrative/detail.html:17
 msgid "version"
 msgstr ""
 
-#: console/templates/console/narratives.html:75
+#: console/templates/console/narrative/list.html:75
 msgid "you do not have any narratives"
 msgstr ""
 
