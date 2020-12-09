@@ -48,7 +48,7 @@ class Base(models.Model):
         ordering = ('-published_at', '-created_at')
 
     title = models.CharField(null=True, blank=True,
-                             max_length=100, default='', verbose_name='Title')
+                             max_length=100, verbose_name='Title')
     body = models.TextField(null=True, verbose_name='Body')
     raw = models.TextField(null=True, blank=True, verbose_name='Raw')
     lead = models.TextField(null=True, blank=True, verbose_name='Summary')

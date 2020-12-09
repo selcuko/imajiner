@@ -6,5 +6,6 @@ media/
 **/*.save
 /*.png
 /*.jpg
-
+htmlcov/
+.coverage
 db.sqlite3
