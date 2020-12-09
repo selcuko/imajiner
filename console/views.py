@@ -103,8 +103,8 @@ class Narratives(LoginRequiredMixin, View):
 class Narrative(LoginRequiredMixin, View):
     template = 'console/narrative.html'
 
-    def get(self, request, narrative):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=narrative)
+    def get(self, request, n_uuid):
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
         form = NarrativeForm(instance=narrative)
         return render(request, self.template, {
             'form': form,
@@ -114,8 +114,8 @@ class Narrative(LoginRequiredMixin, View):
             }
         })
     
-    def post(self, request, narrative):
-        narrative = NarrativeModel.objects.get(author=request.user, uuid=narrative)
+    def post(self, request, n_uuid):
+        narrative = NarrativeModel.objects.get(author=request.user, uuid=n_uuid)
         form = NarrativeForm(request.POST, instance=narrative)
         if form.is_valid(): 
             narrative = form.save(commit=False)
@@ -131,8 +131,8 @@ class Narrative(LoginRequiredMixin, View):
 class NarrativeVersions(LoginRequiredMixin, View):
     template = 'console/narrative/versions.html'
 
-    def get(self, request, narrative):
-        narrative = NarrativeModel.objects.get(uuid=narrative)
+    def get(self, request, n_uuid):
+        narrative = NarrativeModel.objects.get(uuid=n_uuid)
         return render(request, self.template, {
             'narrative': narrative,
             'doc':{
@@ -143,8 +143,8 @@ class NarrativeVersions(LoginRequiredMixin, View):
 class NarrativeVersion(LoginRequiredMixin, View):
     template = 'console/narrative/readonly.html'
 
-    def get(self, request, narrative, version):
-        version = NarrativeVersionModel.objects.get(uuid=version)
+    def get(self, request, n_uuid, v_uuid):
+        version = NarrativeVersionModel.objects.get(uuid=v_uuid)
         return render(request, self.template, {
             'version': version,
             'doc': {
