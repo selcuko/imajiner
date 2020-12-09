@@ -3,17 +3,17 @@ function buttonHandle(btn, success=true){
     else buttonError(btn);
 }
 function buttonSuccess(btn){
-    languagesButton.innerHTML = '<i class="fa fa-check"></i>';
-    languagesButton.style.backgroundColor = 'green';
-    languagesButton.style.borderColor = 'white';
+    btn.innerHTML = '<i class="fa fa-check"></i>';
+    btn.style.backgroundColor = 'green';
+    btn.style.borderColor = 'white';
 }
 function buttonError(btn){
-    languagesButton.innerHTML = '<i class="fa fa-times"></i>';
-    languagesButton.style.backgroundColor = 'red';
-    languagesButton.style.borderColor = 'black';
+    btn.innerHTML = '<i class="fa fa-times"></i>';
+    btn.style.backgroundColor = 'red';
+    btn.style.borderColor = 'black';
 }
 function buttonLoading(btn){
-    languagesButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
-    languagesButton.style.backgroundColor = 'darkblue';
-    languagesButton.style.borderColor = 'white';
+    btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+    btn.style.backgroundColor = 'darkblue';
+    btn.style.borderColor = 'white';
 }

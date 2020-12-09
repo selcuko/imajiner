@@ -14,6 +14,7 @@
     <title>{{ doc.title|default:'Untitled Console Page' }} • Imajiner</title>
 
     <script src="{% url 'javascript-catalog' %}"></script>
+    <script src="{% static 'console/form-feedback.js' %}"></script>
     {% block standard %}
     {% block standard.fonts %}
     <link rel="stylesheet" href="{% static 'fonts/librebaskerville/stylesheet.css' %}">

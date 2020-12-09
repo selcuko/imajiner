@@ -67,6 +67,8 @@ class AccessSecurity(LoginRequiredMixin, View):
         })
     
     def post(self, request):
+        time.sleep(2)
+        
         if 'basics' in request.POST:
             username = request.POST.get('username', None)
             password = request.POST.get('password', None)

@@ -38,7 +38,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body border-top">
-                            <form action="" method="POST">
+                            <form id="profile-form" action="" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="basics">
                                 <div class="form-group">
@@ -58,8 +58,8 @@
                                         placeholder="{% translate 'you may confirm your new password'|capfirst %}">
                                 </div>
                                 <div>
-                                    <input class="btn btn-primary btn-block" value="{% translate 'save'|title %}"
-                                        type="submit">
+                                    <button style="transition: ease 1s;" id="profile-button" class="btn btn-primary btn-block" value="{% translate 'save'|capfirst %}"
+                                        type="submit">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -106,5 +106,21 @@
         </div>
     </div>
 </div>
-
+<script>
+    $profileForm = document.getElementById('profile-form');
+    $profileButton = document.getElementById('profile-button');
+    $profileForm.onsubmit = (e) => {
+        buttonLoading($profileButton);
+        e.preventDefault();
+        const fd = new FormData($profileForm);
+        fetch('', {
+            method: 'POST',
+            body: fd,
+        }).then(response => {
+            buttonHandle($profileButton, success=response.ok)
+        }).catch(error => {
+            buttonError($profileButton)
+        })
+    }
+</script>
 {% endblock body %}
