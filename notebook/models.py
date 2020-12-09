@@ -50,6 +50,7 @@ class Base(models.Model):
     title = models.CharField(null=True, blank=True,
                              max_length=100, default='', verbose_name='Title')
     body = models.TextField(null=True, verbose_name='Body')
+    raw = models.TextField(null=True, blank=True, verbose_name='Raw')
     lead = models.TextField(null=True, blank=True, verbose_name='Summary')
     html = models.TextField(null=True, verbose_name='HTML')
     slug = models.SlugField(max_length=100, null=True,
@@ -69,8 +70,9 @@ class Base(models.Model):
     def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
         if not self.sketch:
             self.html = generate.html(self.body)
+            self.raw = generate.raw(self.html)
             if update_lead:
-                self.lead = generate.lead(self.body)
+                self.lead = generate.lead(self.raw)
             if alter_slug:
                 self.slug = generate.slug(self.title, uuid=self.uuid)
         if not self.published_at and not self.sketch:

@@ -1,5 +1,5 @@
 from django.utils.text import slugify
-from django.utils.html import escape
+from django.utils.html import escape, strip_tags
 from markdown import markdown
 
 class generate:
@@ -16,6 +16,10 @@ class generate:
             slugified += ('-' + uuid[:8])
         return slugified
     
+    @classmethod
+    def raw(cls, text):
+        return strip_tags(text)
+
     @classmethod
     def html(cls, text):
         safe = escape(text)
