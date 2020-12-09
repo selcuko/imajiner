@@ -9,21 +9,21 @@ class LandingTestCase(TestCase):
     def test_landing_anonymous(self):
         self.client.logout()
         response = self.client.get('/')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
     
     def test_landing_reverse_anonymous(self):
         self.client.logout()
         response = self.client.get(reverse('landing'))
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
     
     def test_landing_authenticated(self):
         logged_in = self.client.login(username='wanderman', password='birileriikigeri')
-        self.assertEquals(logged_in, True)
+        self.assertEqual(logged_in, True)
         response = self.client.get('/')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
     
     def test_landing_reverse_authenticated(self):
         logged_in = self.client.login(username='wanderman', password='birileriikigeri')
-        self.assertEquals(logged_in, True)
+        self.assertEqual(logged_in, True)
         response = self.client.get(reverse('landing'))
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
