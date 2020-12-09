@@ -200,14 +200,19 @@ class NarrativeTimeline(LoginRequiredMixin, ListView):
         return queryset
 
 
-class NarrativeVersionDetail(LoginRequiredMixin, View):
-    template = 'console/narrative/versions.html'
+class NarrativeVersionDetail(LoginRequiredMixin, DetailView):
+    template_name = 'console/narrative/version.html'
+    context_object_name = 'version'
+    model = NarrativeVersionModel
 
-    def get(self, request, n_uuid):
-        narrative = NarrativeModel.objects.get(uuid=n_uuid)
-        return render(request, self.template, {
-            'narrative': narrative,
-            'doc':{
-                'title': _('narrative version timeline').capitalize(),
-            }
-        })
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['doc'] = {'title': _('narrative version').capitalize()}
+        context['LANG_INFO'] = LANG_INFO
+        return context
+    
+    def get_object(self, *args, **kwargs):
+        instance = NarrativeVersionModel.objects.get(
+            uuid=self.kwargs['v_uuid'],
+            )
+        return instance

@@ -3,50 +3,32 @@
 {% block body %}
 
 <div class="container-fluid dashboard-content ">
-
     <div class="row">
-        <div class="col-xl-10">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-header" id="top">
-                        <h2 class="pageheader-title">{% translate 'an old version of'|capfirst %} {{ version.title }}</h2>
-                        <div class="page-breadcrumb">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#0" class="breadcrumb-link">{% translate 'narratives'|capfirst %}</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#0"
-                                            class="breadcrumb-link">{{ version.title }}</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">{% translate 'version'|capfirst %}: {{ version.version }}
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-12">
+            {% translate 'narrative version'|capfirst as header %}
+            {% include 'console/page/header.html' with header=header %}
+        </div>
+        <div class="col-12">
             <div class="page-section" id="overview">
+                <h1>{{ version.title }}</h1>
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p class="lead">{% blocktranslate trimmed %}
+                        {% if version.readonly %}
+                        <p>{% blocktranslate trimmed %}
                             You're viewing a version of this narrative. You are not permitted
                             to edit the content to keep space-time continuum safe.
-                        {% endblocktranslate %}</p>
-                        <ul class="list-unstyled arrow">
-                            {% if version.readonly %}
-                            <li>{% translate 'this version is old and archived, meaning you cannot edit it nevermore.'|capfirst %}</li>
-                            {% endif %}
-                        </ul>
+                            {% endblocktranslate %}</p>
+
+                        {% endif %}
                     </div>
                 </div>
             </div> <!-- ============================================================== -->
             <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="col-12">
                     <div class="card" id="headings">
-                        <h5 class="card-header">{% translate 'archived version no'|capfirst %}: {{ version.version }}</h5>
+                        <h5 class="card-header">V{{ version.version }}
+                        </h5>
                         <div class="card-body">
-                            <h1 class="text-center">{{ version.title }}</h1>
                             {{ version.html|safe }}
                         </div>
                     </div> <!-- ============================================================== -->

@@ -6,27 +6,29 @@
 
 <div class="container-fluid dashboard-content ">
     <div class="row">
-        <div class="col-xl-10">
+        <div class="col-12">
             {% translate 'versions timeline'|capfirst as header %}
             {% include 'console/page/header.html' with header=header %}
         </div>
     </div>
     <section class="cd-timeline js-cd-timeline">
         <div class="cd-timeline__container">
-            {% for version in narrative.versions.all %}
+            {% for version in versions %}
             <div class="cd-timeline__block js-cd-block">
                 <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
                     <!-- <img src="" alt="Picture"> -->
                 </div>
                 <!-- cd-timeline__img -->
                 <div class="cd-timeline__content js-cd-content">
-                    <h3>{{ version.title }}</h3>
-                    {% if version.readonly %}
+                    <h3>V{{ version.version }}: {{ version.title }}
+                        {% if version.readonly %}
                     <i class="fa fa-lock"></i>
                     {% endif %}
+                    </h3>
+                    
                     <p>{{ version.body|truncatechars:400 }}</p>
                     <span class="cd-timeline__date">{{ version.created_at|date }}</span>
-                    <a href="{% url 'console:version' narrative=narrative.uuid version=version.uuid %}"
+                    <a href="{% url 'console:narrative-version' n_uuid=version.master.master.uuid v_uuid=version.uuid %}"
                         class="btn btn-primary">Tamamını görüntüle</a>
                 </div>
             </div>
