@@ -59,9 +59,22 @@ class Profile(models.Model):
     biography = models.TextField(null=True, blank=True)
     languages = fields.ArrayField(models.CharField(max_length=5), null=True, default=list)
     preferences = models.JSONField(default=dict)
+    username_old = models.CharField(max_length=128, null=True, blank=True)
+    username_changed_at = models.DateTimeField(null=True, blank=True)
+    username_suffix = models.CharField(max_length=32, null=True, blank=True)
+    username_prefix = models.CharField(max_length=32, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
+    
+    def save(self, *args, **kwargs):
+        if self.has_changed_username:
+            self.username_changed_at = timezone.now()
+        super().save(*args, **kwargs)
+    
+    @property
+    def has_changed_username(self):
+        return bool(self.username_old)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
