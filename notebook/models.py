@@ -85,6 +85,7 @@ class Base(models.Model):
             elif user_language:
                 self.language = user_language
         self.is_published = not self.sketch
+        self.edited_at = timezone.now()
         super().save(*args, **kwargs)
 
     def __str__(self, *args, **kwargs):
@@ -146,11 +147,8 @@ class Narrative(Base):
 
         if self.language in self.languages_available:
             nt = self.translations.get(language=self.language)
-        else:
-            nt = NarrativeTranslation()
-
-        nt.reference(self)
-        nt.save()
+            nt.reference(self)
+            nt.save()
 
     def get_absolute_url(self):
         if self.sketch:
@@ -217,7 +215,7 @@ class NarrativeTranslation(Base):
             # save a new version and archive latest
             nv = NarrativeVersion()
             nv.reference(self)
-            nv.version = latest.version
+            nv.version = latest.version + 1 if not self.is_published else 0
             nv.save()
             # latest.reference(self)
             latest.sketch = False

@@ -28,7 +28,7 @@
                 {% translate 'untitled narrative'|title as untitled %}
                 {% for sketch in sketches %}
                 <div class="masonry__brick entry format-standard">
-                    <a href="{{ sketch.get_absolute_url }}" class="f-blog">
+                    <a href="{% url 'narrative:sketch' uuid=sketch.uuid %}" class="f-blog">
                         <p class="meta"><span>{{ sketch.edited_at|naturalday|capfirst }}</span></p>
                         <h3 style="font-family: 'librebaskerville-regular'">{% firstof sketch.title untitled %}</h3>
                         <p class="read-more">{% translate 'edit'|capfirst %} <i class="fa fa-arrow-right"></i></p>
