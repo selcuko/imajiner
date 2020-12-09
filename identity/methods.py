@@ -55,7 +55,7 @@ def user_agent(request):
     for key in agent_keys:
         agent = request.META.get(key, None)
         if agent: return agent
-    raise Exception('Could not acquire user agent from request.')
+    return ''
 
 
 @property
