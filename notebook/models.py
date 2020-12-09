@@ -199,7 +199,7 @@ class NarrativeTranslation(Base):
             # save a new version and archive latest
             nv = NarrativeVersion()
             nv.reference(self)
-            nv.version = latest.version + 1
+            nv.version = latest.version
             nv.save()
             # latest.reference(self)
             latest.sketch = False
