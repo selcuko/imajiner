@@ -9,6 +9,7 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.shortcuts import reverse
 from django.utils import html, text, timezone
+from django.utils.functional import cached_property
 from tagmanager.models import TagManager
 
 from .methods import generate
@@ -72,7 +73,7 @@ class Base(models.Model):
             if len(self.body) > self.LANG_MIN_LEN:
                 cleaned = generate.clean(self.body)
                 language = cld3.get_language(cleaned)
-                if language.is_reliable:
+                if language.is_reliable and language in settings.LANGUAGES_DICT.keys():
                     self.language = language.language
             elif user_language:
                 self.language = user_language
@@ -93,14 +94,14 @@ class Narrative(Base):
         User, on_delete=models.SET_NULL, related_name='narratives', null=True, blank=True)
 
 
-    @property
+    @cached_property
     def title(self):
         for t in self.translations.all():
             if t.title:
                 return t.title
         return None
 
-    @property
+    @cached_property
     def languages_available(self):
         return [t.language for t in self.translations.all()]
 
@@ -108,25 +109,23 @@ class Narrative(Base):
     def languages_available_verbose(self, seperator=' • '):
         return seperator.join([str(settings.LANGUAGES_DICT.get(l, l)) for l in self.languages_available if l])
 
-    @property
+    @cached_property
     def languages_available_count(self):
         return self.translations.count()
 
     def __str__(self):
         return self.title
 
-    def save(self, *args, new_version=True, new_translation=False, **kwargs):
+    def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
-        languages_available = self.languages_available
-        print("LANGS", languages_available)
-        if self.language in languages_available:
+        if self.language in self.languages_available:
             nt = self.translations.get(language=self.language)
         else:
             nt = NarrativeTranslation()
 
         nt.reference(self)
-        nt.save(new_version=new_version)
+        nt.save()
 
     def get_absolute_url(self):
         if self.sketch:
@@ -159,10 +158,6 @@ class NarrativeTranslation(Base):
         self.master = ref
         self.sketch = ref.sketch
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        if not self.uuid:
-            self.uuid = uuid1()
 
     def save(self, *args, new_version=True, **kwargs):
         super().save(*args, **kwargs)
