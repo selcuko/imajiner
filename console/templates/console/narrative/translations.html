@@ -56,7 +56,7 @@
                                     <td>
                                         {% if narrative.language in LANG_INFO %}
                                         {% get_language_info for narrative.language as language_info %}
-                                        {{ lang_info.name }}
+                                        {{ language_info.name_translated }}
                                         {% else %}
                                         {% firstof narrative.language '-' %}
                                         {% endif %}
