@@ -1,5 +1,6 @@
 from django.utils.text import slugify
 from django.utils.html import escape
+from markdown import markdown
 
 class generate:
     LEAD_MAX_CHAR = 160
@@ -18,6 +19,9 @@ class generate:
     @classmethod
     def html(cls, text):
         safe = escape(text)
+        return markdown(safe)
+
+        #  markdown styling enabled
         safe = safe.replace('\n\n', '</p><p>')
         safe = safe.replace('\n', '<br>')
         safe = f'<p>{safe}</p>'
@@ -40,3 +44,4 @@ class generate:
         cleaned = cleantext.replace_urls(text, replace_with='')
         cleaned = cleantext.replace_emails(cleaned, replace_with='')
         return cleaned
+    

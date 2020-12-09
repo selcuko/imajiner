@@ -170,6 +170,8 @@ class NarrativeTranslation(Base):
 
 
     def save(self, *args, new_version=True, **kwargs):
+        super().save(*args, **kwargs)
+
         initial_version = self.versions.count() == 0
         latest = self.versions.first()  # versions are ordered from latest to earliest
         if latest is not None:
@@ -186,6 +188,9 @@ class NarrativeTranslation(Base):
             #  gotta be an edit after the publish
             if not latest.sketch:
                 latest = self.versions.filter(sketch=True).first()
+            if not latest:
+                latest = NarrativeVersion()
+                latest.version = self.versions.first().version + 1
             latest.reference(self)
             latest.sketch = True
             latest.save()
@@ -197,7 +202,7 @@ class NarrativeTranslation(Base):
             nv.version = latest.version + 1
             nv.save()
             # latest.reference(self)
-            # latest.sketch = False
+            latest.sketch = False
             latest.save(archive=True)
             self.edited = False
 
@@ -233,9 +238,11 @@ class NarrativeVersion(Base):
     def archive(self):
         return self.save(archive=True)
 
-    def save(self, *args, archive=False, overwrite=False, **kwargs):
+    def save(self, *args, archive=False, overwrite=False, silent=True, **kwargs):
         if self.readonly and not overwrite:
-            raise Exception(f'This version is read-only: {self.title}')
+            if not silent:
+                raise Exception(f'This version is read-only: {self.title}')
+            logger.error(f'This version is read-only: {self.title}')
         if archive:
             self.readonly = True
         super().save(*args, **kwargs)
