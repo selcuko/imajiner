@@ -60,8 +60,8 @@
                     This type is temporary and designed for hit-and-runners. Know more below.
                     {% endblocktranslate %}</p>
                 <label for='username'>{% translate 'username'|capfirst %}</label>
-                <input class="username" type='text' placeholder="{{ doc.placeholder.username }}" name='username'>
-                <a id="shadow-button" class="btn btn--stroke" type='submit'>{% translate 'register'|upper %}</a>
+                <input class="username full-width" type='text' placeholder="{{ doc.placeholder.username }}" name='username'>
+                <a id="shadow-button" class="btn btn--stroke full-width" type='submit'>{% translate 'register'|upper %}</a>
             </form>
             <p>{% blocktranslate trimmed %}
                 After you type your username, the servers check your device's digital
@@ -85,7 +85,7 @@
                 <label for='password'>{% translate 'password'|capfirst %}</label>
                 <input class="full-width" type='password' placeholder="{{ doc.placeholder.username }}" name='password'
                     required>
-                <a class="btn btn--primary" type='submit'>{% translate 'proceed'|upper %}</a>
+                <button class="btn btn--primary full-width" type='submit'>{% translate 'proceed'|upper %}</button>
             </form>
             <p>{% blocktranslate trimmed %}
                 Logging in and registring a new user is done here. Check out the status message

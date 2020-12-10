@@ -26,10 +26,8 @@ class Auth(View):
     
     def post(self, request):
         p = request.POST
-        print(p)
         try:
             action = p['action']
-
             if action == "shadow-check":
                 fingerprint = p['fingerprint']
                 shadow = Shadow.authenticate(fingerprint)
@@ -110,7 +108,8 @@ class Auth(View):
                 raise SuspiciousOperation(f'Unknown action ID: {action}')
 
         except KeyError as ke:
-                raise SuspiciousOperation(ke.args)
+            logger.warn("KeyError on auth", ke.args, ke.kwargs)
+            return HttpResponse(json.dumps(form.errors), status=400)
 
 
 class Logout(View):
