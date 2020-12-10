@@ -238,6 +238,7 @@ class ContinueSketch(LoginRequiredMixin, View):
 
         except KeyError as ke:
             logger.warn(f'NarrativeView encountered KeyError: {ke.__repr__()}')
+            return HttpResponse(status=400)
 
 
 class AddTranslation(LoginRequiredMixin, View):
