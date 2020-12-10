@@ -29,7 +29,7 @@
                     <p>{{ version.body|truncatechars:400 }}</p>
                     <span class="cd-timeline__date">{{ version.created_at|date }}</span>
                     <a href="{% url 'console:narrative-version' n_uuid=version.master.master.uuid v_uuid=version.uuid %}"
-                        class="btn btn-primary">Tamamını görüntüle</a>
+                        class="btn btn-primary">{% translate "View" %}</a>
                 </div>
             </div>
             {% endfor %}

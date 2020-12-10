@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <p>Click on title to view details and/or edit.</p>
+                        <p>{% translate "Click on title to view details and/or edit" %}.</p>
                         <table class="table table-striped table-bordered first">
                             <thead>
                                 <tr>
@@ -48,7 +48,7 @@
                                             {{ narrative.title }}
                                         </a>
                                         {% else %}
-                                        <i class="fa fa-edit"></i><p style="color: gray">Untitled</p>
+                                        <i class="fa fa-edit"></i><p style="color: gray">{% translate "Untitled" %}</p>
                                         {% endif %}
                                     </td>
                                     <td>{% if narrative.is_published %}{{ narrative.published_at|date }}

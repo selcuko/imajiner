@@ -13,26 +13,26 @@
             <div class="col-12">
                 <h1>{{ narrative.title }}</h1>
                 <ul>
-                    <li>Last version: V{{ narrative.versions.count }}</li>
+                    <li>{% translate "Last version: V" %}{{ narrative.versions.count }}</li>
                     <li>Published version: V{{ narrative.latest.version }}</li>
-                    <li>Last edited at: {{ narrative.edited_at|naturaltime }}</li>
-                    <li>Created at: {{ narrative.created_at|naturaltime }}</li>
+                    <li>{% translate "Last edited at" %}: {{ narrative.edited_at|naturaltime }}</li>
+                    <li>{% translate "Created at" %}: {{ narrative.created_at|naturaltime }}</li>
                 </ul>
             </div>
             <div class="col-12">
                 {% if narrative.latest.is_published %}
                 <a href="{{ narrative.get_absolute_url }}" class="btn btn-disabled btn-primary">
-                    View in site
+                    {% translate "View in site" %}
                 </a>
                 {% else %}
-                <button title="Unavailable: it's still a sketch" data-toggle="tooltip" data-placement="top"
+                <button title="{% translate "Unavailable: it's still a sketch" %}" data-toggle="tooltip" data-placement="top"
                     class="btn btn-secondary">
-                    View in site
+                    {% translate "View in site" %}
                 </button>
                 {% endif %}
                 <a href="{% url 'console:narrative-timeline' n_uuid=narrative.master.uuid t_uuid=narrative.uuid %}"
                     class="btn btn-primary">
-                    Version history</a>
+                    {% translate "Version history" %}</a>
             </div>
         </div>
         <div style="margin-top:2em;" class="row">

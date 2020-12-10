@@ -20,13 +20,13 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
-                <h5 class="card-header">Preferred languages</h5>
+                <h5 class="card-header">{% translate "Preferred languages" %}</h5>
                 <div class="card-body">
                     <form id="submit-langs">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-6"><p>Available languages</p></div>
-                            <div class="col-6"><p>My languages</p></div>
+                            <div class="col-6"><p>{% translate "Available languages" %}</p></div>
+                            <div class="col-6"><p>{% translate "My languages" %}</p></div>
                         </div>
                         <select id='select-languages' multiple='multiple'>
                             {% get_available_languages as LANGUAGES %}
@@ -35,7 +35,7 @@
                                 {% endfor %}
                         </select>
                         <br>
-                        <button style="transition: ease 0.5s;" id="languages-button" type="submit" class="btn btn-primary btn-block" value="Save">Save</button>
+                        <button style="transition: ease 0.5s;" id="languages-button" type="submit" class="btn btn-primary btn-block" value="{% translate "Save" %}">{% translate "Save" %}</button>
                     </form>
                 </div>
             </div>
