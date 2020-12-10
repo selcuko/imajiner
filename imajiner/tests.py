@@ -14,8 +14,8 @@ class TestCase(DjangoTestCase):
     
     @classmethod
     def setUpTestData(cls):
-        logger.debug('Setting up test data.')
-        cls.logger.setLevel(logging.DEBUG)
+        cls.logger.debug('Setting up test data.')
+        cls.logger.setLevel(logging.ERROR)
 
         user_exists = User.objects.filter(username=cls.username)
         if not user_exists:
