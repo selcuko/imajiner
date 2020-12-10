@@ -5,14 +5,14 @@
 <link rel="stylesheet" href="{% static 'transcend/css/base.css' %}">
 <link rel="stylesheet" href="{% static 'transcend/css/main.css' %}">
 <link rel="stylesheet" href="{% static 'flags/css/flag-icon.min.css' %}">
-<script src="{% static 'js/modernizr.js' %}"></script>
+
 {% endblock head %}
 
 {% block base.foot %}
 
-<script type="text/javascript" src="{% static 'transcend/js/plugins.js' %}"></script>
-<script type="text/javascript" src="{% static 'transcend/js/main.js' %}"></script>
-
+<script defer type="text/javascript" src="{% static 'transcend/js/plugins.js' %}"></script>
+<script defer type="text/javascript" src="{% static 'transcend/js/main.js' %}"></script>
+<script defer src="{% static 'js/modernizr.js' %}"></script>
 
 {% endblock %}
 

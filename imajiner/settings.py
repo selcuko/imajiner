@@ -13,15 +13,11 @@ DEBUG = True
 ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
 GITHUB_WORKFLOW = bool(os.getenv('GITHUB_WORKFLOW', False))
 
-SECURE_SSL_REDIRECT = False
-
 if ON_HEROKU:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
     DEBUG = False
 
-
-GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', None)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -39,8 +35,6 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', None)
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
-
-
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = f'Imajiner Sunucu <{EMAIL_HOST_USER}>'
 FROM_EMAILS = [
@@ -51,7 +45,6 @@ FROM_EMAILS = [
 
 ADMINS = [
     ('Ömer Selçuk', 'omerselcuk@imajiner.space'),
-    ('Melek Kaya', 'astronaut.melek@imajiner.space'),
 ]
 MANAGERS = ADMINS
 
@@ -102,7 +95,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
     'identity.middleware.ShadowMiddleware',
 ]
 
@@ -149,18 +141,10 @@ DATABASES = {
 
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
 LANGUAGE_CODE = 'en-us'
@@ -168,10 +152,6 @@ LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
     ('en', 'English'),
     ('tr', 'Türkçe'),
-    ('fr', 'Français'),
-    ('de', 'Deustch'),
-    ('ru', 'русский'),
-    ('es', 'Español'),
 )
 
 LANGUAGES_DICT = dict(LANGUAGES)
@@ -194,9 +174,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets'),
 ]
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
