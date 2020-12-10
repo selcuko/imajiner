@@ -11,12 +11,12 @@ from django.contrib.auth.models import User
 class NarrativeListTest(TestCase):
 
     def test_list_anonymous(self):
-        self.client.logout()
+        self.logout()
         response = self.client.get(reverse('narrative:list'))
         self.assertEqual(response.status_code, 200)
 
     def test_list_authenticated(self):
-        logged_in = self.client.login(username=self.username, password=self.password)
+        logged_in = self.login()
         self.assertEqual(logged_in, True)
         response = self.client.get(reverse('narrative:list'))
         self.assertEqual(response.status_code, 200)

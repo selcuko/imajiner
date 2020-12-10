@@ -1,5 +1,9 @@
 from imajiner.tests import TestCase
 from django.shortcuts import reverse
+import logging
+from model_bakery import baker
+from notebook.models import NarrativeTranslation
+from django.contrib.auth.models import User
 
 class NarrativeDetail(TestCase):
 
