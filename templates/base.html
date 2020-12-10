@@ -30,17 +30,18 @@
         crossorigin="anonymous" />
     {% block base.head %}
     <script defer src="{% static 'global.js' %}"></script>
-    <script defer src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
 
     {% block philosophy %}
     <link rel="stylesheet" href="{% static 'philosophy/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'philosophy/css/main.css' %}">
 
-    <script src="{% url 'javascript-catalog' %}"></script>
-    <!-- <script src="{% static 'js/modernizr.js' %}"></script> -->
-    <!-- <script src="{% static 'js/pace.min.js' %}"></script>  -->
-    <script defer src="{% static 'philosophy/js/plugins.js' %}"></script>
-    <script defer src="{% static 'philosophy/js/main.js' %}"></script> 
+    <script src="{% url 'javascript-catalog' %}"></script>	  
+    <script src="{% static 'philosophy/js/plugins.js' %}"></script>
+    <script src="{% static 'js/modernizr.js' %}"></script>	    
+
+    <script defer src="{% static 'philosophy/js/main.js' %}"></script>
+    
     {% endblock philosophy %}
     {% endblock base.head %}
 
@@ -161,9 +162,10 @@
 
     </footer> <!-- end s-footer -->
     {% endblock base.footer %}
-
+    
     {% block base.foot %} {% endblock %}
     {% block foot %} {% endblock %}
+    
 </body>
 {% endblock body.absolute %}
 
