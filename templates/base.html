@@ -73,7 +73,7 @@
                     <ul class="header__nav">
                         <li><a href="{% url 'landing' %}" title="">{% translate 'homepage'|capfirst %}</a></li>
                         <li><a href="{% url 'notebook:list' %}" title="">{% translate 'narratives'|capfirst %}</a></li>
-                        <li><a href="{% if request.user.is_authenticated %}{% url 'notebook:folder' %}{% else %}{% url 'landing' %}#write{% endif %}"
+                        <li><a href="{% url 'notebook:folder' %}"
                                 title="">{% translate 'write'|capfirst %}</a></li>
                         <li><a
                                 href="{% if request.user.is_authenticated %}{% url 'console:overview' %}{% endif %}">{% translate 'console'|capfirst %}</a>

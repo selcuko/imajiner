@@ -11,48 +11,47 @@
 {% block body %}
 
 <section style="background: white; padding:1em;">
+    <div class="col-twelve tab-full">
+        {% if informative %}
+        {# User probably doesn't know about what this page means, explain. #}
+        <div class="alert-box alert-box--info">
+            <h4 style="margin: 0;">You need a name to wander around here.</h4>
+            <p style="margin: 0; margin-top: .5em">{% blocktranslate trimmed %}
+                You need a name to write stuff.
+                {% endblocktranslate %}</p>
+            <p style="margin: 0; margin-top: 1em;">
+                <strong>Shadow Authentication</strong> enables you to sign up
+                using only a username, and seamlessly logs you in.
+                However, if you want a regular account, try <strong>Author
+                    Authentication</strong>.
+            </p>
+            <p style="margin: 0; margin-top:1em;">
+                <strong>Learn more below.</strong>
+            </p>
+        </div>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        {# If user is already authenticated, inform them and provide a link to logout #}
+        <div class="col-six alert-box alert-box--notice hideit">
+            <p style="padding: 0;">{% blocktranslate trimmed with username=request.user.username %}
+                You are already logged in as <strong>{{ username }}</strong>.{% endblocktranslate %}</p>
+            {% url 'gatewall:logout' as logout_link %}
+            <button onclick="location.href='{{ logout_link }}'"
+                style="margin-bottom: 0; border-color: gray; color: gray;" type="submit"
+                class="btn btn--stroke">{% translate 'log out'|capfirst %}</button>
+
+            <i class="fa fa-times alert-box__close"></i>
+        </div>
+        {% endif %}
+    </div>
     <div class="col-twelve tab-full text-center">
         <h1>{% translate 'authentication'|capfirst %}</h1>
         <p class="muted lead">{% blocktranslate trimmed %}
             There are two authentication options to choose from.<br>You can find more information
             below the forms.
             {% endblocktranslate %}</p>
-        {% if request.user.is_authenticated %}
-        <div class="alert-box alert-box--notice hideit">
-            <p>{% blocktranslate trimmed with username=request.user.username %}
-                You are already logged in as {{ username }}.{% endblocktranslate %}</p>
-            {% url 'gatewall:logout' as logout_link %}
-            <button onclick="location.href='{{ logout_link }}'" class="color:red; background-color:red;" type="submit"
-                class="btn">{% translate 'log out'|capfirst %}</button>
-            {% endif %}
-            <i class="fa fa-times alert-box__close"></i>
-        </div> <!-- end notice -->
-
     </div>
     <div class="row half-bottom">
-
-        <div class="col-six tab-full">
-            <h3>{% translate 'author authorization'|title %}</h3>
-            <form id="author-register" method="POST" action="">
-                {% csrf_token %}
-                <label for='username'>{% translate 'username'|capfirst %}</label>
-                <input class="full-width username" type='text' placeholder="{{ doc.placeholder.username }}"
-                    name='username' required>
-                <label for='password'>{% translate 'password'|capfirst %}</label>
-                <input class="full-width" type='password' placeholder="{{ doc.placeholder.username }}" name='password'
-                    required>
-                <a class="btn btn--primary" type='submit'>{% translate 'proceed'|upper %}</a>
-            </form>
-            <p>{% blocktranslate trimmed %}
-                Logging in and registring a new user is done here. Check out the status message
-                as you type your username.
-                {% endblocktranslate %}</p>
-            <p class="">{% blocktranslate trimmed %}
-                This type of registration is the conventional one. Your registration is
-                persistent and safe; just as you used to.
-                {% endblocktranslate %}</p>
-        </div>
-
         <div class="col-six tab-full">
             <h3>{% translate 'shadow authorization'|title %}</h3>
             <form id="shadow-register" method="POST" action="">
@@ -76,7 +75,27 @@
                 after couple of hours.
                 {% endblocktranslate %}</p>
         </div>
-
+        <div class="col-six tab-full">
+            <h3>{% translate 'author authorization'|title %}</h3>
+            <form id="author-register" method="POST" action="">
+                {% csrf_token %}
+                <label for='username'>{% translate 'username'|capfirst %}</label>
+                <input class="full-width username" type='text' placeholder="{{ doc.placeholder.username }}"
+                    name='username' required>
+                <label for='password'>{% translate 'password'|capfirst %}</label>
+                <input class="full-width" type='password' placeholder="{{ doc.placeholder.username }}" name='password'
+                    required>
+                <a class="btn btn--primary" type='submit'>{% translate 'proceed'|upper %}</a>
+            </form>
+            <p>{% blocktranslate trimmed %}
+                Logging in and registring a new user is done here. Check out the status message
+                as you type your username.
+                {% endblocktranslate %}</p>
+            <p class="">{% blocktranslate trimmed %}
+                This type of registration is the conventional one. Your registration is
+                persistent and safe; just as you used to.
+                {% endblocktranslate %}</p>
+        </div>
     </div>
 </section>
 

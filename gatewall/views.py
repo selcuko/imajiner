@@ -11,12 +11,13 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language_from_request
 
 class Auth(View):
-    def get(self, request, message=None):
-
+    def get(self, request):
+        i = request.GET.get('informative', None) is not None
+        print('INFO', i, request.GET)
         return render(request, 'gatewall/gatewall.html', {
             'user': request.user,
+            'informative': i,
             'doc': {
-                'informative': message == 'informative',
                 'title': _('Authorization'),
                 'author': _('Imajiner Gatewall'),
                 'description': _('You need to be authenticated in order to write here.'),
