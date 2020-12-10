@@ -11,10 +11,12 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language_from_request
 
 class Auth(View):
-    def get(self, request):
+    def get(self, request, message=None):
+
         return render(request, 'gatewall/gatewall.html', {
             'user': request.user,
             'doc': {
+                'informative': message == 'informative',
                 'title': _('Authorization'),
                 'author': _('Imajiner Gatewall'),
                 'description': _('You need to be authenticated in order to write here.'),
@@ -115,64 +117,4 @@ class Logout(View):
         if request.user.is_authenticated:
             logout(request)
         return HttpResponse('Y O U R E  O U T')
-
-
-class LoginViews:
-
-    class Login(View):
-
-        def get(self, request):
-            return render(request, 'gatewall/login.html')
-        
-        def post(self, request):
-            action = request.POST.get('action', None)
-            if action == 'LOGIN':
-                username = request.POST.get('username', '')
-                password = request.POST.get('password', '')
-                user = authenticate(request, username=username, password=password)
-                if user is None:
-                    logout(request)
-                    return HttpResponse('Siktir git yalancı', status=401)
-                login(request, user)
-                return HttpResponse('Giriş yaptın yavru')
-            
-            elif action == 'SHADOW':
-                shadow = Shadow.authenticate(request)
-                if shadow is not None:
-                    login(request, shadow.user)
-                    return HttpResponse('Kayıt zaten vardı, nası oluyosa')
-                shadow = Shadow.create_shadow(request)
-                login(request, shadow.user)
-                return HttpResponse('Oki shadow kayıt tamam')
-            
-            else:
-                return HttpResponse(status=400)
-
-
-    class Register(View):
-        template_name = 'gatewall/register.html'
-        def get(self, request):
-            return render(request, self.template_name, {})
-        
-
-        def post(self, request):
-            action = request.POST.get('action', '')
-            username = request.POST.get('username', '')
-            
-            if action == 'REGULAR':
-                password = request.POST.get('password', '')
-                email = request.POST.get('email', None)
-                user = User.objects.create_user(
-                    username=username,
-                    password=password,
-                    email=email,
-                )
-                login(request, user)
-            elif action == 'SHADOW':
-                shadow = Shadow.create_shadow(request, username=username)
-                user = shadow.user
-                login(request, user),
-
-            
-            return HttpResponse()
 

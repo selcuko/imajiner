@@ -13,6 +13,7 @@
       <div class="s-extra" style="padding: 0; background-color:transparent;">
         <div class="tagcloud">
           <a class="smoothscroll" href="#missionary">{% translate 'missionary'|upper %}</a>
+          <a class="smoothscroll" href="#write">{% translate 'write'|upper %}</a>
           <a class="smoothscroll" href="#privacy">{% translate 'privacy'|upper %}</a>
           <a class="smoothscroll" href="#machinery">{% translate 'machinery'|upper %}</a>
           <a class="smoothscroll" href="#credits">{% translate 'credits'|upper %}</a>
@@ -62,6 +63,7 @@
   </div> <!-- end row -->
 </section> <!-- s-content -->
 
+
 <section id="missionary" class="s-content s-content--narrow">
   <div class="row">
     <div class="s-content__header col-full">
@@ -81,6 +83,24 @@
     </div>
 </section> <!-- s-content -->
 
+
+<section id="write" class="s-content s-content--narrow">
+  <div class="row">
+    <div class="s-content__header col-full">
+      <h1 class="s-content__header-title">
+        {% translate 'write'|title %}
+      </h1>
+      <p class="lead">{% blocktranslate trimmed %}
+        How to write and publish your masterpieces?
+        {% endblocktranslate %}</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;" class="col-full s-content__main">
+      <p class="lead">{% blocktranslate trimmed %}
+        Well, here's a button.
+        {% endblocktranslate %}</p>
+      <a class="btn btn--primary" href="{% url 'narrative:write' message='informative' %}">get started</a>
+    </div>
+</section> <!-- s-content -->
 
 
 

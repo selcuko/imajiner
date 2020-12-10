@@ -21,12 +21,13 @@
         <div class="alert-box alert-box--notice hideit">
             <p>{% blocktranslate trimmed with username=request.user.username %}
                 You are already logged in as {{ username }}.{% endblocktranslate %}</p>
-                {% url 'gatewall:logout' as logout_link %}
-            <button onclick="location.href='{{ logout_link }}'" class="color:red; background-color:red;" type="submit" class="btn">{% translate 'log out'|capfirst %}</button>
-                {% endif %}
+            {% url 'gatewall:logout' as logout_link %}
+            <button onclick="location.href='{{ logout_link }}'" class="color:red; background-color:red;" type="submit"
+                class="btn">{% translate 'log out'|capfirst %}</button>
+            {% endif %}
             <i class="fa fa-times alert-box__close"></i>
         </div> <!-- end notice -->
-        
+
     </div>
     <div class="row half-bottom">
 
@@ -35,11 +36,11 @@
             <form id="author-register" method="POST" action="">
                 {% csrf_token %}
                 <label for='username'>{% translate 'username'|capfirst %}</label>
-                <input class="full-width username" type='text'
-                    placeholder="{{ doc.placeholder.username }}" name='username' required>
+                <input class="full-width username" type='text' placeholder="{{ doc.placeholder.username }}"
+                    name='username' required>
                 <label for='password'>{% translate 'password'|capfirst %}</label>
-                <input class="full-width" type='password' placeholder="{{ doc.placeholder.username }}"
-                    name='password' required>
+                <input class="full-width" type='password' placeholder="{{ doc.placeholder.username }}" name='password'
+                    required>
                 <a class="btn btn--primary" type='submit'>{% translate 'proceed'|upper %}</a>
             </form>
             <p>{% blocktranslate trimmed %}
@@ -47,7 +48,7 @@
                 as you type your username.
                 {% endblocktranslate %}</p>
             <p class="">{% blocktranslate trimmed %}
-                This type of registration is the conventional one. Your registration is 
+                This type of registration is the conventional one. Your registration is
                 persistent and safe; just as you used to.
                 {% endblocktranslate %}</p>
         </div>
@@ -57,11 +58,10 @@
             <form id="shadow-register" method="POST" action="">
                 {% csrf_token %}
                 <p>{% blocktranslate trimmed %}
-                This type is temporary and designed for hit-and-runners. Know more below.
-                {% endblocktranslate %}</p>
+                    This type is temporary and designed for hit-and-runners. Know more below.
+                    {% endblocktranslate %}</p>
                 <label for='username'>{% translate 'username'|capfirst %}</label>
-                <input class="username" type='text' placeholder="{{ doc.placeholder.username }}"
-                    name='username'>
+                <input class="username" type='text' placeholder="{{ doc.placeholder.username }}" name='username'>
                 <a id="shadow-button" class="btn btn--stroke" type='submit'>{% translate 'register'|upper %}</a>
             </form>
             <p>{% blocktranslate trimmed %}
