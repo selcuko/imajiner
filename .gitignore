@@ -8,4 +8,5 @@ media/
 /*.jpg
 htmlcov/
 .coverage
+.pytest_cache/
 db.sqlite3
