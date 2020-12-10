@@ -3,49 +3,57 @@ const $shadowForm = document.getElementById('shadow-register');
 const $shadowUser = $shadowForm.querySelector('.username');
 let clientFingerprint = null;
 let shadowAction = null;
-$shadowButton.disabled = true;
 
 
 async function fingerprintDevice() {
     return await Fingerprint2.getPromise()
         .then(components => {
-            var values = components.map(function (component) { return component.value })
+            var values = components.map(function (component) {
+                return component.value
+            })
             return Fingerprint2.x64hash128(values.join(''), 31);
         })
 }
 
 
 function checkShadowRecords() {
-
     fingerprintDevice()
-    .then(fingerprint => {
-        clientFingerprint = fingerprint;
-        const fd = new FormData($shadowForm);
-        fd.append('fingerprint', fingerprint);
-        fd.append('action', 'shadow-check');
-        fetch('', {
-            method: 'POST',
-            body: fd,
-        })
-        .then(response => response.json())
-        .then(json => {
-            const found = json.found;
-            action = found ? 'login' : 'register';
-            if (auto&&found) $shadowButton.click();
-            if (found) handleShadowButton(found, username=json.username);
-            else handleShadowButton(found);
+        .then(fingerprint => {
+            clientFingerprint = fingerprint;
+            const fd = new FormData($shadowForm);
+            fd.append('fingerprint', fingerprint);
+            fd.append('action', 'shadow-check');
+            fetch('', {
+                    method: 'POST',
+                    body: fd,
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    const found = json.found;
+                    console.log(json);
+                    action = found ? 'login' : 'register';
+                    if (auto && found) $shadowButton.click();
+                    if (found) handleButtonShadowFound($shadowButton, json.username);
+                    else handleButtonShadowRegister($shadowButton);
+                });
         });
-    });
 }
 
-function handleShadowButton(found, username=null){
+function handleShadowButton(found, username = null) {
     $shadowButton.disabled = false;
     if (found) {
         $shadowUser.disabled = true;
         $shadowUser.value = username;
-        $shadowButton.innerText = interpolate(gettext('proceed as %(username)s'), {username: username}, true).toUpperCase();
+        $shadowButton.innerText = interpolate(gettext('proceed as %(username)s'), {
+            username: username
+        }, true).toUpperCase();
+            handleButtonLoading($shadowButton, 'identifying');
+
     } else {
-        
+        handleButtonLoading($shadowButton, 'identifying');
+
     }
 }
 
@@ -67,7 +75,7 @@ $shadowButton.onclick = (e) => {
 }
 
 
-if (window.requestIdleCallback){
+if (window.requestIdleCallback) {
     requestIdleCallback(() => {
         checkShadowRecords();
     })

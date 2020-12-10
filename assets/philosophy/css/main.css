@@ -811,6 +811,9 @@ textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofil
  * # buttons
  *
  * ------------------------------------------------------------------- */
+i {
+   letter-spacing: normal !important;
+}
 .btn,
 button,
 input[type="submit"],
@@ -820,7 +823,7 @@ input[type="button"] {
    font-family: "metropolis-bold", sans-serif;
    font-size: 1.2rem;
    text-transform: uppercase;
-   letter-spacing: .3rem;
+   letter-spacing: .2rem;
    height: 5.4rem;
    line-height: 5rem;
    padding: 0 3rem;

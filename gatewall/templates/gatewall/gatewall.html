@@ -2,6 +2,7 @@
 {% load static i18n widget_tweaks %}
 
 {% block head %}
+<script defer src="{% static 'user-feedback.js' %}"></script>
 <script defer src="{% static 'fingerprint.js' %}"></script>
 <script defer src="{% static 'gatewall.js' %}"></script>
 <script defer src="{% static 'shadow.js' %}"></script>
@@ -60,8 +61,14 @@
                     This type is temporary and designed for hit-and-runners. Know more below.
                     {% endblocktranslate %}</p>
                 <label for='username'>{% translate 'username'|capfirst %}</label>
-                <input class="username full-width" type='text' placeholder="{{ doc.placeholder.username }}" name='username'>
-                <a id="shadow-button" class="btn btn--stroke full-width" type='submit'>{% translate 'register'|upper %}</a>
+                <input class="username full-width" type='text' placeholder="{{ doc.placeholder.username }}"
+                    name='username'>
+
+                <button disabled style="display: flex; align-items: center; justify-content: center;" id="shadow-button"
+                    class="btn btn--stroke full-width" type='submit'>
+                    <i class="fas fa-2x fa-spin fa-circle-notch"></i>
+                    <p style="margin: 0; margin-left: .5em">{% translate 'identifying'|upper %}</p>
+                </button>
             </form>
             <p>{% blocktranslate trimmed %}
                 After you type your username, the servers check your device's digital

@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from identity.models import Shadow
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language_from_request
+import time
 
 class Auth(View):
     def get(self, request):
@@ -25,6 +26,7 @@ class Auth(View):
             })
     
     def post(self, request):
+        time.sleep(1)
         p = request.POST
         try:
             action = p['action']
