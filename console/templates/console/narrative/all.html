@@ -48,7 +48,7 @@
                                             {{ narrative.title }}
                                         </a>
                                         {% else %}
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-edit"></i><p style="color: gray">Untitled</p>
                                         {% endif %}
                                     </td>
                                     <td>{% if narrative.is_published %}{{ narrative.published_at|date }}
