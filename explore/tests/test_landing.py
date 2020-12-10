@@ -1,10 +1,8 @@
-from django.test import TestCase
+from imajiner.tests import TestCase
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 
 class LandingTestCase(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(username='wanderman', password='birileriikigeri') if not User.objects.filter(username='wanderman').exists() else User.objects.get(username='wanderman')
     
     def test_landing_anonymous(self):
         self.client.logout()
