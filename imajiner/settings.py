@@ -11,6 +11,7 @@ SITE_ID = 1
 
 DEBUG = True
 ON_HEROKU = bool(os.getenv('ON_HEROKU', False))
+GITHUB_WORKFLOW = bool(os.getenv('GITHUB_WORKFLOW', False))
 
 SECURE_SSL_REDIRECT = False
 
@@ -126,11 +127,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'imajiner.wsgi.application'
 
 DATABASE_URL = os.getenv('DATABASE_URL', None)
-if not DATABASE_URL: raise Exception('DATABASE_URL not supplied.')
+
+if GITHUB_WORKFLOW:
+    DB = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'github_actions',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+elif DATABASE_URL:
+    DB = dj_database_url(DATABASE_URL)
+
+else:
+    raise Exception('DB not configured and no DATABASE_URL supplied.')
 
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL),
+    'default': DB
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
