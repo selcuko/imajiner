@@ -36,12 +36,12 @@
     <link rel="stylesheet" href="{% static 'philosophy/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'philosophy/css/main.css' %}">
 
-    <script src="{% url 'javascript-catalog' %}"></script>	  
+    <script src="{% url 'javascript-catalog' %}"></script>
     <script src="{% static 'philosophy/js/plugins.js' %}"></script>
-    <script src="{% static 'js/modernizr.js' %}"></script>	    
+    <script src="{% static 'js/modernizr.js' %}"></script>
 
     <script defer src="{% static 'philosophy/js/main.js' %}"></script>
-    
+
     {% endblock philosophy %}
     {% endblock base.head %}
 
@@ -102,8 +102,6 @@
         <div class="s-footer__main">
             <div class="row">
 
-
-
                 <div id="footer-feedback" class="col-five md-full end s-footer__subscribe">
 
                     <h4>{% translate 'feedback'|capfirst %}</h4>
@@ -146,12 +144,20 @@
 
         <div class="s-footer__bottom">
             <div class="row">
+
                 <div class="col-full">
+                    <div style="margin-bottom:1em" class="s-footer__copyright">
+                        <a style="padding:.4em" href="https://github.com/divisia/imajiner"><i class="fab fa-2x fa-github"></i></a>
+                        <a style="padding:.4em" href="https://t.me/imajinerspace"><i class="fab fa-2x fa-telegram"></i></a>
+                        <a style="padding:.4em" href="https://twitter.com/imajinerspace"><i class="fab fa-2x fa-twitter"></i></a>
+                        <a style="padding:.4em" href="mailto:webmaster@imajiner.space"><i class="fas fa-2x fa-envelope"></i></a>
+                    </div>
                     <div class="s-footer__copyright">
                         <span>&copy; Imajiner. {% translate 'all rights reserved'|capfirst %}</span>
                         <span>{% translate 'This website contains materials from third parties.' %} <a
                                 href="{% url 'explore:about' %}#credits">{% translate 'Know more' %}</a></span>
                     </div>
+
 
                     <div class="go-top">
                         <a class="smoothscroll" title="Back to Top" href="#top"></a>
@@ -162,10 +168,10 @@
 
     </footer> <!-- end s-footer -->
     {% endblock base.footer %}
-    
+
     {% block base.foot %} {% endblock %}
     {% block foot %} {% endblock %}
-    
+
 </body>
 {% endblock body.absolute %}
 
