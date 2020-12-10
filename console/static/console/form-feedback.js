@@ -17,3 +17,22 @@ function buttonLoading(btn){
     btn.style.backgroundColor = 'darkblue';
     btn.style.borderColor = 'white';
 }
+function handleForm(form, btn, action=null){
+    if (typeof form === 'string') form = document.getElementById(form);
+    if (typeof btn === 'string') btn = document.getElementById(btn);
+
+    form.onsubmit = (e) => {
+        buttonLoading(btn);
+        e.preventDefault();
+        
+        const fd = new FormData(form);
+        if (action) fd.set('action', action);
+
+        fetch('', {
+            method: 'POST',
+            body: fd
+        })
+        .then(response => buttonHandle(btn, success=response.ok))
+        .catch(error => buttonError(btn))
+    }
+}

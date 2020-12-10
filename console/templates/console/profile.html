@@ -4,117 +4,87 @@
 
 <div class="container-fluid dashboard-content">
     <div class="row">
-        
+
         <div class="col-xl-12">
             <!-- ============================================================== -->
             <!-- pageheader  -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-header" id="top">
-                        <h2 class="pageheader-title">{% translate 'profile'|title %}</h2>
-                        
-                        <div class="page-breadcrumb">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                </ol>
-                            </nav>
+                <div class="col-12">
+                    {% translate 'profile' as header %}
+                    {% include 'console/page/header.html' with header=header|title %}
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- sidenavbar -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- end sidenavbar -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="section-block" id="account-info">
+                <h3 class="section-title">{% translate 'account'|title %}</h3>
+                <p>{% translate 'I will not save anything unless you hit the button.'|capfirst %}</p>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <p>{% translate 'This part concerns the security of your account. You should visit Access & Security to modify them.'|capfirst %}
+                        </p>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="inputText3" class="col-form-label">{% translate 'username'|capfirst %}</label>
+                            <input value="{{ request.user.username }}" id="inputText3" type="text" class="form-control"
+                                disabled>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end pageheader  -->
-            <!-- ============================================================== -->
-            <div class="page-section" id="overview">
-                <!-- ============================================================== -->
-                <!-- overview  -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p class="lead">{% translate 'The most useful information regarding to your account is here. You can view and modify them.'|capfirst %}</p>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- end overview  -->
-                <!-- ============================================================== -->
-            </div>
-            <br>
-            <!-- ============================================================== -->
-            <!-- basic form  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="section-block" id="account-info">
-                        <h3 class="section-title">{% translate 'account'|title %}</h3>
-                        <p>{% translate 'I will not save anything unless you hit the button.'|capfirst %}</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <form>
-                                <p>{% translate 'This part concerns the security of your account. You should visit Access & Security to modify them.'|capfirst %}</p>
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="inputText3" class="col-form-label">{% translate 'username'|capfirst %}</label>
-                                    <input value="{{ request.user.username }}" id="inputText3" type="text"
-                                        class="form-control" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword">{% translate 'password'|capfirst %}</label>
-                                    <input id="inputPassword" type="password" placeholder="Hmmm..."
-                                        class="form-control" value="********" disabled>
-                                </div>
-                                <div>
-                                    <a href="{% url 'console:access' %}" class="btn btn-primary btn-block" type="button">{% translate 'go to'|capfirst %} {% translate 'access & security'|title %}</a>
-                                </div>
-                            </form>
+                        <div class="form-group">
+                            <label for="inputPassword">{% translate 'password'|capfirst %}</label>
+                            <input id="inputPassword" type="password" placeholder="Hmmm..." class="form-control"
+                                value="********" disabled>
                         </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end basic form  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="section-block" id="account-info">
-                        <h3 class="section-title">{% translate 'cool stuff'|title %}</h3>
-                        <p>{% translate 'I will not save anything unless you hit the button.'|capfirst %}</p>
-                    </div>
-                    <div class="card">
-                  
-                        <div class="card-body border-top">
-                            <form action="" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">{% translate 'Biography'|capfirst %}</label>
-                                    {% render_field form.biography class+="form-control" rows="3" value=request.user.profile.biography %}
-                                </div>
-                                <div>
-                                    <input class="btn btn-primary btn-block" value="{% translate 'save'|capfirst %}" type="submit">
-                                </div>
-                            </form>
+                        <div>
+                            <a href="{% url 'console:access' %}" class="btn btn-primary btn-block"
+                                type="button">{% translate 'go to'|capfirst %}
+                                {% translate 'access & security'|title %}</a>
                         </div>
-                       
-                    </div>
-                </div>
-            </div>
+                    </form>
 
-        </div>
-        <!-- ============================================================== -->
-        <!-- sidenavbar -->
-        <!-- ============================================================== -->
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="sidebar-nav-fixed">
-                <ul class="list-unstyled">
-                    <li><a href="#account-info">{% translate 'account'|capfirst %}</a></li>
-                </ul>
+                </div>
+
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end sidenavbar -->
-        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end basic form  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-12">
+            <div class="section-block" id="account-info">
+                <h3 class="section-title">{% translate 'cool stuff'|title %}</h3>
+                <p>{% translate 'I will not save anything unless you hit the button.'|capfirst %}</p>
+            </div>
+            <div class="card">
+
+                <div class="card-body border-top">
+                    <form id="set-bio-form" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">{% translate 'Biography'|capfirst %}</label>
+                            {% render_field form.biography class+="form-control" rows="3" value=request.user.profile.biography %}
+                        </div>
+                            <button id="set-bio-button" class="btn btn-primary btn-block" value="{% translate 'save'|capfirst %}"
+                                type="submit">{% translate 'save'|capfirst %}</button>
+                    </form>
+                    <script>
+                        handleForm('set-bio-form', 'set-bio-button', action = 'set-biography');
+                    </script>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 {% endblock body %}
