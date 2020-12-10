@@ -138,7 +138,7 @@ if GITHUB_WORKFLOW:
         'PORT': '5432',
     }
 elif DATABASE_URL:
-    DB = dj_database_url(DATABASE_URL)
+    DB = dj_database_url.parse(DATABASE_URL)
 
 else:
     raise Exception('DB not configured and no DATABASE_URL supplied.')
