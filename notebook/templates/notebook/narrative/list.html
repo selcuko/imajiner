@@ -29,7 +29,7 @@
                             {% get_language_info for narrative.language as language_info %}
                             <div class="entry__date">
                                 <a class="philosophy" href="#0">{{ narrative.created_at|naturalday|capfirst }}</a>
-                                •<a> {{ language_info.name_local }}</a>
+                                •<a> {{ language_info.name_translated }}</a>
                             </div>
                             {% else %}
                             <div class="entry__date">
