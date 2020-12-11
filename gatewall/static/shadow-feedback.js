@@ -1,11 +1,3 @@
-const message = {
-    success: ''
-}
-
-const getIcon = (i, spin = false) => `<i style="font-size: 1.5em;" class="fas ${spin ? " fa-spin " : " "}${i}"></i>`;
-const getText = (t, m = true) => `<p style="margin:0; margin-left:${m?'.5em':'0'};">${t}</p>`;
-
-const handle = {}
 handle.shadow = {
     text: (t) => {
         $shadow.text.innerText = t;
@@ -18,6 +10,7 @@ handle.shadow = {
     },
 }
 handle.shadow.checking = () => {
+    $shadow.button.disabled = true;
     handle.shadow.normalize();
     handle.shadow.text(gettext('checking'));
     handle.shadow.icon('fa-spin fa-circle-notch');
@@ -32,6 +25,8 @@ handle.shadow.identifying = () => {
 }
 
 handle.shadow.register = () => {
+    $shadow.button.disabled = false;
+    handle.shadow.normalize();
     handle.shadow.text(gettext('register'));
     handle.shadow.icon('fa-user-plus');
     handle.shadow.status(gettext('you can register a new shadow user'));
@@ -51,7 +46,7 @@ handle.shadow.waiting = () => {
     handle.shadow.normalize();
     handle.shadow.text(gettext('waiting for you'));
     handle.shadow.icon('fa-spin fa-circle-notch');
-    handle.shadow.status(gettext('type username to check if it is available'));
+    handle.shadow.status(gettext('type username to check if it is available (min 5 chars)'));
 }
 
 handle.shadow.postclick = (json) => {

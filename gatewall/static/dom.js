@@ -8,3 +8,17 @@ const $shadow = {
     action: null,
     fingerprint: null,
 }
+
+const $author = {
+    button: document.getElementById('author-button'),
+    icon: document.getElementById('author-button-icon'),
+    text: document.getElementById('author-button-text'),
+    status: document.getElementById('author-message'),
+    form: document.getElementById('author-form'),
+    input: document.getElementById('author-input'),
+    password: document.getElementById('author-password'),
+    tooshort: false,
+    action: null,
+}
+
+const handle = {};

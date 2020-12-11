@@ -1,61 +1,65 @@
-const $authorForm = document.getElementById('author-register');
-const $authorButton = $authorForm.querySelector('.btn');
-const $username = $authorForm.querySelector('.username');
-
-let lastUsername = null;
-let buttonAction = null;
-
-function usernameTypeCallback(){
-    if ($username.value.length < 6){
-        lastUsername = $username.value;
-        $authorButton.innerText = gettext('waiting username').toUpperCase();
-    } else if ($username.value !== lastUsername){
-        lastUsername = $username.value;
-        checkUsernameAvailability($username.value)
-        .then(available => {
-            buttonAction = available ? 'register' : 'login';
-            handleAuthorButton(available);
-        })
-    } else {
-        //$authorButton.disabled = true;
-        //$authorButton.innerText = 'Bekliyor'
+$author.input.onkeyup = (e) => {
+    if ($author.input.length < 5) {
+        handle.author.waiting();
+        $author.button.disabled = true;
+        return;
     }
-}
+    handle.author.checking();
+    const fd = new FormData($author.form);
+    fd.append('action', 'username-availability');
 
-
-async function checkUsernameAvailability(username){
-    const fd = new FormData($authorForm);
-    fd.append('action', 'author-check');
-    return await fetch('', {
-        method: 'POST',
-        body: fd,
-    })
-    .then(response => response.status === 200);
-}
-
-function handleAuthorButton(available){
-    if (available){
-        $authorButton.innerText = gettext('register new user').toUpperCase();
-    } else {
-        $authorButton.innerText = gettext('log in existing user').toUpperCase();
-    }
-}
-
-
-$authorButton.onclick = (e) => {
-    e.preventDefault();
-    const fd = new FormData($authorForm);
-    fd.append('action', `author-${buttonAction}`);
     fetch('', {
-        method: 'POST',
-        body: fd,
-    })
-    .then(response => {
-        if (response.ok) redirect();
-        else $authorButton.innerText = gettext('credentials are not correct.').toUpperCase()
-    })
+            method: 'POST',
+            body: fd,
+        })
+        .then(response => response.json())
+        .then(json => {
+            $author.action = json.available ? 'author-register' : 'author-login';
+            $author.button.disabled = false;
+            handle.author.action(json);
+        });
 }
 
-const intervalId = setInterval(usernameTypeCallback, 1000);
+$author.password.onkeyup = (e) => {
+    if ($author.password.value.length < 6) {
+        $author.button.disabled = true;
+        return;
+    } else if ($author.tooshort){
+        $author.button.disabled = false;
+        handle.author.retry();
+        $author.tooshort = false;
+    }
+    
+}
 
+$author.button.onclick = (e) => {
+    e.preventDefault();
 
+    if ($author.password.value.length < 6) {
+        $author.tooshort = true;
+        handle.author.warn();
+        handle.author.text(gettext('fill out password'));
+        handle.author.icon('fa-info-circle');
+        handle.author.status(gettext('password is too short, I want at least 6 chars'));
+        return;
+    }
+
+    handle.author.onclick();
+
+    const fd = new FormData($author.form);
+    fd.append('action', $author.action);
+
+    fetch('', {
+            method: 'POST',
+            body: fd,
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(json => {
+            handle.author.postclick(json);
+        })
+        .catch(error => {
+            handle.author.error(network = true);
+        })
+}

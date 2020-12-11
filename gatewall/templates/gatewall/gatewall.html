@@ -4,7 +4,8 @@
 {% block head %}
 <script defer src="{% static 'gatewall.js' %}"></script>
 <script defer src="{% static 'dom.js' %}"></script>
-<script defer src="{% static 'user-feedback.js' %}"></script>
+<script defer src="{% static 'shadow-feedback.js' %}"></script>
+<script defer src="{% static 'author-feedback.js' %}"></script>
 <script defer src="{% static 'fingerprint.js' %}"></script>
 <script defer src="{% static 'shadow.js' %}"></script>
 <script defer src="{% static 'author.js' %}"></script>
@@ -96,18 +97,33 @@
         </div>
         <div class="col-six tab-full">
             <h3>{% translate 'author authorization'|title %}</h3>
-            <form id="author-register" method="POST" action="">
+            <form id="author-form" method="POST" action="">
                 {% csrf_token %}
                 <label for='username'>{% translate 'username'|capfirst %}</label>
-                <input class="full-width username" type='text' placeholder="{{ doc.placeholder.username }}"
+                <input minlength="5" id="author-input" class="full-width username" type='text' placeholder="{{ doc.placeholder.username }}"
                     name='username' required>
                 <label for='password'>{% translate 'password'|capfirst %}</label>
-                <input class="full-width" type='password' placeholder="{{ doc.placeholder.username }}" name='password'
-                    required>
-                <button class="btn btn--primary full-width" type='submit'>{% translate 'proceed'|upper %}</button>
+                <input
+                minlength="6" 
+                id="author-password" 
+                class="full-width" 
+                type='password' 
+                placeholder="{{ doc.placeholder.username }}" 
+                name='password'
+                required>
+                <p id="author-message">type your credentials</p>
+                <button 
+                disabled 
+                style="display: flex; align-items: center; justify-content: center;" 
+                id="author-button"
+                class="btn btn--primary full-width" 
+                type='submit'>
+                    <i id="author-button-icon" style="font-size:1.5em; letter-spacing:normal" class="fas fa-spin fa-circle-notch"></i>
+                    <p id="author-button-text" style="margin: 0; margin-left: .5em;">{% translate 'waiting for you'|upper %}</p>
+                </button>
             </form>
             <p>{% blocktranslate trimmed %}
-                Logging in and registring a new user is done here. Check out the status message
+                Logging in and registering a new user is done here. Check out the status message
                 as you type your username.
                 {% endblocktranslate %}</p>
             <p class="">{% blocktranslate trimmed %}

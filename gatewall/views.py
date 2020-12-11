@@ -76,7 +76,7 @@ class Auth(View):
                     user = User.objects.create_user(username=username, password=password)
                     login(request, user)
                 except IntegrityError:
-                    return JsonResponse({'error': True})
+                    return JsonResponse({'authenticated': False}, status=400)
                 
                 request_language = get_language_from_request(request)
                 request_language_path = get_language_from_request(request, check_path=True)
@@ -86,23 +86,18 @@ class Auth(View):
                 if request_language_path != request_language and request_language_path:
                     user.profile.languages += [request_language_path]
                 user.profile.save()
-                return JsonResponse({'error': False})
+                return JsonResponse({'authenticated': True})
             
             elif action == 'author-login':
                 username = p['username']
                 password = p['password']
                 user = authenticate(username=username, password=password)
                 if not user:
-                    return JsonResponse({}, status=403)
-                login(request, user)
-                return JsonResponse({})
-            
-            elif action == 'author-check':
-                username = p['username']
-                if User.objects.filter(username=username).exists():
-                    return JsonResponse({}, status=400)
+                    return JsonResponse({'authenticated': False})
                 else:
-                    return JsonResponse({}, status=200)
+                    login(request, user)
+                    return JsonResponse({'authenticated': True})
+            
             
             elif action == 'logout':
                 if not request.user.is_authenticated:
@@ -116,7 +111,7 @@ class Auth(View):
                 return JsonResponse({}, status=400)
 
         except KeyError as ke:
-            print("KeyError on auth", ke.args, ke.kwargs)
+            print("KeyError on auth", ke.args)
             return JsonResponse(form.errors, status=400)
 
 

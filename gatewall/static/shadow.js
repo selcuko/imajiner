@@ -91,8 +91,6 @@ $shadow.button.onclick = (e) => {
             handle.shadow.error(network=true);
         })
 
-    if ($shadow.button.disabled) handle.shadow.warn();
-
 }
 
 
