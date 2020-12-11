@@ -41,6 +41,8 @@ class SoundRecord(models.Model):
             raise Exception('SoundRecord with no uploader user.')
         super().save(*args, **kwargs)
 
+
+
 class Base(models.Model):
     LANG_MIN_LEN = 40
 
@@ -48,25 +50,50 @@ class Base(models.Model):
         abstract = True
         ordering = ('-published_at', '-created_at')
 
-    title = models.CharField(null=True, blank=True,
-                             max_length=100, verbose_name='Title')
-    body = models.TextField(null=True, verbose_name='Body')
-    raw = models.TextField(null=True, blank=True, verbose_name='Raw')
-    lead = models.TextField(null=True, blank=True, verbose_name='Summary')
-    html = models.TextField(null=True, verbose_name='HTML')
-    slug = models.SlugField(max_length=100, null=True,
-                            unique=True, verbose_name='Slug')
-    uuid = models.UUIDField(verbose_name='UUID', unique=True)
+    title = models.CharField(
+        null=True, 
+        blank=True,
+        max_length=100, 
+        verbose_name='Title')
+    body = models.TextField(
+        null=True, 
+        blank=True, 
+        verbose_name='Body')
+    raw = models.TextField(
+        null=True, 
+        blank=True, 
+        verbose_name='Raw Text')
+    lead = models.TextField(
+        null=True, 
+        blank=True, 
+        verbose_name='Summary')
+    html = models.TextField(
+        null=True, 
+        verbose_name='HTML')
+    slug = models.SlugField(
+        max_length=100, 
+        null=True,
+        unique=True, 
+        verbose_name='Slug')
+    uuid = models.UUIDField(
+        unique=True,
+        verbose_name='UUID')
     created_at = models.DateTimeField(
-        auto_now_add=True, verbose_name='Creation date')
+        auto_now_add=True, 
+        verbose_name='Creation date')
     published_at = models.DateTimeField(
-        null=True, blank=True, verbose_name='Publication date')
+        null=True, 
+        blank=True, 
+        verbose_name='Publication date')
     edited_at = models.DateTimeField(
-        auto_now=True, verbose_name='Last edited at')
+        auto_now=True, 
+        verbose_name='Last edited at')
     language = models.CharField(
-        max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
+        max_length=5, 
+        null=True, 
+        blank=True, 
+        choices=settings.LANGUAGES)
     sketch = models.BooleanField(default=True)
-    is_published = models.BooleanField(default=False)
     public = models.BooleanField(null=True, blank=True)
 
     def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
@@ -107,6 +134,7 @@ class Base(models.Model):
             self.uuid = uuid1()
 
 
+
 class Narrative(models.Model):
     class Meta:
         ordering = ('author',)
@@ -124,10 +152,6 @@ class Narrative(models.Model):
         for t in self.translations.all():
             if t.title:
                 return t.title
-        return None
-
-
-        return self.translations.count()
 
     def __str__(self):
         return self.title if self.title else ''
