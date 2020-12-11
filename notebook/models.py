@@ -20,7 +20,7 @@ from .methods import generate
 from .exceptions import AbsentMasterException
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.ERROR)
 
 
 class Base(models.Model):
@@ -76,33 +76,32 @@ class Base(models.Model):
     sketch = models.BooleanField(default=True)
     public = models.BooleanField(null=True, blank=True)
 
-    def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
-        if not self.sketch:
-            self.html = generate.html(self.body)
-            self.raw = generate.raw(self.html)
-            if update_lead:
-                self.lead = generate.lead(self.raw)
-            if alter_slug:
-                self.slug = generate.slug(self.title, uuid=self.uuid)
+    def save(self, *args, **kwargs):
+        if not self.sketch or kwargs.pop('generate', False):
+            if self.body:
+                self.html = generate.html(self.body)
+                self.raw = generate.raw(self.html)
+                
+        if self.raw and kwargs.pop('update_lead', True):
+            self.lead = generate.lead(self.raw)
+
+        if self.title and kwargs.pop('update_slug', True):
+            self.slug = generate.slug(self.title, uuid=self.uuid)
+
         if not self.published_at and not self.sketch:
             self.published_at = timezone.now()
 
-        if not self.sketch:
-            logger.debug(f'NarrativeTranslation ({self.title}) available for language classification.')
-            if len(self.body) > self.LANG_MIN_LEN:
+        if not self.sketch or kwargs.pop('update_language', False):
+            if self.body and len(self.body) > self.LANG_MIN_LEN:
                 cleaned = generate.clean(self.body)
                 result = cld3.get_language(cleaned)
                 logger.debug(f'NarrativeTranslation language classification results: {result}')
                 if result.is_reliable:
                     language = result.language.split('-')[0][:5]
                     self.language = language
-            elif user_language:
-                logger.debug(f'NarrativeTranslation.body too short for language classification but user-language supplied instead.')
-                self.language = user_language
             else:
-                logger.debug(f'NarrativeTranslation did not fit in any case for language classification.')
-        self.is_published = not self.sketch
-        self.edited_at = timezone.now()
+                logger.warn(f'NarrativeTranslation language classification failed.')
+
         super().save(*args, **kwargs)
 
     def __str__(self, *args, **kwargs):
@@ -260,7 +259,6 @@ class NarrativeVersion(Base):
         self.body = ref.body
         self.sketch = ref.sketch
         self.language = ref.language
-        self.is_published = ref.is_published
 
         if ref.latest is not None:
             self.version = ref.latest.version
