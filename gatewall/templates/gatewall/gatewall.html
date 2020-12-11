@@ -34,7 +34,7 @@
         {% endif %}
         {% if request.user.is_authenticated %}
         {# If user is already authenticated, inform them and provide a link to logout #}
-        <div class="col-six alert-box alert-box--notice hideit">
+        <div class="alert-box alert-box--notice hideit">
             <p style="padding: 0;">{% blocktranslate trimmed with username=request.user.username %}
                 You are already logged in as <strong>{{ username }}</strong>.{% endblocktranslate %}</p>
             {% url 'gatewall:logout' as logout_link %}

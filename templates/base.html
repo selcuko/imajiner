@@ -78,6 +78,9 @@
                         <li><a
                                 href="{% if request.user.is_authenticated %}{% url 'console:overview' %}{% endif %}">{% translate 'console'|capfirst %}</a>
                         </li>
+                        <li>
+                            <a href="{% url 'gatewall:auth' %}">{% translate 'gatewall' %}</a>
+                        </li>
                         <li><a href="{% url 'explore:about' %}" title="">{% translate 'about'|capfirst %}</a></li>
                     </ul> <!-- end header__nav -->
 
