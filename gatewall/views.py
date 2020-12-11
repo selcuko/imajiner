@@ -65,7 +65,7 @@ class Auth(View):
                 username = p.get('username', None)
                 shadow = Shadow.authenticate(fingerprint)
                 if not shadow:
-                    return JsonResponse(status=403)
+                    return JsonResponse({}, status=403)
                 login(request, shadow.user)
                 return JsonResponse({})
             
@@ -93,16 +93,16 @@ class Auth(View):
                 password = p['password']
                 user = authenticate(username=username, password=password)
                 if not user:
-                    return JsonResponse(status=403)
+                    return JsonResponse({}, status=403)
                 login(request, user)
                 return JsonResponse({})
             
             elif action == 'author-check':
                 username = p['username']
                 if User.objects.filter(username=username).exists():
-                    return JsonResponse(status=400)
+                    return JsonResponse({}, status=400)
                 else:
-                    return JsonResponse(status=200)
+                    return JsonResponse({}, status=200)
             
             elif action == 'logout':
                 if not request.user.is_authenticated:
@@ -113,7 +113,7 @@ class Auth(View):
             else:
                 error = f'Unknown action ID: {action}'
                 print(error)
-                return JsonResponse(status=400)
+                return JsonResponse({}, status=400)
 
         except KeyError as ke:
             print("KeyError on auth", ke.args, ke.kwargs)
