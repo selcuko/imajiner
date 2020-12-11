@@ -125,6 +125,9 @@ class Narrative(models.Model):
         related_name='narratives', 
         null=True, 
         blank=True)
+    uuid = models.UUIDField(
+        unique=True,
+        verbose_name='UUID')
     created_at = models.DateTimeField(auto_now_add=True)
 
     @property
@@ -135,6 +138,11 @@ class Narrative(models.Model):
 
     def __str__(self):
         return self.title if self.title else ''
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.uuid:
+            self.uuid = uuid1()
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -164,12 +172,12 @@ class NarrativeTranslation(Base):
         Returns:
             NarrativeVersion: latest and saved version of given instance
         """
-        self.save()
+        self.save(*args, **kwargs)
         if self.latest is None or self.latest.readonly:
             nv = NarrativeVersion()
         else:
             nv = self.latest
-        nv.reference(self)
+        nv.reference(self, autosave=True)
         nv.save()
         return self.latest
 
@@ -183,10 +191,10 @@ class NarrativeTranslation(Base):
         """
 
         self.sketch = False
-        self.save()
+        self.save(*args, **kwargs)
 
         if self.latest is None:
-            self.autosave()
+            self.autosave(*args, **kwargs)
         
         nv = NarrativeVersion() if self.latest.readonly else self.latest
         nv.reference(self)
@@ -211,14 +219,20 @@ class NarrativeTranslation(Base):
 
     def save(self, *args, **kwargs):
         try:
-            author = kwargs.get('author')
-            if author:
-                self.master = Narrative(author=author)
-                self.master.save()
+            if not self.master.pk:  # check whether instance has a master
+                pass
+            kwargs.pop('author', None)  # remove item to avoid passing to super().save()
+            
         except NarrativeTranslation.master.RelatedObjectDoesNotExist:
-            raise AbsentMasterException('This instance of NarrativeTranslation has no master and no author is supplied')
+            author = kwargs.pop('author', None)
+            if author:
+                master = Narrative(author=author)
+                master.save()
+                self.master = master
+            else:
+                raise AbsentMasterException(self)
         
-        super().save(*args, **kwargs)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.title)
@@ -239,28 +253,36 @@ class NarrativeVersion(Base):
     def __str__(self):
         return f'v{self.version}: {self.title}'
 
-    def reference(self, ref):
+    def reference(self, ref, **kwargs):
+        autosave = kwargs.pop('autosave', False)
         self.master = ref
         self.title = ref.title
         self.body = ref.body
         self.sketch = ref.sketch
         self.language = ref.language
         self.is_published = ref.is_published
-        self.version = ref.latest.version + 1 if ref.latest is not None else 1
+
+        if ref.latest is not None:
+            self.version = ref.latest.version
+            if not autosave: self.version += 1
+        else:
+            self.version = 1
+
+        
 
     def archive(self):
         return self.save(archive=True)
 
     def save(self, *args, **kwargs):
-        silent = kwargs.get('silent', True)
-        overwrite = kwargs.get('overwrite')
+        silent = kwargs.pop('silent', True)
+        overwrite = kwargs.pop('overwrite', False)
 
         if self.readonly and not overwrite:
             if not silent:
                 raise ReadonlyException(self)
             logger.error(str(ReadonlyException(self)))
 
-        if kwargs.get('archive'):
+        if kwargs.pop('archive', False):
             self.readonly = True
         super().save(*args, **kwargs)
 
