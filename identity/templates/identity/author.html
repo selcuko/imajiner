@@ -1,33 +1,121 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static tagging i18n humanize %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'philosophy/css/base.css' %}">
-<link rel="stylesheet" href="{% static 'philosophy/css/vendor.css' %}">
-<link rel="stylesheet" href="{% static 'philosophy/css/main.css' %}">
-{% endblock css %}
-
+{% block body.id %}top{% endblock %}
 {% block body %}
+<section class="s-content">
 
-<body>
-    <section style="background:white; padding: 2rem;">
-        {% if user.is_shadow %}
-        <div class="row narrow section-intro add-bottom text-center">
-            <h2>O bir hayalet.</h2>
-            <h3>{{ user.username }} hakkında bir bilgi veremiyoruz.</h3>
-            <h4>Hayalet kayıtlar, fazla dikkat çekmeden yalnızça içerik yazmak isteyen şahıslardır.</h4>
+    <div class="row narrow">
+        <div class="col-full s-content__header">
+            <p class="lead">{% translate 'Works of Author' %}</p>
+            <div>
+                {% if author.profile.prefix %}<h3>{{ author.profile.prefix }}</h3>{% endif %}
+                <h1>{{ author.username }}</h1>
+                {% if author.profile.suffix %}<h3>{{ author.profile.suffix }}</h3>{% endif %}
+            </div>
         </div>
-        {% else %}
-        <div class="half-bottom">
-            <h2>{{ user.username }}</h2>
-            <ul>
-                {% for narrative in narratives %}
-                <li><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
+    </div>
+
+    <div class="row masonry-wrap">
+        <div class="masonry infinite-container">
+
+            <div class="grid-sizer"></div>
+
+            {% for narrative in narratives %}
+
+            <article class="infinite-item masonry__brick entry format-standard">
+
+
+                <div class="entry__text">
+                    <div class="entry__header">
+
+                        {% if narrative.language %}
+                        {% if narrative.language in LANG_INFO.keys %}
+                        {% get_language_info for narrative.language as language_info %}
+                        <div class="entry__date">
+                            <a href="#0">{{ narrative.created_at|naturalday|capfirst }}</a>
+                            •<a> {{ language_info.name_translated }}</a>
+                        </div>
+                        {% else %}
+                        <div class="entry__date">
+                            <a href="#0">{{ narrative.created_at|naturalday|capfirst }}</a>
+                        </div>
+                        {% endif %}
+                        {% else %}
+                        <div class="entry__date">
+                            <a style="color:red" href="#0"><i class="fa fa-info-circle"></i>
+                                {% translate 'this narrative is not visible to public'|capfirst %}</a>
+                        </div>
+                        {% endif %}
+                        <h1 class="entry__title"><a href="{{ narrative.get_absolute_url }}">{{ narrative.title }}</a>
+                        </h1>
+
+                    </div>
+                    {% if narrative.lead %}
+                    <div class="entry__excerpt">
+                        <p>
+                            {{ narrative.lead|truncatechars:140 }}
+                        </p>
+                    </div>
+                    {% endif %}
+                    {% if narrative.tags.has_tags %}
+                    {% tags_for_user 3 as tags %}
+                    <div class="entry__meta">
+                        <span class="entry__meta-links">
+                            {% for tag in tags %}
+                            <a href="#0">{{ tag.abstract.name }}</a>
+                            {% endfor %}
+                        </span>
+                    </div>
+                    {% else %}
+                    {% endif %}
+                </div>
+
+            </article> <!-- end article -->
+            {% endfor %}
+        </div> <!-- end masonry -->
+
+        {% if page_obj.has_next %}
+        <a style="display:none;" class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
         {% endif %}
-    </section>
 
-</body>
+        <div class="d-flex justify-content-center" style="display:none;">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div> <!-- end masonry-wrap -->
+
+</section> <!-- s-content -->
+<!-- preloader
+    ================================================== -->
+<div id="preloader">
+    <div id="loader">
+        <div class="line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
 {% endblock body %}
+
+{% block foot %}
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/infinite.min.js' %}"></script>
+<!--<script src="{% static 'notebook/scroll-loader.js' %}"></script>-->
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        onBeforePageLoad: function () {
+            $iml = $("#infinite-more-link")
+            if ($iml) window.href = $iml.href
+        },
+        onAfterPageLoad: function ($items) {
+            $(".masonry").masonry('appended', $items);
+        }
+    });
+</script>
+{% endblock %}

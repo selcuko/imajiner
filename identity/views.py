@@ -1,15 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import DetailView
+from django.contrib.auth.models import User
 from notebook.models import *
 from .models import *
 
-def author_view(request, username):
-    user = User.objects.get(username=username)
-    return render(request, 'identity/author.html', {
-        'user': user,
-        'narratives': NarrativeTranslation.objects.filter(master__author=user, sketch=False),
-        })
+class AuthorView(DetailView):
+    model = User
+    context_object_name = 'author'
+    template_name = 'identity/author.html'
 
-
-def self_view(request):
-    return render(request, 'identity/self.html')
-
+    def get_object(self, *args, **kwargs):
+        username = self.kwargs.get('username')
+        return get_object_or_404(User, username=username)
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['narratives'] = NarrativeTranslation.objects.filter(master__author=self.object)
+        return context

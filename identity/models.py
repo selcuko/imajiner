@@ -59,10 +59,11 @@ class Profile(models.Model):
     biography = models.TextField(null=True, blank=True)
     languages = fields.ArrayField(models.CharField(max_length=5), null=True, default=list)
     preferences = models.JSONField(default=dict)
+    json = models.JSONField(default=dict)
     username_old = models.CharField(max_length=128, null=True, blank=True)
     username_changed_at = models.DateTimeField(null=True, blank=True)
-    username_suffix = models.CharField(max_length=32, null=True, blank=True)
-    username_prefix = models.CharField(max_length=32, null=True, blank=True)
+    suffix = models.CharField(max_length=32, null=True, blank=True)
+    prefix = models.CharField(max_length=32, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
