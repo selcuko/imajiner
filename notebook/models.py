@@ -79,13 +79,18 @@ class Base(models.Model):
             self.published_at = timezone.now()
 
         if not self.sketch:
+            logger.debug(f'NarrativeTranslation ({self.title}) available for language classification.')
             if len(self.body) > self.LANG_MIN_LEN:
                 cleaned = generate.clean(self.body)
                 language = cld3.get_language(cleaned)
-                if language.is_reliable and language in settings.LANGUAGES_DICT.keys():
+                logger.debug(f'NarrativeTranslation language classification results: {language}')
+                if language.is_reliable:
                     self.language = language.language
             elif user_language:
+                logger.debug(f'NarrativeTranslation.body too short for language classification but user-language supplied instead.')
                 self.language = user_language
+            else:
+                logger.debug(f'NarrativeTranslation did not fit in any case for language classification.')
         self.is_published = not self.sketch
         self.edited_at = timezone.now()
         super().save(*args, **kwargs)
