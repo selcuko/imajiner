@@ -23,26 +23,6 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-class SoundRecord(models.Model):
-    file = models.FileField(
-        upload_to='voice-records',
-        validators=[FileExtensionValidator(
-            allowed_extensions=['mp3', 'aac', 'wav', 'opus'])],
-    )
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=128, null=True, blank=True)
-    uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return f'Voice record file {self.file.name} at {self.uploaded_at}'
-
-    def save(self, *args, **kwargs):
-        if not self.uploader:
-            raise Exception('SoundRecord with no uploader user.')
-        super().save(*args, **kwargs)
-
-
-
 class Base(models.Model):
     LANG_MIN_LEN = 40
 
