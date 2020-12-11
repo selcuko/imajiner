@@ -40,6 +40,10 @@ class Auth(View):
                     "found": True,
                     "username": shadow.user.username,
                 })
+            
+            elif action == 'username-availability':
+                username = p['username']
+                return JsonResponse({'available': not User.objects.filter(username=username).exists()})
                 
             elif action == 'shadow-register':
                 fingerprint = p['fingerprint']
@@ -54,16 +58,16 @@ class Auth(View):
                     user.profile.languages += [request_language]
                 if request_language_path != request_language and request_language_path:
                     user.profile.languages += [request_language_path]
-                return HttpResponse()
+                return JsonResponse({'username': username})
 
             elif action == 'shadow-login':
                 fingerprint = p['fingerprint']
                 username = p.get('username', None)
                 shadow = Shadow.authenticate(fingerprint)
                 if not shadow:
-                    return HttpResponse(status=403)
+                    return JsonResponse(status=403)
                 login(request, shadow.user)
-                return HttpResponse()
+                return JsonResponse({})
             
             elif action == 'author-register':
                 username = p['username']
@@ -89,29 +93,31 @@ class Auth(View):
                 password = p['password']
                 user = authenticate(username=username, password=password)
                 if not user:
-                    return HttpResponse(status=403)
+                    return JsonResponse(status=403)
                 login(request, user)
-                return HttpResponse()
+                return JsonResponse({})
             
             elif action == 'author-check':
                 username = p['username']
                 if User.objects.filter(username=username).exists():
-                    return HttpResponse(status=422)
+                    return JsonResponse(status=400)
                 else:
-                    return HttpResponse(status=200)
+                    return JsonResponse(status=200)
             
             elif action == 'logout':
                 if not request.user.is_authenticated:
                     raise SuspiciousOperation
                 logout(request)
-                return HttpResponse()
+                return JsonResponse({})
 
             else:
-                raise SuspiciousOperation(f'Unknown action ID: {action}')
+                error = f'Unknown action ID: {action}'
+                print(error)
+                return JsonResponse(status=400)
 
         except KeyError as ke:
-            logger.warn("KeyError on auth", ke.args, ke.kwargs)
-            return HttpResponse(json.dumps(form.errors), status=400)
+            print("KeyError on auth", ke.args, ke.kwargs)
+            return JsonResponse(form.errors, status=400)
 
 
 class Logout(View):

@@ -1,10 +1,3 @@
-const $shadowButton = document.getElementById('shadow-button');
-const $shadowForm = document.getElementById('shadow-register');
-const $shadowUser = $shadowForm.querySelector('.username');
-let clientFingerprint = null;
-let shadowAction = null;
-
-
 async function fingerprintDevice() {
     return await Fingerprint2.getPromise()
         .then(components => {
@@ -16,13 +9,39 @@ async function fingerprintDevice() {
 }
 
 
+$shadow.input.onkeyup = (e) => {
+    if ($shadow.input.value.length < 5) {
+        handle.shadow.waiting();
+        return;
+    }
+    handle.shadow.checking();
+
+    const fd = new FormData($shadow.form);
+    fd.set('action', 'username-availability')
+
+    fetch('', {
+            method: 'POST',
+            body: fd,
+        })
+        .then(response => response.json())
+        .then(json => {
+            handle.shadow.availability(json.available);
+        })
+        .catch(error => handle.shadow.error());
+}
+
+
 function checkShadowRecords() {
+    handle.shadow.identifying();
+
     fingerprintDevice()
         .then(fingerprint => {
-            clientFingerprint = fingerprint;
-            const fd = new FormData($shadowForm);
+            $shadow.fingerprint = fingerprint;
+
+            const fd = new FormData($shadow.form);
             fd.append('fingerprint', fingerprint);
             fd.append('action', 'shadow-check');
+
             fetch('', {
                     method: 'POST',
                     body: fd,
@@ -32,46 +51,45 @@ function checkShadowRecords() {
                 })
                 .then(json => {
                     const found = json.found;
-                    console.log(json);
-                    action = found ? 'login' : 'register';
-                    if (auto && found) $shadowButton.click();
-                    if (found) handleButtonShadowFound($shadowButton, json.username);
-                    else handleButtonShadowRegister($shadowButton);
-                });
+                    if (auto && found) $shadow.button.click();
+                    $shadow.action = found ? 'shadow-login' : 'shadow-register';
+                    if (found) handle.shadow.found(json);
+                    else handle.shadow.waiting();
+                })
+                .catch(error => handle.shadow.error());
         });
 }
 
-function handleShadowButton(found, username = null) {
-    $shadowButton.disabled = false;
-    if (found) {
-        $shadowUser.disabled = true;
-        $shadowUser.value = username;
-        $shadowButton.innerText = interpolate(gettext('proceed as %(username)s'), {
-            username: username
-        }, true).toUpperCase();
-            handleButtonLoading($shadowButton, 'identifying');
-
-    } else {
-        handleButtonLoading($shadowButton, 'identifying');
-
-    }
-}
-
-$shadowButton.onclick = (e) => {
+$shadow.button.onclick = (e) => {
     e.preventDefault();
-    if (!action) return;
-    const fd = new FormData($shadowForm);
-    fd.append('action', `shadow-${action}`);
-    fd.append('fingerprint', clientFingerprint);
+
+    if ($shadow.action === null) {
+        $shadow.button.disabled = true;
+        handle.shadow.warn();
+        return;
+    } else {
+        $shadow.button.disabled = false;
+    }
+
+    handle.shadow.onclick();
+
+    const fd = new FormData($shadow.form);
+    fd.append('action', $shadow.action);
+    fd.append('fingerprint', $shadow.fingerprint);
+
     fetch('', {
-        method: 'POST',
-        body: fd,
-    }).then(response => {
-        if (response.ok) redirect();
-        else {
-            // bir şeyler ters gitti
-        };
-    })
+            method: 'POST',
+            body: fd,
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(json => {
+            handle.shadow.postclick(json);
+        })
+
+    if ($shadow.button.disabled) handle.shadow.warn();
+
 }
 
 
