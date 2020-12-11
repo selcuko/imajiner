@@ -76,7 +76,12 @@ class Base(models.Model):
     sketch = models.BooleanField(default=True)
     public = models.BooleanField(null=True, blank=True)
 
+
     def save(self, *args, **kwargs):
+        if isinstance(self.title) and len(self.title) is 0:
+            self.title = None
+        if isinstance(self.body) and len(self.body) is 0:
+            self.body = None
         if not self.sketch or kwargs.pop('generate', False):
             if self.body:
                 self.html = generate.html(self.body)
@@ -137,7 +142,12 @@ class Narrative(models.Model):
         for t in self.translations.all():
             if t.title:
                 return t.title
-
+        return None
+    
+    @property
+    def languages(self):
+        return [settings.LANGUAGES_DICT.get(t.language, t.language) for t in self.translations.all()]
+    
     def __str__(self):
         return self.title if self.title else ''
     
@@ -268,8 +278,6 @@ class NarrativeVersion(Base):
             if not autosave: self.version += 1
         else:
             self.version = 1
-
-        
 
     def archive(self):
         return self.save(archive=True)

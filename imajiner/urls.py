@@ -12,11 +12,13 @@ from notebook.sitemap import NarrativeSitemap
 from django.views.i18n import JavaScriptCatalog
 from explore.views import Feedback
 
-LoginRequiredMixin.redirect_field_name = 'n'
-
 admin.site.site_header = _('Imajiner God View')
 admin.site.site_title = _('Imajiner God View')
 admin.site.index_title = _('Site Supervision')
+
+admin.site.empty_value_display = 'NULL'
+
+LoginRequiredMixin.redirect_field_name = 'n'
 
 handle404 = 'imajiner.views.handle404'
 
