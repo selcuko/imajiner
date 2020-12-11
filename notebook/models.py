@@ -99,8 +99,11 @@ class Base(models.Model):
                 if result.is_reliable:
                     language = result.language.split('-')[0][:5]
                     self.language = language
+                else:
+                    logger.debug(f'NarrativeTranslation failed language classification.')
+
             else:
-                logger.warn(f'NarrativeTranslation language classification failed.')
+                logger.debug(f'NarrativeTranslation skipped language classification.')
 
         super().save(*args, **kwargs)
 
