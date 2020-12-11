@@ -37,8 +37,10 @@ $leftSketch.onclick = (e) => {
 }
 
 $form.onsubmit = function (e) {
-    clearInterval(intervalId);
     e.preventDefault();
+    $title.disabled = true;
+    $textarea.disabled = true;
+    clearInterval(intervalId);
     if (submitSucceed) {
         location.href = publicUrl;
         return;
@@ -58,6 +60,7 @@ const req = {
     ended: () => {
         fetchOnProgress = false;
         $submit.disabled = false;
+        
     }
 }
 
