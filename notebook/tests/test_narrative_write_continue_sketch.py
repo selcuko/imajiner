@@ -1,23 +1,29 @@
-from imajiner.tests import TestCase
+from django.test import TestCase
 from django.shortcuts import reverse
-from notebook.models import NarrativeTranslation
+from model_bakery import baker
+from ..models import NarrativeTranslation
 
 class NarrativeContinueSketch(TestCase):
 
-    def setUp(self): 
-        self.narrative = self.narratives.first()
+    @classmethod
+    def setUpTestData(cls): 
+        cls.user = baker.make('auth.User')
+        cls.narrative = NarrativeTranslation()
+        cls.narrative.save(author=cls.user)
+    
+    def login(self): 
+        return self.client.force_login(self.user)
+    
+    def logout(self):
+        return self.client.logout()
 
     def test_get_narrative_write_anonymous(self):
         self.logout()
         response = self.client.get(reverse('notebook:sketch', kwargs={'uuid': self.narrative.uuid}))
-        assert response.status_code in [302, 403]
+        self.assertEqual(response.status_code, 302)
     
     def test_get_narrative_write_authorized(self):
         self.login()
         response = self.client.get(reverse('notebook:sketch', kwargs={'uuid': self.narrative.uuid}))
-        assert response.status_code == 200
-    
-    def test_post_narrative_write_authorized(self):
-        self.login()
-        response = self.client.post(reverse('notebook:sketch', kwargs={'uuid': self.narrative.uuid}))
-        assert response.status_code == 400
+        self.assertEqual(response.status_code, 200)
+
