@@ -31,7 +31,7 @@ class NarrativeDetail(TestCase):
         assert response.status_code == 200
     
     def test_nonexistent_narrative(self):
-        response = self.client.get(reverse('narrative:detail', kwargs={'slug': 'nönexistent'}))
+        response = self.client.get(reverse('narrative:detail', kwargs={'slug': 'nonexistent'}))
         assert response.status_code == 404
 
         
