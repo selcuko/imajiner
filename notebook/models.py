@@ -17,7 +17,7 @@ from django.utils.functional import cached_property
 from tagmanager.models import TagManager
 
 from .methods import generate
-# TODO: from .exceptions import *
+from .exceptions import AbsentMasterException
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -107,28 +107,17 @@ class Base(models.Model):
             self.uuid = uuid1()
 
 
-class Narrative(Base):
-    author = models.ForeignKey(
-        User, on_delete=models.SET_NULL, related_name='narratives', null=True, blank=True)
-
+class Narrative(models.Model):
     class Meta:
         ordering = ('author',)
-    
-    @property
-    def is_published(self):
-        return self.translations.filter(is_published=True).exists()
-    
-    @property
-    def edited_at(self):
-        qs = self.translations.order_by('-edited_at')
-        if qs.exists():
-            return qs.first().edited_at
-    
-    @property
-    def published_at(self):
-        qs = self.translations.filter(published_at__isnull=False).order_by('-published_at')
-        if qs.exists():
-            return qs.first().published_at
+
+    author = models.ForeignKey(
+        User, 
+        on_delete=models.SET_NULL, 
+        related_name='narratives', 
+        null=True, 
+        blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     @property
     def title(self):
@@ -137,16 +126,7 @@ class Narrative(Base):
                 return t.title
         return None
 
-    @property
-    def languages_available(self):
-        return [t.language for t in self.translations.all()]
 
-    @property
-    def languages_available_verbose(self, seperator=' • '):
-        return seperator.join([str(settings.LANGUAGES_DICT.get(l, l)) for l in self.languages_available if l])
-
-    @property
-    def languages_available_count(self):
         return self.translations.count()
 
     def __str__(self):
@@ -155,16 +135,6 @@ class Narrative(Base):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
-        if self.language in self.languages_available:
-            nt = self.translations.get(language=self.language)
-            nt.reference(self)
-            nt.save()
-
-    def get_absolute_url(self):
-        if self.sketch:
-            return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
-        else:
-            return reverse('narrative:detail', kwargs={'slug': self.slug})
 
 
 class NarrativeTranslation(Base):
@@ -172,9 +142,14 @@ class NarrativeTranslation(Base):
         ordering = ('-edited_at', 'edited_at')
 
     master = models.ForeignKey(
-        Narrative, on_delete=models.CASCADE, related_name='translations')
+        Narrative, 
+        on_delete=models.CASCADE, 
+        related_name='translations')
     tags = models.OneToOneField(
-        TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
+        TagManager, 
+        on_delete=models.SET_NULL, 
+        related_name='narrative', 
+        null=True)
     edited = models.BooleanField(default=False)
 
 
@@ -203,6 +178,7 @@ class NarrativeTranslation(Base):
             NarrativeVersion: latest and saved version of given instance
         """
 
+        self.sketch = False
         self.save()
 
         if self.latest is None:
@@ -219,6 +195,7 @@ class NarrativeTranslation(Base):
     
     @property
     def at_version(self):
+        # latest published version
         # TODO: this function seems to lack something
         return self.versions.filter(sketch=False).count()
 
@@ -229,35 +206,40 @@ class NarrativeTranslation(Base):
             return reverse('narrative:detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        if self.master is None:
+        try:
             author = kwargs.get('author')
             if author:
                 self.master = Narrative(author=author)
                 self.master.save()
-            else:
-                raise AbsentMaster('This instance of NarrativeTranslation has no master and no author is supplied')
+        except NarrativeTranslation.master.RelatedObjectDoesNotExist:
+            raise AbsentMasterException('This instance of NarrativeTranslation has no master and no author is supplied')
         
         super().save(*args, **kwargs)
 
-
     def __str__(self):
-        return f'{settings.LANGUAGES_DICT.get(self.language, "Unknown")} translation of {self.master}'
+        return str(self.title)
+
 
 
 class NarrativeVersion(Base):
+    class Meta:
+        ordering = ('-version',)
+    
     readonly = models.BooleanField(default=False)
     version = models.PositiveIntegerField(default=1)
     master = models.ForeignKey(
-        NarrativeTranslation, on_delete=models.CASCADE, related_name='versions')
+        NarrativeTranslation, 
+        on_delete=models.CASCADE, 
+        related_name='versions')
 
     def __str__(self):
         return f'v{self.version}: {self.title}'
 
     def reference(self, ref):
+        self.master = ref
         self.title = ref.title
         self.body = ref.body
         self.sketch = ref.sketch
-        self.master = ref
         self.language = ref.language
         self.is_published = ref.is_published
         self.version = ref.latest.version + 1 if ref.latest is not None else 1
@@ -265,14 +247,16 @@ class NarrativeVersion(Base):
     def archive(self):
         return self.save(archive=True)
 
-    def save(self, *args, archive=False, overwrite=False, silent=True, **kwargs):
+    def save(self, *args, **kwargs):
+        silent = kwargs.get('silent', True)
+        overwrite = kwargs.get('overwrite')
+
         if self.readonly and not overwrite:
             if not silent:
-                raise Exception(f'This version is read-only: {self.title}')
-            logger.error(f'This version is read-only: {self.title}')
-        if archive:
+                raise ReadonlyException(self)
+            logger.error(str(ReadonlyException(self)))
+
+        if kwargs.get('archive'):
             self.readonly = True
         super().save(*args, **kwargs)
 
-    class Meta:
-        ordering = ('-version',)
