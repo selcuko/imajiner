@@ -18,6 +18,7 @@ from tagmanager.models import TagManager
 
 from .methods import generate
 from .exceptions import AbsentMasterException
+from . import managers
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
@@ -78,9 +79,9 @@ class Base(models.Model):
 
 
     def save(self, *args, **kwargs):
-        if isinstance(self.title) and len(self.title) is 0:
+        if isinstance(self.title, str) and len(self.title) is 0:
             self.title = None
-        if isinstance(self.body) and len(self.body) is 0:
+        if isinstance(self.body, str) and len(self.body) is 0:
             self.body = None
         if not self.sketch or kwargs.pop('generate', False):
             if self.body:
@@ -175,6 +176,7 @@ class NarrativeTranslation(Base):
         related_name='narrative', 
         null=True)
     edited = models.BooleanField(default=False)
+    objects = managers.NarrativePublicity()
 
 
     def autosave(self, *args, **kwargs):

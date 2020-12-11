@@ -31,57 +31,25 @@ class Redirect(View):
         return dj_redirect(translation)
 
 
+
 class Detail(DetailView):
     model = NarrativeTranslation
     context_object_name = 'narrative'
     template_name = 'notebook/narrative/detail.html'
-
-    def get_object(self):
-        self.slug = self.kwargs['slug']
-        self.narrative = get_object_or_404(
-            NarrativeTranslation, slug=self.slug)
-        return self.narrative
+    lookup_field = 'slug'
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
         ctx.update({
             'doc': {
-                'title': self.narrative.title,
-                'author': self.narrative.master.author.username,
-                'description': self.narrative.lead,
+                'title': self.object.title,
+                'author': self.object.master.author.username,
+                'description': self.object.lead,
             },
             'LANG_INFO': LANG_INFO,
         })
         return ctx
 
-    def post(self, request, *args, **kwargs):
-        action = request.POST['action']
-        try:
-            if not request.user.is_authenticated:
-                raise SuspiciousOperation('Unauthorized')
-
-            narrative = request.POST['narrative']
-            narrative = Narrative.objects.get(slug=narrative)
-
-            if action == 'tag-create':
-                abstract = request.POST['name']
-                try:
-                    abstract = AbstractTag.objects.get(name=abstract)
-                except:
-                    abstract = AbstractTag.objects.create(name=abstract)
-                narrative.tags.add(abstract)
-                request.user.tags.delta_for(
-                    abstract=abstract, narrative=narrative, delta=1)
-                return HttpResponse()
-
-            elif action == 'tag-step':
-                abstract = request.POST['name']
-                request.user.tags.delta_for(
-                    narrative=narrative, abstract=abstract, delta=1)
-                return HttpResponse()
-
-        except Exception as e:
-            raise e
 
 
 class List(ListView):
@@ -104,75 +72,63 @@ class List(ListView):
         return ctx
 
     def get_queryset(self):
-        languages = [get_language_from_request(self.request, check_path=True)]
-        if self.request.user.is_authenticated and self.request.user.profile.languages:
-            languages += self.request.user.profile.languages
-        base_qs = NarrativeTranslation.objects.filter(
-            sketch=False,
-            master__author__isnull=False,
-        )
-        qs = base_qs.filter(language__in=languages)
-        if self.request.user.is_authenticated:
-            qs = qs | base_qs.filter(
-                master__author=self.request.user, sketch=False)
-        return qs
+        return NarrativeTranslation.objects.public()
 
 
-class Folder(LoginRequiredMixin, View):
+class Folder(LoginRequiredMixin, ListView):
     template_name = 'notebook/narrative/folder.html'
+    model = NarrativeTranslation
+    context_object_name = 'sketches'
+    ordering = ('-edited_at',)
 
-    def get(self, request):
-        qs = NarrativeTranslation.objects.filter(master__author=request.user).order_by('-edited_at')
-        qs.filter(title='', body__isnull=True).delete()
-        sketches = qs.filter(edited=True) | qs.filter(sketch=True)
-        return render(request, self.template_name, {
-            'sketches': sketches,
-            'no_sketch': not sketches.exists(),
-        })
+    def get_queryset(self, *args, **kwargs):
+        return NarrativeTranslation.objects.sketches(author=self.request.user)
 
 
 class FreshWrite(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/write.html'
 
-    def get(self, request):
-        master = Narrative(sketch=True, author=request.user)
-        master.save()
-        sketch = NarrativeTranslation()
-        sketch.reference(master)
-        sketch.save()
-        form = NarrativeForm(instance=sketch)
+    def get(self, request, uuid=None):
+        if uuid:
+            try:
+                narrative = NarrativeTranslation.objects.sketch(uuid=uuid, author=request.user)
+            except NarrativeTranslation.DoesNotExist:
+                return JsonResponse({}, status=404)
+        else:
+            narrative = NarrativeTranslation()
+            narrative.save(author=request.user)
+        form = NarrativeForm(instance=narrative)
 
         return render(self.request, self.template_name, context={
             'form': form,
             'doc': {
                 'title': _('refreshing the ink').capitalize()
-            }
-        })
+            }})
 
-    def post(self, request):
+    def post(self, request, uuid=None):
         try:
-            uuid = request.POST['uuid']
-            sketch = NarrativeTranslation.objects.get(
-                uuid=uuid, master__author=request.user)
-            form = NarrativeForm(request.POST, request.FILES, instance=sketch)
-
-            action = request.POST.get('action', '').lower()
+            if not uuid:
+                uuid = request.POST['uuid']
+            try:
+                narrative = NarrativeTranslation.objects.sketch(uuid=uuid, author=request.user)
+            except NarrativeTranslation.DoesNotExist:
+                return JsonResponse({}, status=404)
+            action = request.POST['action'].lower()
+            
+            form = NarrativeForm(request.POST, instance=narrative)
 
             if not form.is_valid():
-                logger.warn(f'Request.POST: {request.POST}')
-                logger.warn(f'NarrativeForm is not valid. {form.errors}')
-                return JsonResponse({}, status=400)
+                logger.warn(f'NarrativeForm is not valid: {form.errors}')
+                return JsonResponse(dict(form.errors), status=400)
 
             if action == 'autosave':
-                # Avoid creating new versions on every autosave.
                 narrative = form.save(commit=False)
-                narrative.save(new_version=False)
-                return JsonResponse({'description': 'OK'})
+                narrative.autosave()
+                return JsonResponse({})
 
             elif action == 'submit':
                 narrative = form.save(commit=False)
-                narrative.sketch = False
-                narrative.save()
+                narrative.publish()
                 response = {
                     'language': settings.LANGUAGES_DICT.get(narrative.language, narrative.language),
                     'publicUrl': narrative.get_absolute_url(),
@@ -180,66 +136,13 @@ class FreshWrite(LoginRequiredMixin, View):
                 return JsonResponse(response)
 
             else:  # action id not recognized or absent
-                logger.warn('NarrativeForm submitted with no known action ID.')
+                logger.warn(f'NarrativeForm submitted with no known action ID: {action}')
                 return JsonResponse({}, status=400)
 
-        except KeyError as ke:
-            logger.warn(f'NarrativeView encountered KeyError: {ke.__repr__()}')
+        except KeyError as exc:
+            logger.warn(f'NarrativeView encountered KeyError: {exc!r}')
             return JsonResponse({}, status=400)
 
-
-class ContinueSketch(LoginRequiredMixin, View):
-    template_name = 'notebook/narrative/write.html'
-
-    def get(self, request, uuid):
-        try:
-            sketch = NarrativeTranslation.objects.get(
-                uuid=uuid, master__author=request.user)
-            form = NarrativeForm(instance=sketch)
-        except NarrativeTranslation.DoesNotExist:
-            return HttpResponse(status=404)
-        return render(self.request, self.template_name, context={
-            'form': form,
-            'doc': {
-                'title': _('refreshing the ink').capitalize()
-            }
-        })
-
-    def post(self, request, uuid):
-        try:
-            uuid = request.POST['uuid']
-            sketch = NarrativeTranslation.objects.get(
-                uuid=uuid, master__author=request.user)
-            form = NarrativeForm(request.POST, request.FILES, instance=sketch)
-
-            action = request.POST.get('action', '').lower()
-
-            if not form.is_valid():
-                logger.warn('NarrativeForm is not valid.')
-                return JsonResponse({}, status=400)
-
-            if action == 'autosave':
-                narrative = form.save(commit=False)
-                narrative.save(new_version=False)
-                return JsonResponse({'description': 'OK'})
-
-            elif action == 'submit':
-                narrative = form.save(commit=False)
-                narrative.sketch = False
-                narrative.save()
-                response = {
-                    'language': settings.LANGUAGES_DICT.get(narrative.language, narrative.language),
-                    'publicUrl': narrative.get_absolute_url(),
-                }
-                return JsonResponse(response)
-
-            else:  # action id not recognized or absent
-                logger.warn('NarrativeForm submitted with no known action ID.')
-                return JsonResponse({}, status=400)
-
-        except KeyError as ke:
-            logger.warn(f'NarrativeView encountered KeyError: {ke.__repr__()}')
-            return HttpResponse(status=400)
 
 
 class AddTranslation(LoginRequiredMixin, View):

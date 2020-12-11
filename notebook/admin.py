@@ -19,7 +19,7 @@ class NarrativeAdmin(admin.ModelAdmin):
 
 class NarrativeTranslationAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,                {'fields': ['author']}),
+        (None,                {'fields': ['author', 'sketch']}),
         ('Identifiers',       {'fields': ['uuid', 'slug']}),
         ('Content',           {'fields': ['title', 'body', 'language']}),
         ('Generated Fields',  {'fields': ['html']}),

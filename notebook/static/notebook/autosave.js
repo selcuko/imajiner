@@ -92,7 +92,7 @@ async function post(action = 'SUBMIT') {
     fd.append('action', action);
     fd.append('count', countFetched++);
     //fd.set('title', currentTitle);
-
+    console.log('Fetching', fd);
     await fetch('', {
         method: 'POST',
         body: fd,
