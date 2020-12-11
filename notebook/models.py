@@ -83,10 +83,11 @@ class Base(models.Model):
             logger.debug(f'NarrativeTranslation ({self.title}) available for language classification.')
             if len(self.body) > self.LANG_MIN_LEN:
                 cleaned = generate.clean(self.body)
-                language = cld3.get_language(cleaned)
-                logger.debug(f'NarrativeTranslation language classification results: {language}')
-                if language.is_reliable:
-                    self.language = language.language
+                result = cld3.get_language(cleaned)
+                logger.debug(f'NarrativeTranslation language classification results: {result}')
+                if result.is_reliable:
+                    language = result.language.split('-')[0][:5]
+                    self.language = language
             elif user_language:
                 logger.debug(f'NarrativeTranslation.body too short for language classification but user-language supplied instead.')
                 self.language = user_language
