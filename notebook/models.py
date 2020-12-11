@@ -1,5 +1,5 @@
-import logging
 import inspect
+import logging
 from datetime import datetime
 from threading import Thread
 from uuid import uuid1
@@ -10,13 +10,14 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from django.db.models import Count
 from django.shortcuts import reverse
 from django.utils import html, text, timezone
 from django.utils.functional import cached_property
-from django.db.models import Count
 from tagmanager.models import TagManager
-from .methods import generate
 
+from .methods import generate
+# TODO: from .exceptions import *
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -39,7 +40,6 @@ class SoundRecord(models.Model):
         if not self.uploader:
             raise Exception('SoundRecord with no uploader user.')
         super().save(*args, **kwargs)
-
 
 class Base(models.Model):
     LANG_MIN_LEN = 40
@@ -67,6 +67,7 @@ class Base(models.Model):
         max_length=5, null=True, blank=True, choices=settings.LANGUAGES)
     sketch = models.BooleanField(default=True)
     is_published = models.BooleanField(default=False)
+    public = models.BooleanField(null=True, blank=True)
 
     def save(self, *args, alter_slug=True, update_lead=True, user_language=None, **kwargs):
         if not self.sketch:
@@ -113,30 +114,30 @@ class Narrative(Base):
     class Meta:
         ordering = ('author',)
     
-    @cached_property
+    @property
     def is_published(self):
         return self.translations.filter(is_published=True).exists()
     
-    @cached_property
+    @property
     def edited_at(self):
         qs = self.translations.order_by('-edited_at')
         if qs.exists():
             return qs.first().edited_at
     
-    @cached_property
+    @property
     def published_at(self):
         qs = self.translations.filter(published_at__isnull=False).order_by('-published_at')
         if qs.exists():
             return qs.first().published_at
 
-    @cached_property
+    @property
     def title(self):
         for t in self.translations.all():
             if t.title:
                 return t.title
         return None
 
-    @cached_property
+    @property
     def languages_available(self):
         return [t.language for t in self.translations.all()]
 
@@ -144,7 +145,7 @@ class Narrative(Base):
     def languages_available_verbose(self, seperator=' • '):
         return seperator.join([str(settings.LANGUAGES_DICT.get(l, l)) for l in self.languages_available if l])
 
-    @cached_property
+    @property
     def languages_available_count(self):
         return self.translations.count()
 
@@ -176,12 +177,50 @@ class NarrativeTranslation(Base):
         TagManager, on_delete=models.SET_NULL, related_name='narrative', null=True)
     edited = models.BooleanField(default=False)
 
-    @property
-    def at_version(self):
-        return self.versions.filter(sketch=False).count()
+
+    def autosave(self, *args, **kwargs):
+        """Autosave given instance. If possible, 
+        updates the latest version. Otherwise creates a new NarrativeVersion. 
+
+        Returns:
+            NarrativeVersion: latest and saved version of given instance
+        """
+        self.save()
+        if self.latest is None or self.latest.readonly:
+            nv = NarrativeVersion()
+        else:
+            nv = self.latest
+        nv.reference(self)
+        nv.save()
+        return self.latest
+
+    def publish(self, *args, **kwargs):
+        """Publishes given instance's latest version. If readonly,
+        creates a new NarrativeVersion referencing instance and publishes
+        that.
+
+        Returns:
+            NarrativeVersion: latest and saved version of given instance
+        """
+
+        self.save()
+
+        if self.latest is None:
+            self.autosave()
+        
+        nv = NarrativeVersion() if self.latest.readonly else self.latest
+        nv.reference(self)
+        nv.save()
+        return self.latest
+
     @property
     def latest(self):
-        return self.versions.filter(sketch=False).first()
+        return self.versions.first()
+    
+    @property
+    def at_version(self):
+        # TODO: this function seems to lack something
+        return self.versions.filter(sketch=False).count()
 
     def get_absolute_url(self):
         if self.sketch:
@@ -189,55 +228,14 @@ class NarrativeTranslation(Base):
         else:
             return reverse('narrative:detail', kwargs={'slug': self.slug})
 
-    def reference(self, ref):
-        self.title = ref.title
-        self.body = ref.body
-        self.language = ref.language
-        self.master = ref
-        self.sketch = ref.sketch
-
-
-    def save(self, *args, new_version=True, **kwargs):
-        super().save(*args, **kwargs)
-
-        initial_version = self.versions.count() == 0
-        latest = self.versions.first()  # versions are ordered from latest to earliest
-        if latest is not None:
-            if latest.is_published:
-                self.edited = True
-
-        if initial_version:
-            nv = NarrativeVersion()
-            nv.reference(self)
-            nv.version = 0
-            nv.save()
-        
-        elif self.is_published and not new_version:
-            #  gotta be an edit after the publish
-            if not latest.sketch:
-                latest = self.versions.filter(sketch=True).first()
-            if not latest:
-                latest = NarrativeVersion()
-                latest.version = self.versions.first().version + 1
-            latest.reference(self)
-            latest.sketch = True
-            latest.save()
-
-        elif new_version:
-            # save a new version and archive latest
-            nv = NarrativeVersion()
-            nv.reference(self)
-            nv.version = latest.version + 1 if not self.is_published else 0
-            nv.save()
-            # latest.reference(self)
-            latest.sketch = False
-            latest.save(archive=True)
-            self.edited = False
-
-        else:
-            # update latest version without creating a new one
-            latest.reference(self)
-            latest.save()
+    def save(self, *args, **kwargs):
+        if self.master is None:
+            author = kwargs.get('author')
+            if author:
+                self.master = Narrative(author=author)
+                self.master.save()
+            else:
+                raise AbsentMaster('This instance of NarrativeTranslation has no master and no author is supplied')
         
         super().save(*args, **kwargs)
 
@@ -262,6 +260,7 @@ class NarrativeVersion(Base):
         self.master = ref
         self.language = ref.language
         self.is_published = ref.is_published
+        self.version = ref.latest.version + 1 if ref.latest is not None else 1
 
     def archive(self):
         return self.save(archive=True)
