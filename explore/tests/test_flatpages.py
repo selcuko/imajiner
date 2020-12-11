@@ -1,4 +1,4 @@
-from imajiner.tests import TestCase
+from django.test import TestCase
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 
@@ -9,6 +9,6 @@ class FlatpagesTest(TestCase):
 
     def test_about(self):
         response = self.client.get(reverse('explore:about'))
-        assert response.status_code == 200
+        self.assertEqual(response.status_code, 200)
 
     

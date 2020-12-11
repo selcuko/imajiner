@@ -1,4 +1,4 @@
-from imajiner.tests import TestCase
+from .common import TestCase
 from django.shortcuts import reverse
 from notebook.models import NarrativeTranslation
 

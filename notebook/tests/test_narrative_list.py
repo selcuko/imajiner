@@ -1,4 +1,4 @@
-from imajiner.tests import TestCase
+from .common import TestCase
 from django.shortcuts import reverse
 from notebook.models import Narrative, NarrativeTranslation
 import random
@@ -17,6 +17,5 @@ class NarrativeListTest(TestCase):
 
     def test_list_authenticated(self):
         logged_in = self.login()
-        self.assertEqual(logged_in, True)
         response = self.client.get(reverse('narrative:list'))
         self.assertEqual(response.status_code, 200)

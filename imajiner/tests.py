@@ -43,8 +43,3 @@ class TestCase(DjangoTestCase):
     
     def logout(self):
         return self.client.logout()
-    
-    def tearDown(*args, **kwargs): pass
-    def tearDownClass(*args, **kwargs): pass
-    def doCleanups(*args, **kwargs): pass
-    def tearDown(*args, **kwargs): pass
