@@ -11,17 +11,6 @@ class NarrativeForm(forms.ModelForm):
             'title',
             'body',
         ]
-
-        widgets = {
-            'uuid': forms.HiddenInput(),
-            'title': forms.TextInput(attrs={'class': 'full-width'}),
-            'body': forms.Textarea(attrs={'class': 'full-width'}),
-        }
-
-        labels = {
-            'title': _('Title'),
-            'body': _('Body'),
-        }
     
     def clean_title(self):
         title = self.cleaned_data['title']
