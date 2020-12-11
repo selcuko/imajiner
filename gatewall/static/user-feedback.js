@@ -76,10 +76,17 @@ handle.shadow.saving = () => {
     handle.shadow.status(gettext('registering your brand new account'));
 }
 
-handle.shadow.error = () => {
-    handle.shadow.text(gettext('error'));
-    handle.shadow.icon('fa-times');
-    handle.shadow.status(gettext('an error occured'));
+handle.shadow.error = (network) => {
+    handle.shadow.warn();
+    if (network){
+        handle.shadow.text(gettext('network error'));
+        handle.shadow.icon('fa-times');
+        handle.shadow.status(gettext('network error: we cannot access our servers'));
+    } else {
+        handle.shadow.text(gettext('error'));
+        handle.shadow.icon('fa-times');
+        handle.shadow.status(gettext('unknown error occured'));
+    }
 }
 
 handle.shadow.login = () => {

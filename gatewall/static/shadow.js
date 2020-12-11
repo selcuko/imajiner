@@ -27,7 +27,7 @@ $shadow.input.onkeyup = (e) => {
         .then(json => {
             handle.shadow.availability(json.available);
         })
-        .catch(error => handle.shadow.error());
+        .catch(error => handle.shadow.error(network=true));
 }
 
 
@@ -56,7 +56,7 @@ function checkShadowRecords() {
                     if (found) handle.shadow.found(json);
                     else handle.shadow.waiting();
                 })
-                .catch(error => handle.shadow.error());
+                .catch(error => handle.shadow.error(network=true));
         });
 }
 
@@ -86,6 +86,9 @@ $shadow.button.onclick = (e) => {
         })
         .then(json => {
             handle.shadow.postclick(json);
+        })
+        .catch(error => {
+            handle.shadow.error(network=true);
         })
 
     if ($shadow.button.disabled) handle.shadow.warn();
