@@ -10,7 +10,7 @@ from django.core import serializers
 from django.core.exceptions import SuspiciousOperation
 from django.http import JsonResponse
 from django.shortcuts import Http404, HttpResponse, get_object_or_404
-from django.shortcuts import redirect as dj_redirect
+from django.shortcuts import redirect
 from django.shortcuts import render, reverse
 from django.utils.translation import get_language_from_request
 from django.utils.translation import gettext as _
@@ -28,7 +28,7 @@ class Redirect(View):
     def get(self, request, uuid, *args, **kwargs):
         narrative = Narrative.objects.get(uuid=uuid)
         translation = narrative.translations.last()
-        return dj_redirect(translation)
+        return redirect(translation)
 
 
 
@@ -144,54 +144,11 @@ class FreshWrite(LoginRequiredMixin, View):
             return JsonResponse({}, status=400)
 
 
-
 class AddTranslation(LoginRequiredMixin, View):
-    template_name = 'notebook/narrative/write.html'
 
-    def get(self, request, uuid, redirect=False):
-        if redirect:
-            master = Narrative.objects.get(uuid=uuid, author=request.user)
-            translation = NarrativeTranslation(master=master)
-            translation.save()
-            link = reverse('notebook:translate', kwargs={
-                           'uuid': translation.uuid})
-            return dj_redirect(to=link)
+    def get(self, request, uuid):
+        referrer = NarrativeTranslation.objects.get(uuid=uuid)
+        translation = NarrativeTranslation(master=referrer.master)
+        translation.save()
+        return redirect(to=reverse('narrative:sketch', kwargs={'uuid': translation.uuid}))
 
-        translation = NarrativeTranslation.objects.get(uuid=uuid)
-        form = NarrativeForm(instance=translation)
-        return render(self.request, self.template_name, {
-            'form': form,
-            'doc': {
-                'title': _('Translation')
-            }
-        })
-
-    def post(self, request, uuid, redirect=None):
-
-        translation = NarrativeTranslation.objects.get(uuid=uuid)
-        form = NarrativeForm(request.POST, instance=translation)
-        action = request.POST.get('action', '').lower()
-
-        if not form.is_valid():
-            logger.warn('NarrativeForm (Translation) not valid.')
-            return JsonResponse({}, status=400)
-
-        if action == 'submit':
-            translation = form.save(commit=False)
-            translation.sketch = False
-            translation.save()
-            response = {
-                'language': settings.LANGUAGES_DICT.get(translation.language, translation.language),
-                'publicUrl': translation.get_absolute_url(),
-            }
-            return JsonResponse(response)
-
-        elif action == 'autosave':
-            translation = form.save(commit=False)
-            translation.sketch = True
-            translation.save(new_version=False)
-            return JsonResponse({})
-
-        else:  # action id not recognized or absent
-            logger.warn('NarrativeForm submitted with no known action ID.')
-            return JsonResponse({}, status=400)
