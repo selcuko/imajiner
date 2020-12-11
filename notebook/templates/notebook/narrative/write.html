@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static i18n %}
+{% load static i18n widget_tweaks %}
 
 {% block head %}
 <style type="text/css" media="screen">
@@ -19,24 +19,30 @@
 
 {% block body.id %}top{% endblock %}
 {% block body %}
-    <section id="styles" class="philosophy s-styles">
-        <div class="philosophy row">
+<section id="styles" class="philosophy s-styles">
+    <div class="philosophy row">
 
-            <div class="philosophy tab-full">
-                <h1 class="philosophy">{% translate 'declare a narrative'|capfirst %}</h1>
-                <br>
-                <form enctype="multipart/form-data" class="philosophy" id="form" action="" method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="hidden" id="sketches-url" value="{% url 'notebook:folder' %}">
-                    <blockquote class="philosophy">
-                        <p class="philosophy" id="status">{% translate "something's happening"|capfirst %}</p>
-                        <cite class="philosophy">{% translate 'the system'|capfirst %}</cite>
-                    </blockquote>
-                    <input id="submit-button" class="btn--primary full-width" type="submit" value="{% translate 'declare'|capfirst %}">
-                    <input id="sketch-button" class="btn--stroke full-width" type="button" value="{% translate 'left as sketch'|capfirst %}">
-                </form>
-            </div>
+        <div class="philosophy tab-full">
+            <h1 class="philosophy">{% translate 'declare a narrative'|capfirst %}</h1>
+            <br>
+            <form enctype="multipart/form-data" class="philosophy" id="form" action="" method="POST">
+                {% csrf_token %}
+                {% render_field form.uuid type="hidden" %}
+                <label for="id_title">Title</label>
+                {% render_field form.title %}
+                <label for="id_body">Body</label>
+                {% render_field form.body label="Body" %}
+                <input type="hidden" id="sketches-url" value="{% url 'notebook:folder' %}">
+                <blockquote class="philosophy">
+                    <p class="philosophy" id="status">{% translate "something's happening"|capfirst %}</p>
+                    <cite class="philosophy">{% translate 'the system'|capfirst %}</cite>
+                </blockquote>
+                <input id="submit-button" class="btn--primary full-width" type="submit"
+                    value="{% translate 'declare'|capfirst %}">
+                <input id="sketch-button" class="btn--stroke full-width" type="button"
+                    value="{% translate 'left as sketch'|capfirst %}">
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock body %}

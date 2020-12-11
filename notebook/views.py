@@ -22,7 +22,7 @@ from .forms import NarrativeForm
 from .models import Narrative, NarrativeTranslation
 
 logger = logging.getLogger(__name__)
-
+logger.setLevel(logging.DEBUG)
 
 class Redirect(View):
     def get(self, request, uuid, *args, **kwargs):
@@ -159,7 +159,8 @@ class FreshWrite(LoginRequiredMixin, View):
             action = request.POST.get('action', '').lower()
 
             if not form.is_valid():
-                logger.warn('NarrativeForm is not valid.')
+                logger.warn(f'Request.POST: {request.POST}')
+                logger.warn(f'NarrativeForm is not valid. {form.errors}')
                 return JsonResponse({}, status=400)
 
             if action == 'autosave':

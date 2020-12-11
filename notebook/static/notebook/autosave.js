@@ -38,8 +38,8 @@ $leftSketch.onclick = (e) => {
 
 $form.onsubmit = function (e) {
     e.preventDefault();
-    $title.disabled = true;
-    $textarea.disabled = true;
+    $title.readonly = true;
+    $textarea.readonly = true;
     clearInterval(intervalId);
     if (submitSucceed) {
         location.href = publicUrl;
