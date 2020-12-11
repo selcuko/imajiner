@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Count
 
 from .models import *
 
@@ -46,7 +47,7 @@ class NarrativeTranslationAdmin(admin.ModelAdmin):
         return instance.master.author.username
     
     def get_queryset(self, *args, **kwargs):
-        return NarrativeTranslation.objects.prefetch_related('versions')
+        return NarrativeTranslation.objects.prefetch_related('versions').annotate(versions_count=Count('versions')).order_by('-edited_at', '-versions_count', 'sketch')
     
 
 admin.site.register(Narrative, NarrativeAdmin)

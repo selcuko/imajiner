@@ -13,6 +13,7 @@ from django.db import models
 from django.shortcuts import reverse
 from django.utils import html, text, timezone
 from django.utils.functional import cached_property
+from django.db.models import Count
 from tagmanager.models import TagManager
 from .methods import generate
 
@@ -165,6 +166,9 @@ class Narrative(Base):
 
 
 class NarrativeTranslation(Base):
+    class Meta(Base.Meta):
+        ordering = ('-edited_at', 'edited_at')
+
     master = models.ForeignKey(
         Narrative, on_delete=models.CASCADE, related_name='translations')
     tags = models.OneToOneField(
