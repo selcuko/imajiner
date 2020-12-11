@@ -138,7 +138,7 @@ class Narratives(LoginRequiredMixin, ListView):
     
     def get_queryset(self, *args, **kwargs):
         queryset = NarrativeModel.objects.filter(author=self.request.user)
-        return queryset
+        return queryset.order_by('-pk')
 
 
 class NarrativeTranslations(LoginRequiredMixin, ListView):

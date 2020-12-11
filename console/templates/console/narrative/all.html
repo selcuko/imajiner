@@ -43,13 +43,17 @@
                             <tbody>
                                 {% for narrative in narratives %}
                                 <tr>
-                                    <td>{% if narrative.title %}
+                                    <td>
                                         <a href="{% url 'console:narrative-translations' n_uuid=narrative.uuid %}">
+
+                                        {% if narrative.title %}
+                                        
                                             {{ narrative.title }}
-                                        </a>
+                                        
                                         {% else %}
-                                        <i class="fa fa-edit"></i><p style="color: gray">{% translate "Untitled" %}</p>
+                                        <p style="color: gray"><i class="fa fa-edit"></i> {% translate "Untitled" %}</p>
                                         {% endif %}
+                                        </a>
                                     </td>
                                     <td>{% if narrative.is_published %}{{ narrative.published_at|date }}
                                         {% else %}<i class="fa fa-times"></i>{% endif %}</td>

@@ -78,6 +78,10 @@ class Base(models.Model):
     public = models.BooleanField(null=True, blank=True)
 
 
+    @property
+    def is_published(self):
+        return bool(self.published_at)
+
     def save(self, *args, **kwargs):
         if isinstance(self.title, str) and len(self.title) is 0:
             self.title = None
@@ -145,6 +149,24 @@ class Narrative(models.Model):
                 return t.title
         return None
     
+    @property
+    def is_published(self):
+        return bool(self.published_at)
+
+    @property
+    def edited_at(self):
+        try:
+            return self.translations.order_by('-edited_at').first().edited_at
+        except:
+            return
+
+    @property
+    def published_at(self):
+        try:
+            return self.translations.order_by('-created_at').first().published_at
+        except:
+            return
+
     @property
     def languages(self):
         return [settings.LANGUAGES_DICT.get(t.language, t.language) for t in self.translations.all()]
