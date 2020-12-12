@@ -15,5 +15,5 @@ class AuthorView(DetailView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['narratives'] = NarrativeTranslation.objects.filter(master__author=self.object)
+        context['narratives'] = NarrativeTranslation.objects.of(self.object)
         return context
