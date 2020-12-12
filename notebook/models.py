@@ -17,7 +17,7 @@ from django.utils.functional import cached_property
 from tagmanager.models import TagManager
 
 from .methods import generate
-from .exceptions import AbsentMasterException
+from .exceptions import AbsentMasterException, ReadonlyException
 from . import managers
 
 logger = logging.getLogger(__name__)
@@ -117,9 +117,6 @@ class Base(models.Model):
 
         super().save(*args, **kwargs)
 
-    def __str__(self, *args, **kwargs):
-        return self.title
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not self.uuid:
@@ -172,7 +169,8 @@ class Narrative(models.Model):
         return [t.language for t in self.translations.all()]
     
     def __str__(self):
-        return self.title
+        if self.title: return self.title
+        else: return ''
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -317,7 +315,7 @@ class NarrativeVersion(Base):
         return self.save(archive=True)
 
     def save(self, *args, **kwargs):
-        silent = kwargs.pop('silent', True)
+        silent = kwargs.pop('silent', False)
         overwrite = kwargs.pop('overwrite', False)
 
         if self.readonly and not overwrite:

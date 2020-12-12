@@ -5,6 +5,9 @@ from model_bakery import baker
 from notebook.models import NarrativeTranslation
 from django.contrib.auth.models import User
 
+logger = logging.getLogger('django.request')
+logger.setLevel(logging.ERROR)
+
 class NarrativeDetail(TestCase):
 
     def setUp(self):
