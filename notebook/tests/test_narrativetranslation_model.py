@@ -53,7 +53,7 @@ class NarrativeTranslationTestCase(TestCase):
         except Exception as exc:
             self.fail(f'NarrativeTranslation save method failed with {exc!r}')
         else:
-            self.assertIsNone(narrative.latest)
+            self.assertIsNotNone(narrative.latest)
     
 
     def test_autosave_valid(self):
@@ -68,6 +68,7 @@ class NarrativeTranslationTestCase(TestCase):
         narrative = NarrativeTranslation()
         try:
             narrative.autosave(author=self.user)
+            narrative.publish()
         except Exception as exc:
             self.fail(f'NarrativeTranslation save method failed with {exc!r}')
         else:
