@@ -2,6 +2,10 @@ from django.test import TestCase as TC
 from django.shortcuts import reverse
 from model_bakery import baker
 from ..models import NarrativeTranslation
+import logging
+
+logger = logging.getLogger('django.request')
+logger.setLevel(logging.ERROR)
 
 class TestCase(TC):
     @classmethod

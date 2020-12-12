@@ -24,13 +24,6 @@ from .models import Narrative, NarrativeTranslation
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-class Redirect(View):
-    def get(self, request, uuid, *args, **kwargs):
-        narrative = Narrative.objects.get(uuid=uuid)
-        translation = narrative.translations.last()
-        return redirect(translation)
-
-
 
 class Detail(DetailView):
     model = NarrativeTranslation
@@ -49,7 +42,6 @@ class Detail(DetailView):
             'LANG_INFO': LANG_INFO,
         })
         return ctx
-
 
 
 class List(ListView):
@@ -85,7 +77,7 @@ class Folder(LoginRequiredMixin, ListView):
         return NarrativeTranslation.objects.sketches(author=self.request.user)
 
 
-class FreshWrite(LoginRequiredMixin, View):
+class Write(LoginRequiredMixin, View):
     template_name = 'notebook/narrative/write.html'
 
     def get(self, request, uuid=None):
