@@ -14,12 +14,18 @@ class AuthorViewTests(TestCase):
         self.client.logout()
 
 
-    def test_authorview_anonymous(self):
+    def test_anonymous(self):
         response = self.client.get(reverse('identity:author', kwargs={'username': self.author.username}))
         self.assertEqual(response.status_code, 200)
     
     
-    def test_authorview_authenticated(self):
+    def test_authenticated(self):
         self.client.force_login(self.user)
         response = self.client.get(reverse('identity:author', kwargs={'username': self.author.username}))
+        self.assertEqual(response.status_code, 200)
+    
+
+    def test_self(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('identity:author', kwargs={'username': self.user.username}))
         self.assertEqual(response.status_code, 200)
