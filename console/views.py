@@ -48,7 +48,7 @@ class Profile(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
         else:
-            logger.warn('ProfileForm not valid.')
+            logger.warning('ProfileForm not valid.')
             
         return render(request, self.template, {
             'form': form,

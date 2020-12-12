@@ -118,7 +118,7 @@ class FreshWrite(LoginRequiredMixin, View):
             form = NarrativeForm(request.POST, instance=narrative)
 
             if not form.is_valid():
-                logger.warn(f'NarrativeForm is not valid: {form.errors}')
+                logger.warning(f'NarrativeForm is not valid: {form.errors}')
                 return JsonResponse(dict(form.errors), status=400)
 
             if action == 'autosave':
@@ -136,11 +136,11 @@ class FreshWrite(LoginRequiredMixin, View):
                 return JsonResponse(response)
 
             else:  # action id not recognized or absent
-                logger.warn(f'NarrativeForm submitted with no known action ID: {action}')
+                logger.warning(f'NarrativeForm submitted with no known action ID: {action}')
                 return JsonResponse({}, status=400)
 
         except KeyError as exc:
-            logger.warn(f'NarrativeView encountered KeyError: {exc!r}')
+            logger.warning(f'NarrativeView encountered KeyError: {exc!r}')
             return JsonResponse({}, status=400)
 
 
