@@ -5,7 +5,11 @@ class NarrativePublicity(models.Manager):
 
     def public(self, *args, **kwargs):
         visitor = kwargs.pop('visitor', None)
-        qs = super().filter(sketch=False)
+        qs = super().filter(
+            sketch=False,
+            language__isnull=False,
+            title__isnull=False,
+            body__isnull=False)
         return qs
     
     def sketches(self, *args, **kwargs):
