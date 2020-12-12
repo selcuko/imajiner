@@ -19,6 +19,16 @@ class NarrativeDetail(TestCase):
         self.login()
         response = self.client.post(reverse('narrative:write'))
         self.assertEqual(response.status_code, 400)
+
+    def test_continue_sketch_get(self):
+        self.logout()
+        response = self.client.get(reverse('notebook:sketch', kwargs={'uuid': self.narrative.uuid}))
+        self.assertEqual(response.status_code, 302)
+    
+    def test_continue_sketch_post(self):
+        self.login()
+        response = self.client.get(reverse('notebook:sketch', kwargs={'uuid': self.narrative.uuid}))
+        self.assertEqual(response.status_code, 200)
     
 
     
