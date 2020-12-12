@@ -169,10 +169,10 @@ class Narrative(models.Model):
 
     @property
     def languages(self):
-        return [settings.LANGUAGES_DICT.get(t.language, t.language) for t in self.translations.all()]
+        return [t.language for t in self.translations.all()]
     
     def __str__(self):
-        return self.title if self.title else ''
+        return self.title
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -234,7 +234,7 @@ class NarrativeTranslation(Base):
         
         nv = NarrativeVersion() if self.latest.readonly else self.latest
         nv.reference(self)
-        nv.save()
+        nv.save(archive=True)
         return self.latest
 
     @property
@@ -242,10 +242,10 @@ class NarrativeTranslation(Base):
         return self.versions.first()
     
     @property
-    def at_version(self):
+    def version(self):
         # latest published version
         # TODO: this function seems to lack something
-        return self.versions.filter(sketch=False).count()
+        return self.versions.filter(sketch=False).first().version if self.versions.count() is not 0 else None
 
     def get_absolute_url(self):
         if self.sketch:
@@ -269,7 +269,10 @@ class NarrativeTranslation(Base):
                 raise AbsentMasterException(self)
         
         super().save(*args, **kwargs)
-        self.latest.reference(self, overwrite=True)
+
+        nv = self.latest if self.latest else NarrativeVersion()
+        nv.reference(self, autosave=True)
+        nv.save(overwrite=True)
 
 
     def __str__(self):
@@ -305,7 +308,7 @@ class NarrativeVersion(Base):
             self.version = point.latest.version
             if not autosave: self.version += 1
         else:
-            self.version = 1
+            self.version = 0
         
         if save:
             self.save(overwrite=overwrite, **kwargs)
