@@ -268,7 +268,9 @@ class NarrativeTranslation(Base):
             else:
                 raise AbsentMasterException(self)
         
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        self.latest.reference(self, overwrite=True)
+
 
     def __str__(self):
         return str(self.title)
@@ -289,19 +291,24 @@ class NarrativeVersion(Base):
     def __str__(self):
         return f'v{self.version}: {self.title}'
 
-    def reference(self, ref, **kwargs):
+    def reference(self, point, **kwargs):
         autosave = kwargs.pop('autosave', False)
-        self.master = ref
-        self.title = ref.title
-        self.body = ref.body
-        self.sketch = ref.sketch
-        self.language = ref.language
+        overwrite = kwargs.pop('overwrite', False)
+        save = kwargs.pop('save', False)
+        self.master = point
+        self.title = point.title
+        self.body = point.body
+        self.sketch = point.sketch
+        self.language = point.language
 
-        if ref.latest is not None:
-            self.version = ref.latest.version
+        if point.latest is not None:
+            self.version = point.latest.version
             if not autosave: self.version += 1
         else:
             self.version = 1
+        
+        if save:
+            self.save(overwrite=overwrite, **kwargs)
 
     def archive(self):
         return self.save(archive=True)
