@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.shortcuts import reverse
 from model_bakery import baker
 from ..models import NarrativeTranslation, Narrative
 from ..exceptions import AbsentMasterException
@@ -90,4 +91,14 @@ class NarrativeTranslationTestCase(TestCase):
         else:
             self.assertFalse(narrative.sketch)
             self.assertFalse(narrative.latest.sketch)
+    
+
+    def test_get_absolute_url(self):
+        narrative = NarrativeTranslation()
+        narrative.save(author=self.user)
+        self.assertEqual(narrative.get_absolute_url(), reverse('narrative:sketch', kwargs={'uuid':narrative.uuid}))
+        narrative.sketch=False
+        narrative.save()
+        self.assertEqual(narrative.get_absolute_url(), reverse('narrative:detail', kwargs={'slug': narrative.slug}))
+
 
