@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
 from .models import Feedback as FeedbackModel
 from django.utils.translation import gettext_lazy as _
+from django.core.mail import mail_admins
+
 
 def red(request):
     return HttpResponsePermanentRedirect(f'https://{settings.PRIMARY_HOST}')
@@ -46,5 +48,21 @@ class Feedback(View):
         except KeyError as ke:
             print(repr(ke))
             return HttpResponse(ke, status=400)
+        
+        message = f"""
+From: {feedback.user if feedback.user else 'Anonymous'}
+User-Agent: {feedback.ua}
+Page: {feedback.location}
+Referrer: {feedback.referrer}
+
+Message:
+{feedback.message}
+"""
+
+        mail_admins(
+            f'Received feedback',
+            message,
+            fail_silently=False,
+        )
         
         return HttpResponse()
