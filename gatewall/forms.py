@@ -11,7 +11,8 @@ class UserForm(forms.ModelForm):
         ]
 
 
-class ShadowForm(forms.Form):
+class ShadowForm(forms.ModelForm):
+    username = forms.CharField(min_length=5, max_length=64, required=False)
     class Meta:
         model = Shadow
-        fields = ['username']
+        fields = ['addr', 'agent', 'fingerprint']
