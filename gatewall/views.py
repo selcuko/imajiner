@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.exceptions import SuspiciousOperation
 from django.db import IntegrityError
 from django.views import View
@@ -119,5 +119,5 @@ class Logout(View):
     def get(self, request):
         if request.user.is_authenticated:
             logout(request)
-        return HttpResponse('Y O U R E  O U T')
+        return redirect('gatewall:auth')
 
