@@ -10,11 +10,14 @@ from identity.models import Shadow
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language_from_request
 import time
+import logging
+from .forms import UserForm, ShadowForm
+
+logger = logging.getLogger(__name__)
 
 class Auth(View):
     def get(self, request):
-        i = request.GET.get('informative', None) is not None
-        print('INFO', i, request.GET)
+        i = request.GET.get('informative') is not None
         return render(request, 'gatewall/gatewall.html', {
             'user': request.user,
             'informative': i,
@@ -22,16 +25,15 @@ class Auth(View):
                 'title': _('Authorization'),
                 'author': _('Imajiner Gatewall'),
                 'description': _('You need to be authenticated in order to write here.'),
-            }
-            })
+            }})
     
     def post(self, request):
         time.sleep(1)
-        p = request.POST
         try:
-            action = p['action']
+            action = request.POST['action']
+            
             if action == "shadow-check":
-                fingerprint = p['fingerprint']
+                fingerprint = request.POST['fingerprint']
                 shadow = Shadow.authenticate(fingerprint)
                 print('FOUND:', shadow)
                 if not shadow:
@@ -42,18 +44,17 @@ class Auth(View):
                 })
             
             elif action == 'username-availability':
-                username = p['username']
+                username = request.POST['username']
                 return JsonResponse({'available': not User.objects.filter(username=username).exists()})
                 
             elif action == 'shadow-register':
-                fingerprint = p['fingerprint']
-                username = p.get('username', None)
+                fingerprint = request.POST['fingerprint']
+                username = request.POST.get('username')
                 shadow = Shadow.create_shadow(request, fingerprint, username)
                 login(request, shadow.user)
                 user = shadow.user
                 request_language = get_language_from_request(request)
                 request_language_path = get_language_from_request(request, check_path=True)
-                print(request_language, request_language_path)
                 if request_language:
                     user.profile.languages += [request_language]
                 if request_language_path != request_language and request_language_path:
@@ -61,8 +62,8 @@ class Auth(View):
                 return JsonResponse({'username': username})
 
             elif action == 'shadow-login':
-                fingerprint = p['fingerprint']
-                username = p.get('username', None)
+                fingerprint = request.POST['fingerprint']
+                username = request.POST.get('username', None)
                 shadow = Shadow.authenticate(fingerprint)
                 if not shadow:
                     return JsonResponse({}, status=403)
@@ -70,8 +71,8 @@ class Auth(View):
                 return JsonResponse({})
             
             elif action == 'author-register':
-                username = p['username']
-                password = p['password']
+                username = request.POST['username']
+                password = request.POST['password']
                 try:
                     user = User.objects.create_user(username=username, password=password)
                     login(request, user)
@@ -80,7 +81,6 @@ class Auth(View):
                 
                 request_language = get_language_from_request(request)
                 request_language_path = get_language_from_request(request, check_path=True)
-                print(request_language, request_language_path)
                 if request_language:
                     user.profile.languages += [request_language]
                 if request_language_path != request_language and request_language_path:
@@ -89,15 +89,14 @@ class Auth(View):
                 return JsonResponse({'authenticated': True})
             
             elif action == 'author-login':
-                username = p['username']
-                password = p['password']
+                username = request.POST['username']
+                password = request.POST['password']
                 user = authenticate(username=username, password=password)
                 if not user:
                     return JsonResponse({'authenticated': False})
                 else:
                     login(request, user)
                     return JsonResponse({'authenticated': True})
-            
             
             elif action == 'logout':
                 if not request.user.is_authenticated:
@@ -111,7 +110,7 @@ class Auth(View):
                 return JsonResponse({}, status=400)
 
         except KeyError as ke:
-            print("KeyError on auth", ke.args)
+            logging.debug(f'KeyError on AuthView: {ke!r}')
             return JsonResponse(form.errors, status=400)
 
 

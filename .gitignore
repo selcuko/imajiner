@@ -10,3 +10,4 @@ htmlcov/
 .coverage
 .pytest_cache/
 db.sqlite3
+.vscode/
