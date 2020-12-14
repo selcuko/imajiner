@@ -132,7 +132,7 @@ class Auth(View):
 
         except KeyError as ke:
             logging.error(f'KeyError on AuthView: {ke!r}')
-            return JsonResponse(form.errors, status=400)
+            return JsonResponse({}, status=400)
 
 
 class Logout(View):
