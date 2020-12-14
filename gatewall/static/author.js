@@ -35,12 +35,12 @@ $author.password.onkeyup = (e) => {
 $author.button.onclick = (e) => {
     e.preventDefault();
 
-    if ($author.password.value.length < 6) {
+    if ($author.password.value.length < 8) {
         $author.tooshort = true;
         handle.author.warn();
         handle.author.text(gettext('fill out password'));
         handle.author.icon('fa-info-circle');
-        handle.author.status(gettext('password is too short, I want at least 6 chars'));
+        handle.author.status(gettext('password is too short, I want at least 8 chars'));
         return;
     }
 

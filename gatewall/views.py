@@ -53,33 +53,47 @@ class Auth(View):
             elif action == 'shadow-register':
                 
                 try:
-                    shadow = Shadow.create_shadow(request, request.POST['fingerprint'], request.POST.get('username', ''))
+                    shadow = Shadow.create_shadow(
+                        request, 
+                        request.POST['fingerprint'], 
+                        request.POST.get('username', '')
+                        )
                 except IntegrityError:
-                    return JsonResponse({}, status=400)
+                    return JsonResponse({
+                        'authenticated': False
+                    }, status=400)
 
                 login(request, shadow.user)
-                request_language = get_language_from_request(request)
-                request_language_path = get_language_from_request(request, check_path=True)
-                if request_language:
-                    shadow.user.profile.languages += [request_language]
-                if request_language_path != request_language and request_language_path:
-                    shadow.user.profile.languages += [request_language_path]
+                lang1 = get_language_from_request(request)
+                lang2 = get_language_from_request(request, check_path=True)
+                if lang1:
+                    shadow.user.profile.languages += [lang1]
+                if lang2 != lang1 and lang2:
+                    shadow.user.profile.languages += [lang2]
                 shadow.user.profile.save()
-                return JsonResponse({'username': shadow.user.username})
+                return JsonResponse({
+                    'username': shadow.user.username,
+                    'authenticated': True})
 
             elif action == 'shadow-login':
                 fingerprint = request.POST['fingerprint']
                 shadow = Shadow.authenticate(fingerprint)
                 if not shadow:
-                    logging.error('ShadowLogin fingerprint not recognized.')
-                    return JsonResponse({}, status=403)
-                login(request, shadow.user)
-                return JsonResponse({})
+                    return JsonResponse({
+                        'authenticated': False
+                    }, status=403)
+                else:
+                    login(request, shadow.user)
+                    return JsonResponse({
+                        'authenticated': True
+                    })
             
             elif action == 'author-register':
                 form = UserForm(request.POST)
                 if not form.is_valid():
-                    JsonResponse({}, status=400)
+                    JsonResponse({
+                        'authenticated': False
+                    }, status=400)
                 try:
                     user = User.objects.create_user(
                         username=form.cleaned_data['username'], 
@@ -114,8 +128,6 @@ class Auth(View):
                 return JsonResponse({})
 
             else:
-                error = f'Unknown action ID: {action}'
-                print(error)
                 return JsonResponse({}, status=400)
 
         except KeyError as ke:
