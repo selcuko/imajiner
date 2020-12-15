@@ -3,6 +3,11 @@ from django.shortcuts import reverse
 from uuid import uuid1
 from identity.models import Shadow
 from ..views import Auth
+import json
+import logging
+
+logger = logging.getLogger('django.requests')
+logger.setLevel(logging.ERROR)
 
 class ShadowViewsTests(TestCase):
     fingerprint0 = uuid1()
@@ -18,15 +23,21 @@ class ShadowViewsTests(TestCase):
         pass
     
 
+    def jsonify(self, response):
+        j = json.loads(str(response.content, encoding='utf-8')),
+        j = j[0]
+        return j
+
     def test_check_404(self):
         response = self.client.post(reverse('gatewall:auth'), {
             'action': 'shadow-check',
             'fingerprint': self.fingerprint0,
         })
         self.assertEqual(response.status_code, 200)
-        self.assertJSONEqual(
-            str(response.content, encoding='utf-8'),
-            {'found': False}
+        j = self.jsonify(response)
+        self.assertIn(
+            'found',
+            j.keys(),
         )
     
 
@@ -36,9 +47,10 @@ class ShadowViewsTests(TestCase):
             'fingerprint': self.fingerprint0,
         })
         self.assertEqual(response.status_code, 200)
-        self.assertJSONEqual(
-            str(response.content, encoding='utf-8'), 
-            {'found': True}
+        j = self.jsonify(response)
+        self.assertIn(
+            'found',
+            j.keys(),
         )
 
 
