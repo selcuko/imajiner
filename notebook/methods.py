@@ -89,7 +89,7 @@ class generate:
             texthead = texthead[:-1]
 
         if append_dots is None:
-            append_dots = len(text) - 3 > LEAD_MAX_CHAR
+            append_dots = len(text) - 3 > cls.LEAD_MAX_CHAR
         if append_dots: texthead += '...'
         return texthead
     
@@ -105,6 +105,8 @@ class generate:
         """
         import cleantext
         
-        cleaned = cleantext.clean(text, replace_with='', all=True)
+        cleaned = text
+        cleaned = cleantext.replace_urls(cleaned, replace_with='')
+        cleaned = cleantext.replace_emails(cleaned, replace_with='')
         return cleaned
     

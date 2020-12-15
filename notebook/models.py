@@ -206,12 +206,13 @@ class NarrativeTranslation(Base):
         Returns:
             NarrativeVersion: latest and saved version of given instance
         """
+
         self.save(*args, **kwargs)
-        if self.latest is None or self.latest.readonly:
+        if (self.latest is None) or self.latest.readonly:
             nv = NarrativeVersion()
         else:
             nv = self.latest
-        nv.reference(self, autosave=True)
+        nv.reference(self, autosave=True, sketch=True, is_published=False)
         nv.save()
         return self.latest
 
@@ -239,6 +240,10 @@ class NarrativeTranslation(Base):
     def latest(self):
         return self.versions.first()
     
+    @property
+    def published(self):
+        self.versions.filter(sketch=False).first()
+
     @property
     def version(self):
         # latest published version
@@ -296,10 +301,11 @@ class NarrativeVersion(Base):
         autosave = kwargs.pop('autosave', False)
         overwrite = kwargs.pop('overwrite', False)
         save = kwargs.pop('save', False)
-        self.master = point
+        self.master = point if 
         self.title = point.title
         self.body = point.body
-        self.sketch = point.sketch
+        self.sketch = point.sketch if not overwrite else True
+        self.is_published = kwargs.pop('is_published') if kwargs.get('is_published') else point.is_published 
         self.language = point.language
 
         if point.latest is not None:
@@ -319,9 +325,9 @@ class NarrativeVersion(Base):
         overwrite = kwargs.pop('overwrite', False)
 
         if self.readonly and not overwrite:
+            logger.error(str(ReadonlyException(self)))
             if not silent:
                 raise ReadonlyException(self)
-            logger.error(str(ReadonlyException(self)))
 
         if kwargs.pop('archive', False):
             self.readonly = True

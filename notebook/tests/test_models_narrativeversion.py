@@ -26,6 +26,7 @@ class NarrativeTranslationModelTestCase(TestCase):
             self.narrative.publish()
         self.narrative.autosave()
         self.version = self.narrative.latest
+        print(self.version.sketch, self.version.readonly)
 
 
     def test_title(self):
