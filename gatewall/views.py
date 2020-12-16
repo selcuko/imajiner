@@ -14,7 +14,7 @@ import logging
 from .forms import UserForm, ShadowForm
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.ERROR)
 
 class Auth(View):
     def get(self, request):
@@ -47,7 +47,9 @@ class Auth(View):
                 })
             
             elif action == 'username-availability':
-                taken = User.objects.filter(username=request.POST['username']).exists()
+                username = request.POST['username']
+                if len(username) < 5: return JsonResponse({}, status=400)
+                taken = User.objects.filter(username=username).exists()
                 return JsonResponse({'available': not taken})
                 
             elif action == 'shadow-register':
@@ -131,7 +133,7 @@ class Auth(View):
                 return JsonResponse({}, status=400)
 
         except KeyError as ke:
-            logging.error(f'KeyError on AuthView: {ke!r}')
+            logging.debug(f'KeyError on AuthView: {ke!r}')
             return JsonResponse({}, status=400)
 
 

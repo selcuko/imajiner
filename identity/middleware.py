@@ -8,9 +8,10 @@ class ShadowMiddleware:
         # One-time configuration and initialization.
 
     def __call__(self, request):
-        shadow = self.is_shadow(request)
-        if shadow is not None:
-            login(request, shadow.user)
+        if request.method == 'GET' and 0:
+            shadow = self.is_shadow(request)
+            if shadow is not None:
+                login(request, shadow.user)
         response = self.get_response(request)
 
         # Code to be executed for each request/response after

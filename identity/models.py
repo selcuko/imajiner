@@ -37,7 +37,6 @@ class Shadow(models.Model):
             username = str(username)
         else:
             username = str(uuid1())
-        if len(username) < 6: raise Exception('Username too short.')
         shadow = Shadow.objects.create(
             user=User.objects.create(username=username),
             agent=user_agent(request),
