@@ -64,7 +64,10 @@ class List(ListView):
         return ctx
 
     def get_queryset(self):
-        return NarrativeTranslation.objects.public()
+        qs = NarrativeTranslation.objects.public()
+        if self.request.user.is_authenticated:
+            qs |= NarrativeTranslation.objects.filter(master__author=self.request.user)
+        return qs
 
 
 class Folder(LoginRequiredMixin, ListView):
@@ -83,7 +86,7 @@ class Write(LoginRequiredMixin, View):
     def get(self, request, uuid=None):
         if uuid:
             try:
-                narrative = NarrativeTranslation.objects.sketch(uuid=uuid, author=request.user)
+                narrative = NarrativeTranslation.objects.get(uuid=uuid, master__author=request.user)
             except NarrativeTranslation.DoesNotExist:
                 return JsonResponse({}, status=404)
         else:
