@@ -21,7 +21,7 @@ from .exceptions import AbsentMasterException, ReadonlyException
 from . import managers
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.ERROR)
+logger.setLevel(logging.DEBUG)
 
 
 class Base(models.Model):
@@ -208,13 +208,16 @@ class NarrativeTranslation(Base):
         """
 
         self.save(*args, **kwargs)
+        
         if (self.latest is None) or self.latest.readonly:
             nv = NarrativeVersion()
         else:
             nv = self.latest
-        nv.reference(self, autosave=True, sketch=True, is_published=False)
+        nv.reference(self, autosave=True)
+        nv.sketch = True
         nv.save()
         return self.latest
+
 
     def publish(self, *args, **kwargs):
         """Publishes given instance's latest version. If readonly,
@@ -229,6 +232,7 @@ class NarrativeTranslation(Base):
         self.save(*args, **kwargs)
 
         if self.latest is None:
+            #  publish method requires at least one saved version
             self.autosave(*args, **kwargs)
         
         nv = NarrativeVersion() if self.latest.readonly else self.latest
@@ -242,7 +246,7 @@ class NarrativeTranslation(Base):
     
     @property
     def published(self):
-        self.versions.filter(sketch=False).first()
+        return self.versions.filter(sketch=False).first()
 
     @property
     def version(self):
@@ -285,7 +289,7 @@ class NarrativeTranslation(Base):
 
 class NarrativeVersion(Base):
     class Meta:
-        ordering = ('-version',)
+        ordering = ('-version', '-sketch')
     
     readonly = models.BooleanField(default=False)
     version = models.PositiveIntegerField(default=1)
@@ -297,28 +301,42 @@ class NarrativeVersion(Base):
     def __str__(self):
         return f'v{self.version}: {self.title}'
 
+
+    def __repr__(self):
+        return f"""
+        <NarrativeVersion@v{self.version}:{"SKETCH" if not self.is_published else "PUBLISHED"}>
+        Title: {self.title}
+        Readonly: {self.readonly}
+        Sketch: {self.sketch}
+        """
+
+
     def reference(self, point, **kwargs):
         autosave = kwargs.pop('autosave', False)
         overwrite = kwargs.pop('overwrite', False)
         save = kwargs.pop('save', False)
-        self.master = point if 
+
+        self.master = point
         self.title = point.title
         self.body = point.body
-        self.sketch = point.sketch if not overwrite else True
-        self.is_published = kwargs.pop('is_published') if kwargs.get('is_published') else point.is_published 
+        self.sketch = point.sketch
         self.language = point.language
 
+        # versioning
         if point.latest is not None:
             self.version = point.latest.version
             if not autosave: self.version += 1
         else:
             self.version = 0
         
+        # shortcut
         if save:
             self.save(overwrite=overwrite, **kwargs)
 
+
     def archive(self):
         return self.save(archive=True)
+
 
     def save(self, *args, **kwargs):
         silent = kwargs.pop('silent', False)
@@ -331,5 +349,8 @@ class NarrativeVersion(Base):
 
         if kwargs.pop('archive', False):
             self.readonly = True
+        else:
+            self.readonly = not self.sketch
+
         super().save(*args, **kwargs)
 
