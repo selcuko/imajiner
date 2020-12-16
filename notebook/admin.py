@@ -33,7 +33,10 @@ class NarrativeTranslationAdmin(admin.ModelAdmin):
         return settings.LANGUAGES_DICT.get(instance.language, instance.language)
 
     def author(self, instance):
-        return instance.master.author.username
+        try:
+            return instance.master.author.username
+        except AttributeError:
+            return None
     
     def versions(self, instance):
         return instance.versions_count
