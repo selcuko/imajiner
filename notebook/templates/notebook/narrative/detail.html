@@ -10,13 +10,13 @@
 
         <div class="s-content__header col-full">
             <h1 class="s-content__header-title">
-                {{ narrative.latest.title }}
+                {{ narrative.title }}
             </h1>
             <ul class="s-content__header-meta">
-                <li class="date">{{ narrative.latest.published_at|date }}</li>
-                <li class="date">V{{ narrative.latest.version }}</li>
+                <li class="date">{{ narrative.published_at|date }}</li>
+                <li class="date">V{{ narrative.version }}</li>
 
-                {% if request.user == narrative.master.author %}
+                {% if request.user == author %}
                 {% if narrative.language in LANG_INFO.keys %}
                 {% get_language_info for narrative.language as language_info %}
                 <li class="date">{{ language_info.name_local }}</li>
@@ -26,9 +26,9 @@
                 <li class="">{% translate 'unclassified'|title %}</li>
                 {% endif %}
                 <li class="cat"><a
-                        href="{% url 'notebook:sketch' uuid=narrative.uuid %}">{% translate 'edit'|capfirst %}</a></li>
+                        href="{% url 'notebook:sketch' uuid=narrative.master.uuid %}">{% translate 'edit'|capfirst %}</a></li>
                 <li class="cat"><a
-                        href="{% url 'notebook:translate' uuid=narrative.uuid %}">{% translate 'translate'|capfirst %}</a>
+                        href="{% url 'notebook:translate' uuid=narrative.master.uuid %}">{% translate 'translate'|capfirst %}</a>
                 </li>
                 {% endif %}
             </ul>
@@ -37,7 +37,7 @@
         <div class="col-full s-content__main">
 
             <div id="article-body">
-                {{ narrative.latest.html|safe }}
+                {{ narrative.html|safe }}
             </div>
 
             <div class="row" style="display:flex; flex-direction: row; justify-content: space-between;">
@@ -76,17 +76,17 @@
 
                 <div class="s-content__author-about">
                     <h4 class="s-content__author-name">
-                        {% if narrative.author.is_shadow %}
-                        <p class="philosophy">{{ narrative.master.author.username }} <i class="fas fa-ghost"></i></p>
+                        {% if author.is_shadow %}
+                        <p class="philosophy">{{ author.username }} <i class="fas fa-ghost"></i></p>
                         {% else %}
                         <a class="philosophy"
-                            href="{% url 'identity:author' username=narrative.master.author.username %}">{{ narrative.master.author.username }}</a>
+                            href="{% url 'identity:author' username=author.username %}">{{ author.username }}</a>
                         {% endif %}
                     </h4>
 
-                    {% if narrative.master.author.profile.biography %}
+                    {% if author.profile.biography %}
                     <p class="philosophy">
-                        {{ narrative.master.author.profile.biography }}
+                        {{ author.profile.biography }}
                     </p>
                     {% endif %}
                 </div>

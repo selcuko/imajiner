@@ -17,18 +17,18 @@ class NarrativeDetail(TestCase):
 
     def test_narrative_detail_anonymous(self):
         self.logout()
-        response = self.client.get(reverse('narrative:detail', kwargs={'slug': self.narrative.slug}))
+        response = self.client.get(reverse('narrative:detail', kwargs={'slug': self.narrative.published.slug}))
         self.assertEqual(response.status_code, 200, 'Status Code not 200 when accessing NarrativeDetail')
     
     def test_narrative_detail_authorized(self):
         self.login()
-        response = self.client.get(reverse('narrative:detail', kwargs={'slug': self.narrative.slug}))
+        response = self.client.get(reverse('narrative:detail', kwargs={'slug': self.narrative.published.slug}))
         self.assertEqual(response.status_code, 200, 'Status Code not 200 when accessing NarrativeDetail')
     
     def test_narrative_detail_with_unrecognized_language_code(self):
         self.narrative.language = 'xx'
         self.narrative.save()
-        response = self.client.get(reverse('narrative:detail', kwargs={'slug': self.narrative.slug}))
+        response = self.client.get(reverse('narrative:detail', kwargs={'slug': self.narrative.published.slug}))
         self.assertEqual(response.status_code, 200)
     
     def test_nonexistent_narrative(self):

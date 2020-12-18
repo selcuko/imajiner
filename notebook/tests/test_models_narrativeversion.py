@@ -6,7 +6,7 @@ from ..exceptions import ReadonlyException
 import logging
 
 logger = logging.getLogger('notebook.models')
-logger.setLevel(logging.FATAL)
+logger.setLevel(logging.ERROR)
 
 class NarrativeTranslationModelTestCase(TestCase):
 
@@ -26,7 +26,6 @@ class NarrativeTranslationModelTestCase(TestCase):
             self.narrative.publish()
         self.narrative.autosave()
         self.version = self.narrative.latest
-        print(self.version.sketch, self.version.readonly)
 
 
     def test_title(self):
@@ -51,4 +50,4 @@ class NarrativeTranslationModelTestCase(TestCase):
             self.fail(f'NarrativeVersion failed with {exc!r}')
         else:
             with self.assertRaises(ReadonlyException):
-                self.version.save()
+                self.version.save(silent=False)

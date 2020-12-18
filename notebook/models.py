@@ -254,12 +254,6 @@ class NarrativeTranslation(Base):
         # TODO: this function seems to lack something
         return self.versions.filter(sketch=False).first().version if self.versions.count() is not 0 else None
 
-    def get_absolute_url(self):
-        if self.sketch:
-            return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
-        else:
-            return reverse('narrative:detail', kwargs={'slug': self.slug})
-
     def save(self, *args, **kwargs):
         try:
             if not self.master.pk:  # check whether instance has a master
@@ -281,6 +275,9 @@ class NarrativeTranslation(Base):
         nv.reference(self, autosave=True)
         nv.save(overwrite=True)
 
+    def get_absolute_url(self):
+        if not self.sketch:
+            return reverse('narrative:detail', kwargs={'slug': self.published.slug})
 
     def __str__(self):
         return str(self.title)
@@ -309,6 +306,10 @@ class NarrativeVersion(Base):
         Readonly: {self.readonly}
         Sketch: {self.sketch}
         """
+    
+    @property
+    def author(self):
+        return self.master.master.author
 
 
     def reference(self, point, **kwargs):
@@ -339,11 +340,11 @@ class NarrativeVersion(Base):
 
 
     def save(self, *args, **kwargs):
-        silent = kwargs.pop('silent', False)
+        silent = kwargs.pop('silent', True)
         overwrite = kwargs.pop('overwrite', False)
 
         if self.readonly and not overwrite:
-            logger.error(str(ReadonlyException(self)))
+            logger.warning(str(ReadonlyException(self)))
             if not silent:
                 raise ReadonlyException(self)
 
@@ -353,4 +354,12 @@ class NarrativeVersion(Base):
             self.readonly = not self.sketch
 
         super().save(*args, **kwargs)
+    
+
+    def get_absolute_url(self):
+        if self.sketch:
+            return reverse('narrative:sketch', kwargs={'uuid': self.uuid})
+        else:
+            return reverse('narrative:detail', kwargs={'slug': self.slug})
+
 

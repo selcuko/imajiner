@@ -19,14 +19,14 @@ from django.views.generic import CreateView, DetailView, ListView
 from tagmanager.models import *
 
 from .forms import NarrativeForm
-from .models import Narrative, NarrativeTranslation
+from .models import Narrative, NarrativeTranslation, NarrativeVersion
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.ERROR)
 
 
 class Detail(DetailView):
-    model = NarrativeTranslation
+    model = NarrativeVersion
     context_object_name = 'narrative'
     template_name = 'notebook/narrative/detail.html'
     lookup_field = 'slug'
@@ -36,16 +36,21 @@ class Detail(DetailView):
         ctx.update({
             'doc': {
                 'title': self.object.title,
-                'author': self.object.master.author.username,
+                'author': self.object.author,
                 'description': self.object.lead,
             },
+            'author': self.object.author,
             'LANG_INFO': LANG_INFO,
         })
         return ctx
+    
+    def get_object_or_404(self, *args, **kwargs):
+        nt = NarrativeTranslation.objects.get(slug=kwargs['slug'])
+        return nt.published
 
 
 class List(ListView):
-    model = NarrativeTranslation
+    model = NarrativeVersion
     context_object_name = 'narratives'
     template_name = 'notebook/narrative/list.html'
     paginate_by = 20
@@ -67,7 +72,7 @@ class List(ListView):
         qs = NarrativeTranslation.objects.public()
         if self.request.user.is_authenticated:
             qs |= NarrativeTranslation.objects.filter(master__author=self.request.user)
-        return qs
+        return [n.published for n in qs]
 
 
 class Folder(LoginRequiredMixin, ListView):
@@ -105,7 +110,7 @@ class Write(LoginRequiredMixin, View):
             if not uuid:
                 uuid = request.POST['uuid']
             try:
-                narrative = NarrativeTranslation.objects.sketch(uuid=uuid, author=request.user)
+                narrative = NarrativeTranslation.objects.get(uuid=uuid, master__author=request.user)
             except NarrativeTranslation.DoesNotExist:
                 return JsonResponse({}, status=404)
             action = request.POST['action'].lower()

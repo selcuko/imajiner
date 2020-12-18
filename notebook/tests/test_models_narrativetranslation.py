@@ -109,7 +109,7 @@ class NarrativeTranslationModelTestCase(TestCase):
     def test_get_absolute_url(self):
         narrative = NarrativeTranslation()
         narrative.save(author=self.user)
-        self.assertEqual(narrative.get_absolute_url(), reverse('narrative:sketch', kwargs={'uuid':narrative.uuid}))
+        self.assertIsNone(narrative.get_absolute_url())
         narrative.sketch=False
         narrative.save()
         self.assertEqual(narrative.get_absolute_url(), reverse('narrative:detail', kwargs={'slug': narrative.slug}))
