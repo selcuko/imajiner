@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 
 
 class NarrativePublicity(models.Manager):
@@ -12,11 +13,15 @@ class NarrativePublicity(models.Manager):
         """
 
         visitor = kwargs.pop('visitor', None)
-        qs = super().filter(
-            sketch=False,
-            language__isnull=False,
-            title__isnull=False,
-            body__isnull=False)
+        qs = super().all().exclude(
+            Q(sketch=True) |
+            Q(language__isnull=True) | 
+            Q(title__isnull=True) | 
+            Q(title__exact='') |
+            Q(body__isnull=True) | 
+            Q(body__exact='') |
+            Q(master__isnull=True)
+            )
         return qs
     
 
