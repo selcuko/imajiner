@@ -42,7 +42,7 @@ textstat==0.6.2
 toml==0.10.2
 typed-ast==1.4.1
 ua-parser==0.10.0
-urllib3==1.26.2
+urllib3==1.26.4
 wcwidth==0.2.5
 whitenoise==5.2.0
 wrapt==1.12.1
