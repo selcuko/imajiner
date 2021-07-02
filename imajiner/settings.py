@@ -2,6 +2,8 @@ import os
 import dj_database_url
 from uuid import uuid1
 from django.utils.translation import gettext, gettext_lazy
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -179,3 +181,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 LOGIN_URL = "gatewall:auth"
+
+sentry_sdk.init(
+    dsn="https://6411c6f4c53c406abd0647667289228a@o908447.ingest.sentry.io/5844277",
+    integrations=[DjangoIntegration()],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
