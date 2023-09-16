@@ -27,6 +27,7 @@ ALLOWED_HOSTS = [
     '192.168.43.182',
     'imajiner.space',
     'imajiner.herokuapp.com',
+    'imajiner-b4f81b48dfc7.herokuapp.com'
 ]
 PRIMARY_HOST = 'imajiner.space'
 
